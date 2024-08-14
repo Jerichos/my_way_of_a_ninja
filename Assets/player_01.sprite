@@ -1,0 +1,23 @@
+{
+  "Animations": [
+    {
+      "FrameRate": 8,
+      "Origin": "0.5,1",
+      "Looping": true,
+      "Name": "default",
+      "Frames": [
+        {
+          "FilePath": "sprites/player_01.png",
+          "Events": []
+        },
+        {
+          "FilePath": "sprites/player_02.png",
+          "Events": []
+        }
+      ],
+      "Attachments": []
+    }
+  ],
+  "__references": [],
+  "__version": 0
+}
