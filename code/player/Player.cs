@@ -4,8 +4,8 @@ using SpriteTools;
 
 public sealed class Player : Component
 {
+	[Property] private SpriteComponent SpriteComponent { get; set; }
 	[Property] private MotionCore2D MotionCore { get; set; }
-	[Property] private SpriteComponent SpriteComponent;
 	[Property] private MoveAbility MoveAbility { get; set; }
 	
 	// facing

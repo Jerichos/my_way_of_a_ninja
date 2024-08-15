@@ -5,17 +5,18 @@ namespace Sandbox.player;
 
 public sealed class MotionCore2D : Component
 {
-	[Property] Rigidbody Rb { get; set; }
 	[Property] BoxCollider Collider { get; set; }
 	
 	[Property] TagSet GroundTags { get; set; }
 	[Property] TagSet WallTags { get; set; }
+	
+	public Vector2 Velocity { get; private set; }
+	
+	private readonly List<IMotionProvider> _motionProviders = new();
 
-	public Vector3 Velocity => Rb.Velocity;
-	
-	private Vector3 _groundPoint;
-	
 	private SceneTraceResult _groundHitResult;
+
+	private Vector2 _groundPoint;
 	
 	private bool _grounded;
 	public bool Grounded 
@@ -30,21 +31,17 @@ public sealed class MotionCore2D : Component
 
 			if ( _grounded )
 			{
-				// var velocity = Rb.Velocity;
-				// velocity.z = 0;
-				// Rb.Velocity = velocity;
-				
-				// Rb.ClearForces();
+				Velocity = Velocity.WithY(0);
 				
 				// snap to ground point
-				// var pos = Rb.PhysicsBody.Position;
-				// pos.z = _groundPoint.z + 5;
-				// Rb.PhysicsBody.Position = pos;
-				
+				var pos = Transform.Position;
+				pos.y = _groundPoint.y;
+				Transform.Position = pos;
 				GroundHitEvent?.Invoke();
+				Log.Info($"snap to: {_groundPoint}");
 			}
 
-			Log.Info($"grounded {_grounded}");
+			Log.Info($"set ground {_grounded}");
 		}
 	}
 
@@ -56,17 +53,16 @@ public sealed class MotionCore2D : Component
 	
 	private float _skinPortion = 0.95f;
 
-	protected override void OnUpdate()
-	{
-		if(_grounded && Rb.Velocity.z < 0)
-			Rb.Velocity = Rb.Velocity.WithZ(0);
-	}
-
 	protected override void OnFixedUpdate()
 	{
+		// Log.Info($"1 Velocity: {Velocity}");
 		Collisions.Reset();
+		CalculateVelocity();
 		HandleHorizontalCollisions();
 		HandleVerticalCollisions();
+		
+		// Log.Info($"2 Velocity: {Velocity}");
+		Transform.Position += (Vector3)Velocity * Time.Delta;
 	}
 
 	private void HandleVerticalCollisions()
@@ -74,22 +70,32 @@ public sealed class MotionCore2D : Component
 		CheckCollisionDown();
 		CheckCollisionUp();
 	}
+	
+	private void CalculateVelocity()
+	{
+		Velocity = Vector2.Zero;
+
+		for ( int i = 0; i < _motionProviders.Count; i++ )
+		{
+			Velocity += _motionProviders[i].Velocity;
+		}
+	}
 
 	private void HandleHorizontalCollisions()
 	{
-		float skin = (Collider.Scale.x - Collider.Scale.x * _skinPortion) / 2;
+		// float skin = 5;
 		Vector3 scale = Collider.Scale * _skinPortion;
+		float halfWidth = Collider.Scale.x / 2;
 		
-		float length = Rb.Velocity.x * Time.Delta + skin;
-		
-		if(Rb.Velocity.x > 0) // check right
+		if(Velocity.x > 0) // check right
 		{
-			Vector3 rayStart = Rb.PhysicsBody.Position + Collider.Center + Collider.Scale.x /2;
-			Vector3 rayEnd = rayStart + Vector3.Forward * length;
+			float length = Velocity.x * Time.Delta + halfWidth;
+			Vector2 rayStart = Transform.Position + Collider.Center;
+			Vector2 rayEnd = rayStart + new Vector2(length, 0);
 			
 			var hitResult = Scene.Trace
 				.Ray(rayStart, rayEnd)
-				.Size(BBox.FromPositionAndSize(Vector3.Zero, new Vector3(0, 0, scale.z)))
+				.Size(BBox.FromPositionAndSize(Vector3.Zero, new Vector3(1,scale.y,1)))
 				.WithAnyTags(WallTags)
 				.Run();
 			
@@ -100,42 +106,57 @@ public sealed class MotionCore2D : Component
 			if(hitResult.Hit)
 			{
 				Collisions.Right = true;
+				Velocity = Velocity.WithX(0);
 				
 				Gizmo.Draw.Color = Color.Red;
 				Gizmo.Draw.LineThickness = 5;
 				Gizmo.Draw.Line( rayStart, hitResult.HitPosition);
+				
+				Log.Info("collision right");
 			}
 			
-			Log.Info($"skin: {skin} length: {length} scale: {scale} hit: {hitResult.Hit}");
+			// Log.Info($"skin: {skin} length: {length} scale: {scale} hit: {hitResult.Hit}");
 		}
-		else if ( Rb.Velocity.x < 0 ) // check left
+		else if ( Velocity.x < 0 ) // check left
 		{
-			Vector3 rayStart = Rb.PhysicsBody.Position + Collider.Center + Collider.Scale.x /2;
-			Vector3 rayEnd = rayStart + Vector3.Right * length;
+			float length = Velocity.x * Time.Delta - halfWidth;
+			Vector2 rayStart = Transform.Position + Collider.Center;
+			Vector2 rayEnd = rayStart + new Vector2(length, 0);
 			
 			var hitResult = Scene.Trace
 				.Ray(rayStart, rayEnd)
-				.Size(BBox.FromPositionAndSize(Vector3.Zero, Collider.Scale))
+				.Size(BBox.FromPositionAndSize(Vector3.Zero, new Vector3(1,scale.y,1)))
 				.WithAnyTags(WallTags)
 				.Run();
 			
+			Gizmo.Draw.Color = Color.Green;
+			Gizmo.Draw.LineThickness = 5;
+			Gizmo.Draw.Line( rayStart, rayEnd );
+			
 			if(hitResult.Hit)
 			{
-				Collisions.Left = true;
+				Collisions.Right = true;
+				Velocity = Velocity.WithX(0);
+				
+				Gizmo.Draw.Color = Color.Red;
+				Gizmo.Draw.LineThickness = 5;
+				Gizmo.Draw.Line( rayStart, hitResult.HitPosition);
+				
+				Log.Info("collision left");
 			}
 		}
 	}
 
 	private void CheckCollisionUp()
 	{
-		if(Rb.Velocity.z < 0)
+		if(Velocity.y <= 0)
 			return;
 		
 		float skinWidth = 25;
-		float length = Rb.Velocity.z * Time.Delta + skinWidth;
+		float length = Velocity.y * Time.Delta + skinWidth;
 		
-		Vector3 startPosition = Rb.PhysicsBody.Position + Collider.Scale * Vector3.Up + Vector3.Down * skinWidth;
-		Vector3 endPosition = startPosition + Vector3.Up * length;
+		Vector3 startPosition = Transform.Position + Collider.Scale * Util.UpY + Util.DownY * skinWidth;
+		Vector3 endPosition = startPosition + Util.UpY * length;
 		
 		Gizmo.Draw.Color = Color.Green;
 		Gizmo.Draw.LineThickness = 5;
@@ -149,7 +170,7 @@ public sealed class MotionCore2D : Component
 
 		if ( hitResult.Hit )
 		{
-			Rb.Velocity = Rb.Velocity.WithZ(0);
+			Velocity = Velocity.WithY(0);
 			CeilingHitEvent?.Invoke();
 			HitCeilingMadafaka?.Invoke(true);
 			Collisions.Up = true;
@@ -159,21 +180,17 @@ public sealed class MotionCore2D : Component
 	private void CheckCollisionDown()
 	{
 		// if velocity is up, don't check for ground?
-		if ( Rb.Velocity.z > 0 )
+		if ( Velocity.y > 0)
 		{
 			Grounded = false;
 			return;
 		}
 
-		float skinWidth = 25;
-		float length = Rb.Velocity.z * Time.Delta + skinWidth + 5;
+		float skinWidth = 10;
+		float length = Velocity.y * Time.Delta + skinWidth + 5;
 		
-		Vector3 startPosition = Rb.PhysicsBody.Position + Vector3.Up * skinWidth;
-		Vector3 endPosition = Rb.PhysicsBody.Position + Vector3.Down * length;
-		
-		Gizmo.Draw.Color = Color.Green;
-		Gizmo.Draw.LineThickness = 5;
-		Gizmo.Draw.Line( startPosition, endPosition );
+		Vector3 startPosition = Transform.Position + Util.UpY * skinWidth;
+		Vector3 endPosition = Transform.Position + Util.DownY * length;
 		
 		_groundHitResult = Scene.Trace
 			.Ray(startPosition, endPosition)
@@ -184,42 +201,25 @@ public sealed class MotionCore2D : Component
 		if ( _groundHitResult.Hit )
 		{
 			_groundPoint = _groundHitResult.HitPosition;
-			Gizmo.Draw.Color = Color.Red;
-			Gizmo.Draw.LineThickness = 5;
-			Gizmo.Draw.Line(startPosition, _groundHitResult.HitPosition);
 			Collisions.Down = true;
 			Grounded = true;
+			// Log.Info($"ground hit: {_groundHitResult.HitPosition}");
 		}
 		else
 		{
 			Grounded = false;
-		}
-	}
-
-	protected override void DrawGizmos()
-	{
-		if(_groundHitResult.Hit)
-		{
-			Gizmo.Draw.Color = Color.Red;
-			Gizmo.Draw.LineThickness = 5;
-			Gizmo.Draw.Line( Rb.PhysicsBody.Position, _groundHitResult.HitPosition );
-		}
-		else
-		{
-			Gizmo.Draw.Color = Color.Green;
-			Gizmo.Draw.LineThickness = 5;
-			Gizmo.Draw.Line( Rb.PhysicsBody.Position, Rb.PhysicsBody.Position + Vector3.Down * 10 );
+			// Log.Info("no ground hit");
 		}
 	}
 	
-	public void ApplyHorizontalForce(float force)
+	public void AddMotionProvider(IMotionProvider provider)
 	{
-		Rb.ApplyForce(new Vector3(force, 0, 0));
+		_motionProviders.Add(provider);
 	}
 	
-	public void ApplyHorizontalImpulse(float impulse)
+	public void RemoveMotionProvider(IMotionProvider provider)
 	{
-		Rb.ApplyImpulse(new Vector3(impulse, 0, 0));
+		_motionProviders.Remove(provider);
 	}
 }
 

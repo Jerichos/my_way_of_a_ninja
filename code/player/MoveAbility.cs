@@ -2,19 +2,20 @@
 
 namespace Sandbox.player;
 
-public class MoveAbility : Component
+public class MoveAbility : Component, IMotionProvider
 {
 	[Property] MotionCore2D MotionCore { get; set; }
 	
+	[Property] public float MaxSpeedIn { get; set; } = 1;
 	[Property] public float MaxAcceleration { get; set; } = 1000;
 	[Property] public float MaxDeceleration { get; set; } = 1000;
 	[Property] public float MaxVelocity { get; set; } = 100;
-	[Property] public float MinVelocity { get; set; } = 20;
 	
 	[Property] public Curve AccelerationCurve { get; set; }
 	[Property] public Curve DecelerationCurve { get; set; }
 	
-
+	public Vector2 Velocity { get; private set; }
+	
 	private int _inputX;
 	public int InputX
 	{
@@ -23,25 +24,28 @@ public class MoveAbility : Component
 		{
 			if (_inputX == value)
 				return;
-			
+
+			_time = 0;
 			_inputX = value;
 			InputXChangedEvent?.Invoke(_inputX);
+			Log.Info("Changed inputX: " + _inputX);
 		}
 	}
 	
 	private float _lastInputX;
 	private float _movedForce;
+	private float _time;
 	
 	public Action<int> InputXChangedEvent;
 	
 	protected override void OnUpdate()
 	{
-		InputX = 0;
-
-		if(Input.Down("Right"))
+		if ( Input.Down( "Right" ) )
 			InputX = 1;
-		else if(Input.Down("Left"))
+		else if ( Input.Down( "Left" ) )
 			InputX = -1;
+		else
+			InputX = 0;
 	}
 	
 	protected override void OnFixedUpdate()
@@ -55,45 +59,31 @@ public class MoveAbility : Component
 		if(_inputX == 0)
 			return;
 		
-		// if there is collision in that direction we can't move
-		if ( (_inputX == 1 && MotionCore.Collisions.Right) || (_inputX == -1 && MotionCore.Collisions.Left) )
-		{
-			Log.Info("Collision in direction: " + _inputX);
-			return;
-		}
+		_time += Time.Delta / MaxSpeedIn;
 		
-		// if we reached maximum velocity to one direction we can move only in the opposite direction
-		if(Math.Abs(MotionCore.Velocity.x) > MaxVelocity && Math.Abs(Math.Sign(MotionCore.Velocity.x) - _inputX) < 0.1f)
-			return;
+		if(_time > 1)
+			_time = 1;
 		
-		// apply the force
-		var forceT = AccelerationCurve.Evaluate(Math.Abs(MotionCore.Velocity.x) / MaxVelocity);
-		var force = forceT * MaxAcceleration * _inputX;
-		_movedForce += force;
-		MotionCore.ApplyHorizontalForce(force);
-		_lastInputX = _inputX;
+		float force = AccelerationCurve.Evaluate(_time) * MaxAcceleration;
+		Log.Info($"Move Ability t: {_time} force: {force} velocity: {Velocity.x}");
+		Velocity = new Vector2(force * _inputX, 0);
 	}
 	
 	private void HandleDeceleration()
 	{
 		if(_inputX != 0 || MotionCore.Velocity.x == 0)
 			return;
-		
-		// decelerate towards 0
-		var t = DecelerationCurve.Evaluate(Math.Abs(MotionCore.Velocity.x) / MaxVelocity);
-		t = 1 - t;
-		var force = t * MaxDeceleration * -Math.Sign(MotionCore.Velocity.x);
-		_movedForce += force;
-		MotionCore.ApplyHorizontalForce(force);
-		
-		// if near 0 stop the movement
-		if(Math.Abs(MotionCore.Velocity.x) < MinVelocity)
-		{
-			// Log.Info($"BREAK!");
-			MotionCore.ApplyHorizontalImpulse(-MotionCore.Velocity.x);
-			_movedForce = 0;
-		}
-		
-		// Log.Info($"decelerate force: {force} velocity: {MotionCore.Velocity.x} t: {t}");
+
+		Velocity = Vector2.Zero;
+	}
+
+	protected override void OnEnabled()
+	{
+		MotionCore.AddMotionProvider(this);
+	}
+	
+	protected override void OnDisabled()
+	{
+		MotionCore.RemoveMotionProvider(this);
 	}
 }

@@ -1,18 +1,23 @@
 ﻿
+using System;
+
 namespace Sandbox.player;
 
-public sealed class JumpAbility : Component
+public sealed class JumpAbility : Component, IMotionProvider
 {
 	[Property] MotionCore2D MotionCore { get; set; }
-	[Property] Rigidbody Rb { get; set; }
 
-	[Property] public float JumpHeight = 500f; // jump up until height is reached
-	[Property] public float JumpForce = 100f; // apply force to jump
+	[Property] private float MaxHeight { get; set; } = 200f;
+	[Property] private float MinHeight { get; set; } = 100f;
+	[Property] private float MaxVelocity { get; set; } = 100f; // apply force to jump
 	
-	[Property] Curve JumpCurve { get; set; }
+	[Property] Curve VelocityCurve { get; set; }
+	
+	public Vector2 Velocity { get; private set; }
 	
 	public bool IsJumping { get; private set; }
-	
+
+	private float _jumpHeight;
 	private float _jumpHeightReached;
 	
 	protected override void OnUpdate()
@@ -22,6 +27,13 @@ public sealed class JumpAbility : Component
 			Log.Info("Jump start!");
 			IsJumping = true;
 			_jumpHeightReached = 0;
+			_jumpHeight = 0;
+		}
+		
+		if(Input.Down("Jump") && IsJumping)
+		{
+			_jumpHeight += 1000 * Time.Delta;
+			Log.Info($"Jump height: {_jumpHeight}");
 		}
 	}
 	
@@ -29,26 +41,23 @@ public sealed class JumpAbility : Component
 	{
 		if(IsJumping)
 		{
-			if(_jumpHeightReached < JumpHeight)
+			_jumpHeightReached += MotionCore.Velocity.y * Time.Delta;
+			
+			if(_jumpHeightReached < Math.Clamp(_jumpHeight, MinHeight, MaxHeight))
 			{
-				float jumpTime = JumpCurve.Evaluate(_jumpHeightReached / JumpHeight);
+				float t = VelocityCurve.Evaluate(_jumpHeightReached / MaxHeight);
 				
-				var force = JumpForce * jumpTime;
+				var velocity = MaxVelocity * t;
+				Velocity = Vector2.Up * velocity;
 				
-				Log.Info("jumpTime: " + jumpTime + " force: " + force);
-				
-				Rb.ApplyForce(Vector3.Up * force);
+				Log.Info($"JUMP UP t: {t} force: {velocity} velocity: {Velocity.y} heightReached: {_jumpHeightReached}");
 			}
 			else
 			{
 				Log.Info("jump height reached");
 				IsJumping = false;
-				var velocity = Rb.Velocity;
-				velocity.z = 0;
-				Rb.Velocity = velocity;
+				Velocity = Vector2.Zero;
 			}
-			
-			_jumpHeightReached += Rb.Velocity.z * Time.Delta;
 		}
 	}
 
@@ -60,6 +69,7 @@ public sealed class JumpAbility : Component
 		
 		Log.Info("Jump canceled!");
 		IsJumping = false;
+		Velocity = Vector2.Zero;
 	}
 	
 	private bool CanJump()
@@ -70,12 +80,16 @@ public sealed class JumpAbility : Component
 	protected override void OnEnabled()
 	{
 		Log.Info("JumpAbility enabled");
+		MotionCore.AddMotionProvider(this);
 		MotionCore.CeilingHitEvent += CancelJump;
 	}
 	
 	protected override void OnDisabled()
 	{
 		Log.Info("JumpAbility disabled");
+		MotionCore.RemoveMotionProvider(this);
 		MotionCore.CeilingHitEvent -= CancelJump;
 	}
+
+	
 }

@@ -6,7 +6,6 @@ public sealed class Animator : Component
 {
 	[Property] SpriteComponent Sprite { get; set; }
 	[Property] MotionCore2D MotionCore { get; set; }
-	[Property] Rigidbody Rb { get; set; }
 
 	protected override void OnEnabled()
 	{
@@ -17,7 +16,7 @@ public sealed class Animator : Component
 	{
 		if(MotionCore.Grounded)
 			Sprite.PlayAnimation("run");
-		else if(Rb.Velocity.z > 0)
+		else if(MotionCore.Velocity.y > 0)
 			Sprite.PlayAnimation("jump");
 		else
 			Sprite.PlayAnimation("inAir");

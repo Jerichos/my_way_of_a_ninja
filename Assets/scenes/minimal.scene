@@ -25,8 +25,8 @@
       "__guid": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
       "Flags": 0,
       "Name": "Camera",
-      "Position": "0,-400,249.4003",
-      "Rotation": "-0.06162841,0.06162841,0.704416,0.704416",
+      "Position": "-0.0001192093,0,400",
+      "Rotation": "-0.5,0.5,0.5,0.5",
       "Enabled": true,
       "Components": [
         {
@@ -101,18 +101,12 @@
       "__guid": "d6d86c8e-5883-4db7-a425-60330fc9b682",
       "Flags": 0,
       "Name": "Player",
-      "Position": "0,0,302.0107",
+      "Position": "0,271.9211,0",
       "Enabled": true,
       "Components": [
         {
           "__type": "Player",
           "__guid": "5c7d982f-7599-4a6b-9191-764ba5e4aa0a",
-          "SpriteComponent": {
-            "_type": "component",
-            "component_id": "917f7ade-6b02-4108-b0a9-ba03b9328b25",
-            "go": "1a949301-3a8f-40bc-a43a-0805d2c7fa98",
-            "component_type": "SpriteComponent"
-          },
           "MotionCore": {
             "_type": "component",
             "component_id": "984e43ff-0301-4298-a46c-25c0796b678e",
@@ -124,33 +118,20 @@
             "component_id": "8a53c55b-26bc-46f6-8d1c-7d98efaeb73e",
             "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
             "component_type": "MoveAbility"
-          }
-        },
-        {
-          "__type": "Sandbox.Rigidbody",
-          "__guid": "4e14e322-dfac-45fb-85aa-9df32314cd74",
-          "AngularDamping": 0,
-          "Gravity": false,
-          "LinearDamping": 0,
-          "Locking": {
-            "Y": true,
-            "Pitch": true,
-            "Yaw": true,
-            "Roll": true
           },
-          "MassCenterOverride": "0,0,0",
-          "MassOverride": 1,
-          "MotionEnabled": true,
-          "OverrideMassCenter": false,
-          "RigidbodyFlags": 0,
-          "StartAsleep": false
+          "SpriteComponent": {
+            "_type": "component",
+            "component_id": "917f7ade-6b02-4108-b0a9-ba03b9328b25",
+            "go": "1a949301-3a8f-40bc-a43a-0805d2c7fa98",
+            "component_type": "SpriteComponent"
+          }
         },
         {
           "__type": "Sandbox.BoxCollider",
           "__guid": "52c9388c-d8ac-4f6d-aaae-497b2d704446",
-          "Center": "0,0,50",
+          "Center": "0,50,0",
           "IsTrigger": false,
-          "Scale": "50,50,100",
+          "Scale": "50,100,50",
           "Static": false
         },
         {
@@ -163,12 +144,6 @@
             "component_type": "BoxCollider"
           },
           "GroundTags": "ground,wall",
-          "Rb": {
-            "_type": "component",
-            "component_id": "4e14e322-dfac-45fb-85aa-9df32314cd74",
-            "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
-            "component_type": "Rigidbody"
-          },
           "WallTags": "wall,ground"
         },
         {
@@ -182,26 +157,19 @@
               "x": 1
             }
           ],
-          "GravityDirection": "0,0,-1",
-          "GravityForce": 250,
+          "GravityForce": 1000,
           "MaxVelocity": 1000,
           "MotionCore": {
             "_type": "component",
             "component_id": "984e43ff-0301-4298-a46c-25c0796b678e",
             "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
             "component_type": "MotionCore2D"
-          },
-          "Rb": {
-            "_type": "component",
-            "component_id": "4e14e322-dfac-45fb-85aa-9df32314cd74",
-            "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
-            "component_type": "Rigidbody"
           }
         },
         {
           "__type": "Sandbox.player.JumpAbility",
           "__guid": "bebbf412-04ee-4d6b-8d1c-8c840461289d",
-          "JumpForce": 1000,
+          "JumpForce": 500,
           "JumpHeight": 200,
           "JumpCurve": [
             {
@@ -216,12 +184,6 @@
             "component_id": "984e43ff-0301-4298-a46c-25c0796b678e",
             "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
             "component_type": "MotionCore2D"
-          },
-          "Rb": {
-            "_type": "component",
-            "component_id": "4e14e322-dfac-45fb-85aa-9df32314cd74",
-            "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
-            "component_type": "Rigidbody"
           }
         },
         {
@@ -232,12 +194,6 @@
             "component_id": "984e43ff-0301-4298-a46c-25c0796b678e",
             "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
             "component_type": "MotionCore2D"
-          },
-          "Rb": {
-            "_type": "component",
-            "component_id": "4e14e322-dfac-45fb-85aa-9df32314cd74",
-            "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
-            "component_type": "Rigidbody"
           },
           "Sprite": {
             "_type": "component",
@@ -283,7 +239,6 @@
           "Flags": 0,
           "Name": "sprite",
           "Position": "0,0,0",
-          "Rotation": "0.7071068,0,0,0.7071068",
           "Enabled": true,
           "Components": [
             {
@@ -315,8 +270,8 @@
           "__guid": "9f6f754d-c222-4e15-bace-3e156c3ca154",
           "Flags": 0,
           "Name": "wall left",
-          "Position": "-370.6491,-0.0001983643,-0.0001220703",
-          "Rotation": "0.5000001,-0.5,-0.5,0.5000001",
+          "Position": "-400,-0.0001983643,-0.0001220703",
+          "Rotation": "0,0.7071068,0,0.7071068",
           "Scale": "5,15.30002,1",
           "Tags": "wall",
           "Enabled": true,
@@ -343,8 +298,8 @@
           "__guid": "9fedd37d-b05b-4d52-b75d-d32a7f93c113",
           "Flags": 0,
           "Name": "wall right",
-          "Position": "397.3511,-0.0001983643,0.0002441406",
-          "Rotation": "0.5000001,-0.5,-0.5,0.5000001",
+          "Position": "400,-0.0001983643,0.0002441406",
+          "Rotation": "0,0.7071068,0,0.7071068",
           "Scale": "5,15.30002,1",
           "Tags": "wall",
           "Enabled": true,
@@ -368,94 +323,11 @@
           ]
         },
         {
-          "__guid": "2e2164d1-c5a1-40e1-b467-5fb8c6160b89",
-          "Flags": 0,
-          "Name": "ground (3)",
-          "Position": "447.9999,0.00008010864,256",
-          "Rotation": "0,0,-0.7071067,0.7071068",
-          "Scale": "5,7.500004,0.1",
-          "Tags": "ground",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "Sandbox.ModelRenderer",
-              "__guid": "c00ffb85-e9bc-45f2-b1b8-90706aa2e30f",
-              "BodyGroups": 18446744073709551615,
-              "Model": "models/dev/box.vmdl",
-              "RenderType": "On",
-              "Tint": "1,1,1,1"
-            },
-            {
-              "__type": "Sandbox.BoxCollider",
-              "__guid": "bba044d1-410e-4343-a0bc-137a49e19c66",
-              "Center": "0,0,0",
-              "IsTrigger": false,
-              "Scale": "50,50,50",
-              "Static": false
-            }
-          ]
-        },
-        {
-          "__guid": "61cbaa62-ca98-40a8-baaf-4d8bdeb0a101",
-          "Flags": 0,
-          "Name": "ground (2)",
-          "Position": "-383.9998,-0.00006866456,192",
-          "Rotation": "0,0,-0.7071067,0.7071068",
-          "Scale": "5,7.500004,0.1",
-          "Tags": "ground",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "Sandbox.ModelRenderer",
-              "__guid": "a401e9c6-5164-47ff-a817-a235b507644f",
-              "BodyGroups": 18446744073709551615,
-              "Model": "models/dev/box.vmdl",
-              "RenderType": "On",
-              "Tint": "1,1,1,1"
-            },
-            {
-              "__type": "Sandbox.BoxCollider",
-              "__guid": "26a9e3b7-0295-481d-a1f4-bba76824f445",
-              "Center": "0,0,0",
-              "IsTrigger": false,
-              "Scale": "50,50,50",
-              "Static": false
-            }
-          ]
-        },
-        {
-          "__guid": "a72773cd-6b99-4554-8f47-dbbef83fe282",
-          "Flags": 0,
-          "Name": "ground (1)",
-          "Position": "294.4664,0.00005265472,173.0173",
-          "Rotation": "0,0,-0.7071067,0.7071068",
-          "Scale": "5,7.500004,0.1",
-          "Tags": "ground",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "Sandbox.ModelRenderer",
-              "__guid": "110aec74-d1c3-4cb1-b270-c7ad43097ada",
-              "BodyGroups": 18446744073709551615,
-              "Model": "models/dev/box.vmdl",
-              "RenderType": "On",
-              "Tint": "1,1,1,1"
-            },
-            {
-              "__type": "Sandbox.BoxCollider",
-              "__guid": "9f8bc5eb-dcb7-4d7c-8716-2e1bc7fcfa1e",
-              "Center": "0,0,0",
-              "IsTrigger": false,
-              "Scale": "50,50,50",
-              "Static": false
-            }
-          ]
-        },
-        {
           "__guid": "60e3c9ad-7b7d-4d93-850c-a58c345a1684",
           "Flags": 0,
           "Name": "ground",
-          "Rotation": "0,0,-0.7071067,0.7071068",
+          "Position": "0,-200,0",
+          "Rotation": "-0.5,0.5,0.5,0.5",
           "Scale": "5,15.30002,0.1",
           "Tags": "ground",
           "Enabled": true,

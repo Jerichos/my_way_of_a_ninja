@@ -28,7 +28,7 @@
           "Events": []
         },
         {
-          "FilePath": "sprites/player_jump_down.png",
+          "FilePath": "sprites/player_jump_up.png",
           "Events": []
         }
       ],
