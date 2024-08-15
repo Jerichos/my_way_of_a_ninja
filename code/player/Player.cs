@@ -1,52 +1,44 @@
 using Sandbox;
+using Sandbox.player;
+using SpriteTools;
 
 public sealed class Player : Component
 {
-	[Property] private Rigidbody Rb { get; set; }
+	[Property] private MotionCore2D MotionCore { get; set; }
+	[Property] private SpriteComponent SpriteComponent;
+	[Property] private MoveAbility MoveAbility { get; set; }
+	
+	// facing
+	private int _facing = 1; // default is right
 
-	[Property] private float HorizontalSpeed { get; set; } = 5000f;
-	[Property] private Curve Curve { get; set; }
-	[Property] private float MaxHorizontalSpeed { get; set; } = 200;
-	
-	[Property] TagSet GroundTags { get; set; }
-	
-	private float _horizontalInput;
-	
-	protected override void OnUpdate()
+	public int Facing
 	{
-		// _horizontalInput = 0;
-		// if(Input.Down("Right"))
-		// {
-		// 	_horizontalInput = 1;
-		// 	Log.Info("Right");
-		// }
-		// else if(Input.Down("Left"))
-		// {
-		// 	_horizontalInput = -1;
-		// 	Log.Info("Left");
-		// }
+		get => _facing;
+		set
+		{
+			if(_facing == value)
+				return;
+			
+			_facing = value;
+			SpriteComponent.SpriteFlags = _facing == 1 ? SpriteFlags.None : SpriteFlags.HorizontalFlip;
+		}
 	}
-	
-	protected override void OnFixedUpdate()
+
+
+	protected override void OnEnabled()
 	{
+		if ( MoveAbility != null )
+		{
+			MoveAbility.InputXChangedEvent += OnInputXChanged;
+			OnInputXChanged(MoveAbility.InputX);
+		}
 	}
-	
-	private void HandleMovement()
+
+	private void OnInputXChanged( int inputX )
 	{
-		var moveForce = _horizontalInput * HorizontalSpeed;
-		if(Rb.Velocity.x > MaxHorizontalSpeed)
-		{
-			moveForce = 0;
-		}
-		else if(Rb.Velocity.x < -MaxHorizontalSpeed)
-		{
-			moveForce = 0;
-		}
-		else
-		{
-			Vector3 moveForceVector = new Vector3(moveForce, 0, 0);
-			Rb.ApplyForce(moveForceVector);
-			Log.Info("apply move force: " + moveForce + " velocity: " + Rb.Velocity.x + " Time.Delta: " + Time.Delta);
-		}
+		if(inputX == 0)
+			return;
+		
+		Facing = inputX;
 	}
 }
