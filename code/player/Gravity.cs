@@ -13,6 +13,9 @@ public sealed class Gravity : Component, IMotionProvider
 	[Property] Curve GravityCurve { get; set; } // apply gravity force portion between current and max velocity
 	
 	public Vector2 Velocity { get; private set; }
+	public int Priority => 0;
+	public bool Additive => true;
+	public MotionType MotionType => MotionType.GRAVITY;
 	
 	protected override void OnFixedUpdate()
 	{
@@ -33,6 +36,11 @@ public sealed class Gravity : Component, IMotionProvider
 			Velocity += Vector2.Down * gravityForce;
 			// Log.Info($"Gravity -> portion: {portion} t: {t} gravityForce: {gravityForce} velocity: {Velocity.y} MaxVelocity: {MaxVelocity}");
 		}
+	}
+
+	public void OnVelocityIgnored()
+	{
+		Velocity = Vector2.Zero;
 	}
 
 	protected override void OnEnabled()

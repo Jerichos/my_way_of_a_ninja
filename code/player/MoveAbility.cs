@@ -15,6 +15,9 @@ public class MoveAbility : Component, IMotionProvider
 	[Property] public Curve DecelerationCurve { get; set; }
 	
 	public Vector2 Velocity { get; private set; }
+	public int Priority => 0;
+	public bool Additive => true;
+	public MotionType MotionType => MotionType.MOVE;
 	
 	private int _inputX;
 	public int InputX
@@ -27,7 +30,7 @@ public class MoveAbility : Component, IMotionProvider
 
 			_time = 0;
 			_inputX = value;
-			InputXChangedEvent?.Invoke(_inputX);
+			MotionCore.Facing = _inputX;
 			Log.Info("Changed inputX: " + _inputX);
 		}
 	}
@@ -36,12 +39,12 @@ public class MoveAbility : Component, IMotionProvider
 	private float _movedForce;
 	private float _time;
 	
-	public Action<int> InputXChangedEvent;
-	
 	protected override void OnUpdate()
 	{
 		if ( Input.Down( "Right" ) )
+		{
 			InputX = 1;
+		}
 		else if ( Input.Down( "Left" ) )
 			InputX = -1;
 		else
@@ -74,6 +77,13 @@ public class MoveAbility : Component, IMotionProvider
 		if(_inputX != 0 || MotionCore.Velocity.x == 0)
 			return;
 
+		Velocity = Vector2.Zero;
+		
+		// TODO: implement deceleration or leave it be because there is no time. So what
+	}
+	
+	public void OnVelocityIgnored()
+	{
 		Velocity = Vector2.Zero;
 	}
 

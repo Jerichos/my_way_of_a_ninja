@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 
 namespace Sandbox.player;
 
@@ -13,6 +12,8 @@ public sealed class MotionCore2D : Component
 	public Vector2 Velocity { get; private set; }
 	
 	private readonly List<IMotionProvider> _motionProviders = new();
+	private readonly List<IMotionProvider> _activeProviders = new();
+	private MotionTypeMatrix _motionMatrix = new();
 
 	private SceneTraceResult _groundHitResult;
 
@@ -35,7 +36,7 @@ public sealed class MotionCore2D : Component
 				
 				// snap to ground point
 				var pos = Transform.Position;
-				pos.y = _groundPoint.y;
+				pos.y = _groundPoint.y + 1;
 				Transform.Position = pos;
 				GroundHitEvent?.Invoke();
 				Log.Info($"snap to: {_groundPoint}");
@@ -44,6 +45,22 @@ public sealed class MotionCore2D : Component
 			Log.Info($"set ground {_grounded}");
 		}
 	}
+	
+	private int _facing = 1; // default is right
+	public int Facing
+	{
+		get => _facing;
+		set
+		{
+			if(_facing == value || value == 0)
+				return;
+			
+			_facing = value;
+			FacingChangedEvent?.Invoke(_facing);
+		}
+	}
+	
+	public Action<int> FacingChangedEvent;
 
 	public Action GroundHitEvent;
 	public Action CeilingHitEvent;
@@ -71,15 +88,7 @@ public sealed class MotionCore2D : Component
 		CheckCollisionUp();
 	}
 	
-	private void CalculateVelocity()
-	{
-		Velocity = Vector2.Zero;
-
-		for ( int i = 0; i < _motionProviders.Count; i++ )
-		{
-			Velocity += _motionProviders[i].Velocity;
-		}
-	}
+	
 
 	private void HandleHorizontalCollisions()
 	{
@@ -187,7 +196,7 @@ public sealed class MotionCore2D : Component
 		}
 
 		float skinWidth = 10;
-		float length = Velocity.y * Time.Delta + skinWidth + 5;
+		float length = -Velocity.y * Time.Delta + skinWidth + 1;
 		
 		Vector3 startPosition = Transform.Position + Util.UpY * skinWidth;
 		Vector3 endPosition = Transform.Position + Util.DownY * length;
@@ -203,23 +212,71 @@ public sealed class MotionCore2D : Component
 			_groundPoint = _groundHitResult.HitPosition;
 			Collisions.Down = true;
 			Grounded = true;
-			// Log.Info($"ground hit: {_groundHitResult.HitPosition}");
+			Log.Info($"ground hit: {_groundHitResult.HitPosition}");
 		}
 		else
 		{
 			Grounded = false;
-			// Log.Info("no ground hit");
+			Log.Info("no ground hit");
+		}
+	}
+	
+	private void CalculateVelocity()
+	{
+		Velocity = Vector2.Zero;
+
+		for ( int i = 0; i < _activeProviders.Count; i++ )
+		{
+			Velocity += _activeProviders[i].Velocity;
+		}
+	}
+	
+	private void OnMotionProvidersChanged()
+	{
+		_activeProviders.Clear();
+
+		for (int i = 0; i < _motionProviders.Count; i++)
+		{
+			IMotionProvider currentProvider = _motionProviders[i];
+			bool shouldAdd = true;
+
+			for (int j = 0; j < _activeProviders.Count; j++)
+			{
+				IMotionProvider activeProvider = _activeProviders[j];
+
+				// Check the matrix to determine if the current provider should be combined
+				if (!_motionMatrix.ShouldCombine(currentProvider.MotionType, activeProvider.MotionType))
+				{
+					shouldAdd = false;
+					currentProvider.OnVelocityIgnored();
+					break;
+				}
+
+				if (!_motionMatrix.ShouldCombine(activeProvider.MotionType, currentProvider.MotionType))
+				{
+					// If the current provider cancels the active one, remove the active one
+					_activeProviders.RemoveAt(j);
+					j--; // Adjust index after removal
+				}
+			}
+
+			if (shouldAdd)
+			{
+				_activeProviders.Add(currentProvider);
+			}
 		}
 	}
 	
 	public void AddMotionProvider(IMotionProvider provider)
 	{
 		_motionProviders.Add(provider);
+		OnMotionProvidersChanged();
 	}
 	
 	public void RemoveMotionProvider(IMotionProvider provider)
 	{
 		_motionProviders.Remove(provider);
+		OnMotionProvidersChanged();
 	}
 }
 

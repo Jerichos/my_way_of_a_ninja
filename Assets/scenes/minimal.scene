@@ -1,12 +1,12 @@
 {
-  "__guid": "2309bc5d-7612-495d-bd8e-0588b74b3a70",
+  "__guid": "0ab62622-0669-4c34-a510-cab80df7b8ca",
   "GameObjects": [
     {
       "__guid": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
       "Flags": 0,
       "Name": "Sun",
       "Position": "344.1696,4554.589,-1144.678",
-      "Rotation": "0.5737979,0.2240391,-0.6947278,-0.3713703",
+      "Rotation": "-0.5459095,0.5945209,0.5162107,-0.286451",
       "Tags": "light_directional,light",
       "Enabled": true,
       "Components": [
@@ -101,7 +101,7 @@
       "__guid": "d6d86c8e-5883-4db7-a425-60330fc9b682",
       "Flags": 0,
       "Name": "Player",
-      "Position": "0,271.9211,0",
+      "Position": "0,-151.0017,0",
       "Enabled": true,
       "Components": [
         {
@@ -157,7 +157,7 @@
               "x": 1
             }
           ],
-          "GravityForce": 1000,
+          "GravityForce": 50,
           "MaxVelocity": 1000,
           "MotionCore": {
             "_type": "component",
@@ -169,22 +169,28 @@
         {
           "__type": "Sandbox.player.JumpAbility",
           "__guid": "bebbf412-04ee-4d6b-8d1c-8c840461289d",
-          "JumpForce": 500,
-          "JumpHeight": 200,
-          "JumpCurve": [
-            {
-              "y": 1
-            },
-            {
-              "x": 1
-            }
-          ],
+          "JumpIn": 1,
+          "MaxHeight": 400,
+          "MaxJumps": 2,
+          "MaxVelocity": 1000,
+          "MinHeight": 200,
           "MotionCore": {
             "_type": "component",
             "component_id": "984e43ff-0301-4298-a46c-25c0796b678e",
             "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
             "component_type": "MotionCore2D"
-          }
+          },
+          "VelocityCurve": [
+            {
+              "y": 1
+            },
+            {
+              "x": 1,
+              "y": 0.49361703,
+              "in": 1.4604648,
+              "out": -1.4604648
+            }
+          ]
         },
         {
           "__type": "Sandbox.player.Animator",
@@ -207,6 +213,12 @@
           "__guid": "8a53c55b-26bc-46f6-8d1c-7d98efaeb73e",
           "AccelerationCurve": [
             {
+              "y": 0.10000002,
+              "in": -2.6232555,
+              "out": 2.6232555
+            },
+            {
+              "x": 1,
               "y": 1
             }
           ],
@@ -221,16 +233,41 @@
               "out": -1.4472735
             }
           ],
-          "MaxAcceleration": 5000,
-          "MaxDeceleration": 25000,
-          "MaxVelocity": 400,
-          "MinVelocity": 50,
+          "MaxAcceleration": 300,
+          "MaxDeceleration": 500,
+          "MaxSpeedIn": 0.3,
+          "MaxVelocity": 300,
           "MotionCore": {
             "_type": "component",
             "component_id": "984e43ff-0301-4298-a46c-25c0796b678e",
             "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
             "component_type": "MotionCore2D"
           }
+        },
+        {
+          "__type": "Sandbox.player.DashAbility",
+          "__guid": "e7e90b74-92b9-445a-ade9-9fc00da7de05",
+          "CanDashInAir": true,
+          "DashIn": 0.1,
+          "MaxDistance": 200,
+          "MaxVelocity": 1000,
+          "MotionCore": {
+            "_type": "component",
+            "component_id": "984e43ff-0301-4298-a46c-25c0796b678e",
+            "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
+            "component_type": "MotionCore2D"
+          },
+          "VelocityCurve": [
+            {
+              "y": 1
+            },
+            {
+              "x": 1,
+              "y": 0.6132979,
+              "in": 0.9531914,
+              "out": -0.9531914
+            }
+          ]
         }
       ],
       "Children": [
@@ -287,6 +324,34 @@
             {
               "__type": "Sandbox.BoxCollider",
               "__guid": "e5ecd094-1a8c-4b01-917d-2f74e35cb539",
+              "Center": "0,0,0",
+              "IsTrigger": false,
+              "Scale": "50,50,50",
+              "Static": false
+            }
+          ]
+        },
+        {
+          "__guid": "d1ad8840-0876-49d1-826d-2d0d2b0c4967",
+          "Flags": 0,
+          "Name": "wall right (1)",
+          "Position": "128,-188.8052,0.0002106151",
+          "Rotation": "0,0.7071068,0,0.7071068",
+          "Scale": "5,5,1",
+          "Tags": "wall",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "7239dcd8-30fe-4d58-830d-374189bf9e07",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/dev/box.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "63c9a46f-f057-41e3-9415-d1535654ae24",
               "Center": "0,0,0",
               "IsTrigger": false,
               "Scale": "50,50,50",

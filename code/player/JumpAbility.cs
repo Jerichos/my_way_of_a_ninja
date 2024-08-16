@@ -7,33 +7,41 @@ public sealed class JumpAbility : Component, IMotionProvider
 {
 	[Property] MotionCore2D MotionCore { get; set; }
 
+	[Property][Range(1, 10)] private int MaxJumps { get; set; } = 1;
 	[Property] private float MaxHeight { get; set; } = 200f;
 	[Property] private float MinHeight { get; set; } = 100f;
 	[Property] private float MaxVelocity { get; set; } = 100f; // apply force to jump
+	[Property] private float JumpIn { get; set; } = 0.5f; // time to reach max height
 	
 	[Property] Curve VelocityCurve { get; set; }
 	
 	public Vector2 Velocity { get; private set; }
+	public int Priority => 1;
+	public bool Additive => false;
+	public MotionType MotionType => MotionType.JUMP;
 	
 	public bool IsJumping { get; private set; }
+	
+	private float _wishHeight;
+	private float _distanceTraveled;
+	private float _t;
 
-	private float _jumpHeight;
-	private float _jumpHeightReached;
+	private bool _increaseHeight;
+	
+	private int _jumps; // resets when grounded
 	
 	protected override void OnUpdate()
 	{
 		if(Input.Pressed("Jump") && CanJump())
 		{
-			Log.Info("Jump start!");
-			IsJumping = true;
-			_jumpHeightReached = 0;
-			_jumpHeight = 0;
+			Log.Info("jump pressed");
+			StartJump();
 		}
-		
+
+		_increaseHeight = false;
 		if(Input.Down("Jump") && IsJumping)
 		{
-			_jumpHeight += 1000 * Time.Delta;
-			Log.Info($"Jump height: {_jumpHeight}");
+			_increaseHeight = true;
 		}
 	}
 	
@@ -41,24 +49,65 @@ public sealed class JumpAbility : Component, IMotionProvider
 	{
 		if(IsJumping)
 		{
-			_jumpHeightReached += MotionCore.Velocity.y * Time.Delta;
+			if(_increaseHeight)
+				_wishHeight += MaxHeight * Time.Delta / (JumpIn/1.75f); // you have x times more time to reach max height
 			
-			if(_jumpHeightReached < Math.Clamp(_jumpHeight, MinHeight, MaxHeight))
+			_t += Time.Delta / JumpIn;
+			_distanceTraveled += MotionCore.Velocity.y * Time.Delta;
+			
+			if(_distanceTraveled < Math.Clamp(_wishHeight, MinHeight, MaxHeight))
 			{
-				float t = VelocityCurve.Evaluate(_jumpHeightReached / MaxHeight);
+				// Ensure _t doesn't exceed 1 (end of the dash)
+				if (_t > 1)
+				{
+					_t = 1;
+				}
+
+				// Evaluate the curve based on normalized time
+				float curveVelocity = VelocityCurve.Evaluate(_t);
+
+				// Calculate the velocity required to reach the MaxDistance in the given dashIn time
+				float requiredVelocity = MaxHeight / JumpIn;
+
+				// Actual velocity is scaled by the curve
+				var velocity = requiredVelocity * curveVelocity;
+
+				// Update the distance traveled
+				_distanceTraveled += velocity * Time.Delta;
+
+				// Check if the dash should be completed
+				if (_distanceTraveled >= MaxHeight)
+				{
+					_distanceTraveled = MaxHeight;
+					_t = 1;  // Ensure the dash finishes
+				}
 				
-				var velocity = MaxVelocity * t;
-				Velocity = Vector2.Up * velocity;
-				
-				Log.Info($"JUMP UP t: {t} force: {velocity} velocity: {Velocity.y} heightReached: {_jumpHeightReached}");
+				// Apply the velocity in the direction the character is facing
+				Velocity = Util.UpY * velocity;
+				Log.Info($"jump _t: {_t} distance: {_distanceTraveled} _wishHeight: {_wishHeight} clamped: {Math.Clamp(_wishHeight, MinHeight, MaxHeight)}");
 			}
 			else
 			{
-				Log.Info("jump height reached");
-				IsJumping = false;
-				Velocity = Vector2.Zero;
+				Log.Info($"jump end distance: {_distanceTraveled} _wishHeight: {_wishHeight} clamped: {Math.Clamp(_wishHeight, MinHeight, MaxHeight)}");
+				CancelJump();
 			}
 		}
+	}
+
+	private void StartJump()
+	{
+		if ( IsJumping == false )
+		{
+			MotionCore.AddMotionProvider(this);
+		}
+		
+		IsJumping = true;
+		_t = 0;
+		_distanceTraveled = 0;
+		_wishHeight = 0;
+		_jumps++;
+		Log.Info($"Jump start! jumps: {_jumps}");
+		
 	}
 
 	// if there is vertical collision or something else that stops the jump
@@ -70,25 +119,32 @@ public sealed class JumpAbility : Component, IMotionProvider
 		Log.Info("Jump canceled!");
 		IsJumping = false;
 		Velocity = Vector2.Zero;
+		
+		MotionCore.RemoveMotionProvider(this);
 	}
 	
 	private bool CanJump()
 	{
-		return !IsJumping && MotionCore.Grounded;
+		return !IsJumping && MotionCore.Grounded || _jumps < MaxJumps;
+	}
+	
+	public void OnVelocityIgnored()
+	{
+		CancelJump();
 	}
 
 	protected override void OnEnabled()
 	{
 		Log.Info("JumpAbility enabled");
-		MotionCore.AddMotionProvider(this);
 		MotionCore.CeilingHitEvent += CancelJump;
+		MotionCore.GroundHitEvent += () => _jumps = 0;
 	}
 	
 	protected override void OnDisabled()
 	{
 		Log.Info("JumpAbility disabled");
-		MotionCore.RemoveMotionProvider(this);
 		MotionCore.CeilingHitEvent -= CancelJump;
+		MotionCore.GroundHitEvent -= () => _jumps = 0;
 	}
 
 	
