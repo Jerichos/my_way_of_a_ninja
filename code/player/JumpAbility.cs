@@ -16,9 +16,8 @@ public sealed class JumpAbility : Component, IMotionProvider
 	[Property] Curve VelocityCurve { get; set; }
 	
 	public Vector2 Velocity { get; private set; }
-	public int Priority => 1;
-	public bool Additive => false;
 	public MotionType MotionType => MotionType.JUMP;
+	public MotionType[] OverrideMotions => new[] {MotionType.DASH, MotionType.GRAVITY}; // Jump overrides dash and gravity
 	
 	public bool IsJumping { get; private set; }
 	
@@ -50,7 +49,7 @@ public sealed class JumpAbility : Component, IMotionProvider
 		if(IsJumping)
 		{
 			if(_increaseHeight)
-				_wishHeight += MaxHeight * Time.Delta / (JumpIn/1.75f); // you have x times more time to reach max height
+				_wishHeight += MaxHeight * (Time.Delta / (JumpIn/2.75f)); // you have x times more time to reach max height
 			
 			_t += Time.Delta / JumpIn;
 			_distanceTraveled += MotionCore.Velocity.y * Time.Delta;
@@ -128,9 +127,14 @@ public sealed class JumpAbility : Component, IMotionProvider
 		return !IsJumping && MotionCore.Grounded || _jumps < MaxJumps;
 	}
 	
-	public void OnVelocityIgnored()
+	public void OnMotionCanceled()
 	{
 		CancelJump();
+	}
+	
+	public void OnMotionRestored()
+	{
+		
 	}
 
 	protected override void OnEnabled()

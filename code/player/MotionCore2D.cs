@@ -13,7 +13,6 @@ public sealed class MotionCore2D : Component
 	
 	private readonly List<IMotionProvider> _motionProviders = new();
 	private readonly List<IMotionProvider> _activeProviders = new();
-	private MotionTypeMatrix _motionMatrix = new();
 
 	private SceneTraceResult _groundHitResult;
 
@@ -121,7 +120,7 @@ public sealed class MotionCore2D : Component
 				Gizmo.Draw.LineThickness = 5;
 				Gizmo.Draw.Line( rayStart, hitResult.HitPosition);
 				
-				Log.Info("collision right");
+				// Log.Info("collision right");
 			}
 			
 			// Log.Info($"skin: {skin} length: {length} scale: {scale} hit: {hitResult.Hit}");
@@ -151,7 +150,7 @@ public sealed class MotionCore2D : Component
 				Gizmo.Draw.LineThickness = 5;
 				Gizmo.Draw.Line( rayStart, hitResult.HitPosition);
 				
-				Log.Info("collision left");
+				// Log.Info("collision left");
 			}
 		}
 	}
@@ -212,12 +211,12 @@ public sealed class MotionCore2D : Component
 			_groundPoint = _groundHitResult.HitPosition;
 			Collisions.Down = true;
 			Grounded = true;
-			Log.Info($"ground hit: {_groundHitResult.HitPosition}");
+			// Log.Info($"ground hit: {_groundHitResult.HitPosition}");
 		}
 		else
 		{
 			Grounded = false;
-			Log.Info("no ground hit");
+			// Log.Info("no ground hit");
 		}
 	}
 	
@@ -231,52 +230,78 @@ public sealed class MotionCore2D : Component
 		}
 	}
 	
-	private void OnMotionProvidersChanged()
+	int _added = 0;
+	
+	public void AddMotionProvider(IMotionProvider provider)
 	{
-		_activeProviders.Clear();
-
-		for (int i = 0; i < _motionProviders.Count; i++)
+		List<IMotionProvider> providersToRemove = new List<IMotionProvider>();
+    
+		for (int i = _activeProviders.Count - 1; i >= 0; i--)
 		{
-			IMotionProvider currentProvider = _motionProviders[i];
-			bool shouldAdd = true;
+			var activeProvider = _activeProviders[i];
 
-			for (int j = 0; j < _activeProviders.Count; j++)
+			if (provider.OverrideMotions.Contains(activeProvider.MotionType))
 			{
-				IMotionProvider activeProvider = _activeProviders[j];
-
-				// Check the matrix to determine if the current provider should be combined
-				if (!_motionMatrix.ShouldCombine(currentProvider.MotionType, activeProvider.MotionType))
-				{
-					shouldAdd = false;
-					currentProvider.OnVelocityIgnored();
-					break;
-				}
-
-				if (!_motionMatrix.ShouldCombine(activeProvider.MotionType, currentProvider.MotionType))
-				{
-					// If the current provider cancels the active one, remove the active one
-					_activeProviders.RemoveAt(j);
-					j--; // Adjust index after removal
-				}
+				activeProvider.OnMotionCanceled();
+				providersToRemove.Add(activeProvider);
 			}
+		}
 
-			if (shouldAdd)
+		foreach (var providerToRemove in providersToRemove)
+		{
+			_activeProviders.Remove(providerToRemove);
+		}
+
+		_motionProviders.Add(provider);
+		_activeProviders.Add(provider);
+		ReevaluateActiveProviders();
+	}
+	
+	private void ReevaluateActiveProviders()
+	{
+		List<IMotionProvider> providersToAddBack = new List<IMotionProvider>();
+
+		foreach (var provider in _activeProviders.ToList())
+		{
+			foreach (var motionType in provider.OverrideMotions)
 			{
-				_activeProviders.Add(currentProvider);
+				var overriddenProvider = _activeProviders.FirstOrDefault(p => p.MotionType == motionType);
+
+				if (overriddenProvider != null)
+				{
+					overriddenProvider.OnMotionCanceled();
+					_activeProviders.Remove(overriddenProvider);
+				}
 			}
 		}
 	}
 	
-	public void AddMotionProvider(IMotionProvider provider)
-	{
-		_motionProviders.Add(provider);
-		OnMotionProvidersChanged();
-	}
-	
 	public void RemoveMotionProvider(IMotionProvider provider)
 	{
+		_activeProviders.Remove(provider);
+
+		foreach (var motionType in provider.OverrideMotions)
+		{
+			bool isStillOverridden = _activeProviders.Any(p => p.OverrideMotions.Contains(motionType));
+
+			if (!isStillOverridden)
+			{
+				for (int i = 0; i < _motionProviders.Count; i++)
+				{
+					var potentialProvider = _motionProviders[i];
+
+					if (potentialProvider.MotionType == motionType && !_activeProviders.Contains(potentialProvider))
+					{
+						_activeProviders.Add(potentialProvider);
+						potentialProvider.OnMotionRestored();
+						break;
+					}
+				}
+			}
+		}
+
 		_motionProviders.Remove(provider);
-		OnMotionProvidersChanged();
+		ReevaluateActiveProviders();
 	}
 }
 

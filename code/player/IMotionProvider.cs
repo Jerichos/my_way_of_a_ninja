@@ -14,8 +14,8 @@ public enum MotionType
 public interface IMotionProvider
 {
 	public Vector2 Velocity { get; }
-	public int Priority { get; } // only with same or higher priority will be processed
-	public void OnVelocityIgnored();
-	public bool Additive { get; }
+	public MotionType[] OverrideMotions { get; }
+	public void OnMotionCanceled();
+	public void OnMotionRestored();
 	public MotionType MotionType { get; }
 }

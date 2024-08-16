@@ -101,7 +101,7 @@
       "__guid": "d6d86c8e-5883-4db7-a425-60330fc9b682",
       "Flags": 0,
       "Name": "Player",
-      "Position": "0,-151.0017,0",
+      "Position": "-88.98752,262.6582,-0.000005304069",
       "Enabled": true,
       "Components": [
         {
@@ -157,7 +157,7 @@
               "x": 1
             }
           ],
-          "GravityForce": 50,
+          "GravityForce": 10,
           "MaxVelocity": 1000,
           "MotionCore": {
             "_type": "component",
@@ -169,7 +169,7 @@
         {
           "__type": "Sandbox.player.JumpAbility",
           "__guid": "bebbf412-04ee-4d6b-8d1c-8c840461289d",
-          "JumpIn": 1,
+          "JumpIn": 0.5,
           "MaxHeight": 400,
           "MaxJumps": 2,
           "MaxVelocity": 1000,
@@ -233,7 +233,7 @@
               "out": -1.4472735
             }
           ],
-          "MaxAcceleration": 300,
+          "MaxAcceleration": 400,
           "MaxDeceleration": 500,
           "MaxSpeedIn": 0.3,
           "MaxVelocity": 300,
@@ -248,7 +248,7 @@
           "__type": "Sandbox.player.DashAbility",
           "__guid": "e7e90b74-92b9-445a-ade9-9fc00da7de05",
           "CanDashInAir": true,
-          "DashIn": 0.1,
+          "DashIn": 1,
           "MaxDistance": 200,
           "MaxVelocity": 1000,
           "MotionCore": {

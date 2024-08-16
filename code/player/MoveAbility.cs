@@ -15,9 +15,10 @@ public class MoveAbility : Component, IMotionProvider
 	[Property] public Curve DecelerationCurve { get; set; }
 	
 	public Vector2 Velocity { get; private set; }
-	public int Priority => 0;
-	public bool Additive => true;
 	public MotionType MotionType => MotionType.MOVE;
+	public MotionType[] OverrideMotions => Array.Empty<MotionType>();
+	
+	private bool _motionCanceled;
 	
 	private int _inputX;
 	public int InputX
@@ -25,7 +26,7 @@ public class MoveAbility : Component, IMotionProvider
 		get => _inputX;
 		private set
 		{
-			if (_inputX == value)
+			if (_inputX == value || _motionCanceled)
 				return;
 
 			_time = 0;
@@ -35,8 +36,6 @@ public class MoveAbility : Component, IMotionProvider
 		}
 	}
 	
-	private float _lastInputX;
-	private float _movedForce;
 	private float _time;
 	
 	protected override void OnUpdate()
@@ -82,9 +81,15 @@ public class MoveAbility : Component, IMotionProvider
 		// TODO: implement deceleration or leave it be because there is no time. So what
 	}
 	
-	public void OnVelocityIgnored()
+	public void OnMotionCanceled()
 	{
 		Velocity = Vector2.Zero;
+		_motionCanceled = true;
+	}
+
+	public void OnMotionRestored()
+	{
+		_motionCanceled = false;
 	}
 
 	protected override void OnEnabled()

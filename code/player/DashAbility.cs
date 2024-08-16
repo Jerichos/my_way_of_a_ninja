@@ -14,13 +14,9 @@ public class DashAbility : Component, IMotionProvider
 	[Property] public Curve VelocityCurve { get; set; }
 	
 	public Vector2 Velocity { get; private set; }
-	public int Priority { get; private set; }
-	public bool Additive => false;
 	public MotionType MotionType => MotionType.DASH;
+	public MotionType[] OverrideMotions => new[] {MotionType.MOVE, MotionType.JUMP, MotionType.ENVIRONMENT, MotionType.GRAVITY};
 
-	private int _defaultPriority = 0;
-	private int _dashPriority = 1;
-	
 	private float _t;
 	private float _distance;
 	private bool _isDashing;
@@ -32,7 +28,6 @@ public class DashAbility : Component, IMotionProvider
 			_isDashing = true;
 			_t = 0;
 			_distance = 0;
-			Priority = _dashPriority;
 			MotionCore.AddMotionProvider(this);
 			Log.Info("start dash");
 		}
@@ -45,8 +40,6 @@ public class DashAbility : Component, IMotionProvider
 			_t += Time.Delta / DashIn;
 			if(_distance < MaxDistance && MotionCore.Collisions.Right == false && MotionCore.Collisions.Left == false)
 			{
-				Log.Info($"still dashing? _t: {_t} _distance {_distance}");
-
 				// Ensure _t doesn't exceed 1 (end of the dash)
 				if (_t > 1)
 				{
@@ -79,12 +72,11 @@ public class DashAbility : Component, IMotionProvider
 			{
 				_isDashing = false;
 				Velocity = Vector2.Zero;
-				Priority = _defaultPriority;
 				MotionCore.RemoveMotionProvider(this);
 				Log.Info($"end dash distance: {_distance}");
 			}
 			
-			Log.Info($"DASH t: {_t} force: {Velocity.x} velocity: {Velocity.x} is there collision?: {MotionCore.Collisions.Right} {MotionCore.Collisions.Left}");
+			Log.Info($"DASH t: {_t} force: {Velocity.x} velocity: {Velocity.x}");
 		}
 	}
 
@@ -96,8 +88,16 @@ public class DashAbility : Component, IMotionProvider
 		return true;
 	}
 	
-	public void OnVelocityIgnored()
+	public void OnMotionRestored()
 	{
+		
+	}
+	
+	public void OnMotionCanceled()
+	{
+		Log.Info("DASH Cancel");
 		Velocity = Vector2.Zero;
+		_isDashing = false;
+		MotionCore.RemoveMotionProvider(this);
 	}
 }
