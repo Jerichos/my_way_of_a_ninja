@@ -1,0 +1,49 @@
+{
+  "RootObject": {
+    "__guid": "a94b44c5-927b-4631-9e35-5ff4ee15f25b",
+    "Flags": 0,
+    "Name": "grass_tile_32x22",
+    "Tags": "ground",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "SpriteTools.SpriteComponent",
+        "__guid": "576fcedc-9f0f-4ea3-95e0-93a32a54de66",
+        "__version": 1,
+        "BroadcastEvents": {},
+        "CastShadows": "On",
+        "CreateAttachPoints": false,
+        "FlashTint": "1,1,1,0",
+        "PlaybackSpeed": 1,
+        "Sprite": "sprites/level_01/sprite/grass_tile_32x22.sprite",
+        "SpriteFlags": "None",
+        "StartingAnimationName": "default",
+        "Tint": "1,1,1,1",
+        "UpDirection": "YPositive"
+      },
+      {
+        "__type": "Sandbox.sprite.SpriteSizer",
+        "__guid": "383c5562-62c9-4d44-ba69-867bc04d07e0",
+        "_height": 32,
+        "_width": 32,
+        "PixelPerUnit": 32
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "254d1eb3-8565-4066-b1f0-de9c2ad47707",
+        "Center": "50,50,0",
+        "IsTrigger": false,
+        "Scale": "100,100,100",
+        "Static": true
+      }
+    ],
+    "Children": [],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

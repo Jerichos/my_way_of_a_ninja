@@ -1,0 +1,35 @@
+{
+  "FilePath": "sprites/checkpoint.png",
+  "TileSize": "16,32",
+  "TileSeparation": "0,0",
+  "TileScale": 1,
+  "Tiles": [
+    {
+      "Id": "a55a2ffb-3885-495b-b3f9-0e1b394af7a9",
+      "Name": "",
+      "Size": "1,1"
+    },
+    {
+      "Id": "1f1c0fea-b2a9-411b-8402-0fde344d46a4",
+      "Name": "",
+      "Position": "1,0",
+      "Size": "1,1"
+    },
+    {
+      "Id": "65347484-7f59-447d-b118-0110229fbf3c",
+      "Name": "",
+      "Position": "2,0",
+      "Size": "1,1"
+    },
+    {
+      "Id": "2665928e-d5b5-4649-95a9-478191715ffb",
+      "Name": "",
+      "Position": "3,0",
+      "Size": "1,1"
+    }
+  ],
+  "CurrentTextureSize": "64,32",
+  "CurrentTileSize": "16,32",
+  "__references": [],
+  "__version": 0
+}

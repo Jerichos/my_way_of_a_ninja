@@ -1,0 +1,57 @@
+{
+  "RootObject": {
+    "__guid": "997112a9-2123-421a-8e7d-df360b1cd0f9",
+    "Flags": 0,
+    "Name": "checkpoint",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.level.Checkpoint",
+        "__guid": "6d661e28-240b-4fa4-b353-3adc27cc2d80",
+        "Collider": {
+          "_type": "component",
+          "component_id": "18eb1d59-1b39-4ce3-bfb8-b0e2fce5e616",
+          "go": "997112a9-2123-421a-8e7d-df360b1cd0f9",
+          "component_type": "BoxCollider"
+        },
+        "SpriteComponent": {
+          "_type": "component",
+          "component_id": "2930ec34-0417-4e39-9231-8c29e968329d",
+          "go": "997112a9-2123-421a-8e7d-df360b1cd0f9",
+          "component_type": "SpriteComponent"
+        }
+      },
+      {
+        "__type": "SpriteTools.SpriteComponent",
+        "__guid": "2930ec34-0417-4e39-9231-8c29e968329d",
+        "__version": 1,
+        "BroadcastEvents": {},
+        "CastShadows": "On",
+        "CreateAttachPoints": false,
+        "FlashTint": "1,1,1,0",
+        "PlaybackSpeed": 1,
+        "Sprite": "sprites/checkpoint2.sprite",
+        "SpriteFlags": "None",
+        "StartingAnimationName": "deactivated",
+        "Tint": "1,1,1,1",
+        "UpDirection": "YPositive"
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "18eb1d59-1b39-4ce3-bfb8-b0e2fce5e616",
+        "Center": "0,0,0",
+        "IsTrigger": true,
+        "Scale": "50,50,50",
+        "Static": true
+      }
+    ],
+    "Children": [],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

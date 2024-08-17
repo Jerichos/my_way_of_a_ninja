@@ -1,0 +1,19 @@
+{
+  "Animations": [
+    {
+      "FrameRate": 15,
+      "Origin": "0,1",
+      "Looping": true,
+      "Name": "default",
+      "Frames": [
+        {
+          "FilePath": "sprites/level_01/grass_rock_edge_64x64.png",
+          "Events": []
+        }
+      ],
+      "Attachments": []
+    }
+  ],
+  "__references": [],
+  "__version": 0
+}

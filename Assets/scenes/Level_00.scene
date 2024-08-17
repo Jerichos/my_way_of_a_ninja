@@ -99,6 +99,16 @@
           "__type": "Sandbox.Pixelate",
           "__guid": "b579cb18-17f0-42b4-8e9c-9a617c137ee7",
           "Scale": 0
+        },
+        {
+          "__type": "Sandbox.player.CameraFollow",
+          "__guid": "74933590-f986-45a0-9a06-2d2a311b8edf",
+          "Offset": "0,0,400",
+          "SmoothTime": 0.3,
+          "Target": {
+            "_type": "gameobject",
+            "go": "d6d86c8e-5883-4db7-a425-60330fc9b682"
+          }
         }
       ]
     },
@@ -253,9 +263,9 @@
           "__type": "Sandbox.player.DashAbility",
           "__guid": "e7e90b74-92b9-445a-ade9-9fc00da7de05",
           "CanDashInAir": true,
-          "DashIn": 0.2,
+          "DashIn": 0.1,
           "MaxDistance": 200,
-          "MaxVelocity": 1000,
+          "MaxVelocity": 1500,
           "MotionCore": {
             "_type": "component",
             "component_id": "984e43ff-0301-4298-a46c-25c0796b678e",
@@ -273,6 +283,20 @@
               "out": -0.9531914
             }
           ]
+        },
+        {
+          "__type": "Sandbox.Rigidbody",
+          "__guid": "e348d259-40f8-4ee1-a811-b8c24bd25268",
+          "AngularDamping": 0,
+          "Gravity": false,
+          "LinearDamping": 0,
+          "Locking": {},
+          "MassCenterOverride": "0,0,0",
+          "MassOverride": 0,
+          "MotionEnabled": false,
+          "OverrideMassCenter": false,
+          "RigidbodyFlags": 0,
+          "StartAsleep": false
         }
       ],
       "Children": [
@@ -280,7 +304,7 @@
           "__guid": "1a949301-3a8f-40bc-a43a-0805d2c7fa98",
           "Flags": 0,
           "Name": "sprite",
-          "Position": "0,-102.8001,0",
+          "Position": "0,0,0",
           "Scale": "1.15625,1,1",
           "Enabled": true,
           "Components": [
@@ -311,74 +335,185 @@
       ]
     },
     {
-      "__guid": "fa87a3f3-c032-4d4e-ad01-753723a735e1",
+      "__guid": "4a7221bb-b6d8-444f-94a9-03d081006ce3",
       "Flags": 0,
-      "Name": "grass_tile_32x22 (3)",
-      "Position": "100,0,0.000003033235",
-      "Tags": "ground",
-      "Enabled": true,
-      "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
-      "__PrefabVariables": {}
-    },
-    {
-      "__guid": "4a33c4e6-5c2e-4c1d-a4d4-919f42a8301b",
-      "Flags": 0,
-      "Name": "grass_tile_32x22 (2)",
-      "Tags": "ground",
-      "Enabled": true,
-      "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
-      "__PrefabVariables": {}
-    },
-    {
-      "__guid": "5842fc37-e34d-4259-a736-d478545ff852",
-      "Flags": 0,
-      "Name": "grass_tile_32x22 (1)",
-      "Position": "-100,0,0.000003033235",
-      "Tags": "ground",
-      "Enabled": true,
-      "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
-      "__PrefabVariables": {}
-    },
-    {
-      "__guid": "a94b44c5-927b-4631-9e35-5ff4ee15f25b",
-      "Flags": 0,
-      "Name": "grass_tile_32x22",
-      "Position": "-200,0,0.000003033235",
-      "Tags": "ground",
-      "Enabled": true,
-      "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
-      "__PrefabVariables": {}
-    },
-    {
-      "__guid": "cc81a86e-02cd-4ebb-941f-0d769be58447",
-      "Flags": 0,
-      "Name": "grass_rock_edge_64x64",
-      "Position": "-403.1735,-295.6738,-5.306042",
-      "Rotation": "0.008726373,-0.00004653633,-0.005327716,0.9999477",
-      "Scale": "2,2,1",
+      "Name": "Level",
       "Enabled": true,
       "Components": [
         {
-          "__type": "SpriteTools.SpriteComponent",
-          "__guid": "2e750118-6eac-4d67-9aa2-ce684959a7ad",
-          "__version": 1,
-          "BroadcastEvents": {},
-          "CastShadows": "On",
-          "CreateAttachPoints": false,
-          "FlashTint": "1,1,1,0",
-          "PlaybackSpeed": 1,
-          "Sprite": "sprites/level_01/sprite/grass_rock_edge_64x64.sprite",
-          "SpriteFlags": "None",
-          "StartingAnimationName": "default",
-          "Tint": "1,1,1,1",
-          "UpDirection": "YPositive"
+          "__type": "Sandbox.level.Level",
+          "__guid": "03a27686-2ac1-4e78-a0a6-e44b66e5d67e",
+          "StartCheckpoint": {
+            "_type": "gameobject",
+            "go": "6bd08054-ae66-4da0-91d4-df1f40da8df4"
+          }
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "6fa3cf73-436e-4961-b6c7-9c0d6685255b",
+          "Flags": 0,
+          "Name": "platforms",
+          "Enabled": true,
+          "Children": [
+            {
+              "__guid": "52fdadf7-a031-492c-bd2e-34f4a13fe256",
+              "Flags": 0,
+              "Name": "grass_tile_32x22 (6)",
+              "Position": "400,0,0.000003033235",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "3fc2abb2-7ef0-4dde-b835-caf3442913be",
+              "Flags": 0,
+              "Name": "grass_tile_32x22 (6)",
+              "Position": "500,0,0.000003033235",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "817996dc-81ed-4a65-856e-ffb4a58d5048",
+              "Flags": 0,
+              "Name": "grass_tile_32x22 (6)",
+              "Position": "600,0,0.000003033235",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "fe912519-42c3-432f-ac28-2062c320175f",
+              "Flags": 0,
+              "Name": "grass_tile_32x22 (5)",
+              "Position": "300,0,0.000003033235",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "cc4201e2-6f51-41db-857f-e61005b690eb",
+              "Flags": 0,
+              "Name": "grass_tile_32x22 (4)",
+              "Position": "200,0,0.000003033235",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "fa87a3f3-c032-4d4e-ad01-753723a735e1",
+              "Flags": 0,
+              "Name": "grass_tile_32x22 (3)",
+              "Position": "100,0,0.000003033235",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "4a33c4e6-5c2e-4c1d-a4d4-919f42a8301b",
+              "Flags": 0,
+              "Name": "grass_tile_32x22 (2)",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "5842fc37-e34d-4259-a736-d478545ff852",
+              "Flags": 0,
+              "Name": "grass_tile_32x22 (1)",
+              "Position": "-100,0,0.000003033235",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "a94b44c5-927b-4631-9e35-5ff4ee15f25b",
+              "Flags": 0,
+              "Name": "grass_tile_32x22",
+              "Position": "-200,0,0.000003033235",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "13e29bc0-c47b-409a-acb0-079d8683a3b9",
+              "Flags": 0,
+              "Name": "grass_tile_32x22",
+              "Position": "-300,0,0.000003033235",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "10f1edb9-a595-48cf-9b46-91c4968a88cf",
+              "Flags": 0,
+              "Name": "grass_tile_32x22",
+              "Position": "-400,0,0.000003033235",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "7cbd72da-623a-456e-8017-d1dbb2de23a4",
+              "Flags": 0,
+              "Name": "grass_tile_32x22",
+              "Position": "-500,0,0.000003033235",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "871f3afd-cef1-480c-86fb-ebdf66999464",
+              "Flags": 0,
+              "Name": "grass_tile_32x22",
+              "Position": "-600,0,0.000003033235",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "250f5be0-8b22-4c2a-8286-2e6aa3ec45a0",
+              "Flags": 0,
+              "Name": "grass_tile_32x22",
+              "Position": "-700,0,0.000003033235",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
+              "__PrefabVariables": {}
+            }
+          ]
         },
         {
-          "__type": "Sandbox.sprite.SpriteSizer",
-          "__guid": "3da0c647-b17c-4ffd-98d1-af248395b19d",
-          "_height": 64,
-          "_width": 64,
-          "PixelPerUnit": 32
+          "__guid": "6bd08054-ae66-4da0-91d4-df1f40da8df4",
+          "Flags": 0,
+          "Name": "Start Checkpoint",
+          "Position": "-400,100,0.000004774818",
+          "Enabled": true,
+          "__Prefab": "prefabs/checkpoint.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "997112a9-2123-421a-8e7d-df360b1cd0f9",
+          "Flags": 0,
+          "Name": "First Checkpoint",
+          "Position": "200,100,0.000004774818",
+          "Enabled": true,
+          "__Prefab": "prefabs/checkpoint.prefab",
+          "__PrefabVariables": {}
         }
       ]
     }
