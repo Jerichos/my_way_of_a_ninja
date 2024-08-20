@@ -8,6 +8,21 @@
       {
         "__type": "Player",
         "__guid": "5c7d982f-7599-4a6b-9191-764ba5e4aa0a",
+        "DashAbility": {
+          "_type": "component",
+          "component_id": "e7e90b74-92b9-445a-ade9-9fc00da7de05",
+          "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
+          "component_type": "DashAbility"
+        },
+        "Health": {
+          "Value": 10
+        },
+        "JumpAbility": {
+          "_type": "component",
+          "component_id": "bebbf412-04ee-4d6b-8d1c-8c840461289d",
+          "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
+          "component_type": "JumpAbility"
+        },
         "MotionCore": {
           "_type": "component",
           "component_id": "984e43ff-0301-4298-a46c-25c0796b678e",
@@ -25,6 +40,12 @@
           "component_id": "917f7ade-6b02-4108-b0a9-ba03b9328b25",
           "go": "1a949301-3a8f-40bc-a43a-0805d2c7fa98",
           "component_type": "SpriteComponent"
+        },
+        "SwordAbility": {
+          "_type": "component",
+          "component_id": "a1bea64f-82df-4af2-8067-d976d0fdb501",
+          "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
+          "component_type": "SwordAbility"
         }
       },
       {
@@ -116,6 +137,12 @@
           "component_id": "917f7ade-6b02-4108-b0a9-ba03b9328b25",
           "go": "1a949301-3a8f-40bc-a43a-0805d2c7fa98",
           "component_type": "SpriteComponent"
+        },
+        "SwordAbility": {
+          "_type": "component",
+          "component_id": "a1bea64f-82df-4af2-8067-d976d0fdb501",
+          "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
+          "component_type": "SwordAbility"
         }
       },
       {
@@ -216,6 +243,26 @@
           "Id": "00000000-0000-0000-0000-000000000000"
         },
         "Volume": 1
+      },
+      {
+        "__type": "Sandbox.player.SwordAbility",
+        "__guid": "a1bea64f-82df-4af2-8067-d976d0fdb501",
+        "Sprite": {
+          "_type": "component",
+          "component_id": "917f7ade-6b02-4108-b0a9-ba03b9328b25",
+          "go": "1a949301-3a8f-40bc-a43a-0805d2c7fa98",
+          "component_type": "SpriteComponent"
+        },
+        "AttackTags": "enemy,enviro",
+        "Damage": 1,
+        "Height": 100,
+        "MotionCore": {
+          "_type": "component",
+          "component_id": "984e43ff-0301-4298-a46c-25c0796b678e",
+          "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
+          "component_type": "MotionCore2D"
+        },
+        "Width": 200
       }
     ],
     "Children": [

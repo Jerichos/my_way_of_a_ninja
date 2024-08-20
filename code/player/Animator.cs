@@ -17,32 +17,33 @@ public sealed class Animator : Component
 	[Property] SpriteComponent Sprite { get; set; }
 	[Property] MotionCore2D MotionCore { get; set; }
 	[Property] DashAbility DashAbility { get; set; }
+	[Property] SwordAbility SwordAbility { get; set; }
 	
 	private AnimationState _state;
 
 	protected override void OnEnabled()
 	{
-		
+		SwordAbility.AttackEvent += (_) => SetAnimationState(_state, true);
 	}
 	
-	public void SetAnimationState(AnimationState newState)
+	public void SetAnimationState(AnimationState newState, bool force = false)
 	{
-		if(_state == newState)
+		if(_state == newState && !force)
 			return;
 			
 		switch ( newState )
 		{
 			case AnimationState.IDLE:
-				Sprite.PlayAnimation("idle");
+				Sprite.PlayAnimation(SwordAbility.IsAttacking ? "idle_attack" : "idle" );
 				break;
 			case AnimationState.RUN:
-				Sprite.PlayAnimation("run");
+				Sprite.PlayAnimation(SwordAbility.IsAttacking ? "run_attack" : "run" );
 				break;
 			case AnimationState.JUMP:
-				Sprite.PlayAnimation("jump");
+				Sprite.PlayAnimation(SwordAbility.IsAttacking ? "inAir_attack" : "jump" );
 				break;
 			case AnimationState.IN_AIR:
-				Sprite.PlayAnimation("inAir");
+				Sprite.PlayAnimation(SwordAbility.IsAttacking ? "inAir_attack" : "inAir" );
 				break;
 			case AnimationState.DASH:
 				Sprite.PlayAnimation("dash");
@@ -51,7 +52,7 @@ public sealed class Animator : Component
 				throw new ArgumentOutOfRangeException();
 		}
 			
-		Log.Info($"set animation from {_state} to: {newState}");
+		Log.Info($"set animation from {_state} to: {newState}. IsAttacking: {SwordAbility.IsAttacking}");
 		_state = newState;
 	}
 

@@ -1,5 +1,5 @@
 {
-  "__guid": "899fc490-be1a-4693-ae02-014b358729c7",
+  "__guid": "8d736277-bfa5-48c6-be9b-3e84b3bafb31",
   "GameObjects": [
     {
       "__guid": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
@@ -133,7 +133,7 @@
           "MovePlayerToCheckpoint": true,
           "Player": {
             "_type": "component",
-            "component_id": "32558ee7-49b2-4f14-a89b-936d2b362d43",
+            "component_id": "83f9a5ab-e0e6-459e-b0d6-324fe543e494",
             "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
             "component_type": "Player"
           },
@@ -372,49 +372,43 @@
       ]
     },
     {
-      "__guid": "f27d1966-3607-4845-b0b5-29f49680a095",
+      "__guid": "c32b7173-5d1f-48d4-afe2-ba6a08b7f51e",
       "Flags": 0,
-      "Name": "LineRender",
-      "Position": "300,200,-256.9842",
+      "Name": "Heli",
+      "Position": "600,100,0.000007830332",
+      "Scale": "2,2,1",
+      "Tags": "enemy",
       "Enabled": true,
       "Components": [
         {
-          "__type": "Sandbox.LineRenderer",
-          "__guid": "d7edead5-7c17-4c96-98b4-67d303156a07",
-          "CastShadows": false,
-          "Color": {
-            "color": [
-              {
-                "t": 0.5,
-                "c": "0,1,1,1"
-              }
-            ],
-            "alpha": []
-          },
-          "EndCap": "None",
-          "Opaque": true,
-          "Points": [
-            null,
-            null
-          ],
-          "SplineBias": 0,
-          "SplineContinuity": 0,
-          "SplineInterpolation": 1,
-          "SplineTension": 0,
-          "StartCap": "None",
-          "UseVectorPoints": true,
-          "VectorPoints": [
-            "0,0,0",
-            "200,0,0"
-          ],
-          "Width": [
-            {},
-            {
-              "x": 1,
-              "y": 1
-            }
-          ],
-          "Wireframe": false
+          "__type": "SpriteTools.SpriteComponent",
+          "__guid": "1b849db4-c500-4d70-9020-c22aecca338d",
+          "__version": 1,
+          "BroadcastEvents": {},
+          "CastShadows": "On",
+          "CreateAttachPoints": false,
+          "FlashTint": "1,1,1,0",
+          "PlaybackSpeed": 1,
+          "Sprite": "heli.sprite",
+          "SpriteFlags": "None",
+          "StartingAnimationName": "walk",
+          "Tint": "1,1,1,1",
+          "UpDirection": "YPositive"
+        },
+        {
+          "__type": "Sandbox.sprite.SpriteSizer",
+          "__guid": "70116eda-0954-4ec8-8b8b-128c04a68a96",
+          "_height": 32,
+          "_width": 32,
+          "PixelPerUnit": 16
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "ff5154ea-1277-4cfe-8c0e-d04f78f1cef1",
+          "Center": "0,50,0",
+          "IsTrigger": false,
+          "Scale": "100,100,100",
+          "Static": false
         }
       ]
     }

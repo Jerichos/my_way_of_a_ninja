@@ -33,27 +33,31 @@ public sealed class JumpAbility : Component, IMotionProvider
 	
 	private int _jumps; // resets when grounded
 	
-	protected override void OnUpdate()
+	public void Jump()
 	{
-		if(Input.Pressed("Jump") && CanJump())
+		if(CanJump())
 		{
 			Log.Info("jump pressed");
 			StartJump();
 		}
-
-		_increaseHeight = false;
-		if(Input.Down("Jump") && IsJumping)
-		{
-			_increaseHeight = true;
-		}
+		
+		_increaseHeight = true;
 	}
-	
+
+	public void StopJump()
+	{
+		_increaseHeight = false;
+	}
+
 	protected override void OnFixedUpdate()
 	{
 		if(IsJumping)
 		{
-			if(_increaseHeight)
+			if ( _increaseHeight )
+			{
 				_wishHeight += MaxHeight * (Time.Delta / (JumpIn/2.75f)); // you have x times more time to reach max height
+				Log.Info($"increase height: {_wishHeight}");
+			}
 			
 			_t += Time.Delta / JumpIn;
 			_distanceTraveled += MotionCore.Velocity.y * Time.Delta;

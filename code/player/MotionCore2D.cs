@@ -4,10 +4,10 @@ namespace Sandbox.player;
 
 public sealed class MotionCore2D : Component
 {
-	[Property] BoxCollider Collider { get; set; }
+	[Property] private BoxCollider Collider { get; set; }
 	
-	[Property] TagSet GroundTags { get; set; }
-	[Property] TagSet WallTags { get; set; }
+	[Property] private TagSet GroundTags { get; set; }
+	[Property] private TagSet WallTags { get; set; }
 	
 	public Vector2 Velocity { get; private set; }
 	

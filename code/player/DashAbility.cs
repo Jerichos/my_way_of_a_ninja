@@ -5,13 +5,13 @@ namespace Sandbox.player;
 // dash horizontally
 public class DashAbility : Component, IMotionProvider
 {
-	[Property] MotionCore2D MotionCore { get; set; }
+	[Property] private MotionCore2D MotionCore { get; set; }
 	
 	[Property] public bool CanDashInAir { get; set; } = true;
 	[Property] public float MaxDistance { get; set; } = 1000;
 	[Property] public float DashIn { get; set; } = 1;
 	[Property] public Curve VelocityCurve { get; set; }
-	[Property] SoundEvent DashSound { get; set; }
+	[Property] private SoundEvent DashSound { get; set; }
 	
 	public Vector2 Velocity { get; private set; }
 	public MotionType MotionType => MotionType.DASH;
@@ -25,16 +25,21 @@ public class DashAbility : Component, IMotionProvider
 	
 	protected override void OnUpdate()
 	{
-		if(Input.Pressed("Run") && CanDash())
-		{
-			_isIsDashing = true;
-			_t = 0;
-			_distance = 0;
-			MotionCore.AddMotionProvider(this);
-			Components.Get<SoundPointComponent>().SoundEvent = DashSound;
-			Components.Get<SoundPointComponent>().StartSound();
-			Log.Info("start dash");
-		}
+		
+	}
+
+	public void StartDash()
+	{
+		if(!CanDash())
+			return;
+		
+		_isIsDashing = true;
+		_t = 0;
+		_distance = 0;
+		MotionCore.AddMotionProvider(this);
+		Components.Get<SoundPointComponent>().SoundEvent = DashSound;
+		Components.Get<SoundPointComponent>().StartSound();
+		Log.Info("start dash");
 	}
 	
 	protected override void OnFixedUpdate()
