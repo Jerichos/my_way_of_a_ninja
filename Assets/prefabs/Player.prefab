@@ -254,15 +254,15 @@
           "component_type": "SpriteComponent"
         },
         "AttackTags": "enemy,enviro",
+        "Cooldown": 0.25,
         "Damage": 1,
-        "Height": 100,
         "MotionCore": {
           "_type": "component",
           "component_id": "984e43ff-0301-4298-a46c-25c0796b678e",
           "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
           "component_type": "MotionCore2D"
         },
-        "Width": 200
+        "Range": 150
       }
     ],
     "Children": [
@@ -294,6 +294,14 @@
             "_height": 64,
             "_width": 64,
             "PixelPerUnit": 32
+          }
+        ],
+        "Children": [
+          {
+            "__guid": "c550ab0d-bc27-41c1-a59e-4b0e6cf81bae",
+            "Flags": 4,
+            "Name": "swordStart",
+            "Enabled": true
           }
         ]
       }

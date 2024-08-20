@@ -34,16 +34,16 @@ public sealed class Animator : Component
 		switch ( newState )
 		{
 			case AnimationState.IDLE:
-				Sprite.PlayAnimation(SwordAbility.IsAttacking ? "idle_attack" : "idle" );
+				Sprite.PlayAnimation(SwordAbility.IsAttacking ? "idle_attack" : "idle" , force);
 				break;
 			case AnimationState.RUN:
-				Sprite.PlayAnimation(SwordAbility.IsAttacking ? "run_attack" : "run" );
+				Sprite.PlayAnimation(SwordAbility.IsAttacking ? "run_attack" : "run" , force);
 				break;
 			case AnimationState.JUMP:
-				Sprite.PlayAnimation(SwordAbility.IsAttacking ? "inAir_attack" : "jump" );
+				Sprite.PlayAnimation(SwordAbility.IsAttacking ? "inAir_attack" : "jump" , force);
 				break;
 			case AnimationState.IN_AIR:
-				Sprite.PlayAnimation(SwordAbility.IsAttacking ? "inAir_attack" : "inAir" );
+				Sprite.PlayAnimation(SwordAbility.IsAttacking ? "inAir_attack" : "inAir" , force);
 				break;
 			case AnimationState.DASH:
 				Sprite.PlayAnimation("dash");

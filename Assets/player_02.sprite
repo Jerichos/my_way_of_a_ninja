@@ -232,7 +232,16 @@
           }
         }
       ],
-      "Attachments": []
+      "Attachments": [
+        {
+          "Name": "swordStart",
+          "Color": "1,0,0,1",
+          "Points": [
+            "0.5,0.5625"
+          ],
+          "Visible": true
+        }
+      ]
     },
     {
       "FrameRate": 15,
@@ -275,7 +284,14 @@
           }
         }
       ],
-      "Attachments": []
+      "Attachments": [
+        {
+          "Name": "swordStart",
+          "Color": "1,0,0,1",
+          "Points": [],
+          "Visible": true
+        }
+      ]
     }
   ],
   "__references": [],

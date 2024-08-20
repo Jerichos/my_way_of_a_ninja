@@ -133,7 +133,7 @@
           "MovePlayerToCheckpoint": true,
           "Player": {
             "_type": "component",
-            "component_id": "83f9a5ab-e0e6-459e-b0d6-324fe543e494",
+            "component_id": "9c8be7bf-e005-42a0-9b92-db186d222c8f",
             "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
             "component_type": "Player"
           },
@@ -372,9 +372,9 @@
       ]
     },
     {
-      "__guid": "c32b7173-5d1f-48d4-afe2-ba6a08b7f51e",
+      "__guid": "fdb91746-3df1-46c9-bb10-1b7971c37669",
       "Flags": 0,
-      "Name": "Heli",
+      "Name": "Heli Big",
       "Position": "600,100,0.000007830332",
       "Scale": "2,2,1",
       "Tags": "enemy",
@@ -382,7 +382,7 @@
       "Components": [
         {
           "__type": "SpriteTools.SpriteComponent",
-          "__guid": "1b849db4-c500-4d70-9020-c22aecca338d",
+          "__guid": "2298ddee-a29c-4008-bc66-5f382fee8219",
           "__version": 1,
           "BroadcastEvents": {},
           "CastShadows": "On",
@@ -397,18 +397,82 @@
         },
         {
           "__type": "Sandbox.sprite.SpriteSizer",
-          "__guid": "70116eda-0954-4ec8-8b8b-128c04a68a96",
+          "__guid": "a42d4535-6129-4819-9e65-99316fa232f6",
           "_height": 32,
           "_width": 32,
           "PixelPerUnit": 16
         },
         {
           "__type": "Sandbox.BoxCollider",
-          "__guid": "ff5154ea-1277-4cfe-8c0e-d04f78f1cef1",
+          "__guid": "47e1d0bd-b465-46fd-8d9e-20bb388027eb",
           "Center": "0,50,0",
           "IsTrigger": false,
           "Scale": "100,100,100",
           "Static": false
+        },
+        {
+          "__type": "Sandbox.enemies.Heli",
+          "__guid": "677fee5b-650e-4026-9013-0e87b2dcddf5",
+          "Health": 10,
+          "MaxHealth": 10,
+          "Sprite": {
+            "_type": "component",
+            "component_id": "2298ddee-a29c-4008-bc66-5f382fee8219",
+            "go": "fdb91746-3df1-46c9-bb10-1b7971c37669",
+            "component_type": "SpriteComponent"
+          }
+        }
+      ]
+    },
+    {
+      "__guid": "0b98886c-1ee6-440a-ab54-dbfaa1b25e53",
+      "Flags": 0,
+      "Name": "Heli Small",
+      "Position": "300,100,0.000004859939",
+      "Tags": "enemy",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "SpriteTools.SpriteComponent",
+          "__guid": "f18b5904-c57b-433b-aeb3-2df35ae8603c",
+          "__version": 1,
+          "BroadcastEvents": {},
+          "CastShadows": "On",
+          "CreateAttachPoints": false,
+          "FlashTint": "1,1,1,0",
+          "PlaybackSpeed": 1,
+          "Sprite": "heli.sprite",
+          "SpriteFlags": "None",
+          "StartingAnimationName": "walk",
+          "Tint": "1,1,1,1",
+          "UpDirection": "YPositive"
+        },
+        {
+          "__type": "Sandbox.sprite.SpriteSizer",
+          "__guid": "379a082e-56d4-4a25-8bb2-d9ba79c0e548",
+          "_height": 32,
+          "_width": 32,
+          "PixelPerUnit": 32
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "330b5f0b-cf28-4d88-8abe-0bf0f826be9d",
+          "Center": "0,50,0",
+          "IsTrigger": false,
+          "Scale": "100,100,100",
+          "Static": false
+        },
+        {
+          "__type": "Sandbox.enemies.Heli",
+          "__guid": "586a601b-95b2-4f9d-8786-fcd281118bdc",
+          "Health": 10,
+          "MaxHealth": 10,
+          "Sprite": {
+            "_type": "component",
+            "component_id": "f18b5904-c57b-433b-aeb3-2df35ae8603c",
+            "go": "0b98886c-1ee6-440a-ab54-dbfaa1b25e53",
+            "component_type": "SpriteComponent"
+          }
         }
       ]
     }
