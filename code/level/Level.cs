@@ -3,20 +3,58 @@
 public class Level : Component
 {
 	[Property] public GameObject StartCheckpoint { get; set; }
+	[Property] public PrefabFile PlayerPrefab { get; set; }
+	[Property] public Player Player { get; set; }
+	[Property] public bool MovePlayerToCheckpoint { get; set; } = true;
 
+	public Vector2 LastCheckpointPosition => Checkpoint.LastCheckpoint?.Transform.Position ?? Transform.Position;
+	
 	protected override void OnStart()
 	{
-		if ( Checkpoint.LastCheckpoint == null )
+		LevelStart();
+	}
+	
+	private void LevelStart()
+	{
+		Log.Info("start level");
+		StartCheckpoint.Components.Get<Checkpoint>().Activated = true;
+		SpawnPlayer();
+	}
+	
+	private void RespawnPlayer()
+	{
+		Log.Info("respawn player");
+		SpawnPlayer();
+	}
+
+	private void SpawnPlayer()
+	{
+		Player newPlayer;
+		Log.Info("spawn player from prefab file");
+		if ( Player == null )
 		{
-			if ( StartCheckpoint != null )
-			{
-				
-				StartCheckpoint.Components.Get<Checkpoint>().Activated = true;
-			}
-			else
-			{
-				Log.Warning("No start checkpoint set");
-			}
+			Log.Info("spawning new player because player is null");
+			newPlayer = GameObject.Clone(PlayerPrefab).Components.Get<Player>();
 		}
+		else
+		{
+			Log.Info("spawning player instance from level");
+			newPlayer = Player;
+		}
+		
+		Vector3 newPosition;
+		if(Checkpoint.LastCheckpoint != null)
+		{
+			newPosition = Checkpoint.LastCheckpoint.Transform.Position;
+			Log.Info("new position from checkpoint");
+		}
+		else
+		{
+			newPosition = Transform.Position;
+			Log.Info("new position from level");
+		}
+		
+		newPlayer.Teleport(newPosition);
+		Log.Info($"set player position to {newPosition}");
 	}
 }

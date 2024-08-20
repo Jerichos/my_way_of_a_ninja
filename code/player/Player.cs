@@ -19,4 +19,9 @@ public sealed class Player : Component
 	{
 		SpriteComponent.SpriteFlags = facing == 1 ? SpriteFlags.None : SpriteFlags.HorizontalFlip;
 	}
+	
+	public void Teleport(Vector3 position)
+	{
+		MotionCore.Teleport(position);
+	}
 }

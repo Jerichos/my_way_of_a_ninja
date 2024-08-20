@@ -14,10 +14,14 @@ public sealed class JumpAbility : Component, IMotionProvider
 	[Property] private float JumpIn { get; set; } = 0.5f; // time to reach max height
 	
 	[Property] Curve VelocityCurve { get; set; }
+	[Property] SoundEvent JumpSound { get; set; }
+	[Property] float BasePitch { get; set; } = 1;
+	[Property] float PitchPerJump { get; set; } = 0.1f;
 	
 	public Vector2 Velocity { get; private set; }
 	public MotionType MotionType => MotionType.JUMP;
 	public MotionType[] OverrideMotions => new[] {MotionType.DASH, MotionType.GRAVITY}; // Jump overrides dash and gravity
+	
 	
 	public bool IsJumping { get; private set; }
 	
@@ -105,6 +109,14 @@ public sealed class JumpAbility : Component, IMotionProvider
 		_distanceTraveled = 0;
 		_wishHeight = 0;
 		_jumps++;
+		
+		Components.Get<SoundPointComponent>().SoundOverride = true;
+		Components.Get<SoundPointComponent>().SoundEvent = JumpSound;
+		Components.Get<SoundPointComponent>().Pitch = BasePitch + PitchPerJump * _jumps;
+		Components.Get<SoundPointComponent>().StartSound();
+		Components.Get<SoundPointComponent>().SoundOverride = false;
+		
+		
 		Log.Info($"Jump start! jumps: {_jumps}");
 		
 	}

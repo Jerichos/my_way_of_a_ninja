@@ -37,7 +37,7 @@
           "FieldOfView": 90,
           "IsMainCamera": true,
           "Orthographic": true,
-          "OrthographicHeight": 840,
+          "OrthographicHeight": 1024,
           "Priority": 1,
           "RenderExcludeTags": "",
           "RenderTags": "",
@@ -116,223 +116,10 @@
       "__guid": "d6d86c8e-5883-4db7-a425-60330fc9b682",
       "Flags": 0,
       "Name": "Player",
-      "Position": "-88.98752,262.6582,-0.000005304069",
+      "Position": "0,100,1",
       "Enabled": true,
-      "Components": [
-        {
-          "__type": "Player",
-          "__guid": "5c7d982f-7599-4a6b-9191-764ba5e4aa0a",
-          "MotionCore": {
-            "_type": "component",
-            "component_id": "984e43ff-0301-4298-a46c-25c0796b678e",
-            "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
-            "component_type": "MotionCore2D"
-          },
-          "MoveAbility": {
-            "_type": "component",
-            "component_id": "8a53c55b-26bc-46f6-8d1c-7d98efaeb73e",
-            "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
-            "component_type": "MoveAbility"
-          },
-          "SpriteComponent": {
-            "_type": "component",
-            "component_id": "917f7ade-6b02-4108-b0a9-ba03b9328b25",
-            "go": "1a949301-3a8f-40bc-a43a-0805d2c7fa98",
-            "component_type": "SpriteComponent"
-          }
-        },
-        {
-          "__type": "Sandbox.BoxCollider",
-          "__guid": "52c9388c-d8ac-4f6d-aaae-497b2d704446",
-          "Center": "0,50,0",
-          "IsTrigger": false,
-          "Scale": "50,100,50",
-          "Static": false
-        },
-        {
-          "__type": "Sandbox.player.MotionCore2D",
-          "__guid": "984e43ff-0301-4298-a46c-25c0796b678e",
-          "Collider": {
-            "_type": "component",
-            "component_id": "52c9388c-d8ac-4f6d-aaae-497b2d704446",
-            "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
-            "component_type": "BoxCollider"
-          },
-          "GroundTags": "ground,wall",
-          "WallTags": "wall,ground"
-        },
-        {
-          "__type": "Sandbox.player.Gravity",
-          "__guid": "516170c1-0d2d-4349-8d45-50fdebe3cea2",
-          "GravityCurve": [
-            {
-              "y": 1
-            },
-            {
-              "x": 1
-            }
-          ],
-          "GravityForce": 50,
-          "MaxVelocity": 1000,
-          "MotionCore": {
-            "_type": "component",
-            "component_id": "984e43ff-0301-4298-a46c-25c0796b678e",
-            "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
-            "component_type": "MotionCore2D"
-          }
-        },
-        {
-          "__type": "Sandbox.player.JumpAbility",
-          "__guid": "bebbf412-04ee-4d6b-8d1c-8c840461289d",
-          "JumpIn": 0.5,
-          "MaxHeight": 400,
-          "MaxJumps": 2,
-          "MaxVelocity": 1000,
-          "MinHeight": 200,
-          "MotionCore": {
-            "_type": "component",
-            "component_id": "984e43ff-0301-4298-a46c-25c0796b678e",
-            "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
-            "component_type": "MotionCore2D"
-          },
-          "VelocityCurve": [
-            {
-              "y": 1
-            },
-            {
-              "x": 1,
-              "y": 0.49361703,
-              "in": 1.4604648,
-              "out": -1.4604648
-            }
-          ]
-        },
-        {
-          "__type": "Sandbox.player.Animator",
-          "__guid": "69d41057-c0a5-4f88-acef-b892ba9af7eb",
-          "MotionCore": {
-            "_type": "component",
-            "component_id": "984e43ff-0301-4298-a46c-25c0796b678e",
-            "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
-            "component_type": "MotionCore2D"
-          },
-          "Sprite": {
-            "_type": "component",
-            "component_id": "917f7ade-6b02-4108-b0a9-ba03b9328b25",
-            "go": "1a949301-3a8f-40bc-a43a-0805d2c7fa98",
-            "component_type": "SpriteComponent"
-          }
-        },
-        {
-          "__type": "Sandbox.player.MoveAbility",
-          "__guid": "8a53c55b-26bc-46f6-8d1c-7d98efaeb73e",
-          "AccelerationCurve": [
-            {
-              "y": 0.10000002,
-              "in": -2.6232555,
-              "out": 2.6232555
-            },
-            {
-              "x": 1,
-              "y": 1
-            }
-          ],
-          "DecelerationCurve": [
-            {
-              "y": 1
-            },
-            {
-              "x": 1,
-              "y": 0.19999996,
-              "in": 1.4472735,
-              "out": -1.4472735
-            }
-          ],
-          "MaxAcceleration": 400,
-          "MaxDeceleration": 500,
-          "MaxSpeedIn": 0.3,
-          "MaxVelocity": 300,
-          "MotionCore": {
-            "_type": "component",
-            "component_id": "984e43ff-0301-4298-a46c-25c0796b678e",
-            "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
-            "component_type": "MotionCore2D"
-          }
-        },
-        {
-          "__type": "Sandbox.player.DashAbility",
-          "__guid": "e7e90b74-92b9-445a-ade9-9fc00da7de05",
-          "CanDashInAir": true,
-          "DashIn": 0.1,
-          "MaxDistance": 200,
-          "MaxVelocity": 1500,
-          "MotionCore": {
-            "_type": "component",
-            "component_id": "984e43ff-0301-4298-a46c-25c0796b678e",
-            "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
-            "component_type": "MotionCore2D"
-          },
-          "VelocityCurve": [
-            {
-              "y": 1
-            },
-            {
-              "x": 1,
-              "y": 0.6132979,
-              "in": 0.9531914,
-              "out": -0.9531914
-            }
-          ]
-        },
-        {
-          "__type": "Sandbox.Rigidbody",
-          "__guid": "e348d259-40f8-4ee1-a811-b8c24bd25268",
-          "AngularDamping": 0,
-          "Gravity": false,
-          "LinearDamping": 0,
-          "Locking": {},
-          "MassCenterOverride": "0,0,0",
-          "MassOverride": 0,
-          "MotionEnabled": false,
-          "OverrideMassCenter": false,
-          "RigidbodyFlags": 0,
-          "StartAsleep": false
-        }
-      ],
-      "Children": [
-        {
-          "__guid": "1a949301-3a8f-40bc-a43a-0805d2c7fa98",
-          "Flags": 0,
-          "Name": "sprite",
-          "Position": "0,0,0",
-          "Scale": "1.15625,1,1",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "SpriteTools.SpriteComponent",
-              "__guid": "917f7ade-6b02-4108-b0a9-ba03b9328b25",
-              "__version": 1,
-              "BroadcastEvents": {},
-              "CastShadows": "On",
-              "CreateAttachPoints": false,
-              "FlashTint": "1,1,1,0",
-              "PlaybackSpeed": 1,
-              "Sprite": "player_02.sprite",
-              "SpriteFlags": "None",
-              "StartingAnimationName": "run",
-              "Tint": "1,1,1,1",
-              "UpDirection": "YPositive"
-            },
-            {
-              "__type": "Sandbox.sprite.SpriteSizer",
-              "__guid": "994bab00-897d-43aa-91c1-a40391e94082",
-              "_height": 32,
-              "_width": 37,
-              "PixelPerUnit": 32
-            }
-          ]
-        }
-      ]
+      "__Prefab": "prefabs/player.prefab",
+      "__PrefabVariables": {}
     },
     {
       "__guid": "4a7221bb-b6d8-444f-94a9-03d081006ce3",
@@ -343,10 +130,45 @@
         {
           "__type": "Sandbox.level.Level",
           "__guid": "03a27686-2ac1-4e78-a0a6-e44b66e5d67e",
+          "MovePlayerToCheckpoint": true,
+          "Player": {
+            "_type": "component",
+            "component_id": "32558ee7-49b2-4f14-a89b-936d2b362d43",
+            "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
+            "component_type": "Player"
+          },
+          "PlayerPrefab": "prefabs/player.prefab",
           "StartCheckpoint": {
             "_type": "gameobject",
             "go": "6bd08054-ae66-4da0-91d4-df1f40da8df4"
           }
+        },
+        {
+          "__type": "Sandbox.SoundBoxComponent",
+          "__guid": "d6b18ef3-ae1f-4de8-b070-de096201f38e",
+          "__enabled": false,
+          "DistanceAttenuation": false,
+          "DistanceAttenuationOverride": false,
+          "Force2d": true,
+          "MaxRepeatTime": 1,
+          "MinRepeatTime": 1,
+          "Occlusion": false,
+          "OcclusionOverride": false,
+          "OcclusionRadius": 32,
+          "Pitch": 1,
+          "PlayOnStart": true,
+          "ReflectionOverride": false,
+          "Reflections": false,
+          "Repeat": false,
+          "Scale": "50,50,50",
+          "SoundEvent": "audio/music/shadow-on the rooftop [music].sound",
+          "SoundOverride": false,
+          "StopOnNew": false,
+          "TargetMixer": {
+            "Name": "ui",
+            "Id": "5bfd9e86-306d-4007-83f2-463595b038ab"
+          },
+          "Volume": 1
         }
       ],
       "Children": [
@@ -381,6 +203,26 @@
               "Flags": 0,
               "Name": "grass_tile_32x22 (6)",
               "Position": "600,0,0.000003033235",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "51706852-a01f-478b-b5af-758e676ef7c3",
+              "Flags": 0,
+              "Name": "grass_tile_32x22 (6)",
+              "Position": "900,0,0.000003033235",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "bebb6057-63bd-409c-bd81-b31fbdba1dc8",
+              "Flags": 0,
+              "Name": "grass_tile_32x22 (6)",
+              "Position": "1000,0,0.000003033235",
               "Tags": "ground",
               "Enabled": true,
               "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
@@ -514,6 +356,65 @@
           "Enabled": true,
           "__Prefab": "prefabs/checkpoint.prefab",
           "__PrefabVariables": {}
+        },
+        {
+          "__guid": "50dd2acb-4641-40e7-b01c-5a780bf73995",
+          "Flags": 0,
+          "Name": "background",
+          "Enabled": true
+        },
+        {
+          "__guid": "716e869c-c323-48e8-b962-acf62581f93e",
+          "Flags": 0,
+          "Name": "foreground",
+          "Enabled": true
+        }
+      ]
+    },
+    {
+      "__guid": "f27d1966-3607-4845-b0b5-29f49680a095",
+      "Flags": 0,
+      "Name": "LineRender",
+      "Position": "300,200,-256.9842",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.LineRenderer",
+          "__guid": "d7edead5-7c17-4c96-98b4-67d303156a07",
+          "CastShadows": false,
+          "Color": {
+            "color": [
+              {
+                "t": 0.5,
+                "c": "0,1,1,1"
+              }
+            ],
+            "alpha": []
+          },
+          "EndCap": "None",
+          "Opaque": true,
+          "Points": [
+            null,
+            null
+          ],
+          "SplineBias": 0,
+          "SplineContinuity": 0,
+          "SplineInterpolation": 1,
+          "SplineTension": 0,
+          "StartCap": "None",
+          "UseVectorPoints": true,
+          "VectorPoints": [
+            "0,0,0",
+            "200,0,0"
+          ],
+          "Width": [
+            {},
+            {
+              "x": 1,
+              "y": 1
+            }
+          ],
+          "Wireframe": false
         }
       ]
     }

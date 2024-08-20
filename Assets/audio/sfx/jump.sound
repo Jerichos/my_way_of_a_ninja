@@ -1,0 +1,17 @@
+{
+  "UI": false,
+  "Volume": "1.00,1.00,0",
+  "Pitch": "1.00,1.00,0",
+  "Decibels": 70,
+  "SelectionMode": "Random",
+  "Sounds": [
+    "audio/sfx/jessey_drake_oldschool_short_power_up_video_retro_game_chip_set_8bit_jd.vsnd"
+  ],
+  "Occlusion": true,
+  "AirAbsorption": true,
+  "Transmission": true,
+  "OcclusionRadius": 64,
+  "DistanceAttenuation": true,
+  "__references": [],
+  "__version": 0
+}

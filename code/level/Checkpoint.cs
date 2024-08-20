@@ -34,7 +34,7 @@ public class Checkpoint : Component
 		}
 	}
 	
-	public static Checkpoint LastCheckpoint { get; private set; }
+	public static Checkpoint LastCheckpoint { get; set; }
 	
 	private void OnTriggerEnter(Collider other)
 	{

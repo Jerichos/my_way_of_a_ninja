@@ -303,6 +303,15 @@ public sealed class MotionCore2D : Component
 		_motionProviders.Remove(provider);
 		ReevaluateActiveProviders();
 	}
+
+	public void Teleport( Vector3 position )
+	{
+		position.z = 1; // player offset
+		var prevPosition = Transform.Position;
+		Log.Info("teleport from: " + prevPosition + " to: " + position);
+		Transform.Position = position;
+		Log.Info("new position: " + Transform.Position);
+	}
 }
 
 public struct CollisionData

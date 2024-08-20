@@ -9,33 +9,37 @@ public class DashAbility : Component, IMotionProvider
 	
 	[Property] public bool CanDashInAir { get; set; } = true;
 	[Property] public float MaxDistance { get; set; } = 1000;
-	[Property] public float MaxVelocity { get; set; } = 1000;
 	[Property] public float DashIn { get; set; } = 1;
 	[Property] public Curve VelocityCurve { get; set; }
+	[Property] SoundEvent DashSound { get; set; }
 	
 	public Vector2 Velocity { get; private set; }
 	public MotionType MotionType => MotionType.DASH;
 	public MotionType[] OverrideMotions => new[] {MotionType.MOVE, MotionType.JUMP, MotionType.ENVIRONMENT, MotionType.GRAVITY};
 
+	public bool IsDashing => _isIsDashing;
+	
 	private float _t;
 	private float _distance;
-	private bool _isDashing;
+	private bool _isIsDashing;
 	
 	protected override void OnUpdate()
 	{
 		if(Input.Pressed("Run") && CanDash())
 		{
-			_isDashing = true;
+			_isIsDashing = true;
 			_t = 0;
 			_distance = 0;
 			MotionCore.AddMotionProvider(this);
+			Components.Get<SoundPointComponent>().SoundEvent = DashSound;
+			Components.Get<SoundPointComponent>().StartSound();
 			Log.Info("start dash");
 		}
 	}
 	
 	protected override void OnFixedUpdate()
 	{
-		if(_isDashing)
+		if(_isIsDashing)
 		{
 			_t += Time.Delta / DashIn;
 			if(_distance < MaxDistance && MotionCore.Collisions.Right == false && MotionCore.Collisions.Left == false)
@@ -70,7 +74,7 @@ public class DashAbility : Component, IMotionProvider
 			}
 			else
 			{
-				_isDashing = false;
+				_isIsDashing = false;
 				Velocity = Vector2.Zero;
 				MotionCore.RemoveMotionProvider(this);
 				Log.Info($"end dash distance: {_distance}");
@@ -82,7 +86,7 @@ public class DashAbility : Component, IMotionProvider
 
 	private bool CanDash()
 	{
-		if(!CanDashInAir && !MotionCore.Grounded || _isDashing)
+		if(!CanDashInAir && !MotionCore.Grounded || _isIsDashing)
 			return false;
 		
 		return true;
@@ -97,7 +101,7 @@ public class DashAbility : Component, IMotionProvider
 	{
 		Log.Info("DASH Cancel");
 		Velocity = Vector2.Zero;
-		_isDashing = false;
+		_isIsDashing = false;
 		MotionCore.RemoveMotionProvider(this);
 	}
 }

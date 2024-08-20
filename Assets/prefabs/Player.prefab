@@ -1,0 +1,262 @@
+{
+  "RootObject": {
+    "__guid": "d6d86c8e-5883-4db7-a425-60330fc9b682",
+    "Flags": 0,
+    "Name": "player",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Player",
+        "__guid": "5c7d982f-7599-4a6b-9191-764ba5e4aa0a",
+        "MotionCore": {
+          "_type": "component",
+          "component_id": "984e43ff-0301-4298-a46c-25c0796b678e",
+          "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
+          "component_type": "MotionCore2D"
+        },
+        "MoveAbility": {
+          "_type": "component",
+          "component_id": "8a53c55b-26bc-46f6-8d1c-7d98efaeb73e",
+          "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
+          "component_type": "MoveAbility"
+        },
+        "SpriteComponent": {
+          "_type": "component",
+          "component_id": "917f7ade-6b02-4108-b0a9-ba03b9328b25",
+          "go": "1a949301-3a8f-40bc-a43a-0805d2c7fa98",
+          "component_type": "SpriteComponent"
+        }
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "52c9388c-d8ac-4f6d-aaae-497b2d704446",
+        "Center": "0,100,0",
+        "IsTrigger": false,
+        "Scale": "75,200,50",
+        "Static": false
+      },
+      {
+        "__type": "Sandbox.player.MotionCore2D",
+        "__guid": "984e43ff-0301-4298-a46c-25c0796b678e",
+        "Collider": {
+          "_type": "component",
+          "component_id": "52c9388c-d8ac-4f6d-aaae-497b2d704446",
+          "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
+          "component_type": "BoxCollider"
+        },
+        "GroundTags": "ground,wall",
+        "WallTags": "wall,ground"
+      },
+      {
+        "__type": "Sandbox.player.Gravity",
+        "__guid": "516170c1-0d2d-4349-8d45-50fdebe3cea2",
+        "GravityCurve": [
+          {
+            "y": 1
+          },
+          {
+            "x": 1
+          }
+        ],
+        "GravityForce": 50,
+        "MaxVelocity": 1000,
+        "MotionCore": {
+          "_type": "component",
+          "component_id": "984e43ff-0301-4298-a46c-25c0796b678e",
+          "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
+          "component_type": "MotionCore2D"
+        }
+      },
+      {
+        "__type": "Sandbox.player.JumpAbility",
+        "__guid": "bebbf412-04ee-4d6b-8d1c-8c840461289d",
+        "BasePitch": 0.5,
+        "JumpIn": 0.3,
+        "JumpSound": "audio/sfx/jump4.sound",
+        "MaxHeight": 400,
+        "MaxJumps": 2,
+        "MaxVelocity": 1500,
+        "MinHeight": 200,
+        "MotionCore": {
+          "_type": "component",
+          "component_id": "984e43ff-0301-4298-a46c-25c0796b678e",
+          "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
+          "component_type": "MotionCore2D"
+        },
+        "PitchPerJump": 0.15,
+        "VelocityCurve": [
+          {
+            "y": 1
+          },
+          {
+            "x": 1,
+            "y": 0.38989362,
+            "in": 1.4604648,
+            "out": -1.4604648
+          }
+        ]
+      },
+      {
+        "__type": "Sandbox.player.Animator",
+        "__guid": "69d41057-c0a5-4f88-acef-b892ba9af7eb",
+        "DashAbility": {
+          "_type": "component",
+          "component_id": "e7e90b74-92b9-445a-ade9-9fc00da7de05",
+          "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
+          "component_type": "DashAbility"
+        },
+        "MotionCore": {
+          "_type": "component",
+          "component_id": "984e43ff-0301-4298-a46c-25c0796b678e",
+          "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
+          "component_type": "MotionCore2D"
+        },
+        "Sprite": {
+          "_type": "component",
+          "component_id": "917f7ade-6b02-4108-b0a9-ba03b9328b25",
+          "go": "1a949301-3a8f-40bc-a43a-0805d2c7fa98",
+          "component_type": "SpriteComponent"
+        }
+      },
+      {
+        "__type": "Sandbox.player.MoveAbility",
+        "__guid": "8a53c55b-26bc-46f6-8d1c-7d98efaeb73e",
+        "AccelerationCurve": [
+          {
+            "y": 0.10000002,
+            "in": -2.6232555,
+            "out": 2.6232555
+          },
+          {
+            "x": 1,
+            "y": 1
+          }
+        ],
+        "DecelerationCurve": [
+          {
+            "y": 1
+          },
+          {
+            "x": 1,
+            "y": 0.19999996,
+            "in": 1.4472735,
+            "out": -1.4472735
+          }
+        ],
+        "MaxAcceleration": 400,
+        "MaxDeceleration": 500,
+        "MaxSpeedIn": 0.3,
+        "MaxVelocity": 300,
+        "MotionCore": {
+          "_type": "component",
+          "component_id": "984e43ff-0301-4298-a46c-25c0796b678e",
+          "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
+          "component_type": "MotionCore2D"
+        }
+      },
+      {
+        "__type": "Sandbox.player.DashAbility",
+        "__guid": "e7e90b74-92b9-445a-ade9-9fc00da7de05",
+        "CanDashInAir": true,
+        "DashIn": 0.1,
+        "DashSound": "audio/sfx/dash.sound",
+        "MaxDistance": 300,
+        "MotionCore": {
+          "_type": "component",
+          "component_id": "984e43ff-0301-4298-a46c-25c0796b678e",
+          "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
+          "component_type": "MotionCore2D"
+        },
+        "VelocityCurve": [
+          {
+            "y": 1
+          },
+          {
+            "x": 1,
+            "y": 0.6590426,
+            "in": 0.9531914,
+            "out": -0.9531914
+          }
+        ]
+      },
+      {
+        "__type": "Sandbox.Rigidbody",
+        "__guid": "e348d259-40f8-4ee1-a811-b8c24bd25268",
+        "AngularDamping": 0,
+        "Gravity": false,
+        "LinearDamping": 0,
+        "Locking": {},
+        "MassCenterOverride": "0,0,0",
+        "MassOverride": 0,
+        "MotionEnabled": false,
+        "OverrideMassCenter": false,
+        "RigidbodyFlags": 0,
+        "StartAsleep": false
+      },
+      {
+        "__type": "Sandbox.SoundPointComponent",
+        "__guid": "799d5eeb-8eea-4d4c-9760-f9052777fa9c",
+        "DistanceAttenuation": false,
+        "DistanceAttenuationOverride": false,
+        "Force2d": false,
+        "MaxRepeatTime": 1,
+        "MinRepeatTime": 1,
+        "Occlusion": false,
+        "OcclusionOverride": false,
+        "OcclusionRadius": 32,
+        "Pitch": 1,
+        "PlayOnStart": false,
+        "ReflectionOverride": false,
+        "Reflections": false,
+        "Repeat": false,
+        "SoundOverride": false,
+        "StopOnNew": true,
+        "TargetMixer": {
+          "Name": "unknown",
+          "Id": "00000000-0000-0000-0000-000000000000"
+        },
+        "Volume": 1
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "1a949301-3a8f-40bc-a43a-0805d2c7fa98",
+        "Flags": 0,
+        "Name": "sprite",
+        "Scale": "2,2,1",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "SpriteTools.SpriteComponent",
+            "__guid": "917f7ade-6b02-4108-b0a9-ba03b9328b25",
+            "__version": 1,
+            "BroadcastEvents": {},
+            "CastShadows": "On",
+            "CreateAttachPoints": false,
+            "FlashTint": "1,1,1,0",
+            "PlaybackSpeed": 1,
+            "Sprite": "player_02.sprite",
+            "SpriteFlags": "None",
+            "StartingAnimationName": "idle",
+            "Tint": "1,1,1,1",
+            "UpDirection": "YPositive"
+          },
+          {
+            "__type": "Sandbox.sprite.SpriteSizer",
+            "__guid": "994bab00-897d-43aa-91c1-a40391e94082",
+            "_height": 64,
+            "_width": 64,
+            "PixelPerUnit": 32
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

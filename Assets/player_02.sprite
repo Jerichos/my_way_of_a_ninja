@@ -1,18 +1,18 @@
 {
   "Animations": [
     {
-      "FrameRate": 7,
+      "FrameRate": 15,
       "Origin": "0.5,1",
       "Looping": true,
-      "Name": "run",
+      "Name": "idle",
       "Frames": [
         {
-          "FilePath": "sprites/player_01.png",
-          "Events": []
-        },
-        {
-          "FilePath": "sprites/player_02.png",
-          "Events": []
+          "FilePath": "sprites/playerass.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "0,64",
+            "Size": "64,64"
+          }
         }
       ],
       "Attachments": []
@@ -21,15 +21,79 @@
       "FrameRate": 7,
       "Origin": "0.5,1",
       "Looping": true,
+      "Name": "run",
+      "Frames": [
+        {
+          "FilePath": "sprites/playerass.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Size": "64,64"
+          }
+        },
+        {
+          "FilePath": "sprites/playerass.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "64,0",
+            "Size": "64,64"
+          }
+        },
+        {
+          "FilePath": "sprites/playerass.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "128,0",
+            "Size": "64,64"
+          }
+        },
+        {
+          "FilePath": "sprites/playerass.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "192,0",
+            "Size": "64,64"
+          }
+        }
+      ],
+      "Attachments": []
+    },
+    {
+      "FrameRate": 15,
+      "Origin": "0.5,1",
+      "Looping": true,
       "Name": "jump",
       "Frames": [
         {
-          "FilePath": "sprites/player_jump_up.png",
-          "Events": []
+          "FilePath": "sprites/playerass.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "0,128",
+            "Size": "64,64"
+          }
         },
         {
-          "FilePath": "sprites/player_jump_up.png",
-          "Events": []
+          "FilePath": "sprites/playerass.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "64,128",
+            "Size": "64,64"
+          }
+        },
+        {
+          "FilePath": "sprites/playerass.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "128,128",
+            "Size": "64,64"
+          }
+        },
+        {
+          "FilePath": "sprites/playerass.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "192,128",
+            "Size": "64,64"
+          }
         }
       ],
       "Attachments": []
@@ -41,12 +105,52 @@
       "Name": "inAir",
       "Frames": [
         {
-          "FilePath": "sprites/player_jump_down.png",
-          "Events": []
+          "FilePath": "sprites/playerass.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "0,128",
+            "Size": "64,64"
+          }
+        }
+      ],
+      "Attachments": []
+    },
+    {
+      "FrameRate": 20,
+      "Origin": "0.5,1",
+      "Name": "dash",
+      "Frames": [
+        {
+          "FilePath": "sprites/playerass.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "0,192",
+            "Size": "64,64"
+          }
         },
         {
-          "FilePath": "sprites/player_jump_down.png",
-          "Events": []
+          "FilePath": "sprites/playerass.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "64,192",
+            "Size": "64,64"
+          }
+        },
+        {
+          "FilePath": "sprites/playerass.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "128,192",
+            "Size": "64,64"
+          }
+        },
+        {
+          "FilePath": "sprites/playerass.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "192,192",
+            "Size": "64,64"
+          }
         }
       ],
       "Attachments": []
