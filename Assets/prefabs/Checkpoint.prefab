@@ -14,6 +14,7 @@
           "go": "997112a9-2123-421a-8e7d-df360b1cd0f9",
           "component_type": "BoxCollider"
         },
+        "SoundEvent": "audio/sfx/player/level_checkpoint.sound",
         "SpriteComponent": {
           "_type": "component",
           "component_id": "2930ec34-0417-4e39-9231-8c29e968329d",
@@ -39,7 +40,7 @@
       {
         "__type": "Sandbox.BoxCollider",
         "__guid": "18eb1d59-1b39-4ce3-bfb8-b0e2fce5e616",
-        "Center": "0,0,0",
+        "Center": "0,25,0",
         "IsTrigger": true,
         "Scale": "50,50,50",
         "Static": true
