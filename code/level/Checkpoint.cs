@@ -6,6 +6,7 @@ public class Checkpoint : Component
 {
 	[Property] SpriteComponent SpriteComponent { get; set; }
 	[Property] BoxCollider Collider { get; set; }
+	[Property] SoundEvent SoundEvent { get; set; }
 
 	private bool _activated;
 	public bool Activated
@@ -44,6 +45,7 @@ public class Checkpoint : Component
 		if (other.GameObject.Components.Get<Player>() == null)
 			return;
 		
+		Sound.Play(SoundEvent, Transform.Position);
 		Activated = true;
 	}
 	

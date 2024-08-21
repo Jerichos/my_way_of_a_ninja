@@ -41,6 +41,12 @@
           "StartCheckpoint": {
             "_type": "gameobject",
             "go": "6bd08054-ae66-4da0-91d4-df1f40da8df4"
+          },
+          "Weather": {
+            "_type": "component",
+            "component_id": "fe52a820-57ff-4b20-ba66-42f6f791de1a",
+            "go": "4a7221bb-b6d8-444f-94a9-03d081006ce3",
+            "component_type": "Weather"
           }
         },
         {
@@ -68,6 +74,19 @@
             "Id": "b87928ce-835e-4fc5-8834-9db240b4c137"
           },
           "Volume": 1
+        },
+        {
+          "__type": "Sandbox.level.Weather",
+          "__guid": "fe52a820-57ff-4b20-ba66-42f6f791de1a",
+          "ChangeInterval": 3,
+          "Direction": 1,
+          "Speed": 150,
+          "WheaterEffect": {
+            "_type": "component",
+            "component_id": "fc1ba979-5511-4a1d-af90-c00f23e0109c",
+            "go": "992452d7-da4d-4cb7-a096-3eb0b13595a8",
+            "component_type": "ParticleEffect"
+          }
         }
       ],
       "Children": [
@@ -6891,7 +6910,7 @@
           "__guid": "997112a9-2123-421a-8e7d-df360b1cd0f9",
           "Flags": 0,
           "Name": "First Checkpoint",
-          "Position": "1800,700,0",
+          "Position": "-350,100,0",
           "Enabled": true,
           "__Prefab": "prefabs/checkpoint.prefab",
           "__PrefabVariables": {}
@@ -6998,10 +7017,10 @@
             {
               "__guid": "992452d7-da4d-4cb7-a096-3eb0b13595a8",
               "Flags": 0,
-              "Name": "Spray",
-              "Position": "400,49.99988,750",
+              "Name": "WheaterEffect",
+              "Position": "400,0,900",
               "Rotation": "0.5,-0.5,-0.5,0.5",
-              "Scale": "100,10,10",
+              "Scale": "100,0,10",
               "Tags": "particles",
               "Enabled": true,
               "Components": [
@@ -7028,7 +7047,7 @@
                     ],
                     "Constants": "1,0,0,0"
                   },
-                  "ApplyColor": true,
+                  "ApplyColor": false,
                   "ApplyRotation": false,
                   "ApplyShape": true,
                   "Bounce": {
@@ -7052,7 +7071,6 @@
                   },
                   "Gradient": {
                     "Type": "Range",
-                    "Evaluation": "Particle",
                     "GradientA": {
                       "color": [
                         {
@@ -7086,7 +7104,7 @@
                     "Constants": "1,0.4,0,0"
                   },
                   "Pitch": {},
-                  "PreWarm": 0,
+                  "PreWarm": 1,
                   "PushStrength": {},
                   "Roll": {
                     "Type": "Range",
@@ -7098,19 +7116,7 @@
                       "rangey": "0,3",
                       "frames": [
                         {
-                          "in": -9.333329,
-                          "out": 9.333329
-                        },
-                        {
-                          "x": 0.03325123,
-                          "y": 1,
-                          "in": -0.056075174,
-                          "out": 0.056075174
-                        },
-                        {
-                          "x": 1,
-                          "in": 2.9152544,
-                          "out": -2.9152544
+                          "y": 1
                         }
                       ]
                     },
@@ -7132,7 +7138,7 @@
                     "Constants": "0,200,0,0"
                   },
                   "Stretch": {
-                    "Constants": "20,0,0,0"
+                    "Constants": "30,0,0,0"
                   },
                   "TimeScale": 1,
                   "Tint": "1,1,1,1",
@@ -7147,17 +7153,17 @@
                   "BlurOpacity": 0.91,
                   "BlurSpacing": 0.73,
                   "DepthFeather": 0,
-                  "FaceVelocity": false,
+                  "FaceVelocity": true,
                   "FogStrength": 1,
                   "LeadingTrail": true,
                   "Lighting": false,
                   "MotionBlur": false,
                   "Opaque": true,
-                  "RotationOffset": 0,
-                  "Scale": 1,
+                  "RotationOffset": 90,
+                  "Scale": 2,
                   "Shadows": false,
                   "SortMode": "Unsorted",
-                  "Texture": "materials/particles/shapes/arrow5.vtex"
+                  "Texture": "materials/particles/shapes/triangle1.vtex"
                 },
                 {
                   "__type": "Sandbox.ParticleBoxEmitter",
@@ -7170,7 +7176,7 @@
                   "OnEdge": false,
                   "Rate": 1000,
                   "RateOverDistance": 0,
-                  "Size": "50,50,50"
+                  "Size": "50,50,10"
                 }
               ]
             }

@@ -321,6 +321,12 @@
           "component_id": "52c9388c-d8ac-4f6d-aaae-497b2d704446",
           "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
           "component_type": "BoxCollider"
+        },
+        "MotionCore": {
+          "_type": "component",
+          "component_id": "984e43ff-0301-4298-a46c-25c0796b678e",
+          "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
+          "component_type": "MotionCore2D"
         }
       }
     ],

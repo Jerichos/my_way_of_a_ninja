@@ -15,7 +15,7 @@ public class DashAbility : Component, IMotionProvider
 	
 	public Vector2 Velocity { get; private set; }
 	public MotionType MotionType => MotionType.DASH;
-	public MotionType[] OverrideMotions => new[] {MotionType.MOVE, MotionType.JUMP, MotionType.ENVIRONMENT, MotionType.GRAVITY};
+	public MotionType[] OverrideMotions => new[] {MotionType.MOVE, MotionType.JUMP, MotionType.GRAVITY};
 
 	public bool IsDashing => _isIsDashing;
 	

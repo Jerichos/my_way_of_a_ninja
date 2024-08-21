@@ -4,8 +4,8 @@ using SpriteTools;
 
 public sealed class Player : Component
 {
+	[Property] public MotionCore2D MotionCore { get; set; }
 	[Property] private SpriteComponent SpriteComponent { get; set; }
-	[Property] private MotionCore2D MotionCore { get; set; }
 	[Property] private MoveAbility MoveAbility { get; set; }
 	[Property] private JumpAbility JumpAbility { get; set; }
 	[Property] private DashAbility DashAbility { get; set; }

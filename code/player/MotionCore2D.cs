@@ -284,28 +284,36 @@ public sealed class MotionCore2D : Component
 		}
 	}
 	
-	int _added = 0;
-	
 	public void AddMotionProvider(IMotionProvider provider)
 	{
+		if(_motionProviders.Contains(provider))
+			return;
+		
+		Log.Info($"1 adding motion provider: {provider.MotionType}");
+		
 		List<IMotionProvider> providersToRemove = new List<IMotionProvider>();
-    
-		for (int i = _activeProviders.Count - 1; i >= 0; i--)
+		
+		if (provider.OverrideMotions != null && provider.OverrideMotions.Length > 0 )
 		{
-			var activeProvider = _activeProviders[i];
-
-			if (provider.OverrideMotions.Contains(activeProvider.MotionType))
+			for (int i = _activeProviders.Count - 1; i >= 0; i--)
 			{
-				activeProvider.OnMotionCanceled();
-				providersToRemove.Add(activeProvider);
+				var activeProvider = _activeProviders[i];
+
+				if (provider.OverrideMotions.Contains(activeProvider.MotionType))
+				{
+					activeProvider.OnMotionCanceled();
+					providersToRemove.Add(activeProvider);
+				}
 			}
 		}
 
 		foreach (var providerToRemove in providersToRemove)
 		{
+			Log.Info("$providerToRemove motion provider: " + providerToRemove.MotionType);
 			_activeProviders.Remove(providerToRemove);
 		}
 
+		Log.Info("$2 added motion provider: " + provider.MotionType);
 		_motionProviders.Add(provider);
 		_activeProviders.Add(provider);
 		ReevaluateActiveProviders();
@@ -313,11 +321,9 @@ public sealed class MotionCore2D : Component
 	
 	private void ReevaluateActiveProviders()
 	{
-		List<IMotionProvider> providersToAddBack = new List<IMotionProvider>();
-
 		foreach (var provider in _activeProviders.ToList())
 		{
-			if(provider.OverrideMotions.Length == 0)
+			if(provider.OverrideMotions == null || provider.OverrideMotions.Length == 0)
 				continue;
 			
 			foreach (var motionType in provider.OverrideMotions)
@@ -335,14 +341,19 @@ public sealed class MotionCore2D : Component
 	
 	public void RemoveMotionProvider(IMotionProvider provider)
 	{
+		if(!_motionProviders.Contains(provider))
+			return;
+		
 		_activeProviders.Remove(provider);
+		
+		Log.Info($"1 removing motion provider: {provider.MotionType}");
 
-		if ( provider.OverrideMotions.Length != 0 )
+		if (provider.OverrideMotions != null && provider.OverrideMotions.Length != 0 )
 		{
 			foreach (var motionType in provider.OverrideMotions)
 			{
 				bool isStillOverridden = _activeProviders.Any(p => p.OverrideMotions.Contains(motionType));
-
+				
 				if (!isStillOverridden)
 				{
 					for (int i = 0; i < _motionProviders.Count; i++)
@@ -359,6 +370,8 @@ public sealed class MotionCore2D : Component
 				}
 			}
 		}
+		
+		Log.Info($"2 removed motion provider: {provider.MotionType}");
 		_motionProviders.Remove(provider);
 		ReevaluateActiveProviders();
 	}

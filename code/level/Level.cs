@@ -10,6 +10,7 @@ public class Level : Component
 	[Property] public Player Player { get; set; }
 	[Property] public CameraFollow CameraFollow { get; set; }
 	[Property] public bool MovePlayerToCheckpoint { get; set; } = true;
+	[Property] public Weather Weather { get; set; }
 
 	public Vector2 LastCheckpointPosition => Checkpoint.LastCheckpoint?.Transform.Position ?? Transform.Position;
 	
@@ -65,6 +66,19 @@ public class Level : Component
 		newPlayer.OnRespawn();
 		newPlayer.DeathEvent -= RespawnPlayer;
 		newPlayer.DeathEvent += RespawnPlayer;
+
+		if(Weather != null)
+		{
+			Weather.AddToPlayer(newPlayer.MotionCore);
+			Weather.SetDirection(0);
+			Log.Info("added weather to player");
+		}
+		else
+		{
+			Log.Info("No weather for this level");
+		}
+		
+		
 		Log.Info($"set player position to {newPosition}");
 	}
 }

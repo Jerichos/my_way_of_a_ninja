@@ -15,7 +15,7 @@ public class FollowPath : Component, IMotionProvider
 	private int _currentPoint;
 	
 	public Vector2 Velocity { get; private set; }
-	public MotionType[] OverrideMotions => IgnoreGravity? new[] { MotionType.GRAVITY }: null;
+	public MotionType[] OverrideMotions => IgnoreGravity? new[] { MotionType.GRAVITY }: Array.Empty<MotionType>();
 	public MotionType MotionType => MotionType.MOVE;
 
 	public void SetPath( Vector2[] path, bool loop , int direction = 1)
@@ -68,7 +68,7 @@ public class FollowPath : Component, IMotionProvider
 			}
 		}
 		
-		Log.Info($"FollowPath Velocity: {Velocity} CurrentPoint: {_currentPoint}");
+		// Log.Info($"FollowPath Velocity: {Velocity} CurrentPoint: {_currentPoint}");
 	}
 
 	
@@ -96,10 +96,5 @@ public class FollowPath : Component, IMotionProvider
 		
 		// dir must be 1 or -1
 		Direction = Math.Clamp(Direction, -1, 1);
-	}
-
-	protected override void DrawGizmos()
-	{
-		
 	}
 }

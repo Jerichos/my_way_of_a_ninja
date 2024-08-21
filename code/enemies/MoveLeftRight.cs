@@ -1,4 +1,5 @@
-﻿using Sandbox.player;
+﻿using System;
+using Sandbox.player;
 
 namespace Sandbox.enemies;
 
@@ -9,7 +10,7 @@ public class MoveLeftRight : Component, IMotionProvider
 	[Property] private float Speed { get; set; } = 100;
 	public Vector2 Velocity { get; private set; }
 
-	public MotionType[] OverrideMotions => null;
+	public MotionType[] OverrideMotions => Array.Empty<MotionType>();
 	public MotionType MotionType => MotionType.MOVE;
 	
 	private int _direction = 1;
