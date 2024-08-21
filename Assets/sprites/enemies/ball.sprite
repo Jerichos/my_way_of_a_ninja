@@ -1,0 +1,46 @@
+{
+  "Animations": [
+    {
+      "FrameRate": 10,
+      "Origin": "0.5,1",
+      "Looping": true,
+      "Name": "walk",
+      "Frames": [
+        {
+          "FilePath": "sprites/enemies/ball_run.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Size": "32,32"
+          }
+        },
+        {
+          "FilePath": "sprites/enemies/ball_run.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "32,0",
+            "Size": "32,32"
+          }
+        },
+        {
+          "FilePath": "sprites/enemies/ball_run.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "64,0",
+            "Size": "32,32"
+          }
+        },
+        {
+          "FilePath": "sprites/enemies/ball_run.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "96,0",
+            "Size": "32,32"
+          }
+        }
+      ],
+      "Attachments": []
+    }
+  ],
+  "__references": [],
+  "__version": 0
+}

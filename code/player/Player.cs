@@ -1,5 +1,4 @@
 using System;
-using Sandbox;
 using Sandbox.player;
 using SpriteTools;
 
@@ -11,6 +10,7 @@ public sealed class Player : Component
 	[Property] private JumpAbility JumpAbility { get; set; }
 	[Property] private DashAbility DashAbility { get; set; }
 	[Property] private SwordAbility SwordAbility { get; set; }
+	[Property] private CrouchAbility CrouchAbility { get; set; }
 	[Property] private Knockback Knockback { get; set; }
 
 	[Property] private SoundEvent HitSound { get; set; }
@@ -57,6 +57,15 @@ public sealed class Player : Component
 		if(Input.Pressed("attack1"))
 		{
 			SwordAbility.StartAttack();
+		}
+		
+		if(Input.Down("Crouch"))
+		{
+			CrouchAbility.StartCrouch();
+		}
+		else if ( Input.Released("Crouch") )
+		{
+			CrouchAbility.StopCrouch();
 		}
 	}
 

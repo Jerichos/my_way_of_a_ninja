@@ -4,12 +4,14 @@ namespace Sandbox.player;
 
 public sealed class MotionCore2D : Component
 {
-	[Property] private BoxCollider Collider { get; set; }
+	[Property] public BoxCollider Collider { get; private set; }
 	
 	[Property] private TagSet GroundTags { get; set; }
 	[Property] private TagSet WallTags { get; set; }
 	
 	public Vector2 Velocity { get; private set; }
+	public Vector2 Size => Collider.Center * Transform.LocalScale;
+	public Vector2 Center => Transform.Position + (Vector3)Size;
 	
 	private readonly List<IMotionProvider> _motionProviders = new();
 	private readonly List<IMotionProvider> _activeProviders = new();
@@ -112,9 +114,37 @@ public sealed class MotionCore2D : Component
 		Gizmo.Draw.Line( startPosition, endPosition );
 		return false;
 	}
+	
+	public bool CheckCollision(Vector2 from, Vector2 velocity)
+	{
+		Vector2 startPosition = from;
+		Vector2 endPosition = startPosition + velocity * 20;
+		
+		_groundHitResult = Scene.Trace
+			.Ray(startPosition, endPosition)
+			.WithAnyTags(GroundTags)
+			.Size(BBox.FromPositionAndSize(Vector3.Zero, new Vector3(1,1,1)))
+			.Run();
+		
+		Gizmo.Draw.Color = Color.Green;
+		Gizmo.Draw.LineThickness = 20;
+
+		if ( _groundHitResult.Hit )
+		{
+			Gizmo.Draw.Color = Color.Red;
+			return true;
+		}
+
+		Gizmo.Draw.LineThickness = 20;
+		Gizmo.Draw.Line( startPosition, endPosition );
+		return false;
+	}
 
 	private void HandleHorizontalCollisions()
 	{
+		if(WallTags.IsEmpty)
+			return;
+		
 		// float skin = 5;
 		Vector3 scale = Collider.Scale * _skinPortion;
 		float halfWidth = Collider.Scale.x / 2;
@@ -181,7 +211,7 @@ public sealed class MotionCore2D : Component
 
 	private void CheckCollisionUp()
 	{
-		if(Velocity.y <= 0)
+		if(Velocity.y <= 0 || GroundTags.IsEmpty)
 			return;
 		
 		float skinWidth = 25;
@@ -212,7 +242,7 @@ public sealed class MotionCore2D : Component
 	private void CheckCollisionDown()
 	{
 		// if velocity is up, don't check for ground?
-		if ( Velocity.y > 0)
+		if ( Velocity.y > 0 || GroundTags.IsEmpty)
 		{
 			Grounded = false;
 			return;
@@ -287,6 +317,9 @@ public sealed class MotionCore2D : Component
 
 		foreach (var provider in _activeProviders.ToList())
 		{
+			if(provider.OverrideMotions.Length == 0)
+				continue;
+			
 			foreach (var motionType in provider.OverrideMotions)
 			{
 				var overriddenProvider = _activeProviders.FirstOrDefault(p => p.MotionType == motionType);
@@ -304,26 +337,28 @@ public sealed class MotionCore2D : Component
 	{
 		_activeProviders.Remove(provider);
 
-		foreach (var motionType in provider.OverrideMotions)
+		if ( provider.OverrideMotions.Length != 0 )
 		{
-			bool isStillOverridden = _activeProviders.Any(p => p.OverrideMotions.Contains(motionType));
-
-			if (!isStillOverridden)
+			foreach (var motionType in provider.OverrideMotions)
 			{
-				for (int i = 0; i < _motionProviders.Count; i++)
-				{
-					var potentialProvider = _motionProviders[i];
+				bool isStillOverridden = _activeProviders.Any(p => p.OverrideMotions.Contains(motionType));
 
-					if (potentialProvider.MotionType == motionType && !_activeProviders.Contains(potentialProvider))
+				if (!isStillOverridden)
+				{
+					for (int i = 0; i < _motionProviders.Count; i++)
 					{
-						_activeProviders.Add(potentialProvider);
-						potentialProvider.OnMotionRestored();
-						break;
+						var potentialProvider = _motionProviders[i];
+
+						if (potentialProvider.MotionType == motionType && !_activeProviders.Contains(potentialProvider))
+						{
+							_activeProviders.Add(potentialProvider);
+							potentialProvider.OnMotionRestored();
+							break;
+						}
 					}
 				}
 			}
 		}
-
 		_motionProviders.Remove(provider);
 		ReevaluateActiveProviders();
 	}

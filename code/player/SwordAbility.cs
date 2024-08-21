@@ -25,6 +25,10 @@ public class SwordAbility : Component
 	private Vector2 _rayEnd;
 	private readonly BBox _bbox = BBox.FromPositionAndSize( Vector3.Zero, new Vector3( 5, 5, 5 ));
 
+	private bool _isHitting;
+
+	private readonly List<IHittable> _hitTargets = new();
+
 	public void StartAttack()
 	{
 		if(!CanAttack())
@@ -33,17 +37,29 @@ public class SwordAbility : Component
 		_cooldownTimer = Cooldown;
 		
 		Log.Info("start attack");
-		TryHit();
+		// TryHit();
 		IsAttacking = true;
-		
+		_isHitting = true;
+		_hitTargets.Clear();
+
+		Sound.Play( AttackSound, Transform.Position );
 		AttackEvent?.Invoke(true);
 	}
 	
 	private void EndAttack(SpriteComponent obj)
 	{
 		Log.Info("end attack");
+		_isHitting = false;
 		IsAttacking = false;
 		AttackEvent?.Invoke(false);
+	}
+
+	protected override void OnFixedUpdate()
+	{
+		if(_isHitting)
+		{
+			TryHit();
+		}
 	}
 
 	private void TryHit()
@@ -52,8 +68,8 @@ public class SwordAbility : Component
 		IsAttacking = true;
 
 		// var swordStart = Sprite.GetAttachmentTransform( "swordStart" ).Position; // can't create from Prefab...
-		var swordStart = Sprite.Transform.Position + new Vector3(0, 120, 0 );
-		Log.Info("swordStart: " + swordStart);
+		var swordStart = Sprite.Transform.Position + new Vector3(0, MotionCore.Collider.Scale.y / 1.66f, 0 );
+		Log.Info($"swordStart: {swordStart} collider height: {MotionCore.Collider.Scale.y / 1.66f}");
 
 		float length = Range * MotionCore.Facing;
 		_rayStart = swordStart;
@@ -71,7 +87,10 @@ public class SwordAbility : Component
 		{
 			if(_hitResult.GameObject.Components.TryGet(out IHittable hittable))
 			{
-				hittable.Hit(Damage, OnHitSound);
+				if(_hitTargets.Contains(hittable))
+					return;
+				hittable.Hit(Damage, OnHitSound, GameObject);
+				_hitTargets.Add(hittable);
 			}
 			else
 			{
@@ -82,8 +101,7 @@ public class SwordAbility : Component
 		}
 		else
 		{
-			Components.Get<SoundPointComponent>().SoundEvent = AttackSound;
-			Components.Get<SoundPointComponent>().StartSound();
+			
 		}
 	}
 

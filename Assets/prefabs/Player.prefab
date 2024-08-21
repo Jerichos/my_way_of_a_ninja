@@ -8,6 +8,12 @@
       {
         "__type": "Player",
         "__guid": "5c7d982f-7599-4a6b-9191-764ba5e4aa0a",
+        "CrouchAbility": {
+          "_type": "component",
+          "component_id": "2850ced2-d844-4ec1-bfe5-349a318de24c",
+          "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
+          "component_type": "CrouchAbility"
+        },
         "DashAbility": {
           "_type": "component",
           "component_id": "e7e90b74-92b9-445a-ade9-9fc00da7de05",
@@ -16,7 +22,7 @@
         },
         "DeathSound": "audio/sfx/player_death.sound",
         "Health": 3,
-        "HitSound": "audio/sfx/player_hit.sound",
+        "HitSound": "audio/sfx/player/player_hit.sound",
         "JumpAbility": {
           "_type": "component",
           "component_id": "bebbf412-04ee-4d6b-8d1c-8c840461289d",
@@ -100,8 +106,8 @@
         "__guid": "bebbf412-04ee-4d6b-8d1c-8c840461289d",
         "BasePitch": 0.5,
         "JumpIn": 0.3,
-        "JumpSound": "audio/sfx/jump4.sound",
-        "MaxHeight": 400,
+        "JumpSound": "audio/sfx/player/player_jump.sound",
+        "MaxHeight": 500,
         "MaxJumps": 2,
         "MinHeight": 200,
         "MotionCore": {
@@ -128,6 +134,12 @@
         "__guid": "69d41057-c0a5-4f88-acef-b892ba9af7eb",
         "BlinkCount": 10,
         "BlinkDuration": 0.1,
+        "CrouchAbility": {
+          "_type": "component",
+          "component_id": "2850ced2-d844-4ec1-bfe5-349a318de24c",
+          "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
+          "component_type": "CrouchAbility"
+        },
         "DashAbility": {
           "_type": "component",
           "component_id": "e7e90b74-92b9-445a-ade9-9fc00da7de05",
@@ -285,7 +297,6 @@
         "__enabled": false,
         "Direction": "0.5,1",
         "Duration": 0.2,
-        "KnockbackSound": "audio/sfx/jump2.sound",
         "MaxDistance": 300,
         "MotionCore": {
           "_type": "component",
@@ -301,6 +312,16 @@
             "x": 1
           }
         ]
+      },
+      {
+        "__type": "Sandbox.player.CrouchAbility",
+        "__guid": "2850ced2-d844-4ec1-bfe5-349a318de24c",
+        "Collider": {
+          "_type": "component",
+          "component_id": "52c9388c-d8ac-4f6d-aaae-497b2d704446",
+          "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
+          "component_type": "BoxCollider"
+        }
       }
     ],
     "Children": [
@@ -325,7 +346,7 @@
             "PlaybackSpeed": 1,
             "Sprite": "player_02.sprite",
             "SpriteFlags": "None",
-            "StartingAnimationName": "idle",
+            "StartingAnimationName": "crouch",
             "Tint": "1,1,1,1",
             "UpDirection": "YPositive"
           },
@@ -335,14 +356,6 @@
             "_height": 64,
             "_width": 64,
             "PixelPerUnit": 32
-          }
-        ],
-        "Children": [
-          {
-            "__guid": "c550ab0d-bc27-41c1-a59e-4b0e6cf81bae",
-            "Flags": 0,
-            "Name": "swordStart",
-            "Enabled": true
           }
         ]
       }

@@ -1,0 +1,18 @@
+{
+  "Animations": [
+    {
+      "FrameRate": 15,
+      "Origin": "0,1",
+      "Name": "default",
+      "Frames": [
+        {
+          "FilePath": "sprites/level_01/grass_tile_00_32x22.png",
+          "Events": []
+        }
+      ],
+      "Attachments": []
+    }
+  ],
+  "__references": [],
+  "__version": 0
+}

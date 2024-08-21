@@ -16,6 +16,8 @@ namespace Sandbox.player
 
         private float _t;
         private float _distance;
+        
+        public Action KnockbackEndEvent;
     
         public void Activate(Vector2 direction)
         {
@@ -23,6 +25,9 @@ namespace Sandbox.player
             _distance = 0;
             Direction = direction;
             Enabled = true;
+            
+            if(KnockbackSound != null)
+				Sound.Play(KnockbackSound);
         }
     
         protected override void OnFixedUpdate()
@@ -65,6 +70,7 @@ namespace Sandbox.player
         {
             Enabled = false;
             Velocity = Vector2.Zero;  // Ensure velocity is zero when knockback ends
+            KnockbackEndEvent?.Invoke();
         }
     
         protected override void OnEnabled()

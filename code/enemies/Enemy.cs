@@ -1,12 +1,14 @@
 ﻿using System;
+using Sandbox.player;
 using SpriteTools;
 
 namespace Sandbox.enemies;
 
 // Heli is a spider enemy that moves back and forth on a platform, from edge to edge.
-public class Heli : Component, IHittable
+public class Enemy : Component, IHittable
 {
 	[Property] private SpriteComponent Sprite { get; set; }
+	[Property] private Knockback Knockback { get; set; }
 
 	[Property] private int Health { get; set; } = 1;
 	[Property] private int MaxHealth { get; set; } = 1;
@@ -16,19 +18,16 @@ public class Heli : Component, IHittable
 
 	private bool _dead;
 	
+	// hit animation
 	private float _hitFadeTime = 0.1f;
 	private float _flashAlpha;
 	private float _hitFadeTimer;
-	
-	private bool _hitThisFrame;
+	private bool _isHit;
 	
 	protected override void OnFixedUpdate()
 	{
-		if(_hitThisFrame)
-		{
-			_hitFadeTimer = _hitFadeTime;
-			_hitThisFrame = false;
-		}
+		if(!_isHit)
+			return;
 		
 		if(_hitFadeTimer > 0)
 		{
@@ -43,39 +42,64 @@ public class Heli : Component, IHittable
 			var color = Sprite.FlashTint;
 			color.a = 0;
 			Sprite.FlashTint = color;
+			_isHit = false;
 		}
 	}
 	
-	public void Hit( int damage, Action<SoundEvent> soundCallback)
+	public void Hit(int damage, Action<SoundEvent> soundCallback, GameObject source = null)
 	{
-		_hitThisFrame = true;
 		Health -= damage;
 		if ( Health <= 0 )
 		{
-			Kill();
+			Kill(source);
 			soundCallback?.Invoke(DestroySound);
 		}
 		else
 		{
+			_hitFadeTimer = _hitFadeTime;
+			_isHit = true;
 			soundCallback?.Invoke(HitSound);
 		}
 		
 		Log.Info($"Heli hit! Health: {Health}/{MaxHealth}");
 	}
 	
-	private void Kill()
+	private void Kill(GameObject source = null)
 	{
 		if(_dead)
 			return;
 		
 		_dead = true;
-		OnDeath();
+		OnDeath(source);
 	}
 
-	private void OnDeath()
+	private void OnDeath(GameObject source = null)
 	{
 		// TODO: add death animation
 		// TODO: return to pool
-		GameObject.Destroy();
+		Color color = Sprite.FlashTint;
+		color.a = 0.5f;
+		Sprite.FlashTint = color;
+		if ( source == null )
+		{
+			Knockback.Activate(Vector2.Zero);
+		}
+		else
+		{
+			Vector2 knockbackDirection = (Transform.Position - source.Transform.Position).Normal;
+			Knockback.Activate(knockbackDirection);
+		}
 	}
+
+	protected override void OnEnabled()
+	{
+		Knockback.KnockbackEndEvent += ()=> GameObject.Destroy();
+	}
+	
+	protected override void OnDisabled()
+	{
+		Knockback.KnockbackEndEvent -= ()=> GameObject.Destroy();
+	}
+	
+	
 }

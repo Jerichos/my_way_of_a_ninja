@@ -4,5 +4,5 @@ namespace Sandbox.enemies;
 
 public interface IHittable
 {
-	void Hit(int damage, Action<SoundEvent> soundCallback);
+	void Hit(int damage, Action<SoundEvent> soundCallback, GameObject source = null);
 }

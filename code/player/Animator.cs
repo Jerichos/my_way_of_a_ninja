@@ -10,6 +10,7 @@ public enum AnimationState
 	JUMP,
 	IN_AIR,
 	DASH,
+	CROUCH,
 }
 
 public sealed class Animator : Component
@@ -19,6 +20,7 @@ public sealed class Animator : Component
 	[Property] private MotionCore2D MotionCore { get; set; }
 	[Property] private DashAbility DashAbility { get; set; }
 	[Property] private SwordAbility SwordAbility { get; set; }
+	[Property] private CrouchAbility CrouchAbility { get; set; }
 	
 	// on hit player will be in hit animation, which is fade in and out n times during n seconds
 	[Property] private int BlinkCount;
@@ -41,6 +43,7 @@ public sealed class Animator : Component
 		_blinkCounter = BlinkCount;
 	}
 	
+	// TODO: there is a bug when animation changes, usually to/from attack animation. It flickers for a frame, like transition is not right.
 	public void SetAnimationState(AnimationState newState, bool force = false)
 	{
 		if(_state == newState && !force)
@@ -60,6 +63,9 @@ public sealed class Animator : Component
 			case AnimationState.IN_AIR:
 				Sprite.PlayAnimation(SwordAbility.IsAttacking ? "inAir_attack" : "inAir" , force);
 				break;
+			case AnimationState.CROUCH:
+				Sprite.PlayAnimation(SwordAbility.IsAttacking ? "crouch_attack" : "crouch" , force);
+				break;
 			case AnimationState.DASH:
 				Sprite.PlayAnimation("dash");
 				break;
@@ -71,9 +77,11 @@ public sealed class Animator : Component
 		_state = newState;
 	}
 
-	protected override void OnFixedUpdate()
+	protected override void OnUpdate()
 	{
-		if(MotionCore.Velocity.y > 0)
+		if(CrouchAbility.IsCrouching)
+			SetAnimationState(AnimationState.CROUCH);
+		else if(MotionCore.Velocity.y > 0)
 			SetAnimationState(AnimationState.JUMP);
 		else if(DashAbility.IsDashing)
 			SetAnimationState(AnimationState.DASH);

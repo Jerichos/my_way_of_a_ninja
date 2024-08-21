@@ -21,6 +21,7 @@ public sealed class JumpAbility : Component, IMotionProvider
 	public MotionType MotionType => MotionType.JUMP;
 	public MotionType[] OverrideMotions => new[] {MotionType.DASH, MotionType.GRAVITY}; // Jump overrides dash and gravity
 	
+	BoxCollider Collider => MotionCore.Collider;
 	
 	public bool IsJumping { get; private set; }
 	
@@ -31,7 +32,8 @@ public sealed class JumpAbility : Component, IMotionProvider
 	private bool _increaseHeight;
 	
 	private int _jumps; // resets when grounded
-	
+	private float _colliderFactor = 1.5f;
+
 	public void Jump()
 	{
 		if(CanJump())
@@ -113,15 +115,15 @@ public sealed class JumpAbility : Component, IMotionProvider
 		_wishHeight = 0;
 		_jumps++;
 		
-		Components.Get<SoundPointComponent>().SoundOverride = true;
-		Components.Get<SoundPointComponent>().SoundEvent = JumpSound;
-		Components.Get<SoundPointComponent>().Pitch = BasePitch + PitchPerJump * _jumps;
-		Components.Get<SoundPointComponent>().StartSound();
-		Components.Get<SoundPointComponent>().SoundOverride = false;
+		// change collider size
+		Collider.Scale = Collider.Scale.WithY(Collider.Scale.y / _colliderFactor);
+		Collider.Center = Collider.Center.WithY(Collider.Center.y / _colliderFactor);
 		
+
+		JumpSound.Pitch = BasePitch + PitchPerJump * _jumps;
+		Sound.Play( JumpSound );		
 		
 		Log.Info($"Jump start! jumps: {_jumps}");
-		
 	}
 
 	// if there is vertical collision or something else that stops the jump
@@ -131,8 +133,11 @@ public sealed class JumpAbility : Component, IMotionProvider
 			return;
 		
 		Log.Info("Jump canceled!");
-		IsJumping = false;
 		Velocity = Vector2.Zero;
+		IsJumping = false;
+
+		Collider.Scale = Collider.Scale.WithY(Collider.Scale.y * _colliderFactor);
+		Collider.Center = Collider.Center.WithY(Collider.Center.y * _colliderFactor);
 		
 		MotionCore.RemoveMotionProvider(this);
 	}

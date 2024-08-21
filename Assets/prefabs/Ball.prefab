@@ -1,0 +1,201 @@
+{
+  "RootObject": {
+    "__guid": "935db0c2-4ac9-4b28-9eba-65486069f897",
+    "Flags": 0,
+    "Name": "ball",
+    "Tags": "enemy",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.enemies.Enemy",
+        "__guid": "126951eb-563c-4cbe-b079-bfcf7e68ecd6",
+        "DestroySound": "audio/sfx/enemy/enemy_death.sound",
+        "Health": 1,
+        "HitSound": "audio/sfx/enemy/enemy_hit.sound",
+        "Knockback": {
+          "_type": "component",
+          "component_id": "ca655917-5c00-4536-bd4c-d6cc5131053a",
+          "go": "935db0c2-4ac9-4b28-9eba-65486069f897",
+          "component_type": "Knockback"
+        },
+        "MaxHealth": 1,
+        "Sprite": {
+          "_type": "component",
+          "component_id": "c1b1a9c7-8182-4089-b970-a9a968eea4a9",
+          "go": "935db0c2-4ac9-4b28-9eba-65486069f897",
+          "component_type": "SpriteComponent"
+        }
+      },
+      {
+        "__type": "SpriteTools.SpriteComponent",
+        "__guid": "c1b1a9c7-8182-4089-b970-a9a968eea4a9",
+        "__version": 1,
+        "BroadcastEvents": {},
+        "CastShadows": "On",
+        "CreateAttachPoints": false,
+        "FlashTint": "1,1,1,0",
+        "PlaybackSpeed": 1,
+        "Sprite": "sprites/enemies/ball.sprite",
+        "SpriteFlags": "None",
+        "StartingAnimationName": "walk",
+        "Tint": "1,1,1,1",
+        "UpDirection": "YPositive"
+      },
+      {
+        "__type": "Sandbox.sprite.SpriteSizer",
+        "__guid": "efcdd679-f457-4114-896f-c6f8c8fc1925",
+        "_height": 32,
+        "_width": 32,
+        "PixelPerUnit": 32
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "c54c1615-0eca-4cbe-b1e5-1a573ec72f28",
+        "Center": "0,50,0",
+        "IsTrigger": false,
+        "Scale": "100,100,100",
+        "Static": false
+      },
+      {
+        "__type": "Sandbox.player.MotionCore2D",
+        "__guid": "75f16785-3be0-4bc6-8a80-972461f42327",
+        "Collider": {
+          "_type": "component",
+          "component_id": "c54c1615-0eca-4cbe-b1e5-1a573ec72f28",
+          "go": "935db0c2-4ac9-4b28-9eba-65486069f897",
+          "component_type": "BoxCollider"
+        },
+        "GroundTags": "",
+        "WallTags": ""
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "eed4cb25-49a5-4eb4-89ba-32829abce904",
+        "Center": "0,47.5,0",
+        "IsTrigger": true,
+        "Scale": "75,75,75",
+        "Static": false
+      },
+      {
+        "__type": "Sandbox.enemies.ContactDamage",
+        "__guid": "10fb0fa3-c901-4b15-82c9-ce79914e867d",
+        "ContactDamageCollider": {
+          "_type": "component",
+          "component_id": "eed4cb25-49a5-4eb4-89ba-32829abce904",
+          "go": "935db0c2-4ac9-4b28-9eba-65486069f897",
+          "component_type": "BoxCollider"
+        },
+        "Damage": 1
+      },
+      {
+        "__type": "Sandbox.enemies.FollowPath",
+        "__guid": "af624d2a-3f79-4a8f-94a9-0c7fb90802c2",
+        "Direction": 1,
+        "IgnoreGravity": true,
+        "Loop": true,
+        "MotionProvider": {
+          "_type": "component",
+          "component_id": "75f16785-3be0-4bc6-8a80-972461f42327",
+          "go": "935db0c2-4ac9-4b28-9eba-65486069f897",
+          "component_type": "MotionCore2D"
+        },
+        "Speed": 250
+      },
+      {
+        "__type": "Sandbox.player.Knockback",
+        "__guid": "ca655917-5c00-4536-bd4c-d6cc5131053a",
+        "__enabled": false,
+        "Direction": "0,0",
+        "Duration": 0.1,
+        "MaxDistance": 250,
+        "MotionCore": {
+          "_type": "component",
+          "component_id": "75f16785-3be0-4bc6-8a80-972461f42327",
+          "go": "935db0c2-4ac9-4b28-9eba-65486069f897",
+          "component_type": "MotionCore2D"
+        },
+        "VelocityCurve": [
+          {
+            "y": 1
+          },
+          {
+            "x": 1
+          }
+        ]
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "ad48513e-4966-47fd-b1b3-40315fa7e6d6",
+        "Flags": 0,
+        "Name": "path",
+        "Enabled": true,
+        "Children": [
+          {
+            "__guid": "028c4a92-a315-4f98-a350-9af526817594",
+            "Flags": 0,
+            "Name": "1",
+            "Position": "-50,0,0.000002517787",
+            "Enabled": true
+          },
+          {
+            "__guid": "f35f3cce-f728-4228-9341-53b58409b4c6",
+            "Flags": 0,
+            "Name": "2",
+            "Position": "50,0,0.000004170623",
+            "Enabled": true
+          },
+          {
+            "__guid": "5f3da974-98a4-43ad-8897-6b0f9713b742",
+            "Flags": 0,
+            "Name": "3",
+            "Position": "50,100,0.000003667061",
+            "Enabled": true
+          },
+          {
+            "__guid": "32e26f95-e9f5-42b2-8912-7768a1882ef9",
+            "Flags": 0,
+            "Name": "4",
+            "Position": "250,100,0.000008199073",
+            "Enabled": true
+          },
+          {
+            "__guid": "7d4acc11-fffa-4265-8028-59d728ba5a2d",
+            "Flags": 0,
+            "Name": "5",
+            "Position": "250,-200,0.0000129469",
+            "Enabled": true
+          },
+          {
+            "__guid": "5db6c096-f664-4f19-8d27-eba3f3b4cbd0",
+            "Flags": 0,
+            "Name": "6",
+            "Position": "-250,-200,-0.00001482069",
+            "Enabled": true
+          },
+          {
+            "__guid": "39fe4728-1a19-45f3-97fa-9594cfd1147a",
+            "Flags": 0,
+            "Name": "7",
+            "Position": "-250,100,-0.00001741042",
+            "Enabled": true
+          },
+          {
+            "__guid": "0c0a7fae-f8db-462c-a620-f16e3930b7da",
+            "Flags": 0,
+            "Name": "8",
+            "Position": "-50,100,-0.000005468917",
+            "Enabled": true
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

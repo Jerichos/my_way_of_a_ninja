@@ -292,6 +292,54 @@
           "Visible": true
         }
       ]
+    },
+    {
+      "FrameRate": 15,
+      "Origin": "0.5,1",
+      "Looping": true,
+      "Name": "crouch",
+      "Frames": [
+        {
+          "FilePath": "sprites/enemies/crouch.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Size": "32,32"
+          }
+        }
+      ],
+      "Attachments": []
+    },
+    {
+      "FrameRate": 7,
+      "Origin": "0.5,1",
+      "Looping": true,
+      "Name": "crouch_attack",
+      "Frames": [
+        {
+          "FilePath": "sprites/enemies/crouch_attack.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Size": "64,32"
+          }
+        },
+        {
+          "FilePath": "sprites/enemies/crouch_attack.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "64,0",
+            "Size": "64,32"
+          }
+        },
+        {
+          "FilePath": "sprites/enemies/crouch_attack.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "128,0",
+            "Size": "64,32"
+          }
+        }
+      ],
+      "Attachments": []
     }
   ],
   "__references": [],
