@@ -206,9 +206,7 @@
       "Frames": [
         {
           "FilePath": "sprites/player/idle_attack.png",
-          "Events": [
-            "TryHit"
-          ],
+          "Events": [],
           "SpriteSheetRect": {
             "Size": "64,32"
           }
@@ -250,9 +248,7 @@
       "Frames": [
         {
           "FilePath": "sprites/player/run_attack.png",
-          "Events": [
-            "TryHit"
-          ],
+          "Events": [],
           "SpriteSheetRect": {
             "Size": "64,32"
           }
@@ -324,7 +320,9 @@
         },
         {
           "FilePath": "sprites/enemies/crouch_attack.png",
-          "Events": [],
+          "Events": [
+            "EndAttack"
+          ],
           "SpriteSheetRect": {
             "Position": "64,0",
             "Size": "64,32"
