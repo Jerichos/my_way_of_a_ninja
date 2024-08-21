@@ -22,106 +22,6 @@
       ]
     },
     {
-      "__guid": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
-      "Flags": 0,
-      "Name": "Camera",
-      "Position": "-0.0001192093,0,400",
-      "Rotation": "-0.5,0.5,0.5,0.5",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.CameraComponent",
-          "__guid": "cf3cbf96-22b6-4be4-a5d0-672a96c17f9f",
-          "BackgroundColor": "0.33333,0.46275,0.52157,1",
-          "ClearFlags": "All",
-          "FieldOfView": 90,
-          "IsMainCamera": true,
-          "Orthographic": true,
-          "OrthographicHeight": 1024,
-          "Priority": 1,
-          "RenderExcludeTags": "",
-          "RenderTags": "",
-          "TargetEye": "None",
-          "Viewport": "0,0,1,1",
-          "ZFar": 10000,
-          "ZNear": 10
-        },
-        {
-          "__type": "Sandbox.Bloom",
-          "__guid": "d73ef723-c888-41d4-802e-f797c79318be",
-          "__enabled": false,
-          "BloomColor": {
-            "color": [
-              {
-                "c": "1,1,1,1"
-              },
-              {
-                "t": 1,
-                "c": "1,1,1,1"
-              }
-            ],
-            "alpha": []
-          },
-          "BloomCurve": [
-            {
-              "y": 0.5
-            },
-            {
-              "x": 1,
-              "y": 1
-            }
-          ],
-          "Mode": "Additive",
-          "Strength": 0.73,
-          "Threshold": 0.87,
-          "ThresholdWidth": 0.5
-        },
-        {
-          "__type": "Sandbox.Tonemapping",
-          "__guid": "9d76f362-7227-40eb-a189-69353c780c46",
-          "__version": 1,
-          "__enabled": false,
-          "ExposureBias": 2,
-          "ExposureCompensation": 0,
-          "ExposureMethod": "RGB",
-          "MaximumExposure": 0,
-          "MinimumExposure": 0,
-          "Mode": "Legacy",
-          "Rate": 1
-        },
-        {
-          "__type": "Sandbox.Sharpen",
-          "__guid": "0bffee5e-19f2-41c4-88f9-faefbcce6bf4",
-          "__enabled": false,
-          "Scale": 0
-        },
-        {
-          "__type": "Sandbox.Pixelate",
-          "__guid": "b579cb18-17f0-42b4-8e9c-9a617c137ee7",
-          "Scale": 0
-        },
-        {
-          "__type": "Sandbox.player.CameraFollow",
-          "__guid": "74933590-f986-45a0-9a06-2d2a311b8edf",
-          "Offset": "0,0,400",
-          "SmoothTime": 0.3,
-          "Target": {
-            "_type": "gameobject",
-            "go": "d6d86c8e-5883-4db7-a425-60330fc9b682"
-          }
-        }
-      ]
-    },
-    {
-      "__guid": "d6d86c8e-5883-4db7-a425-60330fc9b682",
-      "Flags": 0,
-      "Name": "Player",
-      "Position": "0,100,1",
-      "Enabled": true,
-      "__Prefab": "prefabs/player.prefab",
-      "__PrefabVariables": {}
-    },
-    {
       "__guid": "4a7221bb-b6d8-444f-94a9-03d081006ce3",
       "Flags": 0,
       "Name": "Level",
@@ -130,13 +30,13 @@
         {
           "__type": "Sandbox.level.Level",
           "__guid": "03a27686-2ac1-4e78-a0a6-e44b66e5d67e",
-          "MovePlayerToCheckpoint": true,
-          "Player": {
+          "CameraFollow": {
             "_type": "component",
-            "component_id": "9c8be7bf-e005-42a0-9b92-db186d222c8f",
-            "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
-            "component_type": "Player"
+            "component_id": "74933590-f986-45a0-9a06-2d2a311b8edf",
+            "go": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
+            "component_type": "CameraFollow"
           },
+          "MovePlayerToCheckpoint": true,
           "PlayerPrefab": "prefabs/player.prefab",
           "StartCheckpoint": {
             "_type": "gameobject",
@@ -219,20 +119,20 @@
               "__PrefabVariables": {}
             },
             {
-              "__guid": "bebb6057-63bd-409c-bd81-b31fbdba1dc8",
+              "__guid": "985f875d-78a2-4b6f-b399-9ca9604ae3bc",
               "Flags": 0,
               "Name": "grass_tile_32x22 (6)",
-              "Position": "1000,0,0.000003033235",
+              "Position": "700,0,-0.00000596579",
               "Tags": "ground",
               "Enabled": true,
               "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
               "__PrefabVariables": {}
             },
             {
-              "__guid": "fe912519-42c3-432f-ac28-2062c320175f",
+              "__guid": "bebb6057-63bd-409c-bd81-b31fbdba1dc8",
               "Flags": 0,
-              "Name": "grass_tile_32x22 (5)",
-              "Position": "300,0,0.000003033235",
+              "Name": "grass_tile_32x22 (6)",
+              "Position": "1000,0,0.000003033235",
               "Tags": "ground",
               "Enabled": true,
               "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
@@ -368,6 +268,97 @@
           "Flags": 0,
           "Name": "foreground",
           "Enabled": true
+        },
+        {
+          "__guid": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
+          "Flags": 0,
+          "Name": "Camera",
+          "Position": "-0.0001192093,0,400",
+          "Rotation": "-0.5,0.5,0.5,0.5",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.CameraComponent",
+              "__guid": "cf3cbf96-22b6-4be4-a5d0-672a96c17f9f",
+              "BackgroundColor": "0.33333,0.46275,0.52157,1",
+              "ClearFlags": "All",
+              "FieldOfView": 90,
+              "IsMainCamera": true,
+              "Orthographic": true,
+              "OrthographicHeight": 1024,
+              "Priority": 1,
+              "RenderExcludeTags": "",
+              "RenderTags": "",
+              "TargetEye": "None",
+              "Viewport": "0,0,1,1",
+              "ZFar": 10000,
+              "ZNear": 10
+            },
+            {
+              "__type": "Sandbox.Bloom",
+              "__guid": "d73ef723-c888-41d4-802e-f797c79318be",
+              "__enabled": false,
+              "BloomColor": {
+                "color": [
+                  {
+                    "c": "1,1,1,1"
+                  },
+                  {
+                    "t": 1,
+                    "c": "1,1,1,1"
+                  }
+                ],
+                "alpha": []
+              },
+              "BloomCurve": [
+                {
+                  "y": 0.5
+                },
+                {
+                  "x": 1,
+                  "y": 1
+                }
+              ],
+              "Mode": "Additive",
+              "Strength": 0.73,
+              "Threshold": 0.87,
+              "ThresholdWidth": 0.5
+            },
+            {
+              "__type": "Sandbox.Tonemapping",
+              "__guid": "9d76f362-7227-40eb-a189-69353c780c46",
+              "__version": 1,
+              "__enabled": false,
+              "ExposureBias": 2,
+              "ExposureCompensation": 0,
+              "ExposureMethod": "RGB",
+              "MaximumExposure": 0,
+              "MinimumExposure": 0,
+              "Mode": "Legacy",
+              "Rate": 1
+            },
+            {
+              "__type": "Sandbox.Sharpen",
+              "__guid": "0bffee5e-19f2-41c4-88f9-faefbcce6bf4",
+              "__enabled": false,
+              "Scale": 0
+            },
+            {
+              "__type": "Sandbox.Pixelate",
+              "__guid": "b579cb18-17f0-42b4-8e9c-9a617c137ee7",
+              "Scale": 0
+            },
+            {
+              "__type": "Sandbox.player.CameraFollow",
+              "__guid": "74933590-f986-45a0-9a06-2d2a311b8edf",
+              "Offset": "0,0,400",
+              "SmoothTime": 0.3,
+              "Target": {
+                "_type": "gameobject",
+                "go": "d6d86c8e-5883-4db7-a425-60330fc9b682"
+              }
+            }
+          ]
         }
       ]
     },
@@ -413,7 +404,9 @@
         {
           "__type": "Sandbox.enemies.Heli",
           "__guid": "677fee5b-650e-4026-9013-0e87b2dcddf5",
+          "DestroySound": "audio/sfx/onhit.sound",
           "Health": 10,
+          "HitSound": "audio/sfx/onhit.sound",
           "MaxHealth": 10,
           "Sprite": {
             "_type": "component",
@@ -421,6 +414,68 @@
             "go": "fdb91746-3df1-46c9-bb10-1b7971c37669",
             "component_type": "SpriteComponent"
           }
+        },
+        {
+          "__type": "Sandbox.player.MotionCore2D",
+          "__guid": "b91f38a5-45d9-41d5-a620-36e2a1ffbd57",
+          "Collider": {
+            "_type": "component",
+            "component_id": "47e1d0bd-b465-46fd-8d9e-20bb388027eb",
+            "go": "fdb91746-3df1-46c9-bb10-1b7971c37669",
+            "component_type": "BoxCollider"
+          },
+          "GroundTags": "ground",
+          "WallTags": "wall"
+        },
+        {
+          "__type": "Sandbox.player.Gravity",
+          "__guid": "97b6c43c-922a-4b0c-9725-3527cd376088",
+          "GravityCurve": [
+            {
+              "y": 1
+            },
+            {
+              "x": 1
+            }
+          ],
+          "GravityForce": 20,
+          "MaxVelocity": 100,
+          "MotionCore": {
+            "_type": "component",
+            "component_id": "b91f38a5-45d9-41d5-a620-36e2a1ffbd57",
+            "go": "fdb91746-3df1-46c9-bb10-1b7971c37669",
+            "component_type": "MotionCore2D"
+          }
+        },
+        {
+          "__type": "Sandbox.enemies.MoveLeftRight",
+          "__guid": "a5341774-ee7e-43e1-a797-82991beca436",
+          "MotionCore": {
+            "_type": "component",
+            "component_id": "b91f38a5-45d9-41d5-a620-36e2a1ffbd57",
+            "go": "fdb91746-3df1-46c9-bb10-1b7971c37669",
+            "component_type": "MotionCore2D"
+          },
+          "Speed": 100
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "a4e521ae-c29a-45c8-a8bf-a18a1847e187",
+          "Center": "0,45,0",
+          "IsTrigger": true,
+          "Scale": "77.7002,90,100",
+          "Static": false
+        },
+        {
+          "__type": "Sandbox.enemies.ContactDamage",
+          "__guid": "7385bb90-9317-4b9c-a0f5-cd691854ba79",
+          "ContactDamageCollider": {
+            "_type": "component",
+            "component_id": "a4e521ae-c29a-45c8-a8bf-a18a1847e187",
+            "go": "fdb91746-3df1-46c9-bb10-1b7971c37669",
+            "component_type": "BoxCollider"
+          },
+          "Damage": 1
         }
       ]
     },

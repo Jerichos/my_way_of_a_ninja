@@ -6,13 +6,14 @@ namespace Sandbox.player;
 
 public class SwordAbility : Component
 {
-	[Property] public MotionCore2D MotionCore { get; set; }
-	[Property] public SpriteComponent Sprite;
-	[Property] public int Damage { get; set; } = 1;
+	[Property] private MotionCore2D MotionCore { get; set; }
+	[Property] private SpriteComponent Sprite;
+	[Property] private int Damage { get; set; } = 1;
 	
+	[Property] private float Range { get; set; } = 50;
 	[Property] private float Cooldown { get; set; }= 0.2f;
-	[Property] public float Range { get; set; } = 50;
-	[Property] public TagSet AttackTags { get; set; }
+	[Property] private TagSet AttackTags { get; set; }
+	[Property] private SoundEvent AttackSound { get; set; }
 	
 	private float _cooldownTimer;
 	
@@ -34,6 +35,7 @@ public class SwordAbility : Component
 		Log.Info("start attack");
 		TryHit();
 		IsAttacking = true;
+		
 		AttackEvent?.Invoke(true);
 	}
 	
@@ -69,7 +71,7 @@ public class SwordAbility : Component
 		{
 			if(_hitResult.GameObject.Components.TryGet(out IHittable hittable))
 			{
-				hittable.Hit(Damage);
+				hittable.Hit(Damage, OnHitSound);
 			}
 			else
 			{
@@ -77,6 +79,25 @@ public class SwordAbility : Component
 			}
 			
 			Log.Info("sword hit! reduce health hit: " + _hitResult.GameObject.Name);
+		}
+		else
+		{
+			Components.Get<SoundPointComponent>().SoundEvent = AttackSound;
+			Components.Get<SoundPointComponent>().StartSound();
+		}
+	}
+
+	private void OnHitSound( SoundEvent soundEvent )
+	{
+		if ( soundEvent == null )
+		{
+			Components.Get<SoundPointComponent>().SoundEvent = AttackSound;
+			Components.Get<SoundPointComponent>().StartSound();
+		}
+		else
+		{
+			Components.Get<SoundPointComponent>().SoundEvent = soundEvent;
+			Components.Get<SoundPointComponent>().StartSound();
 		}
 	}
 

@@ -67,7 +67,7 @@ public class MoveAbility : Component, IMotionProvider
 			_time = 1;
 		
 		float force = AccelerationCurve.Evaluate(_time) * MaxAcceleration;
-		Log.Info($"Move Ability t: {_time} force: {force} velocity: {Velocity.x}");
+		// Log.Info($"Move Ability t: {_time} force: {force} velocity: {Velocity.x}");
 		Velocity = new Vector2(force * _inputX, 0);
 	}
 	

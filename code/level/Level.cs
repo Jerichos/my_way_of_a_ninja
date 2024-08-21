@@ -1,10 +1,14 @@
-﻿namespace Sandbox.level;
+﻿using System;
+using Sandbox.player;
+
+namespace Sandbox.level;
 
 public class Level : Component
 {
 	[Property] public GameObject StartCheckpoint { get; set; }
 	[Property] public PrefabFile PlayerPrefab { get; set; }
 	[Property] public Player Player { get; set; }
+	[Property] public CameraFollow CameraFollow { get; set; }
 	[Property] public bool MovePlayerToCheckpoint { get; set; } = true;
 
 	public Vector2 LastCheckpointPosition => Checkpoint.LastCheckpoint?.Transform.Position ?? Transform.Position;
@@ -35,6 +39,7 @@ public class Level : Component
 		{
 			Log.Info("spawning new player because player is null");
 			newPlayer = GameObject.Clone(PlayerPrefab).Components.Get<Player>();
+			Player = newPlayer;
 		}
 		else
 		{
@@ -55,6 +60,11 @@ public class Level : Component
 		}
 		
 		newPlayer.Teleport(newPosition);
+		CameraFollow.SetTarget( newPlayer.GameObject, true );
+
+		newPlayer.OnRespawn();
+		newPlayer.DeathEvent -= RespawnPlayer;
+		newPlayer.DeathEvent += RespawnPlayer;
 		Log.Info($"set player position to {newPosition}");
 	}
 }

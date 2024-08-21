@@ -16,4 +16,11 @@ public class CameraFollow : Component
 		var smoothPosition = Vector3.Lerp(Transform.Position, targetPosition, SmoothTime);
 		Transform.Position = smoothPosition;
 	}
+
+	public void SetTarget( GameObject target, bool teleport = false )
+	{
+		Target = target;
+		if(teleport)
+			Transform.Position = target.Transform.Position + Offset;
+	}
 }

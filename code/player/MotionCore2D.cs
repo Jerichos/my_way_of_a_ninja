@@ -86,8 +86,32 @@ public sealed class MotionCore2D : Component
 		CheckCollisionDown();
 		CheckCollisionUp();
 	}
-	
-	
+
+	// check if there is ground on the edge
+	public bool GroundEdgeCheck(int direction)
+	{
+		Vector3 startPosition = Transform.Position + new Vector3(Collider.Scale.x / 2 * direction,10,0);
+		Vector3 endPosition = startPosition + Util.DownY * 20;
+		
+		_groundHitResult = Scene.Trace
+			.Ray(startPosition, endPosition)
+			.WithAnyTags(GroundTags)
+			.Size(BBox.FromPositionAndSize(Vector3.Zero, new Vector3(1,1,1)))
+			.Run();
+		
+		Gizmo.Draw.Color = Color.Green;
+		Gizmo.Draw.LineThickness = 20;
+
+		if ( _groundHitResult.Hit )
+		{
+			Gizmo.Draw.Color = Color.Red;
+			return true;
+		}
+
+		Gizmo.Draw.LineThickness = 20;
+		Gizmo.Draw.Line( startPosition, endPosition );
+		return false;
+	}
 
 	private void HandleHorizontalCollisions()
 	{

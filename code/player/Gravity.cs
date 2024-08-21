@@ -40,17 +40,16 @@ public sealed class Gravity : Component, IMotionProvider
 	public void OnMotionCanceled()
 	{
 		Velocity = Vector2.Zero;
+		Enabled = false;
 	}
 	
 	public void OnMotionRestored()
 	{
-		
+		Enabled = true;
 	}
 
-	protected override void OnEnabled()
+	protected override void OnAwake()
 	{
 		MotionCore.AddMotionProvider(this);
 	}
-
-	
 }

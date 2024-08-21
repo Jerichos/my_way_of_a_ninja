@@ -14,15 +14,20 @@
           "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
           "component_type": "DashAbility"
         },
-        "Health": {
-          "Value": 10
-        },
+        "Health": 3,
         "JumpAbility": {
           "_type": "component",
           "component_id": "bebbf412-04ee-4d6b-8d1c-8c840461289d",
           "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
           "component_type": "JumpAbility"
         },
+        "Knockback": {
+          "_type": "component",
+          "component_id": "0ea79201-1096-4365-b329-e6975fa3a44d",
+          "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
+          "component_type": "Knockback"
+        },
+        "MaxHealth": 3,
         "MotionCore": {
           "_type": "component",
           "component_id": "984e43ff-0301-4298-a46c-25c0796b678e",
@@ -96,7 +101,6 @@
         "JumpSound": "audio/sfx/jump4.sound",
         "MaxHeight": 400,
         "MaxJumps": 2,
-        "MaxVelocity": 1500,
         "MinHeight": 200,
         "MotionCore": {
           "_type": "component",
@@ -253,6 +257,7 @@
           "go": "1a949301-3a8f-40bc-a43a-0805d2c7fa98",
           "component_type": "SpriteComponent"
         },
+        "AttackSound": "audio/sfx/sword_attack.sound",
         "AttackTags": "enemy,enviro",
         "Cooldown": 0.25,
         "Damage": 1,
@@ -263,6 +268,29 @@
           "component_type": "MotionCore2D"
         },
         "Range": 150
+      },
+      {
+        "__type": "Sandbox.player.Knockback",
+        "__guid": "0ea79201-1096-4365-b329-e6975fa3a44d",
+        "__enabled": false,
+        "Direction": "0.5,1",
+        "Duration": 0.2,
+        "KnockbackSound": "audio/sfx/jump2.sound",
+        "MaxDistance": 300,
+        "MotionCore": {
+          "_type": "component",
+          "component_id": "984e43ff-0301-4298-a46c-25c0796b678e",
+          "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
+          "component_type": "MotionCore2D"
+        },
+        "VelocityCurve": [
+          {
+            "y": 1
+          },
+          {
+            "x": 1
+          }
+        ]
       }
     ],
     "Children": [
@@ -277,7 +305,10 @@
             "__type": "SpriteTools.SpriteComponent",
             "__guid": "917f7ade-6b02-4108-b0a9-ba03b9328b25",
             "__version": 1,
-            "BroadcastEvents": {},
+            "BroadcastEvents": {
+              "TryHit": null,
+              "EndAttack": null
+            },
             "CastShadows": "On",
             "CreateAttachPoints": false,
             "FlashTint": "1,1,1,0",
@@ -299,7 +330,7 @@
         "Children": [
           {
             "__guid": "c550ab0d-bc27-41c1-a59e-4b0e6cf81bae",
-            "Flags": 4,
+            "Flags": 0,
             "Name": "swordStart",
             "Enabled": true
           }

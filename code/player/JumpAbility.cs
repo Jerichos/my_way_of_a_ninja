@@ -10,7 +10,6 @@ public sealed class JumpAbility : Component, IMotionProvider
 	[Property][Range(1, 10)] private int MaxJumps { get; set; } = 1;
 	[Property] private float MaxHeight { get; set; } = 200f;
 	[Property] private float MinHeight { get; set; } = 100f;
-	[Property] private float MaxVelocity { get; set; } = 100f; // apply force to jump
 	[Property] private float JumpIn { get; set; } = 0.5f; // time to reach max height
 	
 	[Property] Curve VelocityCurve { get; set; }
