@@ -14,7 +14,9 @@
           "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
           "component_type": "DashAbility"
         },
+        "DeathSound": "audio/sfx/player_death.sound",
         "Health": 3,
+        "HitSound": "audio/sfx/player_hit.sound",
         "JumpAbility": {
           "_type": "component",
           "component_id": "bebbf412-04ee-4d6b-8d1c-8c840461289d",
@@ -124,6 +126,8 @@
       {
         "__type": "Sandbox.player.Animator",
         "__guid": "69d41057-c0a5-4f88-acef-b892ba9af7eb",
+        "BlinkCount": 10,
+        "BlinkDuration": 0.1,
         "DashAbility": {
           "_type": "component",
           "component_id": "e7e90b74-92b9-445a-ade9-9fc00da7de05",
@@ -135,6 +139,12 @@
           "component_id": "984e43ff-0301-4298-a46c-25c0796b678e",
           "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
           "component_type": "MotionCore2D"
+        },
+        "Player": {
+          "_type": "component",
+          "component_id": "5c7d982f-7599-4a6b-9191-764ba5e4aa0a",
+          "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
+          "component_type": "Player"
         },
         "Sprite": {
           "_type": "component",
@@ -311,7 +321,7 @@
             },
             "CastShadows": "On",
             "CreateAttachPoints": false,
-            "FlashTint": "1,1,1,0",
+            "FlashTint": "1,0,0,0",
             "PlaybackSpeed": 1,
             "Sprite": "player_02.sprite",
             "SpriteFlags": "None",

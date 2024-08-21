@@ -13,8 +13,8 @@ public sealed class Player : Component
 	[Property] private SwordAbility SwordAbility { get; set; }
 	[Property] private Knockback Knockback { get; set; }
 
-	// [Property] public SAttribute<int> Health { get; private set; } = 3;
-	// [Property] public SAttribute<int> MaxHealth { get; private set; } = 3;
+	[Property] private SoundEvent HitSound { get; set; }
+	[Property] private SoundEvent DeathSound { get; set; }
 	
 	[Property] public int Health { get; set; } = 3;
 	[Property] public int MaxHealth { get; set; } = 3;
@@ -25,6 +25,7 @@ public sealed class Player : Component
 	private bool _dead;
 
 	public Action DeathEvent;
+	public Action HitEvent;
 	
 	protected override void OnEnabled()
 	{
@@ -72,6 +73,8 @@ public sealed class Player : Component
 	public void TakeDamage( int contactDamage, Component fromComponent) // position is used for knockback
 	{
 		Health -= 1;
+		HealthChangedEvent?.Invoke(Health);
+		
 		if(Health <= 0)
 		{
 			Kill();
@@ -88,6 +91,8 @@ public sealed class Player : Component
 	
 	private void OnTakeDamage()
 	{
+		Sound.Play(HitSound);
+		HitEvent?.Invoke();
 	}
 
 	public void Kill()
@@ -102,6 +107,7 @@ public sealed class Player : Component
 	private void OnDeath()
 	{
 		Log.Info("Player died");
+		Sound.Play(DeathSound); // huh we don't need sound point?
 		DeathEvent?.Invoke();
 	}
 

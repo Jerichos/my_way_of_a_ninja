@@ -15,8 +15,11 @@ public enum MotionType
 public interface IMotionProvider
 {
 	public Vector2 Velocity { get; }
+	
 	public MotionType[] OverrideMotions { get; }
-	public void OnMotionCanceled();
-	public void OnMotionRestored();
 	public MotionType MotionType { get; }
+	
+	public void OnMotionCanceled();
+	
+	public void OnMotionRestored();
 }
