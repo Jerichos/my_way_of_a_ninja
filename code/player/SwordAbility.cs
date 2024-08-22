@@ -7,7 +7,7 @@ namespace Sandbox.player;
 public class SwordAbility : Component
 {
 	[Property] private MotionCore2D MotionCore { get; set; }
-	[Property] private SpriteComponent Sprite;
+	[Property] private SpriteComponent Sprite { get; set; }
 	[Property] private int Damage { get; set; } = 1;
 	
 	[Property] private float Range { get; set; } = 50;
@@ -34,10 +34,10 @@ public class SwordAbility : Component
 		if(!CanAttack())
 			return;
 		
+		Log.Info("start attack");
+		
 		_cooldownTimer = Cooldown;
 		
-		Log.Info("start attack");
-		// TryHit();
 		IsAttacking = true;
 		_isHitting = true;
 		_hitTargets.Clear();
@@ -51,7 +51,7 @@ public class SwordAbility : Component
 		Log.Info("end attack");
 		_isHitting = false;
 		IsAttacking = false;
-		AttackEvent?.Invoke(false);
+		AttackEvent?.Invoke(IsAttacking);
 	}
 
 	protected override void OnFixedUpdate()
@@ -64,12 +64,12 @@ public class SwordAbility : Component
 
 	private void TryHit()
 	{
-		Log.Info("try hit");
+		// Log.Info("try hit");
 		IsAttacking = true;
 
 		// var swordStart = Sprite.GetAttachmentTransform( "swordStart" ).Position; // can't create from Prefab...
 		var swordStart = Sprite.Transform.Position + new Vector3(0, MotionCore.Collider.Scale.y / 1.66f, 0 );
-		Log.Info($"swordStart: {swordStart} collider height: {MotionCore.Collider.Scale.y / 1.66f}");
+		// Log.Info($"swordStart: {swordStart} collider height: {MotionCore.Collider.Scale.y / 1.66f}");
 
 		float length = Range * MotionCore.Facing;
 		_rayStart = swordStart;
@@ -81,7 +81,7 @@ public class SwordAbility : Component
 			.WithAnyTags(AttackTags)
 			.Run();
 		
-		Log.Info($"rayStart: {_rayStart} rayEnd: {_rayEnd} hit: {_hitResult.Hit}");
+		// Log.Info($"rayStart: {_rayStart} rayEnd: {_rayEnd} hit: {_hitResult.Hit}");
 		
 		if(_hitResult.Hit)
 		{
@@ -89,6 +89,7 @@ public class SwordAbility : Component
 			{
 				if(_hitTargets.Contains(hittable))
 					return;
+				
 				hittable.Hit(Damage, OnHitSound, GameObject);
 				_hitTargets.Add(hittable);
 			}
@@ -145,12 +146,15 @@ public class SwordAbility : Component
 
 	protected override void OnEnabled()
 	{
-		Sprite.BroadcastEvents["EndAttack"] = EndAttack;
-		
-		// print all broadcast events
-		foreach(var e in Sprite.BroadcastEvents)
+		Sprite.OnAnimationComplete += OnAnimationComplete;
+		Sprite.BroadcastEvents["EndAttack"] += EndAttack;
+	}
+
+	private void OnAnimationComplete( string obj )
+	{
+		if(obj.Contains("attack"))
 		{
-			Log.Info($"broadcast event: {e.Key}");
+			EndAttack(Sprite);
 		}
 	}
 

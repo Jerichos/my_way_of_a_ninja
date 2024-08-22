@@ -5,13 +5,13 @@ using SpriteTools;
 public sealed class Player : Component
 {
 	[Property] public MotionCore2D MotionCore { get; set; }
-	[Property] private SpriteComponent SpriteComponent { get; set; }
-	[Property] private MoveAbility MoveAbility { get; set; }
-	[Property] private JumpAbility JumpAbility { get; set; }
-	[Property] private DashAbility DashAbility { get; set; }
-	[Property] private SwordAbility SwordAbility { get; set; }
-	[Property] private CrouchAbility CrouchAbility { get; set; }
-	[Property] private Knockback Knockback { get; set; }
+	[Property] public SpriteComponent SpriteComponent { get; set; }
+	[Property] public MoveAbility MoveAbility { get; set; }
+	[Property] public JumpAbility JumpAbility { get; set; }
+	[Property] public DashAbility DashAbility { get; set; }
+	[Property] public SwordAbility SwordAbility { get; set; }
+	[Property] public CrouchAbility CrouchAbility { get; set; }
+	[Property] public Knockback Knockback { get; set; }
 
 	[Property] private SoundEvent HitSound { get; set; }
 	[Property] private SoundEvent DeathSound { get; set; }

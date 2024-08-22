@@ -61,7 +61,6 @@ public sealed class JumpAbility : Component, IMotionProvider
 			}
 			
 			_t += Time.Delta / JumpIn;
-			_distanceTraveled += MotionCore.Velocity.y * Time.Delta;
 			
 			if(_distanceTraveled < Math.Clamp(_wishHeight, MinHeight, MaxHeight))
 			{
@@ -92,6 +91,7 @@ public sealed class JumpAbility : Component, IMotionProvider
 				
 				// Apply the velocity in the direction the character is facing
 				Velocity = Util.UpY * velocity;
+				_distanceTraveled += Velocity.y * Time.Delta;
 				Log.Info($"jump _t: {_t} distance: {_distanceTraveled} _wishHeight: {_wishHeight} clamped: {Math.Clamp(_wishHeight, MinHeight, MaxHeight)}");
 			}
 			else

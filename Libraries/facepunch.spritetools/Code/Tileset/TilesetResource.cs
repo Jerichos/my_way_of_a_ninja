@@ -45,6 +45,11 @@ public class TilesetResource : GameResource
 		return TileSize * TileScale;
 	}
 
+	public Vector2 GetCurrentTileSize()
+	{
+		return CurrentTileSize * TileScale;
+	}
+
 	public void AddTile(Tile tile)
 	{
 		Tiles.Add(tile);
@@ -114,6 +119,9 @@ public class TilesetResource : GameResource
 
 		[Property]
 		public string Name { get; set; } = "";
+
+		[Property]
+		public TagSet Tags { get; set; }
 
 		[Property]
 		public Vector2Int Position { get; set; }

@@ -252,7 +252,9 @@
         },
         {
           "FilePath": "sprites/player/player_run_attack.png",
-          "Events": [],
+          "Events": [
+            "EndAttack"
+          ],
           "SpriteSheetRect": {
             "Position": "128,0",
             "Size": "64,32"
@@ -308,7 +310,9 @@
         },
         {
           "FilePath": "sprites/player/player_crouch_attack.png",
-          "Events": [],
+          "Events": [
+            "EndAttack"
+          ],
           "SpriteSheetRect": {
             "Position": "128,0",
             "Size": "64,32"
@@ -339,7 +343,9 @@
         },
         {
           "FilePath": "sprites/player/player_inair_attack.png",
-          "Events": [],
+          "Events": [
+            "EndAttack"
+          ],
           "SpriteSheetRect": {
             "Position": "128,0",
             "Size": "64,32"

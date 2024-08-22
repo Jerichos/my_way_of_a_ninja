@@ -130,48 +130,6 @@
         ]
       },
       {
-        "__type": "Sandbox.player.Animator",
-        "__guid": "69d41057-c0a5-4f88-acef-b892ba9af7eb",
-        "BlinkCount": 10,
-        "BlinkDuration": 0.1,
-        "CrouchAbility": {
-          "_type": "component",
-          "component_id": "2850ced2-d844-4ec1-bfe5-349a318de24c",
-          "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
-          "component_type": "CrouchAbility"
-        },
-        "DashAbility": {
-          "_type": "component",
-          "component_id": "e7e90b74-92b9-445a-ade9-9fc00da7de05",
-          "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
-          "component_type": "DashAbility"
-        },
-        "MotionCore": {
-          "_type": "component",
-          "component_id": "984e43ff-0301-4298-a46c-25c0796b678e",
-          "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
-          "component_type": "MotionCore2D"
-        },
-        "Player": {
-          "_type": "component",
-          "component_id": "5c7d982f-7599-4a6b-9191-764ba5e4aa0a",
-          "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
-          "component_type": "Player"
-        },
-        "Sprite": {
-          "_type": "component",
-          "component_id": "917f7ade-6b02-4108-b0a9-ba03b9328b25",
-          "go": "1a949301-3a8f-40bc-a43a-0805d2c7fa98",
-          "component_type": "SpriteComponent"
-        },
-        "SwordAbility": {
-          "_type": "component",
-          "component_id": "a1bea64f-82df-4af2-8067-d976d0fdb501",
-          "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
-          "component_type": "SwordAbility"
-        }
-      },
-      {
         "__type": "Sandbox.player.MoveAbility",
         "__guid": "8a53c55b-26bc-46f6-8d1c-7d98efaeb73e",
         "AccelerationCurve": [
@@ -273,12 +231,6 @@
       {
         "__type": "Sandbox.player.SwordAbility",
         "__guid": "a1bea64f-82df-4af2-8067-d976d0fdb501",
-        "Sprite": {
-          "_type": "component",
-          "component_id": "917f7ade-6b02-4108-b0a9-ba03b9328b25",
-          "go": "1a949301-3a8f-40bc-a43a-0805d2c7fa98",
-          "component_type": "SpriteComponent"
-        },
         "AttackSound": "audio/sfx/sword_attack.sound",
         "AttackTags": "enemy,enviro",
         "Cooldown": 0.25,
@@ -289,7 +241,13 @@
           "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
           "component_type": "MotionCore2D"
         },
-        "Range": 150
+        "Range": 150,
+        "Sprite": {
+          "_type": "component",
+          "component_id": "917f7ade-6b02-4108-b0a9-ba03b9328b25",
+          "go": "1a949301-3a8f-40bc-a43a-0805d2c7fa98",
+          "component_type": "SpriteComponent"
+        }
       },
       {
         "__type": "Sandbox.player.Knockback",
@@ -328,6 +286,18 @@
           "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
           "component_type": "MotionCore2D"
         }
+      },
+      {
+        "__type": "Sandbox.player.Animator",
+        "__guid": "7da43ce4-d1f3-4715-90e6-f4e3d27160cd",
+        "BlinkCount": 3,
+        "BlinkDuration": 1,
+        "Player": {
+          "_type": "component",
+          "component_id": "5c7d982f-7599-4a6b-9191-764ba5e4aa0a",
+          "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
+          "component_type": "Player"
+        }
       }
     ],
     "Children": [
@@ -343,7 +313,6 @@
             "__guid": "917f7ade-6b02-4108-b0a9-ba03b9328b25",
             "__version": 1,
             "BroadcastEvents": {
-              "TryHit": null,
               "EndAttack": null
             },
             "CastShadows": "On",

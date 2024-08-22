@@ -13,7 +13,7 @@ public class ContactDamage : Component
 			player.TakeDamage(Damage, this);
 		}
 		
-		Log.Info("ContactDamage OnTriggerEnter");
+		// Log.Info("ContactDamage OnTriggerEnter");
 	}
 	
 	protected override void OnEnabled()

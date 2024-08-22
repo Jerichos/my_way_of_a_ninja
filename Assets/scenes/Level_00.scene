@@ -41,12 +41,6 @@
           "StartCheckpoint": {
             "_type": "gameobject",
             "go": "6bd08054-ae66-4da0-91d4-df1f40da8df4"
-          },
-          "Weather": {
-            "_type": "component",
-            "component_id": "fe52a820-57ff-4b20-ba66-42f6f791de1a",
-            "go": "4a7221bb-b6d8-444f-94a9-03d081006ce3",
-            "component_type": "Weather"
           }
         },
         {
