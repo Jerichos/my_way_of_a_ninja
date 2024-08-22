@@ -1,4 +1,5 @@
-﻿using SpriteTools;
+﻿using Sandbox.level;
+using SpriteTools;
 
 namespace Sandbox.enemies;
 
@@ -11,6 +12,17 @@ public class BallSpawn : Component
 	protected override void OnAwake()
 	{
 		var newBall = BallPrefab.Clone();
+		
+		if (Components.TryGet(out Level level, FindMode.InAncestors))
+		{
+			newBall.SetParent(level.GameObject);
+			Log.Info("Enemy component is a child of a Level component.");
+		}
+		else
+		{
+			// TODO(bug): log is not invoked in OnAwake
+			Log.Warning("Enemy component must be a child of a Level component for respawn. " + GameObject);
+		}
 		
 		if(newBall.Components.TryGet(out FollowPath followPath))
 		{

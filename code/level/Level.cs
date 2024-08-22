@@ -14,6 +14,8 @@ public class Level : Component
 
 	public Vector2 LastCheckpointPosition => Checkpoint.LastCheckpoint?.Transform.Position ?? Transform.Position;
 	
+	public event Action RestartEvent;
+	
 	protected override void OnStart()
 	{
 		LevelStart();
@@ -26,9 +28,10 @@ public class Level : Component
 		SpawnPlayer();
 	}
 	
-	private void RespawnPlayer()
+	private void OnPlayerDeath()
 	{
 		Log.Info("respawn player");
+		RestartEvent?.Invoke();
 		SpawnPlayer();
 	}
 
@@ -64,8 +67,8 @@ public class Level : Component
 		CameraFollow.SetTarget( newPlayer.GameObject, true );
 
 		newPlayer.OnRespawn();
-		newPlayer.DeathEvent -= RespawnPlayer;
-		newPlayer.DeathEvent += RespawnPlayer;
+		newPlayer.DeathEvent -= OnPlayerDeath;
+		newPlayer.DeathEvent += OnPlayerDeath;
 
 		if(Weather != null)
 		{

@@ -1,4 +1,5 @@
 ﻿using System;
+using Sandbox.level;
 using Sandbox.player;
 using SpriteTools;
 
@@ -24,6 +25,23 @@ public class Enemy : Component, IHittable
 	private float _hitFadeTimer;
 	private bool _isHit;
 	
+	private Vector3 _initialPosition;
+	
+	protected override void OnStart()
+	{
+		_initialPosition = Transform.Position;
+		if (Components.TryGet(out Level level, FindMode.InAncestors))
+		{
+			level.RestartEvent += OnLevelRestart;
+			Log.Info("Enemy component is a child of a Level component.");
+		}
+		else
+		{
+			// TODO(bug): log is not invoked in OnAwake
+			Log.Warning("Enemy component must be a child of a Level component for respawn. " + GameObject);
+		}
+	}
+
 	protected override void OnFixedUpdate()
 	{
 		if(!_isHit)
@@ -91,14 +109,30 @@ public class Enemy : Component, IHittable
 		}
 	}
 
+	private void OnLevelRestart()
+	{
+		OnRespawn();
+	}
+
+	private void OnRespawn()
+	{
+		Transform.Position = _initialPosition;
+		Health = MaxHealth;
+		_dead = false;
+		GameObject.Enabled = true;
+		var color = Sprite.FlashTint;
+		color.a = 0;
+		Sprite.FlashTint = color;
+	}
+
 	protected override void OnEnabled()
 	{
-		Knockback.KnockbackEndEvent += ()=> GameObject.Destroy();
+		Knockback.KnockbackEndEvent += ()=> GameObject.Enabled = false;
 	}
 	
 	protected override void OnDisabled()
 	{
-		Knockback.KnockbackEndEvent -= ()=> GameObject.Destroy();
+		Knockback.KnockbackEndEvent -= ()=> GameObject.Enabled = false;
 	}
 	
 	

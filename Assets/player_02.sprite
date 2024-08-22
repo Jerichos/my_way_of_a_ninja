@@ -7,14 +7,14 @@
       "Name": "idle",
       "Frames": [
         {
-          "FilePath": "sprites/player/idle.png",
+          "FilePath": "sprites/player/player_idle.png",
           "Events": [],
           "SpriteSheetRect": {
             "Size": "32,32"
           }
         },
         {
-          "FilePath": "sprites/player/idle.png",
+          "FilePath": "sprites/player/player_idle.png",
           "Events": [],
           "SpriteSheetRect": {
             "Position": "32,0",
@@ -22,7 +22,7 @@
           }
         },
         {
-          "FilePath": "sprites/player/idle.png",
+          "FilePath": "sprites/player/player_idle.png",
           "Events": [],
           "SpriteSheetRect": {
             "Position": "64,0",
@@ -30,7 +30,7 @@
           }
         },
         {
-          "FilePath": "sprites/player/idle.png",
+          "FilePath": "sprites/player/player_idle.png",
           "Events": [],
           "SpriteSheetRect": {
             "Position": "96,0",
@@ -47,14 +47,14 @@
       "Name": "run",
       "Frames": [
         {
-          "FilePath": "sprites/player/run.png",
+          "FilePath": "sprites/player/player_run.png",
           "Events": [],
           "SpriteSheetRect": {
             "Size": "32,32"
           }
         },
         {
-          "FilePath": "sprites/player/run.png",
+          "FilePath": "sprites/player/player_run.png",
           "Events": [],
           "SpriteSheetRect": {
             "Position": "32,0",
@@ -62,7 +62,7 @@
           }
         },
         {
-          "FilePath": "sprites/player/run.png",
+          "FilePath": "sprites/player/player_run.png",
           "Events": [],
           "SpriteSheetRect": {
             "Position": "64,0",
@@ -70,7 +70,7 @@
           }
         },
         {
-          "FilePath": "sprites/player/run.png",
+          "FilePath": "sprites/player/player_run.png",
           "Events": [],
           "SpriteSheetRect": {
             "Position": "96,0",
@@ -87,14 +87,14 @@
       "Name": "jump",
       "Frames": [
         {
-          "FilePath": "sprites/player/jump.png",
+          "FilePath": "sprites/player/player_jump.png",
           "Events": [],
           "SpriteSheetRect": {
             "Size": "32,32"
           }
         },
         {
-          "FilePath": "sprites/player/jump.png",
+          "FilePath": "sprites/player/player_jump.png",
           "Events": [],
           "SpriteSheetRect": {
             "Position": "32,0",
@@ -102,7 +102,7 @@
           }
         },
         {
-          "FilePath": "sprites/player/jump.png",
+          "FilePath": "sprites/player/player_jump.png",
           "Events": [],
           "SpriteSheetRect": {
             "Position": "64,0",
@@ -110,7 +110,7 @@
           }
         },
         {
-          "FilePath": "sprites/player/jump.png",
+          "FilePath": "sprites/player/player_jump.png",
           "Events": [],
           "SpriteSheetRect": {
             "Position": "96,0",
@@ -127,14 +127,14 @@
       "Name": "inAir",
       "Frames": [
         {
-          "FilePath": "sprites/player/jump.png",
+          "FilePath": "sprites/player/player_inair.png",
           "Events": [],
           "SpriteSheetRect": {
             "Size": "32,32"
           }
         },
         {
-          "FilePath": "sprites/player/jump.png",
+          "FilePath": "sprites/player/player_inair.png",
           "Events": [],
           "SpriteSheetRect": {
             "Position": "32,0",
@@ -142,7 +142,7 @@
           }
         },
         {
-          "FilePath": "sprites/player/jump.png",
+          "FilePath": "sprites/player/player_inair.png",
           "Events": [],
           "SpriteSheetRect": {
             "Position": "64,0",
@@ -150,7 +150,7 @@
           }
         },
         {
-          "FilePath": "sprites/player/jump.png",
+          "FilePath": "sprites/player/player_inair.png",
           "Events": [],
           "SpriteSheetRect": {
             "Position": "96,0",
@@ -166,14 +166,14 @@
       "Name": "dash",
       "Frames": [
         {
-          "FilePath": "sprites/player/dash.png",
+          "FilePath": "sprites/player/player_dash.png",
           "Events": [],
           "SpriteSheetRect": {
             "Size": "32,32"
           }
         },
         {
-          "FilePath": "sprites/player/dash.png",
+          "FilePath": "sprites/player/player_dash.png",
           "Events": [],
           "SpriteSheetRect": {
             "Position": "32,0",
@@ -181,7 +181,7 @@
           }
         },
         {
-          "FilePath": "sprites/player/dash.png",
+          "FilePath": "sprites/player/player_dash.png",
           "Events": [],
           "SpriteSheetRect": {
             "Position": "64,0",
@@ -189,7 +189,7 @@
           }
         },
         {
-          "FilePath": "sprites/player/dash.png",
+          "FilePath": "sprites/player/player_dash.png",
           "Events": [],
           "SpriteSheetRect": {
             "Position": "96,0",
@@ -200,29 +200,27 @@
       "Attachments": []
     },
     {
-      "FrameRate": 5,
+      "FrameRate": 10,
       "Origin": "0.5,1",
       "Name": "idle_attack",
       "Frames": [
         {
-          "FilePath": "sprites/player/idle_attack.png",
+          "FilePath": "sprites/player/player_idle_attack.png",
           "Events": [],
           "SpriteSheetRect": {
             "Size": "64,32"
           }
         },
         {
-          "FilePath": "sprites/player/idle_attack.png",
-          "Events": [
-            "EndAttack"
-          ],
+          "FilePath": "sprites/player/player_idle_attack.png",
+          "Events": [],
           "SpriteSheetRect": {
             "Position": "64,0",
             "Size": "64,32"
           }
         },
         {
-          "FilePath": "sprites/player/idle_attack.png",
+          "FilePath": "sprites/player/player_idle_attack.png",
           "Events": [],
           "SpriteSheetRect": {
             "Position": "128,0",
@@ -230,31 +228,22 @@
           }
         }
       ],
-      "Attachments": [
-        {
-          "Name": "swordStart",
-          "Color": "1,0,0,1",
-          "Points": [
-            "0.5,0.5625"
-          ],
-          "Visible": true
-        }
-      ]
+      "Attachments": []
     },
     {
-      "FrameRate": 15,
+      "FrameRate": 10,
       "Origin": "0.5,1",
       "Name": "run_attack",
       "Frames": [
         {
-          "FilePath": "sprites/player/run_attack.png",
+          "FilePath": "sprites/player/player_run_attack.png",
           "Events": [],
           "SpriteSheetRect": {
             "Size": "64,32"
           }
         },
         {
-          "FilePath": "sprites/player/run_attack.png",
+          "FilePath": "sprites/player/player_run_attack.png",
           "Events": [],
           "SpriteSheetRect": {
             "Position": "64,0",
@@ -262,17 +251,15 @@
           }
         },
         {
-          "FilePath": "sprites/player/run_attack.png",
-          "Events": [
-            "EndAttack"
-          ],
+          "FilePath": "sprites/player/player_run_attack.png",
+          "Events": [],
           "SpriteSheetRect": {
             "Position": "128,0",
             "Size": "64,32"
           }
         },
         {
-          "FilePath": "sprites/player/run_attack.png",
+          "FilePath": "sprites/player/player_run_attack.png",
           "Events": [],
           "SpriteSheetRect": {
             "Position": "192,0",
@@ -280,14 +267,7 @@
           }
         }
       ],
-      "Attachments": [
-        {
-          "Name": "swordStart",
-          "Color": "1,0,0,1",
-          "Points": [],
-          "Visible": true
-        }
-      ]
+      "Attachments": []
     },
     {
       "FrameRate": 15,
@@ -296,7 +276,7 @@
       "Name": "crouch",
       "Frames": [
         {
-          "FilePath": "sprites/enemies/crouch.png",
+          "FilePath": "sprites/player/player_crouch.png",
           "Events": [],
           "SpriteSheetRect": {
             "Size": "32,32"
@@ -306,30 +286,59 @@
       "Attachments": []
     },
     {
-      "FrameRate": 7,
+      "FrameRate": 10,
       "Origin": "0.5,1",
       "Looping": true,
       "Name": "crouch_attack",
       "Frames": [
         {
-          "FilePath": "sprites/enemies/crouch_attack.png",
+          "FilePath": "sprites/player/player_crouch_attack.png",
           "Events": [],
           "SpriteSheetRect": {
             "Size": "64,32"
           }
         },
         {
-          "FilePath": "sprites/enemies/crouch_attack.png",
-          "Events": [
-            "EndAttack"
-          ],
+          "FilePath": "sprites/player/player_crouch_attack.png",
+          "Events": [],
           "SpriteSheetRect": {
             "Position": "64,0",
             "Size": "64,32"
           }
         },
         {
-          "FilePath": "sprites/enemies/crouch_attack.png",
+          "FilePath": "sprites/player/player_crouch_attack.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "128,0",
+            "Size": "64,32"
+          }
+        }
+      ],
+      "Attachments": []
+    },
+    {
+      "FrameRate": 10,
+      "Origin": "0.5,1",
+      "Name": "inAir_attack",
+      "Frames": [
+        {
+          "FilePath": "sprites/player/player_inair_attack.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Size": "64,32"
+          }
+        },
+        {
+          "FilePath": "sprites/player/player_inair_attack.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "64,0",
+            "Size": "64,32"
+          }
+        },
+        {
+          "FilePath": "sprites/player/player_inair_attack.png",
           "Events": [],
           "SpriteSheetRect": {
             "Position": "128,0",

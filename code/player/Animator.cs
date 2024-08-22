@@ -48,7 +48,7 @@ public sealed class Animator : Component
 	{
 		if(_state == newState && !force)
 			return;
-			
+		
 		switch ( newState )
 		{
 			case AnimationState.IDLE:
