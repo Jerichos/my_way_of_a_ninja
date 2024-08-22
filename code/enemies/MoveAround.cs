@@ -75,18 +75,21 @@ public class MoveAround : Component, IMotionProvider
 
     protected override void OnEnabled()
     {
-        MotionCore.GroundHitEvent += OnGroundHit;
+        MotionCore.GroundedEvent += OnGroundHit;
         _stickToGround = false;
         _currentDirection = Direction; // Set the initial direction
     }
 
     protected override void OnDisabled()
     {
-        MotionCore.GroundHitEvent -= OnGroundHit;
+        MotionCore.GroundedEvent -= OnGroundHit;
     }
 
-    private void OnGroundHit()
+    private void OnGroundHit(bool grounded)
     {
+	    if ( !grounded )
+		    return;
+	    
         if (_stickToGround)
             return;
 

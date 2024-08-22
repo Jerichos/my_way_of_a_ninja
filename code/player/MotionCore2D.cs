@@ -39,11 +39,9 @@ public sealed class MotionCore2D : Component
 				var pos = Transform.Position;
 				pos.y = _groundPoint.y + 1;
 				Transform.Position = pos;
-				GroundHitEvent?.Invoke();
-				Log.Info($"snap to: {_groundPoint}");
 			}
-
-			Log.Info($"set ground {_grounded}");
+			
+			GroundedEvent?.Invoke(_grounded);
 		}
 	}
 	
@@ -63,7 +61,7 @@ public sealed class MotionCore2D : Component
 	
 	public Action<int> FacingChangedEvent;
 
-	public Action GroundHitEvent;
+	public Action<bool> GroundedEvent;
 	public Action CeilingHitEvent;
 	
 	public Action<bool> HitCeilingMadafaka;

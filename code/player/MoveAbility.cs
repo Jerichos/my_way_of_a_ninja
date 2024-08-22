@@ -31,23 +31,15 @@ public class MoveAbility : Component, IMotionProvider
 
 			_time = 0;
 			_inputX = value;
-			MotionCore.Facing = _inputX;
-			Log.Info("Changed inputX: " + _inputX);
+			// MotionCore.Facing = _inputX;
 		}
 	}
 	
 	private float _time;
 	
-	protected override void OnUpdate()
+	public void SetInputX(int inputX)
 	{
-		if ( Input.Down( "Right" ) )
-		{
-			InputX = 1;
-		}
-		else if ( Input.Down( "Left" ) )
-			InputX = -1;
-		else
-			InputX = 0;
+		InputX = inputX;
 	}
 	
 	protected override void OnFixedUpdate()

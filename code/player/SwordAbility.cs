@@ -6,14 +6,18 @@ namespace Sandbox.player;
 
 public class SwordAbility : Component
 {
-	[Property] private MotionCore2D MotionCore { get; set; }
-	[Property] private SpriteComponent Sprite { get; set; }
+	[Property] private Player Player { get; set; }
 	[Property] private int Damage { get; set; } = 1;
+	[Property] private int DashDamage { get; set; } = 2;
 	
-	[Property] private float Range { get; set; } = 50;
+	[Property] private float Range { get; set; } = 150;
+	[Property] private float DashRange { get; set; } = 200;
 	[Property] private float Cooldown { get; set; }= 0.2f;
 	[Property] private TagSet AttackTags { get; set; }
 	[Property] private SoundEvent AttackSound { get; set; }
+	
+	private MotionCore2D MotionCore => Player.MotionCore;
+	private SpriteComponent Sprite => Player.SpriteComponent;
 	
 	private float _cooldownTimer;
 	
@@ -67,11 +71,13 @@ public class SwordAbility : Component
 		// Log.Info("try hit");
 		IsAttacking = true;
 
-		// var swordStart = Sprite.GetAttachmentTransform( "swordStart" ).Position; // can't create from Prefab...
+		// var swordStart = Sprite.GetAttachmentTransform( "swordStart" ).Position; // can't create from Prefab of SpriteComponent maybe it's fixed now...
 		var swordStart = Sprite.Transform.Position + new Vector3(0, MotionCore.Collider.Scale.y / 1.66f, 0 );
 		// Log.Info($"swordStart: {swordStart} collider height: {MotionCore.Collider.Scale.y / 1.66f}");
-
-		float length = Range * MotionCore.Facing;
+		
+		float actualRange = Player.DashAbility?.IsDashing == true ? DashRange : Range;
+		float length = actualRange * MotionCore.Facing;
+		
 		_rayStart = swordStart;
 		_rayEnd = _rayStart + new Vector2(length, 0);
 		
@@ -89,8 +95,12 @@ public class SwordAbility : Component
 			{
 				if(_hitTargets.Contains(hittable))
 					return;
+
+				var damage = Damage;
+				if ( Player.DashAbility?.IsDashing == true )
+					damage = DashDamage;
 				
-				hittable.Hit(Damage, OnHitSound, GameObject);
+				hittable.Hit(damage, OnHitSound, GameObject);
 				_hitTargets.Add(hittable);
 			}
 			else

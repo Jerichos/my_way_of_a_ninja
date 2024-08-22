@@ -22,6 +22,7 @@ public sealed class Animator : Component
 	private DashAbility DashAbility => Player.DashAbility;
 	private SwordAbility SwordAbility => Player.SwordAbility;
 	private CrouchAbility CrouchAbility => Player.CrouchAbility;
+	private MoveAbility MoveAbility => Player.MoveAbility;
 	
 	// on hit player will be in hit animation, which is fade in and out n times during n seconds
 	[Property] private int HitBlinkCount { get; set; } = 3;
@@ -32,43 +33,36 @@ public sealed class Animator : Component
 	
 	private AnimationState _state;
 
-	
-	
 	// TODO: there is a bug when animation changes, usually from attack to non-attack animation. The sprite goes wider in size for a frame.
 	private void SetAnimationState(AnimationState newState, bool force = false)
 	{
-		string animationSet;
+		// if ( _state == newState && !force )
+		// 	return;
+		
 		switch ( newState )
 		{
 			case AnimationState.IDLE:
 				Sprite.PlayAnimation(SwordAbility.IsAttacking ? "idle_attack" : "idle" , force);
-				animationSet = SwordAbility.IsAttacking ? "idle_attack" : "idle";
 				break;
 			case AnimationState.RUN:
 				Sprite.PlayAnimation(SwordAbility.IsAttacking ? "run_attack" : "run" , force);
-				animationSet = SwordAbility.IsAttacking ? "run_attack" : "run";
 				break;
 			case AnimationState.JUMP:
 				Sprite.PlayAnimation(SwordAbility.IsAttacking ? "inAir_attack" : "jump" , force);
-				animationSet = SwordAbility.IsAttacking ? "inAir_attack" : "jump";
 				break;
 			case AnimationState.IN_AIR:
 				Sprite.PlayAnimation(SwordAbility.IsAttacking ? "inAir_attack" : "inAir" , force);
-				animationSet = SwordAbility.IsAttacking ? "inAir_attack" : "inAir";
 				break;
 			case AnimationState.CROUCH:
 				Sprite.PlayAnimation(SwordAbility.IsAttacking ? "crouch_attack" : "crouch" , force);
-				animationSet = SwordAbility.IsAttacking ? "crouch_attack" : "crouch";
 				break;
 			case AnimationState.DASH:
-				Sprite.PlayAnimation("dash");
-				animationSet = "dash";
+				Sprite.PlayAnimation(SwordAbility.IsAttacking ? "dash_attack" : "dash" , force);
 				break;
 			default:
 				throw new ArgumentOutOfRangeException();
 		}
-			
-		// Log.Info($"set animation from {_state} to: {newState} animationSet: {animationSet}. IsAttacking: {SwordAbility.IsAttacking} force: {force}");
+		Log.Info($"animation change from {_state} to {newState} isAttacking: {SwordAbility.IsAttacking} force: {force}");
 		_state = newState;
 	}
 
@@ -82,7 +76,7 @@ public sealed class Animator : Component
 			SetAnimationState(AnimationState.DASH);
 		else if(MotionCore.Velocity.y < 0)
 			SetAnimationState(AnimationState.IN_AIR);
-		else if(MotionCore.Velocity.x != 0 && MotionCore.Grounded)
+		else if(MoveAbility.InputX != 0 && MotionCore.Grounded)
 			SetAnimationState(AnimationState.RUN);
 		else if(MotionCore.Grounded)
 			SetAnimationState(AnimationState.IDLE);
@@ -96,7 +90,7 @@ public sealed class Animator : Component
 		if(isAttacking)
 			SetAnimationState(_state, true);
 		// else
-		// 	SetAnimationState(_state, false);
+		// 	SetAnimationState(_state, false); // TODO: This was causing flickering
 	}
 	
 	protected override void OnEnabled()

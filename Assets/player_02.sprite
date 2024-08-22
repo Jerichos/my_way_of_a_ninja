@@ -163,36 +163,13 @@
     {
       "FrameRate": 20,
       "Origin": "0.5,1",
+      "Looping": true,
       "Name": "dash",
       "Frames": [
         {
-          "FilePath": "sprites/player/player_dash.png",
+          "FilePath": "sprites/player/player_dash2.png",
           "Events": [],
           "SpriteSheetRect": {
-            "Size": "32,32"
-          }
-        },
-        {
-          "FilePath": "sprites/player/player_dash.png",
-          "Events": [],
-          "SpriteSheetRect": {
-            "Position": "32,0",
-            "Size": "32,32"
-          }
-        },
-        {
-          "FilePath": "sprites/player/player_dash.png",
-          "Events": [],
-          "SpriteSheetRect": {
-            "Position": "64,0",
-            "Size": "32,32"
-          }
-        },
-        {
-          "FilePath": "sprites/player/player_dash.png",
-          "Events": [],
-          "SpriteSheetRect": {
-            "Position": "96,0",
             "Size": "32,32"
           }
         }
@@ -348,6 +325,29 @@
           ],
           "SpriteSheetRect": {
             "Position": "128,0",
+            "Size": "64,32"
+          }
+        }
+      ],
+      "Attachments": []
+    },
+    {
+      "FrameRate": 15,
+      "Origin": "0.5,1",
+      "Name": "dash_attack",
+      "Frames": [
+        {
+          "FilePath": "sprites/player/player_dash2_attack.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Size": "64,32"
+          }
+        },
+        {
+          "FilePath": "sprites/player/player_dash2_attack.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "64,0",
             "Size": "64,32"
           }
         }

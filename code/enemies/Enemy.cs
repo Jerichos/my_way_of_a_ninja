@@ -104,8 +104,15 @@ public class Enemy : Component, IHittable
 		}
 		else
 		{
+			float moreDistance = 0;
+
+			if ( source.Components.TryGet( out MotionCore2D motionCore ) )
+			{
+				moreDistance = motionCore.Velocity.Length * 0.2f;
+			}
+			
 			Vector2 knockbackDirection = (Transform.Position - source.Transform.Position).Normal;
-			Knockback.Activate(knockbackDirection);
+			Knockback.Activate(knockbackDirection, moreDistance);
 		}
 	}
 
@@ -116,6 +123,7 @@ public class Enemy : Component, IHittable
 
 	private void OnRespawn()
 	{
+		Knockback.Enabled = false;
 		Transform.Position = _initialPosition;
 		Health = MaxHealth;
 		_dead = false;

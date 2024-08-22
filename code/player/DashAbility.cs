@@ -7,25 +7,38 @@ public class DashAbility : Component, IMotionProvider
 {
 	[Property] private MotionCore2D MotionCore { get; set; }
 	
+	[Property] public float Cooldown { get; set; } = 2;
+	
 	[Property] public bool CanDashInAir { get; set; } = true;
 	[Property] public float MaxDistance { get; set; } = 1000;
 	[Property] public float DashIn { get; set; } = 1;
 	[Property] public Curve VelocityCurve { get; set; }
 	[Property] private SoundEvent DashSound { get; set; }
+	[Property] private ParticleEmitter DashEffect { get; set; }
+	[Property] private Texture DashTexture { get; set; }
+	[Property] private Texture DashTextureFlipped { get; set; }
 	
 	public Vector2 Velocity { get; private set; }
 	public MotionType MotionType => MotionType.DASH;
 	public MotionType[] OverrideMotions => new[] {MotionType.MOVE, MotionType.JUMP, MotionType.GRAVITY};
 
+	private float _colliderDashHeight = 75;
+	private float _defaultColliderHeight;
+	private float _defaultColliderCenterY;
+
 	public bool IsDashing => _isIsDashing;
 	
 	private float _t;
 	private float _distance;
-	private bool _isIsDashing;
+	private float _cooldownTimer;
 	
-	protected override void OnUpdate()
+	private bool _isIsDashing;
+
+	protected override void OnStart()
 	{
-		
+		_defaultColliderHeight = MotionCore.Collider.Scale.y;
+		_defaultColliderCenterY = MotionCore.Collider.Center.y;
+		DashEffect.Enabled = false;
 	}
 
 	public void StartDash()
@@ -35,15 +48,28 @@ public class DashAbility : Component, IMotionProvider
 		
 		_isIsDashing = true;
 		_t = 0;
+		_cooldownTimer = Cooldown;
 		_distance = 0;
 		MotionCore.AddMotionProvider(this);
+		
+		// set collider height and center
+		MotionCore.Collider.Scale = MotionCore.Collider.Scale.WithY(_colliderDashHeight);
+		MotionCore.Collider.Center = MotionCore.Collider.Center.WithY(_colliderDashHeight);
+		
 		Components.Get<SoundPointComponent>().SoundEvent = DashSound;
 		Components.Get<SoundPointComponent>().StartSound();
+
+		DashEffect.Enabled = true;
 		Log.Info("start dash");
 	}
 	
 	protected override void OnFixedUpdate()
 	{
+		if(_cooldownTimer > 0)
+		{
+			_cooldownTimer -= Time.Delta;
+		}
+		
 		if(_isIsDashing)
 		{
 			_t += Time.Delta / DashIn;
@@ -79,9 +105,16 @@ public class DashAbility : Component, IMotionProvider
 			}
 			else
 			{
-				_isIsDashing = false;
 				Velocity = Vector2.Zero;
+				
+				_isIsDashing = false;
 				MotionCore.RemoveMotionProvider(this);
+				
+				// reset collider height and center
+				MotionCore.Collider.Scale = MotionCore.Collider.Scale.WithY(_defaultColliderHeight);
+				MotionCore.Collider.Center = MotionCore.Collider.Center.WithY(_defaultColliderCenterY);
+				
+				DashEffect.Enabled = false;
 				Log.Info($"end dash distance: {_distance}");
 			}
 			
@@ -91,7 +124,7 @@ public class DashAbility : Component, IMotionProvider
 
 	private bool CanDash()
 	{
-		if(!CanDashInAir && !MotionCore.Grounded || _isIsDashing)
+		if(!CanDashInAir && !MotionCore.Grounded || _isIsDashing || _cooldownTimer > 0)
 			return false;
 		
 		return true;
@@ -101,12 +134,32 @@ public class DashAbility : Component, IMotionProvider
 	{
 		
 	}
+
+	private void OnFacingChanged( int facing )
+	{
+		if(facing == 1)
+			DashEffect.Components.Get<ParticleSpriteRenderer>().Texture = DashTexture;
+		else
+			DashEffect.Components.Get<ParticleSpriteRenderer>().Texture = DashTextureFlipped;
+	}
 	
+	protected override void OnEnabled()
+	{
+		MotionCore.FacingChangedEvent += OnFacingChanged;
+	}
+
+	protected override void OnDisabled()
+	{
+		MotionCore.FacingChangedEvent -= OnFacingChanged;
+	}
+
+
 	public void OnMotionCanceled()
 	{
 		Log.Info("DASH Cancel");
 		Velocity = Vector2.Zero;
 		_isIsDashing = false;
 		MotionCore.RemoveMotionProvider(this);
+		DashEffect.Enabled = false;
 	}
 }

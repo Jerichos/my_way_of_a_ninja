@@ -169,15 +169,27 @@ public sealed class JumpAbility : Component, IMotionProvider
 	{
 		Log.Info("JumpAbility enabled");
 		MotionCore.CeilingHitEvent += CancelJump;
-		MotionCore.GroundHitEvent += () => _jumps = 0;
+		MotionCore.GroundedEvent += OnGroundedChanged;
 	}
 	
 	protected override void OnDisabled()
 	{
 		Log.Info("JumpAbility disabled");
 		MotionCore.CeilingHitEvent -= CancelJump;
-		MotionCore.GroundHitEvent -= () => _jumps = 0;
+		MotionCore.GroundedEvent -= OnGroundedChanged;
 	}
 
-	
+	private void OnGroundedChanged( bool grounded )
+	{
+		if(grounded)
+		{
+			_jumps = 0;
+			Log.Info("grounded jumps reset");
+		}
+		else
+		{
+			_jumps = 1;
+			Log.Info("not grounded jumps: " + _jumps);
+		}
+	}
 }

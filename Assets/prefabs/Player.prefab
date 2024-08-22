@@ -8,6 +8,12 @@
       {
         "__type": "Player",
         "__guid": "5c7d982f-7599-4a6b-9191-764ba5e4aa0a",
+        "ClimbMovement": {
+          "_type": "component",
+          "component_id": "bdba151d-2085-49e1-9ff2-6818224953e5",
+          "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
+          "component_type": "ClimbMovement"
+        },
         "CrouchAbility": {
           "_type": "component",
           "component_id": "2850ced2-d844-4ec1-bfe5-349a318de24c",
@@ -170,8 +176,16 @@
         "__type": "Sandbox.player.DashAbility",
         "__guid": "e7e90b74-92b9-445a-ade9-9fc00da7de05",
         "CanDashInAir": true,
-        "DashIn": 0.1,
+        "DashEffect": {
+          "_type": "component",
+          "component_id": "480de7f6-3cdb-4eff-a076-387862e691b0",
+          "go": "2e1db5d8-af9c-4959-bec8-6d5054a9ccac",
+          "component_type": "ParticleConeEmitter"
+        },
+        "DashIn": 0.15,
         "DashSound": "audio/sfx/dash.sound",
+        "DashTexture": "sprites/player/player_dash2.vtex",
+        "DashTextureFlipped": "sprites/player/player_dash_flipped.vtex",
         "MaxDistance": 300,
         "MotionCore": {
           "_type": "component",
@@ -234,21 +248,17 @@
         "__guid": "a1bea64f-82df-4af2-8067-d976d0fdb501",
         "AttackSound": "audio/sfx/sword_attack.sound",
         "AttackTags": "enemy,enviro",
-        "Cooldown": 0.25,
+        "Cooldown": 0.35,
         "Damage": 1,
-        "MotionCore": {
+        "DashDamage": 2,
+        "DashRange": 190,
+        "Player": {
           "_type": "component",
-          "component_id": "984e43ff-0301-4298-a46c-25c0796b678e",
+          "component_id": "5c7d982f-7599-4a6b-9191-764ba5e4aa0a",
           "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
-          "component_type": "MotionCore2D"
+          "component_type": "Player"
         },
-        "Range": 150,
-        "Sprite": {
-          "_type": "component",
-          "component_id": "917f7ade-6b02-4108-b0a9-ba03b9328b25",
-          "go": "1a949301-3a8f-40bc-a43a-0805d2c7fa98",
-          "component_type": "SpriteComponent"
-        }
+        "Range": 170
       },
       {
         "__type": "Sandbox.player.Knockback",
@@ -299,6 +309,16 @@
           "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
           "component_type": "Player"
         }
+      },
+      {
+        "__type": "Sandbox.player.ClimbMovement",
+        "__guid": "bdba151d-2085-49e1-9ff2-6818224953e5",
+        "MotionCore": {
+          "_type": "component",
+          "component_id": "984e43ff-0301-4298-a46c-25c0796b678e",
+          "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
+          "component_type": "MotionCore2D"
+        }
       }
     ],
     "Children": [
@@ -322,7 +342,7 @@
             "PlaybackSpeed": 1,
             "Sprite": "player_02.sprite",
             "SpriteFlags": "None",
-            "StartingAnimationName": "crouch",
+            "StartingAnimationName": "dash",
             "Tint": "1,1,1,1",
             "UpDirection": "YPositive"
           },
@@ -332,6 +352,171 @@
             "_height": 64,
             "_width": 64,
             "PixelPerUnit": 32
+          }
+        ]
+      },
+      {
+        "__guid": "2e1db5d8-af9c-4959-bec8-6d5054a9ccac",
+        "Flags": 0,
+        "Name": "Spray Dash",
+        "Position": "0,100,-1",
+        "Tags": "particles",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ParticleEffect",
+            "__guid": "817e4f8c-6341-4f52-9779-22fb24d1f57e",
+            "Alpha": {
+              "Type": "Curve",
+              "CurveA": [
+                {
+                  "y": 1
+                },
+                {
+                  "x": 0.48029557,
+                  "y": 1,
+                  "in": 1.5365853,
+                  "out": -1.5365853
+                },
+                {
+                  "x": 1,
+                  "in": 1.312303,
+                  "out": -1.312303
+                }
+              ],
+              "Constants": "1,0,0,0"
+            },
+            "ApplyColor": true,
+            "ApplyRotation": false,
+            "ApplyShape": true,
+            "Bounce": {
+              "Constants": "1,0,0,0"
+            },
+            "Brightness": {
+              "Constants": "1,0,0,0"
+            },
+            "Bumpiness": {},
+            "Collision": false,
+            "CollisionRadius": 1,
+            "Damping": {},
+            "DieOnCollisionChance": {},
+            "Force": false,
+            "ForceDirection": "0,0,5000",
+            "ForceScale": {
+              "Constants": "1,0,0,0"
+            },
+            "Friction": {
+              "Constants": "1,0,0,0"
+            },
+            "Gradient": {
+              "Type": "Gradient",
+              "GradientA": {
+                "color": [
+                  {
+                    "t": 0.5,
+                    "c": "1,1,1,1"
+                  }
+                ],
+                "alpha": []
+              },
+              "GradientB": {
+                "color": [
+                  {
+                    "t": 0.5,
+                    "c": "1,1,1,1"
+                  }
+                ],
+                "alpha": []
+              },
+              "ConstantA": "0,0,0,1",
+              "ConstantB": "1,0.22,0,1"
+            },
+            "Lifetime": {
+              "Constants": "0.15,0.3,0,0"
+            },
+            "MaxParticles": 30,
+            "OrbitalForce": {},
+            "OrbitalPull": {},
+            "PerParticleTimeScale": {
+              "Constants": "1,0.4,0,0"
+            },
+            "Pitch": {
+              "Constants": "-258.7,0,0,0"
+            },
+            "PreWarm": 0,
+            "PushStrength": {},
+            "Roll": {
+              "Constants": "179.9,0,0,0"
+            },
+            "Scale": {
+              "Type": "Curve",
+              "CurveA": {
+                "rangey": "0,120",
+                "frames": [
+                  {
+                    "y": 1
+                  }
+                ]
+              },
+              "Constants": "1,0,0,0"
+            },
+            "SequenceId": {},
+            "SequenceSpeed": {
+              "Constants": "1,0,0,0"
+            },
+            "SequenceTime": {
+              "Constants": "1,0,0,0"
+            },
+            "SheetSequence": false,
+            "Space": "World",
+            "StartDelay": {},
+            "StartVelocity": {
+              "Type": "Range",
+              "Evaluation": "Particle"
+            },
+            "Stretch": {},
+            "TimeScale": 1,
+            "Tint": "1,1,1,1",
+            "Yaw": {
+              "Constants": "63.4,0,0,0"
+            }
+          },
+          {
+            "__type": "Sandbox.ParticleSpriteRenderer",
+            "__guid": "314b5833-e3f2-4928-b128-2523afb1747f",
+            "Additive": false,
+            "Alignment": "LookAtCamera",
+            "BlurAmount": 0.5,
+            "BlurOpacity": 0.91,
+            "BlurSpacing": 0.73,
+            "DepthFeather": 0,
+            "FaceVelocity": false,
+            "FogStrength": 0,
+            "LeadingTrail": true,
+            "Lighting": false,
+            "MotionBlur": false,
+            "Opaque": false,
+            "RotationOffset": 201.94,
+            "Scale": 1.64,
+            "Shadows": false,
+            "SortMode": "ByDistance",
+            "Texture": "sprites/player/player_dash2.vtex"
+          },
+          {
+            "__type": "Sandbox.ParticleConeEmitter",
+            "__guid": "480de7f6-3cdb-4eff-a076-387862e691b0",
+            "Burst": 0,
+            "ConeAngle": 0,
+            "ConeFar": 50,
+            "ConeNear": 1,
+            "Delay": 0,
+            "DestroyOnEnd": false,
+            "Duration": 10,
+            "InVolume": false,
+            "Loop": true,
+            "OnEdge": false,
+            "Rate": 30,
+            "RateOverDistance": 0
           }
         ]
       }

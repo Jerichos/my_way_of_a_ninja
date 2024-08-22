@@ -41,6 +41,12 @@
           "StartCheckpoint": {
             "_type": "gameobject",
             "go": "6bd08054-ae66-4da0-91d4-df1f40da8df4"
+          },
+          "Weather": {
+            "_type": "component",
+            "component_id": "fe52a820-57ff-4b20-ba66-42f6f791de1a",
+            "go": "4a7221bb-b6d8-444f-94a9-03d081006ce3",
+            "component_type": "Weather"
           }
         },
         {
@@ -244,7 +250,7 @@
               "__guid": "73a5f06c-e2dd-4843-a542-d29b1a62bd33",
               "Flags": 0,
               "Name": "grass_tile_32x22 (6)",
-              "Position": "100,450,-0.00006969371",
+              "Position": "100,500,-0.00006969371",
               "Tags": "ground,wall",
               "Enabled": true,
               "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
@@ -274,7 +280,7 @@
               "__guid": "39b0388f-124c-48b8-8a6c-10e5c00c2579",
               "Flags": 0,
               "Name": "grass_tile_32x22 (6)",
-              "Position": "0,450,-0.0000742586",
+              "Position": "0,500,-0.0000742586",
               "Tags": "ground,wall",
               "Enabled": true,
               "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
@@ -304,7 +310,7 @@
               "__guid": "4a0e2c68-93c3-440c-82d1-92f590625e77",
               "Flags": 0,
               "Name": "grass_tile_32x22 (6)",
-              "Position": "-100,450,-0.00008164541",
+              "Position": "-100,500,-0.00008164541",
               "Tags": "ground,wall",
               "Enabled": true,
               "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
@@ -334,7 +340,7 @@
               "__guid": "eaa7fd78-32dd-4829-9faf-fcd12d48ffd5",
               "Flags": 0,
               "Name": "grass_tile_32x22 (6)",
-              "Position": "-200,450,-0.0000862103",
+              "Position": "-200,500,-0.0000862103",
               "Tags": "ground,wall",
               "Enabled": true,
               "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
@@ -1985,7 +1991,7 @@
               "__guid": "a9df0634-4836-40d3-97d2-4f0d56b5c832",
               "Flags": 0,
               "Name": "grass_tile_32x22",
-              "Position": "-300,400,-100.0001",
+              "Position": "-300,450,-100.0001",
               "Enabled": true,
               "Components": [
                 {
@@ -2013,6 +2019,162 @@
                 {
                   "__type": "Sandbox.BoxCollider",
                   "__guid": "1ba98ee9-f49a-474d-82d8-240ca22ce0c8",
+                  "Center": "50,50,0",
+                  "IsTrigger": false,
+                  "Scale": "100,100,100",
+                  "Static": true
+                }
+              ]
+            },
+            {
+              "__guid": "4cdfd965-de68-4c77-a9b6-9a75b838fce7",
+              "Flags": 0,
+              "Name": "grass_tile_32x22",
+              "Position": "-300,350,-100.0001",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "SpriteTools.SpriteComponent",
+                  "__guid": "86dc8eb3-3e6c-4b9d-b8e7-dd8c356542dc",
+                  "__version": 1,
+                  "BroadcastEvents": {},
+                  "CastShadows": "On",
+                  "CreateAttachPoints": false,
+                  "FlashTint": "1,1,1,0",
+                  "PlaybackSpeed": 1,
+                  "Sprite": "sprites/level_01/grass_tile_00_32x22.sprite",
+                  "SpriteFlags": "None",
+                  "StartingAnimationName": "default",
+                  "Tint": "0.19535,0.19535,0.19535,1",
+                  "UpDirection": "YPositive"
+                },
+                {
+                  "__type": "Sandbox.sprite.SpriteSizer",
+                  "__guid": "05e9f3c4-7b52-40e9-b32f-a1d8ea77e58a",
+                  "_height": 32,
+                  "_width": 32,
+                  "PixelPerUnit": 32
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "dd5cef85-c95b-423a-bad1-720d6ac9099e",
+                  "Center": "50,50,0",
+                  "IsTrigger": false,
+                  "Scale": "100,100,100",
+                  "Static": true
+                }
+              ]
+            },
+            {
+              "__guid": "0e44e152-be50-4155-ac0b-0bb453ccd57c",
+              "Flags": 0,
+              "Name": "grass_tile_32x22",
+              "Position": "-300,250,-100.0001",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "SpriteTools.SpriteComponent",
+                  "__guid": "00554bd5-e720-4c60-9dc8-e9081839bda4",
+                  "__version": 1,
+                  "BroadcastEvents": {},
+                  "CastShadows": "On",
+                  "CreateAttachPoints": false,
+                  "FlashTint": "1,1,1,0",
+                  "PlaybackSpeed": 1,
+                  "Sprite": "sprites/level_01/grass_tile_00_32x22.sprite",
+                  "SpriteFlags": "None",
+                  "StartingAnimationName": "default",
+                  "Tint": "0.19535,0.19535,0.19535,1",
+                  "UpDirection": "YPositive"
+                },
+                {
+                  "__type": "Sandbox.sprite.SpriteSizer",
+                  "__guid": "bd7d44b7-b055-4625-bbec-18249970594e",
+                  "_height": 32,
+                  "_width": 32,
+                  "PixelPerUnit": 32
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "13fd83c2-9f99-44e8-abce-c09266df0538",
+                  "Center": "50,50,0",
+                  "IsTrigger": false,
+                  "Scale": "100,100,100",
+                  "Static": true
+                }
+              ]
+            },
+            {
+              "__guid": "5f530d22-2821-4eae-aed7-9a214b3f61c6",
+              "Flags": 0,
+              "Name": "grass_tile_32x22",
+              "Position": "-300,150,-100.0001",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "SpriteTools.SpriteComponent",
+                  "__guid": "2cefb609-8b51-4fd4-bf08-04519a1b2a0f",
+                  "__version": 1,
+                  "BroadcastEvents": {},
+                  "CastShadows": "On",
+                  "CreateAttachPoints": false,
+                  "FlashTint": "1,1,1,0",
+                  "PlaybackSpeed": 1,
+                  "Sprite": "sprites/level_01/grass_tile_00_32x22.sprite",
+                  "SpriteFlags": "None",
+                  "StartingAnimationName": "default",
+                  "Tint": "0.19535,0.19535,0.19535,1",
+                  "UpDirection": "YPositive"
+                },
+                {
+                  "__type": "Sandbox.sprite.SpriteSizer",
+                  "__guid": "4b184676-799c-4b01-9a6e-459e1577c1df",
+                  "_height": 32,
+                  "_width": 32,
+                  "PixelPerUnit": 32
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "97f298c5-1d2e-4c3b-a345-eef554e0d0d2",
+                  "Center": "50,50,0",
+                  "IsTrigger": false,
+                  "Scale": "100,100,100",
+                  "Static": true
+                }
+              ]
+            },
+            {
+              "__guid": "dc6aa544-f30c-4f3b-bede-0a3b828aefe8",
+              "Flags": 0,
+              "Name": "grass_tile_32x22",
+              "Position": "-300,50,-100.0001",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "SpriteTools.SpriteComponent",
+                  "__guid": "81c9e5ae-bfec-4fd9-bb3e-c89a1766de3b",
+                  "__version": 1,
+                  "BroadcastEvents": {},
+                  "CastShadows": "On",
+                  "CreateAttachPoints": false,
+                  "FlashTint": "1,1,1,0",
+                  "PlaybackSpeed": 1,
+                  "Sprite": "sprites/level_01/grass_tile_00_32x22.sprite",
+                  "SpriteFlags": "None",
+                  "StartingAnimationName": "default",
+                  "Tint": "0.19535,0.19535,0.19535,1",
+                  "UpDirection": "YPositive"
+                },
+                {
+                  "__type": "Sandbox.sprite.SpriteSizer",
+                  "__guid": "b69e1e72-f0ba-4490-bf1d-47ccda7577f1",
+                  "_height": 32,
+                  "_width": 32,
+                  "PixelPerUnit": 32
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "9edec207-adf0-4dad-9524-a44c9b577766",
                   "Center": "50,50,0",
                   "IsTrigger": false,
                   "Scale": "100,100,100",
@@ -7618,6 +7780,228 @@
               ]
             }
           ]
+        }
+      ]
+    },
+    {
+      "__guid": "a3a80ce5-2cb3-40fe-a2fc-f4654703b875",
+      "Flags": 0,
+      "Name": "ladder",
+      "Position": "-250,150,-5",
+      "Tags": "ladder",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "SpriteTools.SpriteComponent",
+          "__guid": "cf0a9da1-7dce-4b31-b1d7-522e70f80e8e",
+          "__version": 1,
+          "BroadcastEvents": {},
+          "CastShadows": "On",
+          "CreateAttachPoints": false,
+          "FlashTint": "1,1,1,0",
+          "PlaybackSpeed": 1,
+          "Sprite": "sprites/objects/ladder.sprite",
+          "SpriteFlags": "None",
+          "StartingAnimationName": "default",
+          "Tint": "1,1,1,1",
+          "UpDirection": "YPositive"
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "8963052b-f85a-4cd9-a050-db06ad2095bf",
+          "Center": "0,0,0",
+          "IsTrigger": true,
+          "Scale": "100,100,100",
+          "Static": false
+        },
+        {
+          "__type": "Sandbox.objects.Ladder",
+          "__guid": "8b5b611c-7649-4916-ba3f-6ddb81e67325"
+        }
+      ]
+    },
+    {
+      "__guid": "b5c346be-fdc4-4528-bf92-37a747e0e8ed",
+      "Flags": 0,
+      "Name": "ladder (1)",
+      "Position": "-250,250,-5",
+      "Tags": "ladder",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "SpriteTools.SpriteComponent",
+          "__guid": "695a2c7a-498a-42c0-bb07-1fbf0c71341e",
+          "__version": 1,
+          "BroadcastEvents": {},
+          "CastShadows": "On",
+          "CreateAttachPoints": false,
+          "FlashTint": "1,1,1,0",
+          "PlaybackSpeed": 1,
+          "Sprite": "sprites/objects/ladder.sprite",
+          "SpriteFlags": "None",
+          "StartingAnimationName": "default",
+          "Tint": "1,1,1,1",
+          "UpDirection": "YPositive"
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "54a48cb8-a07b-4ec3-a41d-665e644e4480",
+          "Center": "0,0,0",
+          "IsTrigger": true,
+          "Scale": "100,100,100",
+          "Static": false
+        },
+        {
+          "__type": "Sandbox.objects.Ladder",
+          "__guid": "092dba88-4b09-449a-9aed-b67f315a9692"
+        }
+      ]
+    },
+    {
+      "__guid": "52eac638-6491-4529-851a-447db95d52f2",
+      "Flags": 0,
+      "Name": "ladder (2)",
+      "Position": "-250,350,-5",
+      "Tags": "ladder",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "SpriteTools.SpriteComponent",
+          "__guid": "8409ba15-f187-4b4e-9d0a-2353dbc6769d",
+          "__version": 1,
+          "BroadcastEvents": {},
+          "CastShadows": "On",
+          "CreateAttachPoints": false,
+          "FlashTint": "1,1,1,0",
+          "PlaybackSpeed": 1,
+          "Sprite": "sprites/objects/ladder.sprite",
+          "SpriteFlags": "None",
+          "StartingAnimationName": "default",
+          "Tint": "1,1,1,1",
+          "UpDirection": "YPositive"
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "c86d110b-f90d-488d-9caf-2e569418284b",
+          "Center": "0,0,0",
+          "IsTrigger": true,
+          "Scale": "100,100,100",
+          "Static": false
+        },
+        {
+          "__type": "Sandbox.objects.Ladder",
+          "__guid": "8b8f70cf-4536-41d1-98af-4dae0bb8deae"
+        }
+      ]
+    },
+    {
+      "__guid": "e9e0fc8d-fd81-4cac-81df-7387f0562ccf",
+      "Flags": 0,
+      "Name": "ladder (3)",
+      "Position": "-250,450,-5",
+      "Tags": "ladder",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "SpriteTools.SpriteComponent",
+          "__guid": "b833201c-fe16-49c2-b0fc-bfadb6b6ff88",
+          "__version": 1,
+          "BroadcastEvents": {},
+          "CastShadows": "On",
+          "CreateAttachPoints": false,
+          "FlashTint": "1,1,1,0",
+          "PlaybackSpeed": 1,
+          "Sprite": "sprites/objects/ladder.sprite",
+          "SpriteFlags": "None",
+          "StartingAnimationName": "default",
+          "Tint": "1,1,1,1",
+          "UpDirection": "YPositive"
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "03b595a6-2074-456d-8303-46e4dd9ba7a0",
+          "Center": "0,0,0",
+          "IsTrigger": true,
+          "Scale": "100,100,100",
+          "Static": false
+        },
+        {
+          "__type": "Sandbox.objects.Ladder",
+          "__guid": "31e9531d-2a6c-4d2d-bcdc-cbbb70b69fb9"
+        }
+      ]
+    },
+    {
+      "__guid": "5210c8dd-3c17-4b19-ad36-2b06549fc383",
+      "Flags": 0,
+      "Name": "ladder (4)",
+      "Position": "-250,550,-5",
+      "Tags": "ladder",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "SpriteTools.SpriteComponent",
+          "__guid": "8ce96b66-cd81-48ac-9ea5-0a46b5c5e1f1",
+          "__version": 1,
+          "BroadcastEvents": {},
+          "CastShadows": "On",
+          "CreateAttachPoints": false,
+          "FlashTint": "1,1,1,0",
+          "PlaybackSpeed": 1,
+          "Sprite": "sprites/objects/ladder.sprite",
+          "SpriteFlags": "None",
+          "StartingAnimationName": "default",
+          "Tint": "1,1,1,1",
+          "UpDirection": "YPositive"
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "421a2e5a-3fcf-4365-b3c4-fd23e101918c",
+          "Center": "0,0,0",
+          "IsTrigger": true,
+          "Scale": "100,100,100",
+          "Static": false
+        },
+        {
+          "__type": "Sandbox.objects.Ladder",
+          "__guid": "6206d535-4b39-4a3b-b53e-e49a87485eb5"
+        }
+      ]
+    },
+    {
+      "__guid": "aa76a122-ddcf-41b5-9884-90406bc05979",
+      "Flags": 0,
+      "Name": "ladder (5)",
+      "Position": "-250,650,-5",
+      "Tags": "ladder",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "SpriteTools.SpriteComponent",
+          "__guid": "ef6a65f6-fbf3-4dad-bf02-173104bce9e6",
+          "__version": 1,
+          "BroadcastEvents": {},
+          "CastShadows": "On",
+          "CreateAttachPoints": false,
+          "FlashTint": "1,1,1,0",
+          "PlaybackSpeed": 1,
+          "Sprite": "sprites/objects/ladder.sprite",
+          "SpriteFlags": "None",
+          "StartingAnimationName": "default",
+          "Tint": "1,1,1,1",
+          "UpDirection": "YPositive"
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "54a521d0-029c-4169-ba58-93ebcd14e249",
+          "Center": "0,0,0",
+          "IsTrigger": true,
+          "Scale": "100,100,100",
+          "Static": false
+        },
+        {
+          "__type": "Sandbox.objects.Ladder",
+          "__guid": "bad53f18-5a14-473f-92df-73b2676126c3"
         }
       ]
     }

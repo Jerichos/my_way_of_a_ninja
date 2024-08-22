@@ -16,15 +16,17 @@ namespace Sandbox.player
 
         private float _t;
         private float _distance;
+        private float _moreDistance;
         
         public Action KnockbackEndEvent;
     
-        public void Activate(Vector2 direction)
+        public void Activate(Vector2 direction, float moreDistance = 0)
         {
             _t = 0;
             _distance = 0;
             Direction = direction;
             Enabled = true;
+            _moreDistance = moreDistance;
             
             if(KnockbackSound != null)
 				Sound.Play(KnockbackSound);
@@ -34,6 +36,8 @@ namespace Sandbox.player
         {
 	        _t += Time.Delta / Duration;
 	        _distance += MotionCore.Velocity.y * Time.Delta;
+	        
+	        float actualMaxDistance = MaxDistance + _moreDistance;
 			
 	        // Ensure _t doesn't exceed 1 (end of the dash)
 	        if (_t > 1)
@@ -42,28 +46,21 @@ namespace Sandbox.player
 		        EndKnockback();
 	        }
 
-	        // Evaluate the curve based on normalized time
 	        float curveVelocity = VelocityCurve.Evaluate(_t);
-
-	        // Calculate the velocity required to reach the MaxDistance in the given dashIn time
-	        float requiredVelocity = MaxDistance / Duration;
-
-	        // Actual velocity is scaled by the curve
+	        float requiredVelocity = actualMaxDistance / Duration;
 	        var velocity = requiredVelocity * curveVelocity;
 
-	        // Update the distance traveled
 	        _distance += velocity * Time.Delta;
 
-	        // Check if the dash should be completed
-	        if (_distance >= MaxDistance)
+	        if (_distance >= actualMaxDistance)
 	        {
-		        _distance = MaxDistance;
+		        _distance = actualMaxDistance;
 		        _t = 1;  // Ensure the dash finishes
 	        }
 			
 	        // Apply the velocity in the direction the character is facing
 	        Velocity = Direction * velocity;
-	        Log.Info($"Knockback _t: {_t} distance: {_distance} MaxDistance: {MaxDistance} Velocity: {Velocity}");
+	        Log.Info($"Knockback _t: {_t} distance: {_distance} MaxDistance: {actualMaxDistance} Velocity: {Velocity}");
         }
 
         private void EndKnockback()

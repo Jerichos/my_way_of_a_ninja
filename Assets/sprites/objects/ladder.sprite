@@ -7,7 +7,7 @@
       "Name": "default",
       "Frames": [
         {
-          "FilePath": "sprites/checkpoint.png",
+          "FilePath": "sprites/objects/ladder.png",
           "Events": []
         }
       ],

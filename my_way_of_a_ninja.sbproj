@@ -23,17 +23,19 @@
     "LeaderboardType": "None",
     "CsProjName": "",
     "StartupScene": "scenes/minimal.scene",
-    "ControlModes": {},
+    "ControlModes": {
+      "Keyboard": true
+    },
     "InputSettings": {
       "Actions": [
         {
-          "Name": "Forward",
+          "Name": "Up",
           "KeyboardCode": "W",
           "GamepadCode": "None",
           "GroupName": "Movement"
         },
         {
-          "Name": "Crouch",
+          "Name": "Down",
           "KeyboardCode": "S",
           "GamepadCode": "None",
           "GroupName": "Movement"
@@ -54,24 +56,6 @@
           "Name": "Jump",
           "KeyboardCode": "space",
           "GamepadCode": "A",
-          "GroupName": "Movement"
-        },
-        {
-          "Name": "Run",
-          "KeyboardCode": "shift",
-          "GamepadCode": "LeftJoystickButton",
-          "GroupName": "Movement"
-        },
-        {
-          "Name": "Walk",
-          "KeyboardCode": "alt",
-          "GamepadCode": "None",
-          "GroupName": "Movement"
-        },
-        {
-          "Name": "Duck",
-          "KeyboardCode": "ctrl",
-          "GamepadCode": "B",
           "GroupName": "Movement"
         },
         {
@@ -211,6 +195,12 @@
           "KeyboardCode": "enter",
           "GamepadCode": "None",
           "GroupName": "Other"
+        },
+        {
+          "Name": "Dash",
+          "KeyboardCode": "SHIFT",
+          "GamepadCode": "None",
+          "GroupName": "Movement"
         }
       ],
       "__guid": "541c6281-8285-49e7-8f78-cca53b9cf79d"

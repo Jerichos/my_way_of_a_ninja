@@ -9,7 +9,9 @@ public enum MotionType
 	MOVE,
 	DASH,
 	ENVIRONMENT,
-	KNOCKBACK
+	KNOCKBACK,
+	CLIMB,
+	ALL,
 }
 
 public interface IMotionProvider

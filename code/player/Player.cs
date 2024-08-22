@@ -12,6 +12,7 @@ public sealed class Player : Component
 	[Property] public SwordAbility SwordAbility { get; set; }
 	[Property] public CrouchAbility CrouchAbility { get; set; }
 	[Property] public Knockback Knockback { get; set; }
+	[Property] public ClimbMovement ClimbMovement { get; set; }
 
 	[Property] private SoundEvent HitSound { get; set; }
 	[Property] private SoundEvent DeathSound { get; set; }
@@ -49,7 +50,7 @@ public sealed class Player : Component
 			JumpAbility.StopJump();
 		}
 		
-		if(Input.Pressed("Run"))
+		if(Input.Pressed("Dash"))
 		{
 			DashAbility.StartDash();
 		}
@@ -59,13 +60,41 @@ public sealed class Player : Component
 			SwordAbility.StartAttack();
 		}
 		
-		if(Input.Down("Crouch"))
+		if(Input.Down("Down"))
 		{
 			CrouchAbility.StartCrouch();
 		}
-		else if ( Input.Released("Crouch") )
+		else if ( Input.Released("Down") )
 		{
 			CrouchAbility.StopCrouch();
+		}
+		
+		if(Input.Down("Up"))
+		{
+			ClimbMovement.TryClimbUp();
+		}
+		else if(Input.Down("Down"))
+		{
+			ClimbMovement.TryClimbDown();
+		}
+		
+		if ( Input.Down( "Right" ))
+		{
+			if(!CrouchAbility.IsCrouching)
+				MoveAbility.SetInputX(1);
+			
+			MotionCore.Facing = 1;
+		}
+		else if ( Input.Down( "Left" ))
+		{
+			if(!CrouchAbility.IsCrouching)
+				MoveAbility.SetInputX(-1);
+			
+			MotionCore.Facing = -1;
+		}
+		else
+		{
+			MoveAbility.SetInputX(0);
 		}
 	}
 
