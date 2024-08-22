@@ -12,7 +12,7 @@ public sealed class JumpAbility : Component, IMotionProvider
 	[Property] private float MinHeight { get; set; } = 100f;
 	[Property] private float JumpIn { get; set; } = 0.5f; // time to reach max height
 	
-	[Property] Curve VelocityCurve { get; set; }
+	[Property] Curve HeightCurve { get; set; } // in time at what height the jump should be
 	[Property] SoundEvent JumpSound { get; set; }
 	[Property] float BasePitch { get; set; } = 1;
 	[Property] float PitchPerJump { get; set; } = 0.1f;
@@ -25,7 +25,7 @@ public sealed class JumpAbility : Component, IMotionProvider
 	
 	public bool IsJumping { get; private set; }
 	
-	private float _wishHeight;
+	private float _wishT;
 	private float _distanceTraveled;
 	private float _t;
 
@@ -33,6 +33,15 @@ public sealed class JumpAbility : Component, IMotionProvider
 	
 	private int _jumps; // resets when grounded
 	private float _colliderFactor = 1.5f;
+	
+	private Vector3 _defaultColliderCenter;
+	private Vector3 _defaultColliderScale;
+
+	protected override void OnStart()
+	{
+		_defaultColliderCenter = Collider.Center;
+		_defaultColliderScale = Collider.Scale;
+	}
 
 	public void Jump()
 	{
@@ -49,54 +58,54 @@ public sealed class JumpAbility : Component, IMotionProvider
 	{
 		_increaseHeight = false;
 	}
+	
+
+	// for smoother jump experience, move _t calc to OnUpdate
+	protected override void OnUpdate()
+	{
+		if ( IsJumping )
+		{
+			float increase = Time.Delta / JumpIn;
+			_t += increase;
+			
+			if(_t > 1)
+				_t = 1;
+			
+			if ( _increaseHeight )
+			{
+				increase *= 1.1f;
+				_wishT += increase;
+				if(_wishT > 1)
+					_wishT = 1;
+			}
+		}
+	}
 
 	protected override void OnFixedUpdate()
 	{
 		if(IsJumping)
 		{
-			if ( _increaseHeight )
-			{
-				_wishHeight += MaxHeight * (Time.Delta / (JumpIn/2.75f)); // you have x times more time to reach max height
-				Log.Info($"increase height: {_wishHeight}");
-			}
-			
-			_t += Time.Delta / JumpIn;
-			
-			if(_distanceTraveled < Math.Clamp(_wishHeight, MinHeight, MaxHeight))
+			if(_t < _wishT)
 			{
 				// Ensure _t doesn't exceed 1 (end of the dash)
-				if (_t > 1)
-				{
-					_t = 1;
-				}
+				// if (_t > 1)
+				// {
+				// 	_t = 1;
+				// }
+				//
+				// if(_t > _wishT)
+				// 	_t = _wishT;
 
-				// Evaluate the curve based on normalized time
-				float curveVelocity = VelocityCurve.Evaluate(_t);
-
-				// Calculate the velocity required to reach the MaxDistance in the given dashIn time
-				float requiredVelocity = MaxHeight / JumpIn;
-
-				// Actual velocity is scaled by the curve
-				var velocity = requiredVelocity * curveVelocity;
-
-				// Update the distance traveled
-				_distanceTraveled += velocity * Time.Delta;
-
-				// Check if the dash should be completed
-				if (_distanceTraveled >= MaxHeight)
-				{
-					_distanceTraveled = MaxHeight;
-					_t = 1;  // Ensure the dash finishes
-				}
+				float targetHeight = HeightCurve.Evaluate(_t) * MaxHeight * _wishT;
+				float heightDiff = targetHeight - _distanceTraveled;
+				Velocity = new Vector2(0, heightDiff / Time.Delta);
+				_distanceTraveled += heightDiff;
 				
-				// Apply the velocity in the direction the character is facing
-				Velocity = Util.UpY * velocity;
-				_distanceTraveled += Velocity.y * Time.Delta;
-				Log.Info($"jump _t: {_t} distance: {_distanceTraveled} _wishHeight: {_wishHeight} clamped: {Math.Clamp(_wishHeight, MinHeight, MaxHeight)}");
+				Log.Info($"jump _t: {_t} _wishT: {_wishT} targetHeight: {targetHeight} heightDiff: {heightDiff} velocity: {Velocity.y}");
 			}
 			else
 			{
-				Log.Info($"jump end distance: {_distanceTraveled} _wishHeight: {_wishHeight} clamped: {Math.Clamp(_wishHeight, MinHeight, MaxHeight)}");
+				Log.Info($"jump end distance: {_distanceTraveled} _wishHeight: {_wishT} _t: {_t}");
 				CancelJump();
 			}
 		}
@@ -112,18 +121,17 @@ public sealed class JumpAbility : Component, IMotionProvider
 		IsJumping = true;
 		_t = 0;
 		_distanceTraveled = 0;
-		_wishHeight = 0;
+		_wishT = (MinHeight / MaxHeight) * 0.8f;
+		// _wishT = 0;
 		_jumps++;
 		
 		// change collider size
-		Collider.Scale = Collider.Scale.WithY(Collider.Scale.y / _colliderFactor);
-		Collider.Center = Collider.Center.WithY(Collider.Center.y / _colliderFactor);
+		Collider.Scale = _defaultColliderScale.WithY(Collider.Scale.y / _colliderFactor);
+		Collider.Center = _defaultColliderCenter.WithY(Collider.Center.y / _colliderFactor);
 		
 
 		JumpSound.Pitch = BasePitch + PitchPerJump * _jumps;
 		Sound.Play( JumpSound );		
-		
-		Log.Info($"Jump start! jumps: {_jumps}");
 	}
 
 	// if there is vertical collision or something else that stops the jump
@@ -136,8 +144,8 @@ public sealed class JumpAbility : Component, IMotionProvider
 		Velocity = Vector2.Zero;
 		IsJumping = false;
 
-		Collider.Scale = Collider.Scale.WithY(Collider.Scale.y * _colliderFactor);
-		Collider.Center = Collider.Center.WithY(Collider.Center.y * _colliderFactor);
+		Collider.Scale = _defaultColliderScale;
+		Collider.Center = _defaultColliderCenter;
 		
 		MotionCore.RemoveMotionProvider(this);
 	}

@@ -64,8 +64,8 @@
           "SoundOverride": false,
           "StopOnNew": false,
           "TargetMixer": {
-            "Name": "music",
-            "Id": "b87928ce-835e-4fc5-8834-9db240b4c137"
+            "Name": "ui",
+            "Id": "d5bd0138-587b-45e7-9317-44cad6305af5"
           },
           "Volume": 1
         },
@@ -191,10 +191,30 @@
               "__PrefabVariables": {}
             },
             {
-              "__guid": "35677959-9de7-435a-8619-cc6849951712",
+              "__guid": "cdce1e6e-1a4c-4aec-a574-c23f4253a3e6",
               "Flags": 0,
               "Name": "grass_tile_32x22 (6)",
-              "Position": "2500,300,0.00005515172",
+              "Position": "550,800,0.0000008061943",
+              "Tags": "ground,wall",
+              "Enabled": true,
+              "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "78754715-a7f7-44f1-8fa0-e156c903650d",
+              "Flags": 0,
+              "Name": "grass_tile_32x22 (6)",
+              "Position": "550,900,0.0000009213655",
+              "Tags": "ground,wall",
+              "Enabled": true,
+              "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "fc81c462-e246-4b1b-bb84-6ed49ad3ea45",
+              "Flags": 0,
+              "Name": "grass_tile_32x22 (6)",
+              "Position": "550,1000,0.000001497225",
               "Tags": "ground,wall",
               "Enabled": true,
               "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
@@ -224,7 +244,7 @@
               "__guid": "73a5f06c-e2dd-4843-a542-d29b1a62bd33",
               "Flags": 0,
               "Name": "grass_tile_32x22 (6)",
-              "Position": "200,600,-0.00006969371",
+              "Position": "100,450,-0.00006969371",
               "Tags": "ground,wall",
               "Enabled": true,
               "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
@@ -254,7 +274,7 @@
               "__guid": "39b0388f-124c-48b8-8a6c-10e5c00c2579",
               "Flags": 0,
               "Name": "grass_tile_32x22 (6)",
-              "Position": "100,600,-0.0000742586",
+              "Position": "0,450,-0.0000742586",
               "Tags": "ground,wall",
               "Enabled": true,
               "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
@@ -284,7 +304,7 @@
               "__guid": "4a0e2c68-93c3-440c-82d1-92f590625e77",
               "Flags": 0,
               "Name": "grass_tile_32x22 (6)",
-              "Position": "0,600,-0.00008164541",
+              "Position": "-100,450,-0.00008164541",
               "Tags": "ground,wall",
               "Enabled": true,
               "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
@@ -314,7 +334,7 @@
               "__guid": "eaa7fd78-32dd-4829-9faf-fcd12d48ffd5",
               "Flags": 0,
               "Name": "grass_tile_32x22 (6)",
-              "Position": "-100,600,-0.0000862103",
+              "Position": "-200,450,-0.0000862103",
               "Tags": "ground,wall",
               "Enabled": true,
               "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
@@ -335,16 +355,6 @@
               "Flags": 0,
               "Name": "grass_tile_32x22 (6)",
               "Position": "1000,600,-0.00003242753",
-              "Tags": "ground,wall",
-              "Enabled": true,
-              "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
-              "__PrefabVariables": {}
-            },
-            {
-              "__guid": "d4018d67-f823-4cb8-87c3-596cb3bf6e41",
-              "Flags": 0,
-              "Name": "grass_tile_32x22 (6)",
-              "Position": "-200,600,-0.00009069221",
               "Tags": "ground,wall",
               "Enabled": true,
               "__Prefab": "sprites/level_01/prefabs/grass_tile_32x22.prefab",
@@ -883,6 +893,7 @@
               "Flags": 0,
               "Name": "grass_tile_32x22",
               "Position": "750,-100,-10",
+              "Tags": "wall",
               "Enabled": true,
               "Components": [
                 {
@@ -1623,7 +1634,7 @@
               "__guid": "17e67bc3-2460-48d5-9643-2b2dc4a004d4",
               "Flags": 0,
               "Name": "grass_tile_32x22",
-              "Position": "200,500,-100.0001",
+              "Position": "100,400,-100.0001",
               "Enabled": true,
               "Components": [
                 {
@@ -1701,7 +1712,7 @@
               "__guid": "028ab051-0741-4788-b57d-6a79b2aed6d6",
               "Flags": 0,
               "Name": "grass_tile_32x22",
-              "Position": "100,500,-100.0001",
+              "Position": "0,400,-100.0001",
               "Enabled": true,
               "Components": [
                 {
@@ -1779,7 +1790,7 @@
               "__guid": "c9a7727b-2f0b-41f5-8723-6be32383a29c",
               "Flags": 0,
               "Name": "grass_tile_32x22",
-              "Position": "0,500,-100.0001",
+              "Position": "-100,400,-100.0001",
               "Enabled": true,
               "Components": [
                 {
@@ -1857,7 +1868,7 @@
               "__guid": "96cf6cc3-c8ef-42ee-8f04-fa7476ca16c4",
               "Flags": 0,
               "Name": "grass_tile_32x22",
-              "Position": "-100,500,-100.0001",
+              "Position": "-200,400,-100.0001",
               "Enabled": true,
               "Components": [
                 {
@@ -1974,7 +1985,7 @@
               "__guid": "a9df0634-4836-40d3-97d2-4f0d56b5c832",
               "Flags": 0,
               "Name": "grass_tile_32x22",
-              "Position": "-200,500,-100.0001",
+              "Position": "-300,400,-100.0001",
               "Enabled": true,
               "Components": [
                 {
@@ -6895,7 +6906,7 @@
           "__guid": "6bd08054-ae66-4da0-91d4-df1f40da8df4",
           "Flags": 0,
           "Name": "Start Checkpoint",
-          "Position": "-550,100,0.00003878542",
+          "Position": "-650,100,0.00003141443",
           "Enabled": true,
           "__Prefab": "prefabs/checkpoint.prefab",
           "__PrefabVariables": {}
@@ -6904,7 +6915,7 @@
           "__guid": "997112a9-2123-421a-8e7d-df360b1cd0f9",
           "Flags": 0,
           "Name": "First Checkpoint",
-          "Position": "-350,100,0",
+          "Position": "2550,300,0",
           "Enabled": true,
           "__Prefab": "prefabs/checkpoint.prefab",
           "__PrefabVariables": {}

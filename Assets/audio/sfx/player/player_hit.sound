@@ -1,5 +1,5 @@
 {
-  "UI": false,
+  "UI": true,
   "Volume": "1",
   "Pitch": "1",
   "Decibels": 70,
@@ -7,11 +7,11 @@
   "Sounds": [
     "audio/sfx/player/zapsplat_multimedia_game_sound_arcade_retro_8_bit_incorrect_002_54226.vsnd"
   ],
-  "Occlusion": true,
-  "AirAbsorption": true,
-  "Transmission": true,
+  "Occlusion": false,
+  "AirAbsorption": false,
+  "Transmission": false,
   "OcclusionRadius": 64,
-  "DistanceAttenuation": true,
+  "DistanceAttenuation": false,
   "__references": [],
   "__version": 0
 }

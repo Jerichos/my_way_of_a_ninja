@@ -105,29 +105,30 @@
         "__type": "Sandbox.player.JumpAbility",
         "__guid": "bebbf412-04ee-4d6b-8d1c-8c840461289d",
         "BasePitch": 0.5,
-        "JumpIn": 0.3,
+        "HeightCurve": [
+          {
+            "in": -2.3000002,
+            "out": 2.3000002
+          },
+          {
+            "x": 1,
+            "y": 1,
+            "in": 0.03571437,
+            "out": -0.03571437
+          }
+        ],
+        "JumpIn": 0.33,
         "JumpSound": "audio/sfx/player/player_jump.sound",
-        "MaxHeight": 500,
+        "MaxHeight": 250,
         "MaxJumps": 2,
-        "MinHeight": 200,
+        "MinHeight": 125,
         "MotionCore": {
           "_type": "component",
           "component_id": "984e43ff-0301-4298-a46c-25c0796b678e",
           "go": "d6d86c8e-5883-4db7-a425-60330fc9b682",
           "component_type": "MotionCore2D"
         },
-        "PitchPerJump": 0.15,
-        "VelocityCurve": [
-          {
-            "y": 1
-          },
-          {
-            "x": 1,
-            "y": 0.38989362,
-            "in": 1.4604648,
-            "out": -1.4604648
-          }
-        ]
+        "PitchPerJump": 0.15
       },
       {
         "__type": "Sandbox.player.MoveAbility",
@@ -154,10 +155,10 @@
             "out": -1.4472735
           }
         ],
-        "MaxAcceleration": 400,
+        "MaxAcceleration": 600,
         "MaxDeceleration": 500,
         "MaxSpeedIn": 0.3,
-        "MaxVelocity": 300,
+        "MaxVelocity": 30000,
         "MotionCore": {
           "_type": "component",
           "component_id": "984e43ff-0301-4298-a46c-25c0796b678e",
@@ -290,8 +291,8 @@
       {
         "__type": "Sandbox.player.Animator",
         "__guid": "7da43ce4-d1f3-4715-90e6-f4e3d27160cd",
-        "BlinkCount": 3,
-        "BlinkDuration": 1,
+        "BlinkDuration": 0.1,
+        "HitBlinkCount": 10,
         "Player": {
           "_type": "component",
           "component_id": "5c7d982f-7599-4a6b-9191-764ba5e4aa0a",

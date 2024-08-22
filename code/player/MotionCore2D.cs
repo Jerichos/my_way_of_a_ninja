@@ -70,16 +70,27 @@ public sealed class MotionCore2D : Component
 	public CollisionData Collisions;
 	
 	private float _skinPortion = 0.95f;
+	private float _defaultColliderHeight;
+
+	protected override void OnStart()
+	{
+		_defaultColliderHeight = Collider.Scale.y;
+	}
 
 	protected override void OnFixedUpdate()
 	{
-		// Log.Info($"1 Velocity: {Velocity}");
+		// if contains type jump
+		if(_activeProviders.Any(p => p.MotionType == MotionType.JUMP))
+			Log.Info($"1 jump Velocity: {Velocity}");
 		Collisions.Reset();
 		CalculateVelocity();
+		if(_activeProviders.Any(p => p.MotionType == MotionType.JUMP))
+			Log.Info($"2  jump Velocity: {Velocity}");
 		HandleHorizontalCollisions();
 		HandleVerticalCollisions();
 		
-		// Log.Info($"2 Velocity: {Velocity}");
+		if(_activeProviders.Any(p => p.MotionType == MotionType.JUMP))
+			Log.Info($"3 jump Velocity: {Velocity}");
 		Transform.Position += (Vector3)Velocity * Time.Delta;
 	}
 
@@ -236,6 +247,8 @@ public sealed class MotionCore2D : Component
 			CeilingHitEvent?.Invoke();
 			HitCeilingMadafaka?.Invoke(true);
 			Collisions.Up = true;
+			var hitPos = hitResult.HitPosition;
+			Transform.Position = Transform.Position.WithY(hitPos.y - _defaultColliderHeight);
 		}
 	}
 
@@ -279,9 +292,7 @@ public sealed class MotionCore2D : Component
 		Velocity = Vector2.Zero;
 
 		for ( int i = 0; i < _activeProviders.Count; i++ )
-		{
 			Velocity += _activeProviders[i].Velocity;
-		}
 	}
 	
 	public void AddMotionProvider(IMotionProvider provider)
