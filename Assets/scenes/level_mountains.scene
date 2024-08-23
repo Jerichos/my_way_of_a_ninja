@@ -556,7 +556,7 @@
               "Flags": 0,
               "Name": "Heli Small (1)",
               "Position": "864,256,1.000008",
-              "Scale": "0.25,0.25,1",
+              "Scale": "0.5,0.5,1",
               "Tags": "enemy",
               "Enabled": true,
               "Components": [
@@ -598,8 +598,8 @@
                 {
                   "__type": "Sandbox.sprite.SpriteSizer",
                   "__guid": "215af23a-1d21-4394-ac6e-f156a906b84f",
-                  "_height": 8,
-                  "_width": 8,
+                  "_height": 16,
+                  "_width": 16,
                   "PixelPerUnit": 32
                 },
                 {
@@ -985,7 +985,7 @@
               "Flags": 0,
               "Name": "Heli Small (4)",
               "Position": "2080,544,1.000078",
-              "Scale": "0.25,0.25,1",
+              "Scale": "0.5,0.5,1",
               "Tags": "enemy",
               "Enabled": true,
               "Components": [
@@ -5022,11 +5022,11 @@
             "_type": "gameobject",
             "go": "fcacb16e-ca98-4a15-80d4-6ed55d45d607"
           },
+          "AttackSound": "audio/sfx/sword_attack.sound",
           "AttackStart": {
             "_type": "gameobject",
             "go": "c8af086a-2af6-41be-a3d3-f928d868a7ba"
           },
-          "AttackSound": "audio/sfx/sword_attack.sound",
           "AttackTags": "enemy,enviro",
           "Cooldown": 0.35,
           "Damage": 1,

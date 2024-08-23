@@ -28,9 +28,6 @@ public class CameraFollow : Component
         float width = Camera.OrthographicHeight * Screen.Aspect;
         float halfWidth = width / 2;
 
-        Log.Info($"screen width: {Screen.Width} height: {Screen.Height} ortho width: {width} height: {height}");
-        Log.Info($"ratio: {Screen.Aspect}"); // width / height
-
         smoothPosition.x = smoothPosition.x.Clamp(MinBounds.x + halfWidth, MaxBounds.x - halfWidth);
         smoothPosition.y = smoothPosition.y.Clamp(MinBounds.y + halfHeight, MaxBounds.y - halfHeight);
 

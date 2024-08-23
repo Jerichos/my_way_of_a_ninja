@@ -5,7 +5,7 @@
   "Decibels": 70,
   "SelectionMode": "Random",
   "Sounds": [
-    "audio/music/shadow-on the rooftop [music].vsnd"
+    "audio/music/ninja_in_the_mountains.vsnd"
   ],
   "Occlusion": false,
   "AirAbsorption": false,

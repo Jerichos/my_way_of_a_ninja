@@ -11,8 +11,8 @@ public class SwordAbility : Component
 	[Property] private int DashDamage { get; set; } = 2;
 	
 	[Property] private float Cooldown { get; set; }= 0.2f;
-	[Property] private GameObject AttackStart;
-	[Property] private GameObject AttackEnd;
+	[Property] private GameObject AttackStart { get; set; }
+	[Property] private GameObject AttackEnd { get; set; }
 	[Property] private TagSet AttackTags { get; set; }
 	[Property] private SoundEvent AttackSound { get; set; }
 	
