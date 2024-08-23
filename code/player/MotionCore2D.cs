@@ -101,7 +101,7 @@ public sealed class MotionCore2D : Component
 	// check if there is ground on the edge
 	public bool GroundEdgeCheck(int direction)
 	{
-		Vector3 startPosition = Transform.Position + new Vector3(Collider.Scale.x / 2 * direction * Transform.Scale.x,10,0);
+		Vector3 startPosition = Transform.Position + new Vector3(Collider.WorldScale().x / 2 * direction, 10,0);
 		Vector3 endPosition = startPosition + Util.DownY * 20;
 		
 		_groundHitResult = Scene.Trace
@@ -155,8 +155,8 @@ public sealed class MotionCore2D : Component
 			return;
 		
 		// float skin = 5;
-		Vector3 scale = Collider.Scale * _skinPortion * Transform.Scale;
-		float halfWidth = Collider.Scale.x / 2 * Transform.Scale.x;
+		Vector3 scale = Collider.WorldScale() * _skinPortion;
+		float halfWidth = Collider.WorldScale().x / 2;
 		
 		if(Velocity.x > 0) // check right
 		{
@@ -223,10 +223,10 @@ public sealed class MotionCore2D : Component
 		if(Velocity.y <= 0 || GroundTags.IsEmpty)
 			return;
 		
-		float skinWidth = 25;
+		float skinWidth = 2;
 		float length = Velocity.y * Time.Delta + skinWidth;
 		
-		Vector3 startPosition = Transform.Position + Collider.Scale * Util.UpY + Util.DownY * skinWidth;
+		Vector3 startPosition = Transform.Position + Collider.WorldScale() * Util.UpY + Util.DownY * skinWidth;
 		Vector3 endPosition = startPosition + Util.UpY * length;
 		
 		Gizmo.Draw.Color = Color.Green;

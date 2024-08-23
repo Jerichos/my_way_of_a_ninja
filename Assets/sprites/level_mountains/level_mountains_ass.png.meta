@@ -5,5 +5,23 @@
   "nolod": false,
   "nomip": false,
   "nocompress": false,
-  "brightness": 1
+  "brightness": 1,
+  "publish": {
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "level_mountains_ass",
+      "Type": "asset",
+      "Org": "local",
+      "Ident": "level_mountains_ass",
+      "Schema": 0,
+      "IncludeSourceFiles": true,
+      "Resources": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "IsWhitelistDisabled": false,
+      "Metadata": {
+        "SingleAssetSource": "sprites/level_mountains/level_mountains_ass.png"
+      }
+    }
+  }
 }

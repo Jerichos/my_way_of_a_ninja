@@ -63,6 +63,7 @@ public sealed class Player : Component
 		if(Input.Down("Down"))
 		{
 			CrouchAbility.StartCrouch();
+			MoveAbility.SetInputX(0);
 		}
 		else if ( Input.Released("Down") )
 		{

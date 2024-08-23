@@ -86,6 +86,7 @@
         {
           "__type": "Sandbox.level.Weather",
           "__guid": "682b295a-158c-45eb-9368-80ec07d0cb19",
+          "__enabled": false,
           "ChangeInterval": 3,
           "Direction": 1,
           "Speed": 32,
@@ -1566,7 +1567,7 @@
         {
           "__type": "SpriteTools.TilesetComponent",
           "__guid": "435d849c-7f61-4e3a-9695-d18cc4ae91e0",
-          "ColliderWidth": 1,
+          "ColliderWidth": 32,
           "HasCollider": true,
           "IsTrigger": false,
           "Layers": [
@@ -2854,6 +2855,9 @@
                   "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
                 },
                 "70,8": {
+                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
+                },
+                "9,7": {
                   "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
                 }
               }
@@ -4810,7 +4814,7 @@
       "__guid": "fa92b8fb-a335-4816-b27c-04934c4d960c",
       "Flags": 0,
       "Name": "Player",
-      "Position": "96,192,2",
+      "Position": "161.7186,246.0664,2.000004",
       "Enabled": true,
       "Components": [
         {
@@ -4931,7 +4935,7 @@
               "out": -0.03571437
             }
           ],
-          "JumpIn": 0.33,
+          "JumpIn": 10,
           "JumpSound": "audio/sfx/player/player_jump.sound",
           "MaxHeight": 65,
           "MaxJumps": 2,
@@ -5042,7 +5046,7 @@
           "__type": "Sandbox.player.Knockback",
           "__guid": "9fc297dc-b5c4-4f9f-8d8b-7fcca616d438",
           "__enabled": false,
-          "Direction": "0.5,1",
+          "Direction": "0,-1",
           "Duration": 0.2,
           "MaxDistance": 64,
           "MotionCore": {
