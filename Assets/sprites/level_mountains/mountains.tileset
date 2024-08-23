@@ -2,7 +2,7 @@
   "FilePath": "sprites/level_mountains/level_mountains_ass.png",
   "TileSize": "32,32",
   "TileSeparation": "0,0",
-  "TileScale": 2.1,
+  "TileScale": 1,
   "Tiles": [
     {
       "Id": "02f0e1b6-0bdf-4c31-ba74-6ff3014c15b6",

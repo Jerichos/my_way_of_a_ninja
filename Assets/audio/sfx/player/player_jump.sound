@@ -1,11 +1,11 @@
 {
   "UI": true,
   "Volume": "1",
-  "Pitch": "0.65",
+  "Pitch": "0.6",
   "Decibels": 70,
   "SelectionMode": "Random",
   "Sounds": [
-    "audio/sfx/player/little_robot_sound_factory_jump_00.vsnd"
+    "audio/sfx/zapsplat_cartoon_whoosh_swoosh_airy_fast_003_101405.vsnd"
   ],
   "Occlusion": false,
   "AirAbsorption": false,

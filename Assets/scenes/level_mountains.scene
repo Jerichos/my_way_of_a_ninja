@@ -413,7 +413,7 @@
               "Flags": 0,
               "Name": "Heli Small",
               "Position": "736,219.1147,0.9999991",
-              "Scale": "0.25,0.25,1",
+              "Scale": "0.5,0.5,1",
               "Tags": "enemy",
               "Enabled": true,
               "Components": [
@@ -455,8 +455,8 @@
                 {
                   "__type": "Sandbox.sprite.SpriteSizer",
                   "__guid": "e413dc7b-e7dc-4c62-ac1b-98fc57f29f57",
-                  "_height": 8,
-                  "_width": 8,
+                  "_height": 16,
+                  "_width": 16,
                   "PixelPerUnit": 32
                 },
                 {
@@ -698,8 +698,8 @@
               "__guid": "922b63e9-c086-489e-b046-a002d2235ca6",
               "Flags": 0,
               "Name": "Heli Small (2)",
-              "Position": "2176,448,1.000085",
-              "Scale": "0.25,0.25,1",
+              "Position": "2112,288,1.000082",
+              "Scale": "0.5,0.5,1",
               "Tags": "enemy",
               "Enabled": true,
               "Components": [
@@ -741,8 +741,8 @@
                 {
                   "__type": "Sandbox.sprite.SpriteSizer",
                   "__guid": "c4b929ff-5bec-4ed2-a2af-9215ec26bac6",
-                  "_height": 8,
-                  "_width": 8,
+                  "_height": 16,
+                  "_width": 16,
                   "PixelPerUnit": 32
                 },
                 {
@@ -842,7 +842,7 @@
               "Flags": 0,
               "Name": "Heli Small (3)",
               "Position": "2400,448,1.000098",
-              "Scale": "0.25,0.25,1",
+              "Scale": "0.5,0.5,1",
               "Tags": "enemy",
               "Enabled": true,
               "Components": [
@@ -884,8 +884,8 @@
                 {
                   "__type": "Sandbox.sprite.SpriteSizer",
                   "__guid": "cfcf5504-606a-4695-b921-a152d95522b7",
-                  "_height": 8,
-                  "_width": 8,
+                  "_height": 16,
+                  "_width": 16,
                   "PixelPerUnit": 32
                 },
                 {
@@ -1027,8 +1027,8 @@
                 {
                   "__type": "Sandbox.sprite.SpriteSizer",
                   "__guid": "ee196eed-cde6-40b0-b439-accf11a2c0fd",
-                  "_height": 8,
-                  "_width": 8,
+                  "_height": 16,
+                  "_width": 16,
                   "PixelPerUnit": 32
                 },
                 {
@@ -1128,7 +1128,7 @@
               "Flags": 0,
               "Name": "Heli Small (5)",
               "Position": "2304,544,1.000091",
-              "Scale": "0.25,0.25,1",
+              "Scale": "0.5,0.5,1",
               "Tags": "enemy",
               "Enabled": true,
               "Components": [
@@ -1170,8 +1170,8 @@
                 {
                   "__type": "Sandbox.sprite.SpriteSizer",
                   "__guid": "660479ad-b1cd-4267-af15-071105e89e25",
-                  "_height": 8,
-                  "_width": 8,
+                  "_height": 16,
+                  "_width": 16,
                   "PixelPerUnit": 32
                 },
                 {
@@ -2825,6 +2825,36 @@
                 },
                 "59,21": {
                   "TileId": "4f1493db-e1a9-45dc-9e67-bead05c2f342"
+                },
+                "71,8": {
+                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
+                },
+                "72,8": {
+                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
+                },
+                "63,8": {
+                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
+                },
+                "64,8": {
+                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
+                },
+                "65,8": {
+                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
+                },
+                "66,8": {
+                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
+                },
+                "67,8": {
+                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
+                },
+                "68,8": {
+                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
+                },
+                "69,8": {
+                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
+                },
+                "70,8": {
+                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
                 }
               }
             },

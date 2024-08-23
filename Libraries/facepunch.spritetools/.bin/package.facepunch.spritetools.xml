@@ -106,6 +106,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:SpriteTools.SpriteResource.GetAllTexturePaths">
+            <summary>
+            Returns a list of all the texture paths used by this sprite.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="P:SpriteTools.SpriteAnimation._nameProp">
             <summary>
             The name of the animation. This is used as a key to reference the animation.
