@@ -62,7 +62,7 @@ public sealed class Animator : Component
 			default:
 				throw new ArgumentOutOfRangeException();
 		}
-		Log.Info($"animation change from {_state} to {newState} isAttacking: {SwordAbility.IsAttacking} force: {force}");
+		// Log.Info($"animation change from {_state} to {newState} isAttacking: {SwordAbility.IsAttacking} force: {force}");
 		_state = newState;
 	}
 

@@ -63,7 +63,7 @@ public class MoveAround : Component, IMotionProvider
         return false; // No valid direction found
     }
 
-    public void OnMotionCanceled()
+    public void CancelMotion()
     {
         Enabled = false;
     }

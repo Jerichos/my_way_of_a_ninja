@@ -205,7 +205,23 @@
           }
         }
       ],
-      "Attachments": []
+      "Attachments": [
+        {
+          "Name": "attackStart",
+          "Color": "1,0,0,1",
+          "Points": [],
+          "Visible": true
+        },
+        {
+          "Name": "attackEnd",
+          "Color": "0,1,0.26667,1",
+          "Points": [
+            "0.953125,0.5",
+            "0.828125,0.375"
+          ],
+          "Visible": true
+        }
+      ]
     },
     {
       "FrameRate": 10,
@@ -246,7 +262,23 @@
           }
         }
       ],
-      "Attachments": []
+      "Attachments": [
+        {
+          "Name": "attackStart",
+          "Color": "1,0,0,1",
+          "Points": [],
+          "Visible": true
+        },
+        {
+          "Name": "attackEnd",
+          "Color": "0.55,1,0,1",
+          "Points": [
+            "0.953125,0.46875",
+            "0.84375,0.375"
+          ],
+          "Visible": true
+        }
+      ]
     },
     {
       "FrameRate": 15,
@@ -296,7 +328,25 @@
           }
         }
       ],
-      "Attachments": []
+      "Attachments": [
+        {
+          "Name": "attackEnd",
+          "Color": "0.1,1,0,1",
+          "Points": [
+            "0.90625,0.65625",
+            "0.8125,0.65625"
+          ],
+          "Visible": true
+        },
+        {
+          "Name": "attackStart",
+          "Color": "1,0,0,1",
+          "Points": [
+            "0.515625,0.78125"
+          ],
+          "Visible": true
+        }
+      ]
     },
     {
       "FrameRate": 10,
@@ -329,7 +379,24 @@
           }
         }
       ],
-      "Attachments": []
+      "Attachments": [
+        {
+          "Name": "attackStart",
+          "Color": "1,0,0,1",
+          "Points": [
+            "0.53125,0.5625"
+          ],
+          "Visible": true
+        },
+        {
+          "Name": "attackEnd",
+          "Color": "0,1,0.36667,1",
+          "Points": [
+            "0.953125,0.4375"
+          ],
+          "Visible": true
+        }
+      ]
     },
     {
       "FrameRate": 15,
@@ -352,7 +419,25 @@
           }
         }
       ],
-      "Attachments": []
+      "Attachments": [
+        {
+          "Name": "attackStart",
+          "Color": "1,0,0,1",
+          "Points": [
+            "0.578125,0.625"
+          ],
+          "Visible": true
+        },
+        {
+          "Name": "attackEnd",
+          "Color": "0.03333,1,0,1",
+          "Points": [
+            "0.984375,0.5",
+            "0.921875,0.46875"
+          ],
+          "Visible": true
+        }
+      ]
     }
   ],
   "__references": [],

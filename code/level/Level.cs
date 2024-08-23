@@ -11,6 +11,9 @@ public class Level : Component
 	[Property] public CameraFollow CameraFollow { get; set; }
 	[Property] public bool MovePlayerToCheckpoint { get; set; } = true;
 	[Property] public Weather Weather { get; set; }
+	
+	[Property] public Vector2 MinBounds { get; set; }
+	[Property] public Vector2 MaxBounds { get; set; }
 
 	public Vector2 LastCheckpointPosition => Checkpoint.LastCheckpoint?.Transform.Position ?? Transform.Position;
 	
@@ -64,7 +67,9 @@ public class Level : Component
 		}
 		
 		newPlayer.Teleport(newPosition);
+		
 		CameraFollow.SetTarget( newPlayer.GameObject, true );
+		CameraFollow.SetBounds( MinBounds, MaxBounds );
 
 		newPlayer.OnRespawn();
 		newPlayer.DeathEvent -= OnPlayerDeath;
@@ -83,5 +88,39 @@ public class Level : Component
 		
 		
 		Log.Info($"set player position to {newPosition}");
+	}
+
+	protected override void OnFixedUpdate()
+	{
+		// kill player if out of bounds
+		if(Player != null)
+		{
+			if(Player.Transform.Position.x < MinBounds.x || Player.Transform.Position.x > MaxBounds.x || Player.Transform.Position.y < MinBounds.y || Player.Transform.Position.y > MaxBounds.y)
+				Player.Kill();
+		}
+	}
+	
+	protected override void DrawGizmos()
+	{
+		// Define the corner points relative to the object's position
+		Vector3 botLeft = new Vector3(MinBounds.x, MinBounds.y, 0) - Transform.Position;
+		Vector3 botRight = new Vector3(MaxBounds.x, MinBounds.y, 0) - Transform.Position;
+		Vector3 topLeft = new Vector3(MinBounds.x, MaxBounds.y, 0) - Transform.Position;
+		Vector3 topRight = new Vector3(MaxBounds.x, MaxBounds.y, 0) - Transform.Position;
+
+		// Apply the rotation to each corner point
+		botLeft = Transform.LocalRotation * botLeft;
+		botRight = Transform.LocalRotation * botRight;
+		topLeft = Transform.LocalRotation * topLeft;
+		topRight = Transform.LocalRotation * topRight;
+		
+		Gizmo.Draw.Color = Color.Red;
+		Gizmo.Draw.LineThickness = 2;
+		
+		// Draw the lines in world space
+		Gizmo.Draw.Line(botLeft, botRight);
+		Gizmo.Draw.Line(botRight, topRight);
+		Gizmo.Draw.Line(topRight, topLeft);
+		Gizmo.Draw.Line(topLeft, botLeft);
 	}
 }

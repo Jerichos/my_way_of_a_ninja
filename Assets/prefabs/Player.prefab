@@ -176,6 +176,7 @@
         "__type": "Sandbox.player.DashAbility",
         "__guid": "e7e90b74-92b9-445a-ade9-9fc00da7de05",
         "CanDashInAir": true,
+        "Cooldown": 2,
         "DashEffect": {
           "_type": "component",
           "component_id": "480de7f6-3cdb-4eff-a076-387862e691b0",
@@ -517,6 +518,47 @@
             "OnEdge": false,
             "Rate": 30,
             "RateOverDistance": 0
+          }
+        ]
+      },
+      {
+        "__guid": "07ae2793-0e81-4860-881d-19f2c958d4e8",
+        "Flags": 0,
+        "Name": "Tileset Object",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "SpriteTools.TilesetComponent",
+            "__guid": "639ed66f-5ddd-4ef7-80f8-2761803b7d4e",
+            "ColliderWidth": 0,
+            "HasCollider": false,
+            "IsTrigger": false,
+            "Layers": [],
+            "Static": false
+          }
+        ]
+      },
+      {
+        "__guid": "b2791f03-7cfc-44f1-971e-cc113c14bdbc",
+        "Flags": 0,
+        "Name": "UI",
+        "Enabled": true,
+        "Children": [
+          {
+            "__guid": "6c0a4204-66a5-498a-bf64-79e1778b6e75",
+            "Flags": 0,
+            "Name": "Screen",
+            "Enabled": true,
+            "Components": [
+              {
+                "__type": "Sandbox.ScreenPanel",
+                "__guid": "d4bea611-57ee-4648-8746-96b7ad7439cd",
+                "AutoScreenScale": true,
+                "Opacity": 1,
+                "Scale": 1,
+                "ZIndex": 100
+              }
+            ]
           }
         ]
       }

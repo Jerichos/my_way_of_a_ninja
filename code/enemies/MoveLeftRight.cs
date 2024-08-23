@@ -15,7 +15,7 @@ public class MoveLeftRight : Component, IMotionProvider
 	
 	private int _direction = 1;
 	
-	public void OnMotionCanceled()
+	public void CancelMotion()
 	{
 		Velocity = new Vector2(0, 0);
 		Enabled = false;

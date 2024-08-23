@@ -72,7 +72,7 @@ public class FollowPath : Component, IMotionProvider
 	}
 
 	
-	public void OnMotionCanceled()
+	public void CancelMotion()
 	{
 		Velocity = new Vector2(0, 0);
 		Enabled = false;

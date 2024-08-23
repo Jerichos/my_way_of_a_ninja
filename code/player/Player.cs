@@ -138,6 +138,8 @@ public sealed class Player : Component
 		if(_dead)
 			return;
 		
+		Health = 0;
+		HealthChangedEvent?.Invoke(Health);
 		_dead = true;
 		OnDeath();
 	}
@@ -145,6 +147,7 @@ public sealed class Player : Component
 	private void OnDeath()
 	{
 		Log.Info("Player died");
+		DashAbility?.CancelMotion();
 		Sound.Play(DeathSound); // huh we don't need sound point?
 		DeathEvent?.Invoke();
 	}

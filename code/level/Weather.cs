@@ -50,7 +50,7 @@ public class Weather : Component, IMotionProvider
 		Velocity = new Vector2(Direction * Speed, 0);
 	}
 
-	public void OnMotionCanceled()
+	public void CancelMotion()
 	{
 		Velocity = Vector2.Zero;
 		Enabled = false;

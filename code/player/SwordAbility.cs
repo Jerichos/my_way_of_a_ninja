@@ -10,9 +10,9 @@ public class SwordAbility : Component
 	[Property] private int Damage { get; set; } = 1;
 	[Property] private int DashDamage { get; set; } = 2;
 	
-	[Property] private float Range { get; set; } = 150;
-	[Property] private float DashRange { get; set; } = 200;
 	[Property] private float Cooldown { get; set; }= 0.2f;
+	[Property] private GameObject AttackStart;
+	[Property] private GameObject AttackEnd;
 	[Property] private TagSet AttackTags { get; set; }
 	[Property] private SoundEvent AttackSound { get; set; }
 	
@@ -46,7 +46,7 @@ public class SwordAbility : Component
 		_isHitting = true;
 		_hitTargets.Clear();
 
-		Sound.Play( AttackSound, Transform.Position );
+		Sound.Play(AttackSound, Transform.Position );
 		AttackEvent?.Invoke(true);
 	}
 	
@@ -68,18 +68,10 @@ public class SwordAbility : Component
 
 	private void TryHit()
 	{
-		// Log.Info("try hit");
 		IsAttacking = true;
 
-		// var swordStart = Sprite.GetAttachmentTransform( "swordStart" ).Position; // can't create from Prefab of SpriteComponent maybe it's fixed now...
-		var swordStart = Sprite.Transform.Position + new Vector3(0, MotionCore.Collider.Scale.y / 1.66f, 0 );
-		// Log.Info($"swordStart: {swordStart} collider height: {MotionCore.Collider.Scale.y / 1.66f}");
-		
-		float actualRange = Player.DashAbility?.IsDashing == true ? DashRange : Range;
-		float length = actualRange * MotionCore.Facing;
-		
-		_rayStart = swordStart;
-		_rayEnd = _rayStart + new Vector2(length, 0);
+		_rayStart = AttackStart.Transform.Position;
+		_rayEnd = AttackEnd.Transform.Position;
 		
 		_hitResult = Scene.Trace
 			.Ray(_rayStart, _rayEnd)
@@ -100,8 +92,8 @@ public class SwordAbility : Component
 				if ( Player.DashAbility?.IsDashing == true )
 					damage = DashDamage;
 				
+				_hitTargets.Add(hittable);	
 				hittable.Hit(damage, OnHitSound, GameObject);
-				_hitTargets.Add(hittable);
 			}
 			else
 			{
@@ -118,16 +110,7 @@ public class SwordAbility : Component
 
 	private void OnHitSound( SoundEvent soundEvent )
 	{
-		if ( soundEvent == null )
-		{
-			Components.Get<SoundPointComponent>().SoundEvent = AttackSound;
-			Components.Get<SoundPointComponent>().StartSound();
-		}
-		else
-		{
-			Components.Get<SoundPointComponent>().SoundEvent = soundEvent;
-			Components.Get<SoundPointComponent>().StartSound();
-		}
+		Sound.Play(soundEvent ?? AttackSound);
 	}
 
 	protected override void DrawGizmos()

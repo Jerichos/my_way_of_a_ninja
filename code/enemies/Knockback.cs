@@ -81,7 +81,7 @@ namespace Sandbox.player
             MotionCore.RemoveMotionProvider(this);
         }
 
-        public void OnMotionCanceled()
+        public void CancelMotion()
         {
             Enabled = false;
         }

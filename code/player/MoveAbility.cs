@@ -8,11 +8,7 @@ public class MoveAbility : Component, IMotionProvider
 	
 	[Property] public float MaxSpeedIn { get; set; } = 1;
 	[Property] public float MaxAcceleration { get; set; } = 1000;
-	[Property] public float MaxDeceleration { get; set; } = 1000;
-	[Property] public float MaxVelocity { get; set; } = 100;
-	
 	[Property] public Curve AccelerationCurve { get; set; }
-	[Property] public Curve DecelerationCurve { get; set; }
 	
 	public Vector2 Velocity { get; private set; }
 	public MotionType MotionType => MotionType.MOVE;
@@ -73,7 +69,7 @@ public class MoveAbility : Component, IMotionProvider
 		// TODO: implement deceleration or leave it be because there is no time. So what
 	}
 	
-	public void OnMotionCanceled()
+	public void CancelMotion()
 	{
 		Velocity = Vector2.Zero;
 		_motionCanceled = true;

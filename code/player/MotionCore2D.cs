@@ -101,7 +101,7 @@ public sealed class MotionCore2D : Component
 	// check if there is ground on the edge
 	public bool GroundEdgeCheck(int direction)
 	{
-		Vector3 startPosition = Transform.Position + new Vector3(Collider.Scale.x / 2 * direction,10,0);
+		Vector3 startPosition = Transform.Position + new Vector3(Collider.Scale.x / 2 * direction * Transform.Scale.x,10,0);
 		Vector3 endPosition = startPosition + Util.DownY * 20;
 		
 		_groundHitResult = Scene.Trace
@@ -155,8 +155,8 @@ public sealed class MotionCore2D : Component
 			return;
 		
 		// float skin = 5;
-		Vector3 scale = Collider.Scale * _skinPortion;
-		float halfWidth = Collider.Scale.x / 2;
+		Vector3 scale = Collider.Scale * _skinPortion * Transform.Scale;
+		float halfWidth = Collider.Scale.x / 2 * Transform.Scale.x;
 		
 		if(Velocity.x > 0) // check right
 		{
@@ -310,7 +310,7 @@ public sealed class MotionCore2D : Component
 
 				if (provider.OverrideMotions.Contains(activeProvider.MotionType))
 				{
-					activeProvider.OnMotionCanceled();
+					activeProvider.CancelMotion();
 					providersToRemove.Add(activeProvider);
 				}
 			}
@@ -341,7 +341,7 @@ public sealed class MotionCore2D : Component
 
 				if (overriddenProvider != null)
 				{
-					overriddenProvider.OnMotionCanceled();
+					overriddenProvider.CancelMotion();
 					_activeProviders.Remove(overriddenProvider);
 				}
 			}

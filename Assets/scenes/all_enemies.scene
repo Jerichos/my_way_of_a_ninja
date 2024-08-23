@@ -1,0 +1,382 @@
+{
+  "__guid": "51d823f7-d7f9-43ab-87f4-6badc9650eba",
+  "GameObjects": [
+    {
+      "__guid": "71ad3189-b3ed-47e8-ab22-8dcbc9b9894d",
+      "Flags": 0,
+      "Name": "Sun",
+      "Rotation": "0,0.7071068,0,0.7071068",
+      "Tags": "light_directional,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.DirectionalLight",
+          "__guid": "cf456942-687e-4d9f-956a-7729dda05fbb",
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.91373,0.98039,1,1",
+          "Shadows": true,
+          "SkyColor": "0,0,0,0"
+        }
+      ]
+    },
+    {
+      "__guid": "6852fe50-7eef-4208-8649-052608912be8",
+      "Flags": 0,
+      "Name": "Heli Small",
+      "Position": "384,0,0.000003729075",
+      "Scale": "0.25,0.25,1",
+      "Tags": "enemy",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.enemies.Enemy",
+          "__guid": "76af1030-bf0d-4d86-8afe-18f9657d5d5d",
+          "DestroySound": "audio/sfx/enemy/enemy_death.sound",
+          "Health": 1,
+          "HitSound": "audio/sfx/enemy/enemy_hit.sound",
+          "Knockback": {
+            "_type": "component",
+            "component_id": "88676e65-2b71-4fd1-83ad-0e2530211f1b",
+            "go": "6852fe50-7eef-4208-8649-052608912be8",
+            "component_type": "Knockback"
+          },
+          "MaxHealth": 1,
+          "Sprite": {
+            "_type": "component",
+            "component_id": "e5c32f13-0388-4f80-8462-b81ee1ba94f0",
+            "go": "6852fe50-7eef-4208-8649-052608912be8",
+            "component_type": "SpriteComponent"
+          }
+        },
+        {
+          "__type": "SpriteTools.SpriteComponent",
+          "__guid": "e5c32f13-0388-4f80-8462-b81ee1ba94f0",
+          "__version": 1,
+          "BroadcastEvents": {},
+          "CastShadows": "On",
+          "CreateAttachPoints": false,
+          "FlashTint": "1,0,0,0",
+          "PlaybackSpeed": 3,
+          "Sprite": "heli.sprite",
+          "SpriteFlags": "None",
+          "StartingAnimationName": "walk",
+          "Tint": "1,1,1,1",
+          "UpDirection": "YPositive"
+        },
+        {
+          "__type": "Sandbox.sprite.SpriteSizer",
+          "__guid": "b60994bf-078c-4038-98c1-9fe0d1b2d48a",
+          "_height": 8,
+          "_width": 8,
+          "PixelPerUnit": 32
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "fb16651d-240c-49cd-8ebd-8d106ae0f794",
+          "Center": "0,50,0",
+          "IsTrigger": false,
+          "Scale": "81.09979,99.79977,10",
+          "Static": false
+        },
+        {
+          "__type": "Sandbox.player.MotionCore2D",
+          "__guid": "37e18828-86cb-4036-baf5-e2e6013fda4c",
+          "Collider": {
+            "_type": "component",
+            "component_id": "fb16651d-240c-49cd-8ebd-8d106ae0f794",
+            "go": "6852fe50-7eef-4208-8649-052608912be8",
+            "component_type": "BoxCollider"
+          },
+          "GroundTags": "ground",
+          "WallTags": "wall"
+        },
+        {
+          "__type": "Sandbox.player.Gravity",
+          "__guid": "0fbe169d-9828-4f09-9216-fa696be654ee",
+          "GravityCurve": [
+            {
+              "y": 1
+            },
+            {
+              "x": 1
+            }
+          ],
+          "GravityForce": 20,
+          "MaxVelocity": 100,
+          "MotionCore": {
+            "_type": "component",
+            "component_id": "37e18828-86cb-4036-baf5-e2e6013fda4c",
+            "go": "6852fe50-7eef-4208-8649-052608912be8",
+            "component_type": "MotionCore2D"
+          }
+        },
+        {
+          "__type": "Sandbox.enemies.MoveLeftRight",
+          "__guid": "3629ddd1-3ff7-4911-a649-309a125514cc",
+          "MotionCore": {
+            "_type": "component",
+            "component_id": "37e18828-86cb-4036-baf5-e2e6013fda4c",
+            "go": "6852fe50-7eef-4208-8649-052608912be8",
+            "component_type": "MotionCore2D"
+          },
+          "Speed": 128
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "54acefa2-9883-4351-bbc8-dd8b1d1aaecb",
+          "Center": "0,45,0",
+          "IsTrigger": true,
+          "Scale": "74.10023,90,100",
+          "Static": false
+        },
+        {
+          "__type": "Sandbox.enemies.ContactDamage",
+          "__guid": "df6a8985-01f7-4428-831a-820eb448d88f",
+          "ContactDamageCollider": {
+            "_type": "component",
+            "component_id": "54acefa2-9883-4351-bbc8-dd8b1d1aaecb",
+            "go": "6852fe50-7eef-4208-8649-052608912be8",
+            "component_type": "BoxCollider"
+          },
+          "Damage": 1
+        },
+        {
+          "__type": "Sandbox.player.Knockback",
+          "__guid": "88676e65-2b71-4fd1-83ad-0e2530211f1b",
+          "__enabled": false,
+          "Direction": "0,0",
+          "Duration": 0.1,
+          "MaxDistance": 64,
+          "MotionCore": {
+            "_type": "component",
+            "component_id": "37e18828-86cb-4036-baf5-e2e6013fda4c",
+            "go": "6852fe50-7eef-4208-8649-052608912be8",
+            "component_type": "MotionCore2D"
+          },
+          "VelocityCurve": [
+            {
+              "x": 0.5,
+              "y": 0.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "079caf25-2c4d-4146-9086-cd64d0d48739",
+      "Flags": 0,
+      "Name": "Heli Big",
+      "Position": "320,0,0.000003729075",
+      "Scale": "0.75,0.75,1",
+      "Tags": "enemy",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.enemies.Enemy",
+          "__guid": "b61de5eb-2339-42c5-940f-29109b86b577",
+          "DestroySound": "audio/sfx/enemy/enemy_death.sound",
+          "Health": 3,
+          "HitSound": "audio/sfx/enemy/enemy_hit.sound",
+          "Knockback": {
+            "_type": "component",
+            "component_id": "fd96a772-9a0d-4c25-b7ba-02bc76c7952b",
+            "go": "079caf25-2c4d-4146-9086-cd64d0d48739",
+            "component_type": "Knockback"
+          },
+          "MaxHealth": 3,
+          "Sprite": {
+            "_type": "component",
+            "component_id": "8f33089b-f224-4f36-96fb-d2b499a5eae3",
+            "go": "079caf25-2c4d-4146-9086-cd64d0d48739",
+            "component_type": "SpriteComponent"
+          }
+        },
+        {
+          "__type": "SpriteTools.SpriteComponent",
+          "__guid": "8f33089b-f224-4f36-96fb-d2b499a5eae3",
+          "__version": 1,
+          "BroadcastEvents": {},
+          "CastShadows": "On",
+          "CreateAttachPoints": false,
+          "FlashTint": "1,0,0,0",
+          "PlaybackSpeed": 1,
+          "Sprite": "heli.sprite",
+          "SpriteFlags": "None",
+          "StartingAnimationName": "walk",
+          "Tint": "1,1,1,1",
+          "UpDirection": "YPositive"
+        },
+        {
+          "__type": "Sandbox.sprite.SpriteSizer",
+          "__guid": "2ffe5dcb-fb86-43e0-ba81-abda18b32603",
+          "_height": 24,
+          "_width": 24,
+          "PixelPerUnit": 32
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "e8e2932e-8e7e-4dc6-9380-7b48cdc937c7",
+          "Center": "0,50,0",
+          "IsTrigger": false,
+          "Scale": "81.09979,99.79977,10",
+          "Static": false
+        },
+        {
+          "__type": "Sandbox.player.MotionCore2D",
+          "__guid": "e1d3bceb-2e23-4f26-8542-6f572f3a727d",
+          "Collider": {
+            "_type": "component",
+            "component_id": "e8e2932e-8e7e-4dc6-9380-7b48cdc937c7",
+            "go": "079caf25-2c4d-4146-9086-cd64d0d48739",
+            "component_type": "BoxCollider"
+          },
+          "GroundTags": "ground",
+          "WallTags": "wall"
+        },
+        {
+          "__type": "Sandbox.player.Gravity",
+          "__guid": "102279f8-3fe4-4617-a145-f5bd49960b16",
+          "GravityCurve": [
+            {
+              "y": 1
+            },
+            {
+              "x": 1
+            }
+          ],
+          "GravityForce": 20,
+          "MaxVelocity": 100,
+          "MotionCore": {
+            "_type": "component",
+            "component_id": "e1d3bceb-2e23-4f26-8542-6f572f3a727d",
+            "go": "079caf25-2c4d-4146-9086-cd64d0d48739",
+            "component_type": "MotionCore2D"
+          }
+        },
+        {
+          "__type": "Sandbox.enemies.MoveLeftRight",
+          "__guid": "18423ec1-2133-406e-81d7-37639a7c7800",
+          "MotionCore": {
+            "_type": "component",
+            "component_id": "e1d3bceb-2e23-4f26-8542-6f572f3a727d",
+            "go": "079caf25-2c4d-4146-9086-cd64d0d48739",
+            "component_type": "MotionCore2D"
+          },
+          "Speed": 32
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "08b8a9fc-7fa1-4d71-b1ee-f35d01ed574f",
+          "Center": "0,45,0",
+          "IsTrigger": true,
+          "Scale": "74.10023,90,100",
+          "Static": false
+        },
+        {
+          "__type": "Sandbox.enemies.ContactDamage",
+          "__guid": "a5359b52-171e-4db6-8bdb-c21d5d08c202",
+          "ContactDamageCollider": {
+            "_type": "component",
+            "component_id": "08b8a9fc-7fa1-4d71-b1ee-f35d01ed574f",
+            "go": "079caf25-2c4d-4146-9086-cd64d0d48739",
+            "component_type": "BoxCollider"
+          },
+          "Damage": 1
+        },
+        {
+          "__type": "Sandbox.player.Knockback",
+          "__guid": "fd96a772-9a0d-4c25-b7ba-02bc76c7952b",
+          "__enabled": false,
+          "Direction": "0,0",
+          "Duration": 0.1,
+          "MaxDistance": 64,
+          "MotionCore": {
+            "_type": "component",
+            "component_id": "e1d3bceb-2e23-4f26-8542-6f572f3a727d",
+            "go": "079caf25-2c4d-4146-9086-cd64d0d48739",
+            "component_type": "MotionCore2D"
+          },
+          "VelocityCurve": [
+            {
+              "x": 0.5,
+              "y": 0.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "930eb674-e01c-46f7-9e3a-bcb22039d021",
+      "Flags": 0,
+      "Name": "ground",
+      "Position": "320,-32,0",
+      "Tags": "ground,wall",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "1d865c0e-dc39-4599-a4ba-91172065c88f",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "500,32,10",
+          "Static": true
+        }
+      ]
+    },
+    {
+      "__guid": "e626be9e-bc95-411c-9cb1-66970bf0e0a0",
+      "Flags": 0,
+      "Name": "Camera",
+      "Position": "343.4334,-0.00008188092,99.99998",
+      "Rotation": "-0.5,0.5,0.5,0.5",
+      "Tags": "maincamera",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.CameraComponent",
+          "__guid": "edfb93df-4bcf-4228-87d8-b962e20270d1",
+          "BackgroundColor": "0.33333,0.46275,0.52157,1",
+          "ClearFlags": "All",
+          "FieldOfView": 60,
+          "IsMainCamera": true,
+          "Orthographic": true,
+          "OrthographicHeight": 380,
+          "Priority": 1,
+          "RenderExcludeTags": "",
+          "RenderTags": "",
+          "TargetEye": "None",
+          "Viewport": "0,0,1,1",
+          "ZFar": 10000,
+          "ZNear": 10
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 30,
+    "NetworkInterpolation": true,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "Title": "all_enemies",
+  "Description": "",
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

@@ -1,0 +1,65 @@
+{
+  "FilePath": "sprites/level_01/level_00_ass.png",
+  "TileSize": "32,32",
+  "TileSeparation": "0,0",
+  "TileScale": 3,
+  "Tiles": [
+    {
+      "Id": "67e4525d-b60e-4188-9790-d621da44c325",
+      "Name": "",
+      "Size": "1,1"
+    },
+    {
+      "Id": "05e4d555-7978-45dd-b87c-307c3a08ef73",
+      "Name": "",
+      "Position": "1,0",
+      "Size": "1,1"
+    },
+    {
+      "Id": "42246425-69a8-40e9-97e3-31866a01b68d",
+      "Name": "",
+      "Position": "2,0",
+      "Size": "1,1"
+    },
+    {
+      "Id": "ae1e7783-b05d-4b45-9926-0b5e884f0a30",
+      "Name": "",
+      "Position": "0,1",
+      "Size": "1,1"
+    },
+    {
+      "Id": "5bc1a33e-1311-4cf7-a1e4-0763857b4e33",
+      "Name": "",
+      "Position": "1,1",
+      "Size": "1,1"
+    },
+    {
+      "Id": "91c81df2-0172-4f4d-9b56-6ce4d488790c",
+      "Name": "",
+      "Position": "2,1",
+      "Size": "1,1"
+    },
+    {
+      "Id": "a2fb86ac-9210-47e3-a2d5-45d9c20e64c3",
+      "Name": "",
+      "Position": "0,2",
+      "Size": "1,1"
+    },
+    {
+      "Id": "43807592-1693-4f85-b3c4-df950be3338a",
+      "Name": "",
+      "Position": "1,2",
+      "Size": "1,1"
+    },
+    {
+      "Id": "1783c3ab-b6c8-421c-b9de-84012a3a3e48",
+      "Name": "",
+      "Position": "2,2",
+      "Size": "1,1"
+    }
+  ],
+  "CurrentTextureSize": "96,96",
+  "CurrentTileSize": "32,32",
+  "__references": [],
+  "__version": 0
+}

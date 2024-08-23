@@ -21,7 +21,7 @@ public interface IMotionProvider
 	public MotionType[] OverrideMotions { get; }
 	public MotionType MotionType { get; }
 	
-	public void OnMotionCanceled();
+	public void CancelMotion();
 	
 	public void OnMotionRestored();
 }

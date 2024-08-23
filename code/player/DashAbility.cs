@@ -22,7 +22,7 @@ public class DashAbility : Component, IMotionProvider
 	public MotionType MotionType => MotionType.DASH;
 	public MotionType[] OverrideMotions => new[] {MotionType.MOVE, MotionType.JUMP, MotionType.GRAVITY};
 
-	private float _colliderDashHeight = 75;
+	private float _colliderDashHeight = 24;
 	private float _defaultColliderHeight;
 	private float _defaultColliderCenterY;
 
@@ -56,8 +56,7 @@ public class DashAbility : Component, IMotionProvider
 		MotionCore.Collider.Scale = MotionCore.Collider.Scale.WithY(_colliderDashHeight);
 		MotionCore.Collider.Center = MotionCore.Collider.Center.WithY(_colliderDashHeight);
 		
-		Components.Get<SoundPointComponent>().SoundEvent = DashSound;
-		Components.Get<SoundPointComponent>().StartSound();
+		Sound.Play(DashSound, Transform.Position);
 
 		DashEffect.Enabled = true;
 		Log.Info("start dash");
@@ -106,7 +105,6 @@ public class DashAbility : Component, IMotionProvider
 			else
 			{
 				Velocity = Vector2.Zero;
-				
 				_isIsDashing = false;
 				MotionCore.RemoveMotionProvider(this);
 				
@@ -154,7 +152,7 @@ public class DashAbility : Component, IMotionProvider
 	}
 
 
-	public void OnMotionCanceled()
+	public void CancelMotion()
 	{
 		Log.Info("DASH Cancel");
 		Velocity = Vector2.Zero;

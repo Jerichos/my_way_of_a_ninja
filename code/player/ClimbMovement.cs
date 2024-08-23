@@ -33,7 +33,7 @@ public class ClimbMovement : Component, IMotionProvider
 		Log.Info($"climbing down {_ladder}");
 	}
 	
-	public void OnMotionCanceled()
+	public void CancelMotion()
 	{
 		Enabled = false;
 	}

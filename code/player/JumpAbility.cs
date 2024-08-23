@@ -87,15 +87,6 @@ public sealed class JumpAbility : Component, IMotionProvider
 		{
 			if(_t < _wishT)
 			{
-				// Ensure _t doesn't exceed 1 (end of the dash)
-				// if (_t > 1)
-				// {
-				// 	_t = 1;
-				// }
-				//
-				// if(_t > _wishT)
-				// 	_t = _wishT;
-
 				float targetHeight = HeightCurve.Evaluate(_t) * MaxHeight * _wishT;
 				float heightDiff = targetHeight - _distanceTraveled;
 				Velocity = new Vector2(0, heightDiff / Time.Delta);
@@ -122,13 +113,11 @@ public sealed class JumpAbility : Component, IMotionProvider
 		_t = 0;
 		_distanceTraveled = 0;
 		_wishT = (MinHeight / MaxHeight) * 0.8f;
-		// _wishT = 0;
 		_jumps++;
 		
 		// change collider size
 		Collider.Scale = _defaultColliderScale.WithY(Collider.Scale.y / _colliderFactor);
-		Collider.Center = _defaultColliderCenter.WithY(Collider.Center.y / _colliderFactor);
-		
+		Collider.Center = _defaultColliderCenter.WithY(24);
 
 		JumpSound.Pitch = BasePitch + PitchPerJump * _jumps;
 		Sound.Play( JumpSound );		
@@ -155,7 +144,7 @@ public sealed class JumpAbility : Component, IMotionProvider
 		return !IsJumping && MotionCore.Grounded || _jumps < MaxJumps;
 	}
 	
-	public void OnMotionCanceled()
+	public void CancelMotion()
 	{
 		CancelJump();
 	}

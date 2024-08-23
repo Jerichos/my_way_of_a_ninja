@@ -37,7 +37,7 @@ public sealed class Gravity : Component, IMotionProvider
 		}
 	}
 
-	public void OnMotionCanceled()
+	public void CancelMotion()
 	{
 		Velocity = Vector2.Zero;
 		Enabled = false;
