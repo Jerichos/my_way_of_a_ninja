@@ -19,9 +19,9 @@ public class Checkpoint : Component
 			
 			_activated = value;
 
-			if ( _activated )
+			if (_activated )
 			{
-				if(LastCheckpoint != null)
+				if(LastCheckpoint != null && LastCheckpoint != this)
 					LastCheckpoint.Activated = false;
 				
 				LastCheckpoint = this;

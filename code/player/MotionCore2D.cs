@@ -78,17 +78,12 @@ public sealed class MotionCore2D : Component
 	protected override void OnFixedUpdate()
 	{
 		// if contains type jump
-		if(_activeProviders.Any(p => p.MotionType == MotionType.JUMP))
-			Log.Info($"1 jump Velocity: {Velocity}");
 		Collisions.Reset();
 		CalculateVelocity();
-		if(_activeProviders.Any(p => p.MotionType == MotionType.JUMP))
-			Log.Info($"2  jump Velocity: {Velocity}");
+
 		HandleHorizontalCollisions();
 		HandleVerticalCollisions();
 		
-		if(_activeProviders.Any(p => p.MotionType == MotionType.JUMP))
-			Log.Info($"3 jump Velocity: {Velocity}");
 		Transform.Position += (Vector3)Velocity * Time.Delta;
 	}
 
@@ -110,17 +105,17 @@ public sealed class MotionCore2D : Component
 			.Size(BBox.FromPositionAndSize(Vector3.Zero, new Vector3(1,1,1)))
 			.Run();
 		
-		Gizmo.Draw.Color = Color.Green;
-		Gizmo.Draw.LineThickness = 20;
+		// Gizmo.Draw.Color = Color.Green;
+		// Gizmo.Draw.LineThickness = 20;
 
 		if ( _groundHitResult.Hit )
 		{
-			Gizmo.Draw.Color = Color.Red;
+			// Gizmo.Draw.Color = Color.Red;
 			return true;
 		}
 
-		Gizmo.Draw.LineThickness = 20;
-		Gizmo.Draw.Line( startPosition, endPosition );
+		// Gizmo.Draw.LineThickness = 20;
+		// Gizmo.Draw.Line( startPosition, endPosition );
 		return false;
 	}
 	
@@ -135,17 +130,17 @@ public sealed class MotionCore2D : Component
 			.Size(BBox.FromPositionAndSize(Vector3.Zero, new Vector3(1,1,1)))
 			.Run();
 		
-		Gizmo.Draw.Color = Color.Green;
-		Gizmo.Draw.LineThickness = 20;
+		// Gizmo.Draw.Color = Color.Green;
+		// Gizmo.Draw.LineThickness = 20;
 
 		if ( _groundHitResult.Hit )
 		{
-			Gizmo.Draw.Color = Color.Red;
+			// Gizmo.Draw.Color = Color.Red;
 			return true;
 		}
 
-		Gizmo.Draw.LineThickness = 20;
-		Gizmo.Draw.Line( startPosition, endPosition );
+		// Gizmo.Draw.LineThickness = 20;
+		// Gizmo.Draw.Line( startPosition, endPosition );
 		return false;
 	}
 
@@ -170,18 +165,18 @@ public sealed class MotionCore2D : Component
 				.WithAnyTags(WallTags)
 				.Run();
 			
-			Gizmo.Draw.Color = Color.Green;
-			Gizmo.Draw.LineThickness = 5;
-			Gizmo.Draw.Line( rayStart, rayEnd );
+			// Gizmo.Draw.Color = Color.Green;
+			// Gizmo.Draw.LineThickness = 5;
+			// Gizmo.Draw.Line( rayStart, rayEnd );
 			
 			if(hitResult.Hit)
 			{
 				Collisions.Right = true;
 				Velocity = Velocity.WithX(0);
 				
-				Gizmo.Draw.Color = Color.Red;
-				Gizmo.Draw.LineThickness = 5;
-				Gizmo.Draw.Line( rayStart, hitResult.HitPosition);
+				// Gizmo.Draw.Color = Color.Red;
+				// Gizmo.Draw.LineThickness = 5;
+				// Gizmo.Draw.Line( rayStart, hitResult.HitPosition);
 				
 				// Log.Info("collision right");
 			}
@@ -200,18 +195,18 @@ public sealed class MotionCore2D : Component
 				.WithAnyTags(WallTags)
 				.Run();
 			
-			Gizmo.Draw.Color = Color.Green;
-			Gizmo.Draw.LineThickness = 5;
-			Gizmo.Draw.Line( rayStart, rayEnd );
+			// Gizmo.Draw.Color = Color.Green;
+			// Gizmo.Draw.LineThickness = 5;
+			// Gizmo.Draw.Line( rayStart, rayEnd );
 			
 			if(hitResult.Hit)
 			{
 				Collisions.Right = true;
 				Velocity = Velocity.WithX(0);
 				
-				Gizmo.Draw.Color = Color.Red;
-				Gizmo.Draw.LineThickness = 5;
-				Gizmo.Draw.Line( rayStart, hitResult.HitPosition);
+				// Gizmo.Draw.Color = Color.Red;
+				// Gizmo.Draw.LineThickness = 5;
+				// Gizmo.Draw.Line( rayStart, hitResult.HitPosition);
 				
 				// Log.Info("collision left");
 			}
@@ -229,9 +224,9 @@ public sealed class MotionCore2D : Component
 		Vector3 startPosition = Transform.Position + Collider.WorldScale() * Util.UpY + Util.DownY * skinWidth;
 		Vector3 endPosition = startPosition + Util.UpY * length;
 		
-		Gizmo.Draw.Color = Color.Green;
-		Gizmo.Draw.LineThickness = 5;
-		Gizmo.Draw.Line( startPosition, endPosition );
+		// Gizmo.Draw.Color = Color.Green;
+		// Gizmo.Draw.LineThickness = 5;
+		// Gizmo.Draw.Line( startPosition, endPosition );
 		
 		var hitResult = Scene.Trace
 			.Ray(startPosition, endPosition)
@@ -299,8 +294,6 @@ public sealed class MotionCore2D : Component
 		if(_motionProviders.Contains(provider))
 			return;
 		
-		Log.Info($"1 adding motion provider: {provider.MotionType}");
-		
 		List<IMotionProvider> providersToRemove = new List<IMotionProvider>();
 		
 		if (provider.OverrideMotions != null && provider.OverrideMotions.Length > 0 )
@@ -319,11 +312,9 @@ public sealed class MotionCore2D : Component
 
 		foreach (var providerToRemove in providersToRemove)
 		{
-			Log.Info("$providerToRemove motion provider: " + providerToRemove.MotionType);
 			_activeProviders.Remove(providerToRemove);
 		}
 
-		Log.Info("$2 added motion provider: " + provider.MotionType);
 		_motionProviders.Add(provider);
 		_activeProviders.Add(provider);
 		ReevaluateActiveProviders();
@@ -356,8 +347,6 @@ public sealed class MotionCore2D : Component
 		
 		_activeProviders.Remove(provider);
 		
-		Log.Info($"1 removing motion provider: {provider.MotionType}");
-
 		if (provider.OverrideMotions != null && provider.OverrideMotions.Length != 0 )
 		{
 			foreach (var motionType in provider.OverrideMotions)
@@ -381,7 +370,6 @@ public sealed class MotionCore2D : Component
 			}
 		}
 		
-		Log.Info($"2 removed motion provider: {provider.MotionType}");
 		_motionProviders.Remove(provider);
 		ReevaluateActiveProviders();
 	}
@@ -389,10 +377,7 @@ public sealed class MotionCore2D : Component
 	public void Teleport( Vector3 position )
 	{
 		position.z = 1; // player offset
-		var prevPosition = Transform.Position;
-		Log.Info("teleport from: " + prevPosition + " to: " + position);
 		Transform.Position = position;
-		Log.Info("new position: " + Transform.Position);
 	}
 }
 

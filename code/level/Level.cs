@@ -28,25 +28,22 @@ public class Level : Component
 
 	protected override void OnAwake()
 	{
+		Checkpoint.LastCheckpoint = StartCheckpoint;
 		if (Player != null && DontTeleportPlayerToCheckpoint)
 		{
 			Checkpoint.LastCheckpoint = null;
 			Log.Info("player is not null, but DontTeleportPlayerToCheckpoint is true");
 			_editorPosition = Player.Transform.Position;
 		}
-	}
-
-	protected override void OnStart()
-	{
 		_respawnables = Components.GetAll<IRespawn>(FindMode.InDescendants).ToList();
 		LevelStart();
 	}
-	
+
 	private void LevelStart()
 	{
 		Log.Info("start level");
 		if(Checkpoint.LastCheckpoint != null)
-			StartCheckpoint.Components.Get<Checkpoint>().Activated = true;
+			StartCheckpoint.Activated = true;
 		
 		SpawnPlayer();
 	}

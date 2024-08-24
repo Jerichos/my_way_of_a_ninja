@@ -12,7 +12,6 @@ public sealed class Player : Component
 	[Property] public SwordAbility SwordAbility { get; set; }
 	[Property] public CrouchAbility CrouchAbility { get; set; }
 	[Property] public Knockback Knockback { get; set; }
-	[Property] public ClimbMovement ClimbMovement { get; set; }
 
 	[Property] private SoundEvent HitSound { get; set; }
 	[Property] private SoundEvent DeathSound { get; set; }
@@ -70,14 +69,14 @@ public sealed class Player : Component
 			CrouchAbility.StopCrouch();
 		}
 		
-		if(Input.Down("Up"))
-		{
-			ClimbMovement.TryClimbUp();
-		}
-		else if(Input.Down("Down"))
-		{
-			ClimbMovement.TryClimbDown();
-		}
+		// if(Input.Down("Up"))
+		// {
+		// 	ClimbMovement.TryClimbUp();
+		// }
+		// else if(Input.Down("Down"))
+		// {
+		// 	ClimbMovement.TryClimbDown();
+		// }
 		
 		if ( Input.Down( "Right" ))
 		{

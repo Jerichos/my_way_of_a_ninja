@@ -42,7 +42,7 @@
             "go": "a331ba39-0f15-4238-a15f-5f657e8e0e1b",
             "component_type": "DeathAnimation"
           },
-          "DontTeleportPlayerToCheckpoint": true,
+          "DontTeleportPlayerToCheckpoint": false,
           "MaxBounds": "2500,2500",
           "MinBounds": "0,0",
           "Player": {
@@ -60,7 +60,7 @@
           },
           "StartCheckpoint": {
             "_type": "component",
-            "component_id": "84c7ba3b-0db3-4812-8a06-f93be031595e",
+            "component_id": "b6905279-c7b2-4d0d-b4c1-430a84c95c68",
             "go": "de903763-862d-4e3f-bade-fac35a3fcaee",
             "component_type": "Checkpoint"
           },
@@ -6392,12 +6392,6 @@
         {
           "__type": "Player",
           "__guid": "c42a6ce4-e775-4388-a11e-bf9b42420349",
-          "ClimbMovement": {
-            "_type": "component",
-            "component_id": "c3430d39-4d94-4f96-82c6-9db092a2e3c8",
-            "go": "fa92b8fb-a335-4816-b27c-04934c4d960c",
-            "component_type": "ClimbMovement"
-          },
           "CrouchAbility": {
             "_type": "component",
             "component_id": "e3c6e456-1a7c-4830-a8c7-e119e0592a4a",
@@ -6662,16 +6656,6 @@
             "component_id": "c42a6ce4-e775-4388-a11e-bf9b42420349",
             "go": "fa92b8fb-a335-4816-b27c-04934c4d960c",
             "component_type": "Player"
-          }
-        },
-        {
-          "__type": "Sandbox.player.ClimbMovement",
-          "__guid": "c3430d39-4d94-4f96-82c6-9db092a2e3c8",
-          "MotionCore": {
-            "_type": "component",
-            "component_id": "b46524e7-e8eb-40f6-a7ac-67bdcef69857",
-            "go": "fa92b8fb-a335-4816-b27c-04934c4d960c",
-            "component_type": "MotionCore2D"
           }
         }
       ],

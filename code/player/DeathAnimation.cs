@@ -65,7 +65,6 @@ public class DeathAnimation : Component
 			ColorAdjustment.HueRotate = MathX.Lerp(_startHue, FadeInHue, _fadeT);
 			ColorAdjustment.Brightness = MathX.Lerp(_startBrightness, FadeInBrightness, _fadeT);
 			ColorAdjustment.Contrast = MathX.Lerp(_startContrast, FadeInContrast, _fadeT);
-			Log.Info($"FadeIn _fadeT: {_fadeT}");
 		}
 		else
 		{
@@ -74,7 +73,6 @@ public class DeathAnimation : Component
 			ColorAdjustment.HueRotate = MathX.Lerp(FadeInHue, _startHue, _fadeT);
 			ColorAdjustment.Brightness = MathX.Lerp(FadeInBrightness, _startBrightness, _fadeT);
 			ColorAdjustment.Contrast = MathX.Lerp(FadeInContrast, _startContrast, _fadeT);
-			Log.Info($"FadeOut _fadeT: {_fadeT}");
 		}
 		
 		if (_timer >= AnimationTime)

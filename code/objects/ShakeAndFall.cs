@@ -25,7 +25,7 @@ public class ShakeAndFall : Component, IRespawn
 	{
 		_startPosition = Transform.Position;
 		Collider.OnTriggerEnter += OnTriggerEnter;
-		Log.Info("init shatter");
+		// Log.Info("init shatter");
 		Enabled = false;
 	}
 
@@ -37,10 +37,8 @@ public class ShakeAndFall : Component, IRespawn
 
 	private void OnTriggerEnter(Collider obj)
 	{
-		Log.Info("1 shatter Start shaking");
 		if (obj.GameObject.Components.TryGet(out Player player ))
 		{
-			Log.Info("2 shatter Start shaking");
 			Sound.Play(ShakeSound, Transform.Position);
 			Enabled = true;
 		}
@@ -53,12 +51,10 @@ public class ShakeAndFall : Component, IRespawn
 			_timer += Time.Delta;
 			if (_timer < TimeToFall)
 			{
-				Log.Info("shaking");
 				Sprite.Transform.Position = _startPosition + new Vector3((float)(ShakeIntensity * Math.Sin(_timer * 100)), 0, 0);
 			}
 			else
 			{
-				Log.Info("falling");
 				Transform.Position += new Vector3(0, -FallSpeed * Time.Delta, 0);
 				if (DisableColliderOnFall && _timer < TimeToFall + DisableIn)
 				{

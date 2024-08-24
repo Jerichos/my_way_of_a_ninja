@@ -47,7 +47,6 @@ public sealed class JumpAbility : Component, IMotionProvider
 	{
 		if(CanJump())
 		{
-			Log.Info("jump pressed");
 			StartJump();
 		}
 		
@@ -92,11 +91,11 @@ public sealed class JumpAbility : Component, IMotionProvider
 				Velocity = new Vector2(0, heightDiff / Time.Delta);
 				_distanceTraveled += heightDiff;
 				
-				Log.Info($"jump _t: {_t} _wishT: {_wishT} targetHeight: {targetHeight} heightDiff: {heightDiff} velocity: {Velocity.y}");
+				// Log.Info($"jump _t: {_t} _wishT: {_wishT} targetHeight: {targetHeight} heightDiff: {heightDiff} velocity: {Velocity.y}");
 			}
 			else
 			{
-				Log.Info($"jump end distance: {_distanceTraveled} _wishHeight: {_wishT} _t: {_t}");
+				// Log.Info($"jump end distance: {_distanceTraveled} _wishHeight: {_wishT} _t: {_t}");
 				CancelJump();
 			}
 		}
@@ -129,7 +128,7 @@ public sealed class JumpAbility : Component, IMotionProvider
 		if(!IsJumping)
 			return;
 		
-		Log.Info("Jump canceled!");
+		// Log.Info("Jump canceled!");
 		Velocity = Vector2.Zero;
 		IsJumping = false;
 
@@ -156,14 +155,14 @@ public sealed class JumpAbility : Component, IMotionProvider
 
 	protected override void OnEnabled()
 	{
-		Log.Info("JumpAbility enabled");
+		// Log.Info("JumpAbility enabled");
 		MotionCore.CeilingHitEvent += CancelJump;
 		MotionCore.GroundedEvent += OnGroundedChanged;
 	}
 	
 	protected override void OnDisabled()
 	{
-		Log.Info("JumpAbility disabled");
+		// Log.Info("JumpAbility disabled");
 		MotionCore.CeilingHitEvent -= CancelJump;
 		MotionCore.GroundedEvent -= OnGroundedChanged;
 	}
@@ -173,12 +172,12 @@ public sealed class JumpAbility : Component, IMotionProvider
 		if(grounded)
 		{
 			_jumps = 0;
-			Log.Info("grounded jumps reset");
+			// Log.Info("grounded jumps reset");
 		}
 		else
 		{
 			_jumps = 1;
-			Log.Info("not grounded jumps: " + _jumps);
+			// Log.Info("not grounded jumps: " + _jumps);
 		}
 	}
 }

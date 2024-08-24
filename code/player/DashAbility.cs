@@ -59,7 +59,6 @@ public class DashAbility : Component, IMotionProvider
 		Sound.Play(DashSound, Transform.Position);
 
 		DashEffect.Enabled = true;
-		Log.Info("start dash");
 	}
 	
 	protected override void OnFixedUpdate()
@@ -113,10 +112,7 @@ public class DashAbility : Component, IMotionProvider
 				MotionCore.Collider.Center = MotionCore.Collider.Center.WithY(_defaultColliderCenterY);
 				
 				DashEffect.Enabled = false;
-				Log.Info($"end dash distance: {_distance}");
 			}
-			
-			Log.Info($"DASH t: {_t} force: {Velocity.x} velocity: {Velocity.x}");
 		}
 	}
 
@@ -154,7 +150,6 @@ public class DashAbility : Component, IMotionProvider
 
 	public void CancelMotion()
 	{
-		Log.Info("DASH Cancel");
 		Velocity = Vector2.Zero;
 		_isIsDashing = false;
 		MotionCore.RemoveMotionProvider(this);
