@@ -189,10 +189,154 @@
       ]
     },
     {
+      "__guid": "9d1a0ea5-8064-4a91-ab8d-c8202f78c432",
+      "Flags": 0,
+      "Name": "Heli Small",
+      "Position": "192,192,0.9999676",
+      "Scale": "0.5,0.5,1",
+      "Tags": "enemy",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.enemies.Enemy",
+          "__guid": "f55dd882-327d-4f5f-8aac-0c01b6a83b91",
+          "DestroySound": "audio/sfx/enemy/enemy_death.sound",
+          "Health": 50,
+          "HitSound": "audio/sfx/enemy/enemy_hit.sound",
+          "Knockback": {
+            "_type": "component",
+            "component_id": "92a4e0ac-228c-4aab-b124-b1aa832f5fe1",
+            "go": "9d1a0ea5-8064-4a91-ab8d-c8202f78c432",
+            "component_type": "Knockback"
+          },
+          "MaxHealth": 50,
+          "Sprite": {
+            "_type": "component",
+            "component_id": "e671838d-270b-4efa-bb0e-0fe0ed129383",
+            "go": "9d1a0ea5-8064-4a91-ab8d-c8202f78c432",
+            "component_type": "SpriteComponent"
+          }
+        },
+        {
+          "__type": "SpriteTools.SpriteComponent",
+          "__guid": "e671838d-270b-4efa-bb0e-0fe0ed129383",
+          "__version": 1,
+          "BroadcastEvents": {},
+          "CastShadows": "On",
+          "CreateAttachPoints": false,
+          "FlashTint": "1,0,0,0",
+          "PlaybackSpeed": 3,
+          "Sprite": "heli.sprite",
+          "SpriteFlags": "None",
+          "StartingAnimationName": "walk",
+          "Tint": "1,1,1,1",
+          "UpDirection": "YPositive"
+        },
+        {
+          "__type": "Sandbox.sprite.SpriteSizer",
+          "__guid": "3081b120-0101-47ca-b788-361c1ad5412e",
+          "_height": 16,
+          "_width": 16,
+          "PixelPerUnit": 32
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "a031d30c-fb10-4a94-ab8b-8ffea7e14d58",
+          "Center": "0,32,0",
+          "IsTrigger": false,
+          "Scale": "81.09979,64,10",
+          "Static": false
+        },
+        {
+          "__type": "Sandbox.player.MotionCore2D",
+          "__guid": "d7e866d9-311c-4cb9-bb36-2d18d8b782d7",
+          "Collider": {
+            "_type": "component",
+            "component_id": "a031d30c-fb10-4a94-ab8b-8ffea7e14d58",
+            "go": "9d1a0ea5-8064-4a91-ab8d-c8202f78c432",
+            "component_type": "BoxCollider"
+          },
+          "GroundTags": "ground",
+          "WallTags": "wall"
+        },
+        {
+          "__type": "Sandbox.player.Gravity",
+          "__guid": "d2e9f344-212a-417b-b11b-040e9e11d0fa",
+          "GravityCurve": [
+            {
+              "y": 1
+            },
+            {
+              "x": 1
+            }
+          ],
+          "GravityForce": 20,
+          "MaxVelocity": 100,
+          "MotionCore": {
+            "_type": "component",
+            "component_id": "d7e866d9-311c-4cb9-bb36-2d18d8b782d7",
+            "go": "9d1a0ea5-8064-4a91-ab8d-c8202f78c432",
+            "component_type": "MotionCore2D"
+          }
+        },
+        {
+          "__type": "Sandbox.enemies.MoveLeftRight",
+          "__guid": "3089ea6d-f9c6-43b4-9ce9-5795b93cec45",
+          "__enabled": false,
+          "MotionCore": {
+            "_type": "component",
+            "component_id": "d7e866d9-311c-4cb9-bb36-2d18d8b782d7",
+            "go": "9d1a0ea5-8064-4a91-ab8d-c8202f78c432",
+            "component_type": "MotionCore2D"
+          },
+          "Speed": 128
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "20c7089d-9569-48ad-8b05-65e5a07725ac",
+          "Center": "0,45,0",
+          "IsTrigger": true,
+          "Scale": "74.10023,90,100",
+          "Static": false
+        },
+        {
+          "__type": "Sandbox.enemies.ContactDamage",
+          "__guid": "2e164f2d-0a96-42db-b4c2-28c07798fa56",
+          "ContactDamageCollider": {
+            "_type": "component",
+            "component_id": "20c7089d-9569-48ad-8b05-65e5a07725ac",
+            "go": "9d1a0ea5-8064-4a91-ab8d-c8202f78c432",
+            "component_type": "BoxCollider"
+          },
+          "Damage": 1
+        },
+        {
+          "__type": "Sandbox.player.Knockback",
+          "__guid": "92a4e0ac-228c-4aab-b124-b1aa832f5fe1",
+          "__enabled": false,
+          "Direction": "0,0",
+          "Duration": 0.1,
+          "MaxDistance": 64,
+          "MotionCore": {
+            "_type": "component",
+            "component_id": "d7e866d9-311c-4cb9-bb36-2d18d8b782d7",
+            "go": "9d1a0ea5-8064-4a91-ab8d-c8202f78c432",
+            "component_type": "MotionCore2D"
+          },
+          "VelocityCurve": [
+            {
+              "x": 0.5,
+              "y": 0.5
+            }
+          ]
+        }
+      ]
+    },
+    {
       "__guid": "f48c39db-ddb5-4cf0-b789-233e1c3a68eb",
       "Flags": 0,
       "Name": "Player",
-      "Position": "96,192,2",
+      "Position": "96,192,5",
       "Enabled": true,
       "Components": [
         {
@@ -215,6 +359,12 @@
             "component_id": "7bbc0b2b-4278-4903-b7ca-7a701bc30745",
             "go": "f48c39db-ddb5-4cf0-b789-233e1c3a68eb",
             "component_type": "DashAbility"
+          },
+          "DeathAnimation": {
+            "_type": "component",
+            "component_id": "8c12d652-a818-4e84-8d42-565f2661f585",
+            "go": "f48c39db-ddb5-4cf0-b789-233e1c3a68eb",
+            "component_type": "DeathAnimation"
           },
           "DeathSound": "audio/sfx/player_death.sound",
           "Health": 3,
@@ -479,6 +629,31 @@
             "go": "f48c39db-ddb5-4cf0-b789-233e1c3a68eb",
             "component_type": "MotionCore2D"
           }
+        },
+        {
+          "__type": "Sandbox.player.DeathAnimation",
+          "__guid": "8c12d652-a818-4e84-8d42-565f2661f585",
+          "__enabled": false,
+          "Camera": {
+            "_type": "component",
+            "component_id": "3b1a1ed6-d0c3-4dca-a461-da6a00a2e083",
+            "go": "3a63f035-c728-4e8e-b622-8105171cc9b8",
+            "component_type": "CameraComponent"
+          },
+          "DeathSprite": {
+            "_type": "component",
+            "component_id": "320147e7-eb8d-4dde-9797-69b6586af733",
+            "go": "f5b19e51-3099-476c-874d-ed8d21444386",
+            "component_type": "SpriteComponent"
+          },
+          "Duration": 0.5,
+          "MaxScale": 10,
+          "Player": {
+            "_type": "component",
+            "component_id": "8c0d678e-bb5c-4100-81f0-a4f81bf1cbff",
+            "go": "f48c39db-ddb5-4cf0-b789-233e1c3a68eb",
+            "component_type": "Player"
+          }
         }
       ],
       "Children": [
@@ -486,7 +661,7 @@
           "__guid": "41a82415-40f1-4d02-ba65-23b2b977f9d5",
           "Flags": 0,
           "Name": "sprite",
-          "Position": "0,0,0",
+          "Position": "0,0,1",
           "Scale": "0.5,0.5,1",
           "Enabled": true,
           "Components": [
@@ -739,6 +914,31 @@
                   "ZIndex": 100
                 }
               ]
+            }
+          ]
+        },
+        {
+          "__guid": "f5b19e51-3099-476c-874d-ed8d21444386",
+          "Flags": 0,
+          "Name": "DeathSprite",
+          "Position": "0,0,0",
+          "Scale": "5,5,1",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "SpriteTools.SpriteComponent",
+              "__guid": "320147e7-eb8d-4dde-9797-69b6586af733",
+              "__version": 1,
+              "BroadcastEvents": {},
+              "CastShadows": "Off",
+              "CreateAttachPoints": false,
+              "FlashTint": "1,1,1,0",
+              "PlaybackSpeed": 1,
+              "Sprite": "sprites/player/player_death_sprite.sprite",
+              "SpriteFlags": "None",
+              "StartingAnimationName": "default",
+              "Tint": "1,1,1,0.45",
+              "UpDirection": "YPositive"
             }
           ]
         }

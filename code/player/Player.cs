@@ -41,7 +41,7 @@ public sealed class Player : Component
 
 	private void HandleInput()
 	{
-		if(Input.Pressed("Jump"))
+		if(Input.Pressed("Jump") && !CrouchAbility.IsCrouching)
 		{
 			JumpAbility.Jump();
 		}
@@ -151,6 +151,8 @@ public sealed class Player : Component
 		DashAbility?.CancelMotion();
 		Sound.Play(DeathSound); // huh we don't need sound point?
 		DeathEvent?.Invoke();
+		Enabled = false;
+		MoveAbility?.SetInputX(0);
 	}
 
 	public void OnRespawn()

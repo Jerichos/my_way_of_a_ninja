@@ -36,6 +36,12 @@
             "go": "24e6f566-bb7e-47cb-a650-778a4144e11f",
             "component_type": "CameraFollow"
           },
+          "DeathAnimation": {
+            "_type": "component",
+            "component_id": "cf5b6808-3d6c-4dd3-8e29-cca031b16d75",
+            "go": "a331ba39-0f15-4238-a15f-5f657e8e0e1b",
+            "component_type": "DeathAnimation"
+          },
           "MaxBounds": "2500,2500",
           "MinBounds": "0,0",
           "MovePlayerToCheckpoint": true,
@@ -46,6 +52,12 @@
             "component_type": "Player"
           },
           "PlayerPrefab": "prefabs/player.prefab",
+          "SoundBox": {
+            "_type": "component",
+            "component_id": "8f257921-2e03-46b3-a5bd-abfc5ccb02f7",
+            "go": "a331ba39-0f15-4238-a15f-5f657e8e0e1b",
+            "component_type": "SoundBoxComponent"
+          },
           "StartCheckpoint": {
             "_type": "gameobject",
             "go": "de903763-862d-4e3f-bade-fac35a3fcaee"
@@ -96,6 +108,23 @@
             "go": "75d14400-8237-4956-8bca-6584f3887163",
             "component_type": "ParticleEffect"
           }
+        },
+        {
+          "__type": "Sandbox.player.DeathAnimation",
+          "__guid": "cf5b6808-3d6c-4dd3-8e29-cca031b16d75",
+          "AnimationTime": 0.6,
+          "ColorAdjustment": {
+            "_type": "component",
+            "component_id": "f7b32e94-f0b6-45e9-ac7d-464be91e2d31",
+            "go": "24e6f566-bb7e-47cb-a650-778a4144e11f",
+            "component_type": "ColorAdjustments"
+          },
+          "FadeInBrightness": 0,
+          "FadeInContrast": 0.5,
+          "FadeInHue": 0.5,
+          "FadeInSaturation": 0,
+          "FadeInTime": 0.3,
+          "FadeOutTime": 1
         }
       ],
       "Children": [
@@ -206,6 +235,20 @@
               "MinBounds": "0,0",
               "Offset": "0,0,400",
               "SmoothTime": 0.3
+            },
+            {
+              "__type": "Sandbox.ChromaticAberration",
+              "__guid": "bd78fb0c-84a8-4b00-b9e4-db4b345cc4cd",
+              "Offset": "9.099999,6.4,11.3",
+              "Scale": 0
+            },
+            {
+              "__type": "Sandbox.ColorAdjustments",
+              "__guid": "f7b32e94-f0b6-45e9-ac7d-464be91e2d31",
+              "Brightness": 1,
+              "Contrast": 1,
+              "HueRotate": 0,
+              "Saturation": 1
             }
           ],
           "Children": [
@@ -2856,9 +2899,6 @@
                 },
                 "70,8": {
                   "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
-                },
-                "9,7": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
                 }
               }
             },
@@ -4935,7 +4975,7 @@
               "out": -0.03571437
             }
           ],
-          "JumpIn": 10,
+          "JumpIn": 0.3,
           "JumpSound": "audio/sfx/player/player_jump.sound",
           "MaxHeight": 65,
           "MaxJumps": 2,

@@ -11,6 +11,8 @@ public class Level : Component
 	[Property] public CameraFollow CameraFollow { get; set; }
 	[Property] public bool MovePlayerToCheckpoint { get; set; } = true;
 	[Property] public Weather Weather { get; set; }
+	[Property] public SoundBoxComponent SoundBox { get; set; }
+	[Property] public DeathAnimation DeathAnimation { get; set; }
 	
 	[Property] public Vector2 MinBounds { get; set; }
 	[Property] public Vector2 MaxBounds { get; set; }
@@ -34,8 +36,10 @@ public class Level : Component
 	private void OnPlayerDeath()
 	{
 		Log.Info("respawn player");
-		RestartEvent?.Invoke();
-		SpawnPlayer();
+		SoundBox.StopSound();
+		DeathAnimation.StartFadeIn();
+		// RestartEvent?.Invoke();
+		// SpawnPlayer();
 	}
 
 	private void SpawnPlayer()
@@ -74,7 +78,7 @@ public class Level : Component
 		newPlayer.OnRespawn();
 		newPlayer.DeathEvent -= OnPlayerDeath;
 		newPlayer.DeathEvent += OnPlayerDeath;
-
+		
 		if(Weather != null)
 		{
 			Weather.AddToPlayer(newPlayer.MotionCore);
@@ -86,8 +90,25 @@ public class Level : Component
 			Log.Info("No weather for this level");
 		}
 		
+		SoundBox.StartSound();
+		DeathAnimation.StartFadeOut();
 		
+		DeathAnimation.AnimationFadeFinishedEvent -= OnDeathFadeFinished;
+		DeathAnimation.AnimationFadeFinishedEvent += OnDeathFadeFinished;
 		Log.Info($"set player position to {newPosition}");
+	}
+
+	private void OnDeathFadeFinished( bool fadeIn )
+	{
+		if(fadeIn)
+		{
+			RestartEvent?.Invoke();
+			SpawnPlayer();
+		}
+		else
+		{
+			Player.Enabled = true;
+		}
 	}
 
 	protected override void OnFixedUpdate()
