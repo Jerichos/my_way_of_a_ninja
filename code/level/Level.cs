@@ -21,8 +21,12 @@ public class Level : Component
 	
 	public event Action RestartEvent;
 	
+	List<IRespawn> _respawnables = new();
+	
 	protected override void OnStart()
 	{
+		_respawnables = Components.GetAll<IRespawn>(FindMode.InDescendants).ToList();
+		Log.Info("found respawnables: " + _respawnables.Count);
 		LevelStart();
 	}
 	
@@ -97,12 +101,21 @@ public class Level : Component
 		DeathAnimation.AnimationFadeFinishedEvent += OnDeathFadeFinished;
 		Log.Info($"set player position to {newPosition}");
 	}
+	
+	private void RespawnAll()
+	{
+		foreach (var respawnable in _respawnables)
+		{
+			respawnable.Respawn();
+		}
+	}
 
 	private void OnDeathFadeFinished( bool fadeIn )
 	{
 		if(fadeIn)
 		{
 			RestartEvent?.Invoke();
+			RespawnAll();
 			SpawnPlayer();
 		}
 		else
@@ -116,7 +129,8 @@ public class Level : Component
 		// kill player if out of bounds
 		if(Player != null)
 		{
-			if(Player.Transform.Position.x < MinBounds.x || Player.Transform.Position.x > MaxBounds.x || Player.Transform.Position.y < MinBounds.y || Player.Transform.Position.y > MaxBounds.y)
+			float offset = 128;
+			if(Player.Transform.Position.x < MinBounds.x - offset || Player.Transform.Position.x > MaxBounds.x + offset || Player.Transform.Position.y < MinBounds.y - offset || Player.Transform.Position.y > MaxBounds.y + offset)
 				Player.Kill();
 		}
 	}

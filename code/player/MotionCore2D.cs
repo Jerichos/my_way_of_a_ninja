@@ -259,8 +259,8 @@ public sealed class MotionCore2D : Component
 			return;
 		}
 
-		float skinWidth = 10;
-		float length = -Velocity.y * Time.Delta + skinWidth + 1;
+		float skinWidth = 2;
+		float length = -Velocity.y * Time.Delta + skinWidth;
 		
 		Vector3 startPosition = Transform.Position + Util.UpY * skinWidth;
 		Vector3 endPosition = Transform.Position + Util.DownY * length;
@@ -274,6 +274,7 @@ public sealed class MotionCore2D : Component
 		if ( _groundHitResult.Hit )
 		{
 			_groundPoint = _groundHitResult.HitPosition;
+			Velocity = Velocity.WithY(0);
 			Collisions.Down = true;
 			Grounded = true;
 			// Log.Info($"ground hit: {_groundHitResult.HitPosition}");

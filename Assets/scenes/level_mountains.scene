@@ -194,35 +194,6 @@
               "ZNear": 1
             },
             {
-              "__type": "Sandbox.Bloom",
-              "__guid": "4587fa9f-c19d-4063-931c-3e749f03fcad",
-              "BloomColor": {
-                "color": [
-                  {
-                    "c": "1,1,1,1"
-                  },
-                  {
-                    "t": 1,
-                    "c": "1,1,1,1"
-                  }
-                ],
-                "alpha": []
-              },
-              "BloomCurve": [
-                {
-                  "y": 0.5
-                },
-                {
-                  "x": 1,
-                  "y": 1
-                }
-              ],
-              "Mode": "Additive",
-              "Strength": 0.68,
-              "Threshold": 0.53,
-              "ThresholdWidth": 1.2
-            },
-            {
               "__type": "Sandbox.player.CameraFollow",
               "__guid": "683c9c62-526c-49fc-8bb6-32bfc7ea069f",
               "Camera": {
@@ -235,12 +206,6 @@
               "MinBounds": "0,0",
               "Offset": "0,0,400",
               "SmoothTime": 0.3
-            },
-            {
-              "__type": "Sandbox.ChromaticAberration",
-              "__guid": "bd78fb0c-84a8-4b00-b9e4-db4b345cc4cd",
-              "Offset": "9.099999,6.4,11.3",
-              "Scale": 0
             },
             {
               "__type": "Sandbox.ColorAdjustments",
@@ -258,7 +223,6 @@
               "Name": "WheaterEffect",
               "Position": "400,0,309.7341",
               "Rotation": "0.5,-0.5,-0.5,0.5",
-              "Scale": "100,1,1",
               "Tags": "particles",
               "Enabled": true,
               "Components": [
@@ -409,12 +373,12 @@
                   "Burst": 0,
                   "Delay": 0,
                   "DestroyOnEnd": false,
-                  "Duration": 10,
+                  "Duration": 0.01,
                   "Loop": true,
                   "OnEdge": false,
-                  "Rate": 100,
+                  "Rate": 20,
                   "RateOverDistance": 0,
-                  "Size": "15,0,100"
+                  "Size": "850,0,100"
                 }
               ]
             },
@@ -456,7 +420,7 @@
               "__guid": "7c960921-d7fb-4098-b4ab-92b7cd92c35c",
               "Flags": 0,
               "Name": "Heli Small",
-              "Position": "736,219.1147,0.9999991",
+              "Position": "384,224,0.9999785",
               "Scale": "0.5,0.5,1",
               "Tags": "enemy",
               "Enabled": true,
@@ -1597,6 +1561,1497 @@
               ]
             }
           ]
+        },
+        {
+          "__guid": "c6482636-69c1-4fff-8876-c9e06b92f6e4",
+          "Flags": 0,
+          "Name": "objects",
+          "Enabled": true,
+          "Children": [
+            {
+              "__guid": "75e49eb3-212f-4206-b02e-bcd7128189f1",
+              "Flags": 0,
+              "Name": "ShatteredIsland",
+              "Position": "1408,0,1",
+              "Scale": "0.64,0.64,1",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "prefabs/shatteredisland.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "96956d29-cc0f-4bdb-9aac-21dd7d4eef6a",
+              "Flags": 0,
+              "Name": "ShatteredIsland",
+              "Position": "1568,0,1",
+              "Scale": "0.64,0.64,1",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "prefabs/shatteredisland.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "4233c75a-65bc-4275-b9c2-2e6f7f65cb4d",
+              "Flags": 0,
+              "Name": "ShatteredIsland",
+              "Position": "1440,0,1",
+              "Scale": "0.64,0.64,1",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "prefabs/shatteredisland.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "8f641f63-18e5-451c-89b1-0e139f57f100",
+              "Flags": 0,
+              "Name": "ShatteredIsland",
+              "Position": "1600,0,1",
+              "Scale": "0.64,0.64,1",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "prefabs/shatteredisland.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "65a8fc17-d243-41e2-a95d-3372e7a3eb32",
+              "Flags": 0,
+              "Name": "ShatteredIsland",
+              "Position": "1472,0,1",
+              "Scale": "0.64,0.64,1",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "prefabs/shatteredisland.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "94ec3fbe-0157-4d83-9c9a-6f1dd0f2aded",
+              "Flags": 0,
+              "Name": "ShatteredIsland",
+              "Position": "1632,0,1",
+              "Scale": "0.64,0.64,1",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "prefabs/shatteredisland.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "47c1af0d-bfd5-4f89-8f4c-13a1de94bf64",
+              "Flags": 0,
+              "Name": "ShatteredIsland",
+              "Position": "1504,0,1",
+              "Scale": "0.64,0.64,1",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "prefabs/shatteredisland.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "09cda621-d533-4a10-84dc-e2eaf5a148fd",
+              "Flags": 0,
+              "Name": "ShatteredIsland",
+              "Position": "1664,0,1",
+              "Scale": "0.64,0.64,1",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "prefabs/shatteredisland.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "7e473fca-c4e5-4b6f-9072-c0c5c4f00121",
+              "Flags": 0,
+              "Name": "ShatteredIsland",
+              "Position": "1536,0,1",
+              "Scale": "0.64,0.64,1",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "prefabs/shatteredisland.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "3d655ff3-b7cd-4a1d-a671-312bd7babd0f",
+              "Flags": 0,
+              "Name": "ShatteredIsland",
+              "Position": "1696,0,1",
+              "Scale": "0.64,0.64,1",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "prefabs/shatteredisland.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "8279bfef-2de6-427e-a35c-c5622bd36876",
+              "Flags": 0,
+              "Name": "ShatteredIsland",
+              "Position": "1728,0,1",
+              "Scale": "0.64,0.64,1",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "prefabs/shatteredisland.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "c94e9afd-01e1-4e9f-a7ed-69ce05704bba",
+              "Flags": 0,
+              "Name": "ShatteredIsland",
+              "Position": "1888,0,1",
+              "Scale": "0.64,0.64,1",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "prefabs/shatteredisland.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "12c52a31-e237-4806-86bc-befd7814d3c7",
+              "Flags": 0,
+              "Name": "ShatteredIsland",
+              "Position": "1984,0,1",
+              "Scale": "0.64,0.64,1",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "prefabs/shatteredisland.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "29c758a5-d401-4094-9958-70c63128449f",
+              "Flags": 0,
+              "Name": "ShatteredIsland",
+              "Position": "2080,0,1",
+              "Scale": "0.64,0.64,1",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "prefabs/shatteredisland.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "9952cc3f-cf52-48f1-80e7-a3111b8ecb04",
+              "Flags": 0,
+              "Name": "ShatteredIsland",
+              "Position": "2144,32,1",
+              "Scale": "0.64,0.64,1",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "prefabs/shatteredisland.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "59b1a037-7057-4b7e-8c31-e76a7f98d7fe",
+              "Flags": 0,
+              "Name": "ShatteredIsland",
+              "Position": "2272,32,1",
+              "Scale": "0.64,0.64,1",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "prefabs/shatteredisland.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "66341f17-2be3-4d07-b8bc-b99cf9ec8bc7",
+              "Flags": 0,
+              "Name": "ShatteredIsland",
+              "Position": "2368,96,1.000005",
+              "Scale": "0.64,0.64,1",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "prefabs/shatteredisland.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "58ec0c37-3c9f-4245-b7b1-f15ff40140ad",
+              "Flags": 0,
+              "Name": "ShatteredIsland",
+              "Position": "2464,160,1.000009",
+              "Scale": "0.64,0.64,1",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "prefabs/shatteredisland.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "58d61bfa-aaaf-480e-9bc6-42487b7f9ae1",
+              "Flags": 0,
+              "Name": "ShatteredIsland",
+              "Position": "2368,224,1.000003",
+              "Scale": "0.64,0.64,1",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "prefabs/shatteredisland.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "d5188c66-875d-427e-8bd7-d3643fbe2a0d",
+              "Flags": 0,
+              "Name": "Faling Ice (1)",
+              "Position": "1248,224,1",
+              "Scale": "0.32,0.32,1",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.sprite.SpriteSizer",
+                  "__guid": "0a60113e-187d-4307-8f15-357181ec9ce2",
+                  "_height": 16,
+                  "_width": 16,
+                  "PixelPerUnit": 50
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "466e9938-ce2d-462b-95d0-3edb97dc0136",
+                  "Center": "50,50,0",
+                  "IsTrigger": true,
+                  "Scale": "50,100,50",
+                  "Static": false
+                },
+                {
+                  "__type": "Sandbox.enemies.ContactDamage",
+                  "__guid": "3d487dbc-11a9-4e21-9f3b-825b9b8c7af6",
+                  "ContactDamageCollider": {
+                    "_type": "component",
+                    "component_id": "466e9938-ce2d-462b-95d0-3edb97dc0136",
+                    "go": "d5188c66-875d-427e-8bd7-d3643fbe2a0d",
+                    "component_type": "BoxCollider"
+                  },
+                  "Damage": 1
+                },
+                {
+                  "__type": "Sandbox.objects.ShakeAndFall",
+                  "__guid": "c313392b-19e5-43b8-8ca5-13d46eb9e4af",
+                  "Collider": {
+                    "_type": "component",
+                    "component_id": "9e9739c7-5081-48ee-ab81-401cc6ef112c",
+                    "go": "d5188c66-875d-427e-8bd7-d3643fbe2a0d",
+                    "component_type": "BoxCollider"
+                  },
+                  "DisableColliderOnFall": false,
+                  "DisableIn": 1,
+                  "FallSpeed": 400,
+                  "ShakeIntensity": 0.5,
+                  "Sprite": {
+                    "_type": "component",
+                    "component_id": "fa81ca64-d9ad-4358-bfe0-f2b5fb7e2911",
+                    "go": "fd798c27-039b-4772-817f-056b01a3e974",
+                    "component_type": "SpriteComponent"
+                  },
+                  "TimeToFall": 0.5
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "9e9739c7-5081-48ee-ab81-401cc6ef112c",
+                  "Center": "50,-351.1998,0",
+                  "IsTrigger": true,
+                  "Scale": "50,698.9974,50",
+                  "Static": false
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "fd798c27-039b-4772-817f-056b01a3e974",
+                  "Flags": 0,
+                  "Name": "Sprite",
+                  "Position": "0,0,0",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "SpriteTools.SpriteComponent",
+                      "__guid": "fa81ca64-d9ad-4358-bfe0-f2b5fb7e2911",
+                      "__version": 1,
+                      "BroadcastEvents": {},
+                      "CastShadows": "On",
+                      "CreateAttachPoints": false,
+                      "FlashTint": "1,1,1,0",
+                      "PlaybackSpeed": 1,
+                      "Sprite": "sprites/level_mountains/falling_ice.sprite",
+                      "SpriteFlags": "None",
+                      "StartingAnimationName": "animation_01",
+                      "Tint": "1,1,1,1",
+                      "UpDirection": "YPositive"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "__guid": "a0741ef7-7353-49c5-a4d7-e2105f097195",
+              "Flags": 0,
+              "Name": "Faling Ice",
+              "Position": "1216,224,1",
+              "Scale": "0.32,0.32,1",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.sprite.SpriteSizer",
+                  "__guid": "5f54fe0b-e0af-44cf-91b4-0fe5b43aec5c",
+                  "_height": 16,
+                  "_width": 16,
+                  "PixelPerUnit": 50
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "c8cbec19-6d20-42f2-b9e2-69393f89340f",
+                  "Center": "50,50,0",
+                  "IsTrigger": true,
+                  "Scale": "50,100,50",
+                  "Static": false
+                },
+                {
+                  "__type": "Sandbox.enemies.ContactDamage",
+                  "__guid": "24cca39b-ff89-40a1-b0dc-f09aecb15c43",
+                  "ContactDamageCollider": {
+                    "_type": "component",
+                    "component_id": "c8cbec19-6d20-42f2-b9e2-69393f89340f",
+                    "go": "a0741ef7-7353-49c5-a4d7-e2105f097195",
+                    "component_type": "BoxCollider"
+                  },
+                  "Damage": 1
+                },
+                {
+                  "__type": "Sandbox.objects.ShakeAndFall",
+                  "__guid": "0fc15d9c-f2ac-4a14-a9f4-9dbf86049b86",
+                  "Collider": {
+                    "_type": "component",
+                    "component_id": "376bf18b-3dfc-4f47-b1b6-eb6f098d723e",
+                    "go": "a0741ef7-7353-49c5-a4d7-e2105f097195",
+                    "component_type": "BoxCollider"
+                  },
+                  "DisableColliderOnFall": false,
+                  "DisableIn": 1,
+                  "FallSpeed": 400,
+                  "ShakeIntensity": 0.5,
+                  "Sprite": {
+                    "_type": "component",
+                    "component_id": "9e7f7d23-28cb-414b-9b55-5bafe62c08ce",
+                    "go": "74c24159-6a18-4575-97b7-a3c32c0666e3",
+                    "component_type": "SpriteComponent"
+                  },
+                  "TimeToFall": 0.5
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "376bf18b-3dfc-4f47-b1b6-eb6f098d723e",
+                  "Center": "50,-351.1998,0",
+                  "IsTrigger": true,
+                  "Scale": "50,698.9974,50",
+                  "Static": false
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "74c24159-6a18-4575-97b7-a3c32c0666e3",
+                  "Flags": 0,
+                  "Name": "Sprite",
+                  "Position": "0,0,0",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "SpriteTools.SpriteComponent",
+                      "__guid": "9e7f7d23-28cb-414b-9b55-5bafe62c08ce",
+                      "__version": 1,
+                      "BroadcastEvents": {},
+                      "CastShadows": "On",
+                      "CreateAttachPoints": false,
+                      "FlashTint": "1,1,1,0",
+                      "PlaybackSpeed": 1,
+                      "Sprite": "sprites/level_mountains/falling_ice.sprite",
+                      "SpriteFlags": "None",
+                      "StartingAnimationName": "animation_01",
+                      "Tint": "1,1,1,1",
+                      "UpDirection": "YPositive"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "__guid": "17c7a591-79a6-4cf4-9de0-7ebf4a7b548e",
+              "Flags": 0,
+              "Name": "Faling Ice (2)",
+              "Position": "1280,224,1",
+              "Scale": "0.32,0.32,1",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.sprite.SpriteSizer",
+                  "__guid": "2b427c32-cf71-4d3c-9e81-60d82ef30e5d",
+                  "_height": 16,
+                  "_width": 16,
+                  "PixelPerUnit": 50
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "aff782e3-54bc-4e9e-bbab-5297247946ec",
+                  "Center": "50,50,0",
+                  "IsTrigger": true,
+                  "Scale": "50,100,50",
+                  "Static": false
+                },
+                {
+                  "__type": "Sandbox.enemies.ContactDamage",
+                  "__guid": "6bf69ed8-2c76-482a-9675-8afe8ae75400",
+                  "ContactDamageCollider": {
+                    "_type": "component",
+                    "component_id": "aff782e3-54bc-4e9e-bbab-5297247946ec",
+                    "go": "17c7a591-79a6-4cf4-9de0-7ebf4a7b548e",
+                    "component_type": "BoxCollider"
+                  },
+                  "Damage": 1
+                },
+                {
+                  "__type": "Sandbox.objects.ShakeAndFall",
+                  "__guid": "de1149f1-9d43-4a1d-b59c-40551fd0858b",
+                  "Collider": {
+                    "_type": "component",
+                    "component_id": "2de46ccd-9176-4d79-b6d1-713f6b73215b",
+                    "go": "17c7a591-79a6-4cf4-9de0-7ebf4a7b548e",
+                    "component_type": "BoxCollider"
+                  },
+                  "DisableColliderOnFall": false,
+                  "DisableIn": 1,
+                  "FallSpeed": 400,
+                  "ShakeIntensity": 0.5,
+                  "Sprite": {
+                    "_type": "component",
+                    "component_id": "1bddaf0a-5dfb-43db-ad9b-f63c7011143d",
+                    "go": "c7c5c7cf-a54f-45e0-b8ef-3e931384b225",
+                    "component_type": "SpriteComponent"
+                  },
+                  "TimeToFall": 0.5
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "2de46ccd-9176-4d79-b6d1-713f6b73215b",
+                  "Center": "50,-351.1998,0",
+                  "IsTrigger": true,
+                  "Scale": "50,698.9974,50",
+                  "Static": false
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "c7c5c7cf-a54f-45e0-b8ef-3e931384b225",
+                  "Flags": 0,
+                  "Name": "Sprite",
+                  "Position": "0,0,0",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "SpriteTools.SpriteComponent",
+                      "__guid": "1bddaf0a-5dfb-43db-ad9b-f63c7011143d",
+                      "__version": 1,
+                      "BroadcastEvents": {},
+                      "CastShadows": "On",
+                      "CreateAttachPoints": false,
+                      "FlashTint": "1,1,1,0",
+                      "PlaybackSpeed": 1,
+                      "Sprite": "sprites/level_mountains/falling_ice.sprite",
+                      "SpriteFlags": "None",
+                      "StartingAnimationName": "animation_01",
+                      "Tint": "1,1,1,1",
+                      "UpDirection": "YPositive"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "__guid": "9fd6b05f-011d-48eb-8202-a7c5bc239164",
+              "Flags": 0,
+              "Name": "Faling Ice (3)",
+              "Position": "1312,224,1",
+              "Scale": "0.32,0.32,1",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.sprite.SpriteSizer",
+                  "__guid": "a4c226f1-ad55-489a-8154-d1b8323f27bf",
+                  "_height": 16,
+                  "_width": 16,
+                  "PixelPerUnit": 50
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "bf5a66be-fb93-4fcc-a46d-44e252bf9760",
+                  "Center": "50,50,0",
+                  "IsTrigger": true,
+                  "Scale": "50,100,50",
+                  "Static": false
+                },
+                {
+                  "__type": "Sandbox.enemies.ContactDamage",
+                  "__guid": "cea74eda-37b2-4617-a425-b37063619e8d",
+                  "ContactDamageCollider": {
+                    "_type": "component",
+                    "component_id": "bf5a66be-fb93-4fcc-a46d-44e252bf9760",
+                    "go": "9fd6b05f-011d-48eb-8202-a7c5bc239164",
+                    "component_type": "BoxCollider"
+                  },
+                  "Damage": 1
+                },
+                {
+                  "__type": "Sandbox.objects.ShakeAndFall",
+                  "__guid": "e5a48adf-f879-4621-91cb-30145657a3c9",
+                  "Collider": {
+                    "_type": "component",
+                    "component_id": "bc0d24d5-b54d-417c-aa33-4ed72c736f80",
+                    "go": "9fd6b05f-011d-48eb-8202-a7c5bc239164",
+                    "component_type": "BoxCollider"
+                  },
+                  "DisableColliderOnFall": false,
+                  "DisableIn": 1,
+                  "FallSpeed": 400,
+                  "ShakeIntensity": 0.5,
+                  "Sprite": {
+                    "_type": "component",
+                    "component_id": "001649ce-3e33-44b8-af41-632ca2c69aee",
+                    "go": "19a1c9ce-1eef-4313-b071-b88a54206720",
+                    "component_type": "SpriteComponent"
+                  },
+                  "TimeToFall": 0.5
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "bc0d24d5-b54d-417c-aa33-4ed72c736f80",
+                  "Center": "50,-351.1998,0",
+                  "IsTrigger": true,
+                  "Scale": "50,698.9974,50",
+                  "Static": false
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "19a1c9ce-1eef-4313-b071-b88a54206720",
+                  "Flags": 0,
+                  "Name": "Sprite",
+                  "Position": "0,0,0",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "SpriteTools.SpriteComponent",
+                      "__guid": "001649ce-3e33-44b8-af41-632ca2c69aee",
+                      "__version": 1,
+                      "BroadcastEvents": {},
+                      "CastShadows": "On",
+                      "CreateAttachPoints": false,
+                      "FlashTint": "1,1,1,0",
+                      "PlaybackSpeed": 1,
+                      "Sprite": "sprites/level_mountains/falling_ice.sprite",
+                      "SpriteFlags": "None",
+                      "StartingAnimationName": "animation_01",
+                      "Tint": "1,1,1,1",
+                      "UpDirection": "YPositive"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "__guid": "bf39cefc-bb78-43f8-ac7f-71d6bf1ded68",
+              "Flags": 0,
+              "Name": "Faling Ice (3)",
+              "Position": "2368,928,1.000062",
+              "Scale": "0.32,0.32,1",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.sprite.SpriteSizer",
+                  "__guid": "84e96d41-eafb-4d82-9b17-17d398ea358d",
+                  "_height": 16,
+                  "_width": 16,
+                  "PixelPerUnit": 50
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "b7b29e1b-a7e8-4ca6-bb90-d9502c195f17",
+                  "Center": "50,50,0",
+                  "IsTrigger": true,
+                  "Scale": "50,100,50",
+                  "Static": false
+                },
+                {
+                  "__type": "Sandbox.enemies.ContactDamage",
+                  "__guid": "62cb101f-0e13-4357-a8f3-4b5442392bea",
+                  "ContactDamageCollider": {
+                    "_type": "component",
+                    "component_id": "b7b29e1b-a7e8-4ca6-bb90-d9502c195f17",
+                    "go": "bf39cefc-bb78-43f8-ac7f-71d6bf1ded68",
+                    "component_type": "BoxCollider"
+                  },
+                  "Damage": 1
+                },
+                {
+                  "__type": "Sandbox.objects.ShakeAndFall",
+                  "__guid": "0bc2e0ac-24ca-4b84-b36f-857c4e2987f0",
+                  "Collider": {
+                    "_type": "component",
+                    "component_id": "f01d490d-cc96-41ad-a4d6-c30c5b120108",
+                    "go": "bf39cefc-bb78-43f8-ac7f-71d6bf1ded68",
+                    "component_type": "BoxCollider"
+                  },
+                  "DisableColliderOnFall": false,
+                  "DisableIn": 1,
+                  "FallSpeed": 400,
+                  "ShakeIntensity": 0.5,
+                  "Sprite": {
+                    "_type": "component",
+                    "component_id": "54476d64-665e-485e-9b55-d9841691802e",
+                    "go": "1f6f8984-7639-4486-92a6-9559492f223e",
+                    "component_type": "SpriteComponent"
+                  },
+                  "TimeToFall": 0.5
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "f01d490d-cc96-41ad-a4d6-c30c5b120108",
+                  "Center": "50,-351.1998,0",
+                  "IsTrigger": true,
+                  "Scale": "50,698.9974,50",
+                  "Static": false
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "1f6f8984-7639-4486-92a6-9559492f223e",
+                  "Flags": 0,
+                  "Name": "Sprite",
+                  "Position": "0,0,0",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "SpriteTools.SpriteComponent",
+                      "__guid": "54476d64-665e-485e-9b55-d9841691802e",
+                      "__version": 1,
+                      "BroadcastEvents": {},
+                      "CastShadows": "On",
+                      "CreateAttachPoints": false,
+                      "FlashTint": "1,1,1,0",
+                      "PlaybackSpeed": 1,
+                      "Sprite": "sprites/level_mountains/falling_ice.sprite",
+                      "SpriteFlags": "None",
+                      "StartingAnimationName": "animation_01",
+                      "Tint": "1,1,1,1",
+                      "UpDirection": "YPositive"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "__guid": "838de9a8-3199-4061-8101-6fafc168fc7c",
+              "Flags": 0,
+              "Name": "Faling Ice (3)",
+              "Position": "2336,928,1.00006",
+              "Scale": "0.32,0.32,1",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.sprite.SpriteSizer",
+                  "__guid": "9c5ff9b0-2052-4fdc-a05b-0115889d5fa6",
+                  "_height": 16,
+                  "_width": 16,
+                  "PixelPerUnit": 50
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "feb7b43f-1860-4390-b73d-b9139a65a232",
+                  "Center": "50,50,0",
+                  "IsTrigger": true,
+                  "Scale": "50,100,50",
+                  "Static": false
+                },
+                {
+                  "__type": "Sandbox.enemies.ContactDamage",
+                  "__guid": "dc45c36d-41fc-43a9-91eb-c0462340c12c",
+                  "ContactDamageCollider": {
+                    "_type": "component",
+                    "component_id": "feb7b43f-1860-4390-b73d-b9139a65a232",
+                    "go": "838de9a8-3199-4061-8101-6fafc168fc7c",
+                    "component_type": "BoxCollider"
+                  },
+                  "Damage": 1
+                },
+                {
+                  "__type": "Sandbox.objects.ShakeAndFall",
+                  "__guid": "eef56bc0-b16b-48ff-b861-426a50804c18",
+                  "Collider": {
+                    "_type": "component",
+                    "component_id": "2b950042-74d9-4632-b9e0-ff7b9e3c86f9",
+                    "go": "838de9a8-3199-4061-8101-6fafc168fc7c",
+                    "component_type": "BoxCollider"
+                  },
+                  "DisableColliderOnFall": false,
+                  "DisableIn": 1,
+                  "FallSpeed": 400,
+                  "ShakeIntensity": 0.5,
+                  "Sprite": {
+                    "_type": "component",
+                    "component_id": "e339a13b-b77f-418b-ac70-8ea769eed2d2",
+                    "go": "83cb3278-04db-4499-9698-6df7c12014bd",
+                    "component_type": "SpriteComponent"
+                  },
+                  "TimeToFall": 0.5
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "2b950042-74d9-4632-b9e0-ff7b9e3c86f9",
+                  "Center": "50,-351.1998,0",
+                  "IsTrigger": true,
+                  "Scale": "50,698.9974,50",
+                  "Static": false
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "83cb3278-04db-4499-9698-6df7c12014bd",
+                  "Flags": 0,
+                  "Name": "Sprite",
+                  "Position": "0,0,0",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "SpriteTools.SpriteComponent",
+                      "__guid": "e339a13b-b77f-418b-ac70-8ea769eed2d2",
+                      "__version": 1,
+                      "BroadcastEvents": {},
+                      "CastShadows": "On",
+                      "CreateAttachPoints": false,
+                      "FlashTint": "1,1,1,0",
+                      "PlaybackSpeed": 1,
+                      "Sprite": "sprites/level_mountains/falling_ice.sprite",
+                      "SpriteFlags": "None",
+                      "StartingAnimationName": "animation_01",
+                      "Tint": "1,1,1,1",
+                      "UpDirection": "YPositive"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "__guid": "afb1a2d6-acab-4937-8ede-344765e18e5f",
+              "Flags": 0,
+              "Name": "Faling Ice (3)",
+              "Position": "2304,928,1.000058",
+              "Scale": "0.32,0.32,1",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.sprite.SpriteSizer",
+                  "__guid": "2a99235e-e345-4e07-bb0f-f3ba1798e6a1",
+                  "_height": 16,
+                  "_width": 16,
+                  "PixelPerUnit": 50
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "539f34bb-a953-4b6c-a5c1-78bfdbeb8b7b",
+                  "Center": "50,50,0",
+                  "IsTrigger": true,
+                  "Scale": "50,100,50",
+                  "Static": false
+                },
+                {
+                  "__type": "Sandbox.enemies.ContactDamage",
+                  "__guid": "6120ef6a-b6a8-4a9f-b4fa-8799da7f07d4",
+                  "ContactDamageCollider": {
+                    "_type": "component",
+                    "component_id": "539f34bb-a953-4b6c-a5c1-78bfdbeb8b7b",
+                    "go": "afb1a2d6-acab-4937-8ede-344765e18e5f",
+                    "component_type": "BoxCollider"
+                  },
+                  "Damage": 1
+                },
+                {
+                  "__type": "Sandbox.objects.ShakeAndFall",
+                  "__guid": "2d5d61fa-52ad-444a-8307-25d5505602bc",
+                  "Collider": {
+                    "_type": "component",
+                    "component_id": "1ad9991c-6b9f-428b-8783-d215de47a40a",
+                    "go": "afb1a2d6-acab-4937-8ede-344765e18e5f",
+                    "component_type": "BoxCollider"
+                  },
+                  "DisableColliderOnFall": false,
+                  "DisableIn": 1,
+                  "FallSpeed": 400,
+                  "ShakeIntensity": 0.5,
+                  "Sprite": {
+                    "_type": "component",
+                    "component_id": "780e7912-1b3c-4934-85fb-d2d9cdfcdffb",
+                    "go": "bb5ecaaf-8f8e-4713-aba5-b81c51d469e1",
+                    "component_type": "SpriteComponent"
+                  },
+                  "TimeToFall": 0.5
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "1ad9991c-6b9f-428b-8783-d215de47a40a",
+                  "Center": "50,-351.1998,0",
+                  "IsTrigger": true,
+                  "Scale": "50,698.9974,50",
+                  "Static": false
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "bb5ecaaf-8f8e-4713-aba5-b81c51d469e1",
+                  "Flags": 0,
+                  "Name": "Sprite",
+                  "Position": "0,0,0",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "SpriteTools.SpriteComponent",
+                      "__guid": "780e7912-1b3c-4934-85fb-d2d9cdfcdffb",
+                      "__version": 1,
+                      "BroadcastEvents": {},
+                      "CastShadows": "On",
+                      "CreateAttachPoints": false,
+                      "FlashTint": "1,1,1,0",
+                      "PlaybackSpeed": 1,
+                      "Sprite": "sprites/level_mountains/falling_ice.sprite",
+                      "SpriteFlags": "None",
+                      "StartingAnimationName": "animation_01",
+                      "Tint": "1,1,1,1",
+                      "UpDirection": "YPositive"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "__guid": "57ace119-1d07-4ffb-8105-72592860077e",
+              "Flags": 0,
+              "Name": "Faling Ice (3)",
+              "Position": "2272,928,1.000056",
+              "Scale": "0.32,0.32,1",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.sprite.SpriteSizer",
+                  "__guid": "31699c4f-064f-4d5c-9912-e29a2073230a",
+                  "_height": 16,
+                  "_width": 16,
+                  "PixelPerUnit": 50
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "e10c1ec5-1862-4beb-b02a-fa4f3d78f605",
+                  "Center": "50,50,0",
+                  "IsTrigger": true,
+                  "Scale": "50,100,50",
+                  "Static": false
+                },
+                {
+                  "__type": "Sandbox.enemies.ContactDamage",
+                  "__guid": "405ea73f-c67f-4f2c-a825-68adebbd8f95",
+                  "ContactDamageCollider": {
+                    "_type": "component",
+                    "component_id": "e10c1ec5-1862-4beb-b02a-fa4f3d78f605",
+                    "go": "57ace119-1d07-4ffb-8105-72592860077e",
+                    "component_type": "BoxCollider"
+                  },
+                  "Damage": 1
+                },
+                {
+                  "__type": "Sandbox.objects.ShakeAndFall",
+                  "__guid": "110bb2f8-044d-4e9d-887f-fe6f4a1333ed",
+                  "Collider": {
+                    "_type": "component",
+                    "component_id": "43a1da2a-1d27-464f-939f-de0502a11740",
+                    "go": "57ace119-1d07-4ffb-8105-72592860077e",
+                    "component_type": "BoxCollider"
+                  },
+                  "DisableColliderOnFall": false,
+                  "DisableIn": 1,
+                  "FallSpeed": 400,
+                  "ShakeIntensity": 0.5,
+                  "Sprite": {
+                    "_type": "component",
+                    "component_id": "6fde0210-e4a1-42a9-a0b0-521620180abf",
+                    "go": "4192315a-4f0c-4d22-90fe-9e9aae0af552",
+                    "component_type": "SpriteComponent"
+                  },
+                  "TimeToFall": 0.5
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "43a1da2a-1d27-464f-939f-de0502a11740",
+                  "Center": "50,-351.1998,0",
+                  "IsTrigger": true,
+                  "Scale": "50,698.9974,50",
+                  "Static": false
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "4192315a-4f0c-4d22-90fe-9e9aae0af552",
+                  "Flags": 0,
+                  "Name": "Sprite",
+                  "Position": "0,0,0",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "SpriteTools.SpriteComponent",
+                      "__guid": "6fde0210-e4a1-42a9-a0b0-521620180abf",
+                      "__version": 1,
+                      "BroadcastEvents": {},
+                      "CastShadows": "On",
+                      "CreateAttachPoints": false,
+                      "FlashTint": "1,1,1,0",
+                      "PlaybackSpeed": 1,
+                      "Sprite": "sprites/level_mountains/falling_ice.sprite",
+                      "SpriteFlags": "None",
+                      "StartingAnimationName": "animation_01",
+                      "Tint": "1,1,1,1",
+                      "UpDirection": "YPositive"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "__guid": "763618b0-fd85-4c61-b298-369e141454fe",
+              "Flags": 0,
+              "Name": "Faling Ice (3)",
+              "Position": "2240,928,1.000054",
+              "Scale": "0.32,0.32,1",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.sprite.SpriteSizer",
+                  "__guid": "2b8175d0-172c-44db-8784-753813692940",
+                  "_height": 16,
+                  "_width": 16,
+                  "PixelPerUnit": 50
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "707ccaa5-c45b-410f-96a7-47b33a8546dd",
+                  "Center": "50,50,0",
+                  "IsTrigger": true,
+                  "Scale": "50,100,50",
+                  "Static": false
+                },
+                {
+                  "__type": "Sandbox.enemies.ContactDamage",
+                  "__guid": "2c7c651f-324d-43f7-9590-5d1e8c3f7654",
+                  "ContactDamageCollider": {
+                    "_type": "component",
+                    "component_id": "707ccaa5-c45b-410f-96a7-47b33a8546dd",
+                    "go": "763618b0-fd85-4c61-b298-369e141454fe",
+                    "component_type": "BoxCollider"
+                  },
+                  "Damage": 1
+                },
+                {
+                  "__type": "Sandbox.objects.ShakeAndFall",
+                  "__guid": "4f48ecd9-4c22-4b53-b7ef-4383834cb2d6",
+                  "Collider": {
+                    "_type": "component",
+                    "component_id": "c0dfc3db-01dd-44d1-b7b8-fb25bc07e437",
+                    "go": "763618b0-fd85-4c61-b298-369e141454fe",
+                    "component_type": "BoxCollider"
+                  },
+                  "DisableColliderOnFall": false,
+                  "DisableIn": 1,
+                  "FallSpeed": 400,
+                  "ShakeIntensity": 0.5,
+                  "Sprite": {
+                    "_type": "component",
+                    "component_id": "011767ba-179d-448b-8409-42bd7efcee62",
+                    "go": "10fcf58f-9c88-4923-9f11-31550e97a098",
+                    "component_type": "SpriteComponent"
+                  },
+                  "TimeToFall": 0.5
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "c0dfc3db-01dd-44d1-b7b8-fb25bc07e437",
+                  "Center": "50,-351.1998,0",
+                  "IsTrigger": true,
+                  "Scale": "50,698.9974,50",
+                  "Static": false
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "10fcf58f-9c88-4923-9f11-31550e97a098",
+                  "Flags": 0,
+                  "Name": "Sprite",
+                  "Position": "0,0,0",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "SpriteTools.SpriteComponent",
+                      "__guid": "011767ba-179d-448b-8409-42bd7efcee62",
+                      "__version": 1,
+                      "BroadcastEvents": {},
+                      "CastShadows": "On",
+                      "CreateAttachPoints": false,
+                      "FlashTint": "1,1,1,0",
+                      "PlaybackSpeed": 1,
+                      "Sprite": "sprites/level_mountains/falling_ice.sprite",
+                      "SpriteFlags": "None",
+                      "StartingAnimationName": "animation_01",
+                      "Tint": "1,1,1,1",
+                      "UpDirection": "YPositive"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "__guid": "9f54a4b0-0a46-41da-b3a5-ed063c2ce8f6",
+              "Flags": 0,
+              "Name": "Faling Ice (3)",
+              "Position": "2208,928,1.000053",
+              "Scale": "0.32,0.32,1",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.sprite.SpriteSizer",
+                  "__guid": "a124c927-4c7a-48ed-a4fa-c852a9f7c04c",
+                  "_height": 16,
+                  "_width": 16,
+                  "PixelPerUnit": 50
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "5ec6156d-0916-48a4-b31c-ec24b759b621",
+                  "Center": "50,50,0",
+                  "IsTrigger": true,
+                  "Scale": "50,100,50",
+                  "Static": false
+                },
+                {
+                  "__type": "Sandbox.enemies.ContactDamage",
+                  "__guid": "f6ea037c-1c09-49db-89ef-3ba6594f9052",
+                  "ContactDamageCollider": {
+                    "_type": "component",
+                    "component_id": "5ec6156d-0916-48a4-b31c-ec24b759b621",
+                    "go": "9f54a4b0-0a46-41da-b3a5-ed063c2ce8f6",
+                    "component_type": "BoxCollider"
+                  },
+                  "Damage": 1
+                },
+                {
+                  "__type": "Sandbox.objects.ShakeAndFall",
+                  "__guid": "16a49911-0e64-4916-858c-56b69f49ce86",
+                  "Collider": {
+                    "_type": "component",
+                    "component_id": "798d5067-ac93-4906-87b9-945094436230",
+                    "go": "9f54a4b0-0a46-41da-b3a5-ed063c2ce8f6",
+                    "component_type": "BoxCollider"
+                  },
+                  "DisableColliderOnFall": false,
+                  "DisableIn": 1,
+                  "FallSpeed": 400,
+                  "ShakeIntensity": 0.5,
+                  "Sprite": {
+                    "_type": "component",
+                    "component_id": "1a60c10e-b074-488f-90b3-3e4654f435ac",
+                    "go": "dfbffafe-4f37-4136-ab1c-8679f44dfd28",
+                    "component_type": "SpriteComponent"
+                  },
+                  "TimeToFall": 0.5
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "798d5067-ac93-4906-87b9-945094436230",
+                  "Center": "50,-351.1998,0",
+                  "IsTrigger": true,
+                  "Scale": "50,698.9974,50",
+                  "Static": false
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "dfbffafe-4f37-4136-ab1c-8679f44dfd28",
+                  "Flags": 0,
+                  "Name": "Sprite",
+                  "Position": "0,0,0",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "SpriteTools.SpriteComponent",
+                      "__guid": "1a60c10e-b074-488f-90b3-3e4654f435ac",
+                      "__version": 1,
+                      "BroadcastEvents": {},
+                      "CastShadows": "On",
+                      "CreateAttachPoints": false,
+                      "FlashTint": "1,1,1,0",
+                      "PlaybackSpeed": 1,
+                      "Sprite": "sprites/level_mountains/falling_ice.sprite",
+                      "SpriteFlags": "None",
+                      "StartingAnimationName": "animation_01",
+                      "Tint": "1,1,1,1",
+                      "UpDirection": "YPositive"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "__guid": "d9b58083-0d74-43d5-9f77-eb0aeb0acbd9",
+              "Flags": 0,
+              "Name": "Faling Ice (3)",
+              "Position": "2176,928,1.000051",
+              "Scale": "0.32,0.32,1",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.sprite.SpriteSizer",
+                  "__guid": "95f80b42-bd1e-4e5a-a5bc-96686815d682",
+                  "_height": 16,
+                  "_width": 16,
+                  "PixelPerUnit": 50
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "3f8c084a-1e0d-4964-b368-e6a4ac7d07e4",
+                  "Center": "50,50,0",
+                  "IsTrigger": true,
+                  "Scale": "50,100,50",
+                  "Static": false
+                },
+                {
+                  "__type": "Sandbox.enemies.ContactDamage",
+                  "__guid": "f36c4f83-fdb3-46f9-94b2-182ace73384e",
+                  "ContactDamageCollider": {
+                    "_type": "component",
+                    "component_id": "3f8c084a-1e0d-4964-b368-e6a4ac7d07e4",
+                    "go": "d9b58083-0d74-43d5-9f77-eb0aeb0acbd9",
+                    "component_type": "BoxCollider"
+                  },
+                  "Damage": 1
+                },
+                {
+                  "__type": "Sandbox.objects.ShakeAndFall",
+                  "__guid": "c90f4383-80d8-4b1a-a712-acd682bf9eea",
+                  "Collider": {
+                    "_type": "component",
+                    "component_id": "246ff2cb-2c98-48bc-be05-c8b70bf59021",
+                    "go": "d9b58083-0d74-43d5-9f77-eb0aeb0acbd9",
+                    "component_type": "BoxCollider"
+                  },
+                  "DisableColliderOnFall": false,
+                  "DisableIn": 1,
+                  "FallSpeed": 400,
+                  "ShakeIntensity": 0.5,
+                  "Sprite": {
+                    "_type": "component",
+                    "component_id": "7c6a83a1-0f71-4f2d-91b0-f101952897bf",
+                    "go": "fc86b8d1-aba6-4e59-a147-e9aed4a1d7d6",
+                    "component_type": "SpriteComponent"
+                  },
+                  "TimeToFall": 0.5
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "246ff2cb-2c98-48bc-be05-c8b70bf59021",
+                  "Center": "50,-351.1998,0",
+                  "IsTrigger": true,
+                  "Scale": "50,698.9974,50",
+                  "Static": false
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "fc86b8d1-aba6-4e59-a147-e9aed4a1d7d6",
+                  "Flags": 0,
+                  "Name": "Sprite",
+                  "Position": "0,0,0",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "SpriteTools.SpriteComponent",
+                      "__guid": "7c6a83a1-0f71-4f2d-91b0-f101952897bf",
+                      "__version": 1,
+                      "BroadcastEvents": {},
+                      "CastShadows": "On",
+                      "CreateAttachPoints": false,
+                      "FlashTint": "1,1,1,0",
+                      "PlaybackSpeed": 1,
+                      "Sprite": "sprites/level_mountains/falling_ice.sprite",
+                      "SpriteFlags": "None",
+                      "StartingAnimationName": "animation_01",
+                      "Tint": "1,1,1,1",
+                      "UpDirection": "YPositive"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "__guid": "68f0a8bc-ae36-45d4-9f87-3223cc684011",
+              "Flags": 0,
+              "Name": "Faling Ice (3)",
+              "Position": "2144,928,1.00005",
+              "Scale": "0.32,0.32,1",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.sprite.SpriteSizer",
+                  "__guid": "135d9727-2d62-47a4-aea9-6abb81a973e5",
+                  "_height": 16,
+                  "_width": 16,
+                  "PixelPerUnit": 50
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "0cab02c1-ff7d-41e1-85be-0ffe200bb959",
+                  "Center": "50,50,0",
+                  "IsTrigger": true,
+                  "Scale": "50,100,50",
+                  "Static": false
+                },
+                {
+                  "__type": "Sandbox.enemies.ContactDamage",
+                  "__guid": "e6010d13-39bd-4814-9f41-4c1177d0647d",
+                  "ContactDamageCollider": {
+                    "_type": "component",
+                    "component_id": "0cab02c1-ff7d-41e1-85be-0ffe200bb959",
+                    "go": "68f0a8bc-ae36-45d4-9f87-3223cc684011",
+                    "component_type": "BoxCollider"
+                  },
+                  "Damage": 1
+                },
+                {
+                  "__type": "Sandbox.objects.ShakeAndFall",
+                  "__guid": "4fafa464-3544-4e42-bf8d-c07967e8cac8",
+                  "Collider": {
+                    "_type": "component",
+                    "component_id": "b6aaac9f-d4ea-4e05-bd82-403f6397a58a",
+                    "go": "68f0a8bc-ae36-45d4-9f87-3223cc684011",
+                    "component_type": "BoxCollider"
+                  },
+                  "DisableColliderOnFall": false,
+                  "DisableIn": 1,
+                  "FallSpeed": 400,
+                  "ShakeIntensity": 0.5,
+                  "Sprite": {
+                    "_type": "component",
+                    "component_id": "37362275-80ad-4a0d-a779-281a69ed86f2",
+                    "go": "a2995732-e3a5-4047-9f22-47f7cc93ed87",
+                    "component_type": "SpriteComponent"
+                  },
+                  "TimeToFall": 0.5
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "b6aaac9f-d4ea-4e05-bd82-403f6397a58a",
+                  "Center": "50,-351.1998,0",
+                  "IsTrigger": true,
+                  "Scale": "50,698.9974,50",
+                  "Static": false
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "a2995732-e3a5-4047-9f22-47f7cc93ed87",
+                  "Flags": 0,
+                  "Name": "Sprite",
+                  "Position": "0,0,0",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "SpriteTools.SpriteComponent",
+                      "__guid": "37362275-80ad-4a0d-a779-281a69ed86f2",
+                      "__version": 1,
+                      "BroadcastEvents": {},
+                      "CastShadows": "On",
+                      "CreateAttachPoints": false,
+                      "FlashTint": "1,1,1,0",
+                      "PlaybackSpeed": 1,
+                      "Sprite": "sprites/level_mountains/falling_ice.sprite",
+                      "SpriteFlags": "None",
+                      "StartingAnimationName": "animation_01",
+                      "Tint": "1,1,1,1",
+                      "UpDirection": "YPositive"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "__guid": "5c4b27f6-5854-40a5-88a8-709136db0234",
+              "Flags": 0,
+              "Name": "Faling Ice (4)",
+              "Position": "2432,416,1.000066",
+              "Scale": "0.32,0.32,1",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.sprite.SpriteSizer",
+                  "__guid": "bcbbdb9e-8260-43e7-a267-b0fb8d50c9bb",
+                  "_height": 16,
+                  "_width": 16,
+                  "PixelPerUnit": 50
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "934e8393-43fa-4098-ab1d-af1db2d7f728",
+                  "Center": "50,50,0",
+                  "IsTrigger": true,
+                  "Scale": "50,100,50",
+                  "Static": false
+                },
+                {
+                  "__type": "Sandbox.enemies.ContactDamage",
+                  "__guid": "7f2a1b43-05a3-46a0-9553-7c79cd7580e2",
+                  "ContactDamageCollider": {
+                    "_type": "component",
+                    "component_id": "934e8393-43fa-4098-ab1d-af1db2d7f728",
+                    "go": "5c4b27f6-5854-40a5-88a8-709136db0234",
+                    "component_type": "BoxCollider"
+                  },
+                  "Damage": 1
+                },
+                {
+                  "__type": "Sandbox.objects.ShakeAndFall",
+                  "__guid": "d48aab6e-fb27-4c2d-b4c6-9d0a7a56f608",
+                  "Collider": {
+                    "_type": "component",
+                    "component_id": "da03af0b-f801-4483-a578-c92262e303e5",
+                    "go": "5c4b27f6-5854-40a5-88a8-709136db0234",
+                    "component_type": "BoxCollider"
+                  },
+                  "DisableColliderOnFall": false,
+                  "DisableIn": 1,
+                  "FallSpeed": 400,
+                  "ShakeIntensity": 0.5,
+                  "Sprite": {
+                    "_type": "component",
+                    "component_id": "36a4474c-c08f-4b32-9ead-2273e28ccfae",
+                    "go": "818caa0f-e3a0-4268-8fa6-a4325b3480a9",
+                    "component_type": "SpriteComponent"
+                  },
+                  "TimeToFall": 0.5
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "da03af0b-f801-4483-a578-c92262e303e5",
+                  "Center": "50,-351.1998,0",
+                  "IsTrigger": true,
+                  "Scale": "50,698.9974,50",
+                  "Static": false
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "818caa0f-e3a0-4268-8fa6-a4325b3480a9",
+                  "Flags": 0,
+                  "Name": "Sprite",
+                  "Position": "0,0,0",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "SpriteTools.SpriteComponent",
+                      "__guid": "36a4474c-c08f-4b32-9ead-2273e28ccfae",
+                      "__version": 1,
+                      "BroadcastEvents": {},
+                      "CastShadows": "On",
+                      "CreateAttachPoints": false,
+                      "FlashTint": "1,1,1,0",
+                      "PlaybackSpeed": 1,
+                      "Sprite": "sprites/level_mountains/falling_ice.sprite",
+                      "SpriteFlags": "None",
+                      "StartingAnimationName": "animation_01",
+                      "Tint": "1,1,1,1",
+                      "UpDirection": "YPositive"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "__guid": "46757a08-9416-431b-ba26-1543b43efd1d",
+              "Flags": 0,
+              "Name": "Faling Ice (5)",
+              "Position": "2400,352,1.000064",
+              "Scale": "0.32,0.32,1",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.sprite.SpriteSizer",
+                  "__guid": "97fe7a41-b304-4c35-a74a-fc181544175a",
+                  "_height": 16,
+                  "_width": 16,
+                  "PixelPerUnit": 50
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "4594995e-11d5-416c-8ff6-288beac8b44f",
+                  "Center": "50,50,0",
+                  "IsTrigger": true,
+                  "Scale": "50,100,50",
+                  "Static": false
+                },
+                {
+                  "__type": "Sandbox.enemies.ContactDamage",
+                  "__guid": "114246e5-259d-48b9-b946-ae70ff75838c",
+                  "ContactDamageCollider": {
+                    "_type": "component",
+                    "component_id": "4594995e-11d5-416c-8ff6-288beac8b44f",
+                    "go": "46757a08-9416-431b-ba26-1543b43efd1d",
+                    "component_type": "BoxCollider"
+                  },
+                  "Damage": 1
+                },
+                {
+                  "__type": "Sandbox.objects.ShakeAndFall",
+                  "__guid": "222fcbc1-ed5e-4cd4-9bf7-a4d2bfbfb394",
+                  "Collider": {
+                    "_type": "component",
+                    "component_id": "eab7ffb2-22b2-43d4-8776-812c195c3494",
+                    "go": "46757a08-9416-431b-ba26-1543b43efd1d",
+                    "component_type": "BoxCollider"
+                  },
+                  "DisableColliderOnFall": false,
+                  "DisableIn": 1,
+                  "FallSpeed": 400,
+                  "ShakeIntensity": 0.5,
+                  "Sprite": {
+                    "_type": "component",
+                    "component_id": "85890e80-e72b-4bf5-98d7-7b1c6c7a95e5",
+                    "go": "02d346c9-5695-496f-afc6-7d574b93bb9e",
+                    "component_type": "SpriteComponent"
+                  },
+                  "TimeToFall": 0.5
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "eab7ffb2-22b2-43d4-8776-812c195c3494",
+                  "Center": "50,-351.1998,0",
+                  "IsTrigger": true,
+                  "Scale": "50,698.9974,50",
+                  "Static": false
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "02d346c9-5695-496f-afc6-7d574b93bb9e",
+                  "Flags": 0,
+                  "Name": "Sprite",
+                  "Position": "0,0,0",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "SpriteTools.SpriteComponent",
+                      "__guid": "85890e80-e72b-4bf5-98d7-7b1c6c7a95e5",
+                      "__version": 1,
+                      "BroadcastEvents": {},
+                      "CastShadows": "On",
+                      "CreateAttachPoints": false,
+                      "FlashTint": "1,1,1,0",
+                      "PlaybackSpeed": 1,
+                      "Sprite": "sprites/level_mountains/falling_ice.sprite",
+                      "SpriteFlags": "None",
+                      "StartingAnimationName": "animation_01",
+                      "Tint": "1,1,1,1",
+                      "UpDirection": "YPositive"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -2252,57 +3707,6 @@
                 "43,0": {
                   "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
                 },
-                "46,0": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
-                },
-                "46,1": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
-                },
-                "47,0": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
-                },
-                "47,1": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
-                },
-                "52,0": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
-                },
-                "52,1": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
-                },
-                "52,2": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
-                },
-                "53,0": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
-                },
-                "53,1": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
-                },
-                "53,2": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
-                },
-                "57,0": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
-                },
-                "61,0": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
-                },
-                "61,1": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
-                },
-                "61,2": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
-                },
-                "65,3": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
-                },
-                "70,1": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
-                },
-                "75,3": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
-                },
                 "-1,5": {
                   "TileId": "33bb7c1b-aa73-4f6e-9ead-48d57429584a"
                 },
@@ -2338,12 +3742,6 @@
                 },
                 "-1,4": {
                   "TileId": "33bb7c1b-aa73-4f6e-9ead-48d57429584a"
-                },
-                "77,5": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
-                },
-                "77,6": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
                 },
                 "78,15": {
                   "TileId": "2ffe96b3-bbd5-4212-b0b4-6fe92eb4bfc8"
@@ -2666,8 +4064,8 @@
                 "59,19": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
-                "75,28": {
-                  "TileId": "4f1493db-e1a9-45dc-9e67-bead05c2f342"
+                "75,30": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
                 "59,22": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
@@ -2711,10 +4109,10 @@
                 "71,24": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
-                "67,29": {
+                "73,30": {
                   "TileId": "4f1493db-e1a9-45dc-9e67-bead05c2f342"
                 },
-                "68,29": {
+                "72,30": {
                   "TileId": "4f1493db-e1a9-45dc-9e67-bead05c2f342"
                 },
                 "62,23": {
@@ -2777,9 +4175,6 @@
                 "71,9": {
                   "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
                 },
-                "40,2": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
-                },
                 "73,8": {
                   "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
                 },
@@ -2789,7 +4184,7 @@
                 "71,25": {
                   "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
                 },
-                "69,29": {
+                "71,30": {
                   "TileId": "4f1493db-e1a9-45dc-9e67-bead05c2f342"
                 },
                 "68,25": {
@@ -2801,19 +4196,19 @@
                 "68,23": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
-                "74,28": {
+                "76,30": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "70,30": {
                   "TileId": "4f1493db-e1a9-45dc-9e67-bead05c2f342"
                 },
-                "70,29": {
+                "69,30": {
                   "TileId": "4f1493db-e1a9-45dc-9e67-bead05c2f342"
                 },
-                "71,29": {
+                "68,30": {
                   "TileId": "4f1493db-e1a9-45dc-9e67-bead05c2f342"
                 },
-                "72,29": {
-                  "TileId": "4f1493db-e1a9-45dc-9e67-bead05c2f342"
-                },
-                "73,29": {
+                "74,30": {
                   "TileId": "4f1493db-e1a9-45dc-9e67-bead05c2f342"
                 },
                 "66,28": {
@@ -2843,7 +4238,7 @@
                 "66,29": {
                   "TileId": "4f1493db-e1a9-45dc-9e67-bead05c2f342"
                 },
-                "74,29": {
+                "67,30": {
                   "TileId": "4f1493db-e1a9-45dc-9e67-bead05c2f342"
                 },
                 "75,29": {
@@ -2899,6 +4294,141 @@
                 },
                 "70,8": {
                   "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
+                },
+                "77,30": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "78,30": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "78,31": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "77,31": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "76,31": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "75,31": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "74,31": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "73,31": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "72,31": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "71,31": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "70,31": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "69,31": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "68,31": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "67,31": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "66,31": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "66,30": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "65,30": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "64,30": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "63,30": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "62,30": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "61,30": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "60,30": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "59,29": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "60,29": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "61,29": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "62,29": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "63,29": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "64,29": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "65,29": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "65,31": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "64,31": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "63,31": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "62,31": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "61,31": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "60,31": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "59,31": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "59,30": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "58,30": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "57,29": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "57,30": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "58,31": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "55,29": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "56,29": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "57,31": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "56,30": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 }
               }
             },
@@ -4854,7 +6384,7 @@
       "__guid": "fa92b8fb-a335-4816-b27c-04934c4d960c",
       "Flags": 0,
       "Name": "Player",
-      "Position": "161.7186,246.0664,2.000004",
+      "Position": "448,288,2.000022",
       "Enabled": true,
       "Components": [
         {
@@ -4879,7 +6409,7 @@
             "component_type": "DashAbility"
           },
           "DeathSound": "audio/sfx/player_death.sound",
-          "Health": 3,
+          "Health": 30,
           "HitSound": "audio/sfx/player/player_hit.sound",
           "JumpAbility": {
             "_type": "component",
@@ -4893,7 +6423,7 @@
             "go": "fa92b8fb-a335-4816-b27c-04934c4d960c",
             "component_type": "Knockback"
           },
-          "MaxHealth": 3,
+          "MaxHealth": 30,
           "MotionCore": {
             "_type": "component",
             "component_id": "b46524e7-e8eb-40f6-a7ac-67bdcef69857",

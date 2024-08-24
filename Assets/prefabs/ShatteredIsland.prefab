@@ -1,0 +1,88 @@
+{
+  "RootObject": {
+    "__guid": "75e49eb3-212f-4206-b02e-bcd7128189f1",
+    "Flags": 0,
+    "Name": "shatteredisland",
+    "Scale": "0.64,0.64,1",
+    "Tags": "ground",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "dec4039c-6f36-46f2-9a29-24d7acd58e73",
+        "Center": "25,25,0",
+        "IsTrigger": false,
+        "Scale": "50,50,50",
+        "Static": false
+      },
+      {
+        "__type": "Sandbox.sprite.SpriteSizer",
+        "__guid": "594ba8ca-2071-4cc3-9431-e4fec6a81135",
+        "_height": 32,
+        "_width": 32,
+        "PixelPerUnit": 50
+      },
+      {
+        "__type": "Sandbox.BoxCollider",
+        "__guid": "fea84d97-befa-4e68-97b7-6cf53996c40e",
+        "Center": "25,54.69992,0",
+        "IsTrigger": true,
+        "Scale": "50,9.900001,50",
+        "Static": false
+      },
+      {
+        "__type": "Sandbox.objects.ShakeAndFall",
+        "__guid": "bd249f60-a318-4532-8303-b36e2ecc1e62",
+        "Collider": {
+          "_type": "component",
+          "component_id": "fea84d97-befa-4e68-97b7-6cf53996c40e",
+          "go": "75e49eb3-212f-4206-b02e-bcd7128189f1",
+          "component_type": "BoxCollider"
+        },
+        "DisableColliderOnFall": false,
+        "DisableIn": 1,
+        "FallSpeed": 300,
+        "ShakeIntensity": 0.5,
+        "Sprite": {
+          "_type": "component",
+          "component_id": "35ed26f6-3809-4b39-a1c7-90f2facafe93",
+          "go": "a0a2ea3f-224b-442f-80ab-2150c2db6695",
+          "component_type": "SpriteComponent"
+        },
+        "TimeToFall": 0.5
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "a0a2ea3f-224b-442f-80ab-2150c2db6695",
+        "Flags": 0,
+        "Name": "sprite",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "SpriteTools.SpriteComponent",
+            "__guid": "35ed26f6-3809-4b39-a1c7-90f2facafe93",
+            "__version": 1,
+            "BroadcastEvents": {},
+            "CastShadows": "On",
+            "CreateAttachPoints": false,
+            "FlashTint": "1,1,1,0",
+            "PlaybackSpeed": 1,
+            "Sprite": "sprites/level_mountains/shattered_island.sprite",
+            "SpriteFlags": "None",
+            "StartingAnimationName": "animation_01",
+            "Tint": "1,1,1,1",
+            "UpDirection": "YPositive"
+          }
+        ]
+      }
+    ],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

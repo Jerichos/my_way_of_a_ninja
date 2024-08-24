@@ -1,0 +1,22 @@
+{
+  "Animations": [
+    {
+      "FrameRate": 15,
+      "Origin": "0,1",
+      "Name": "animation_01",
+      "Frames": [
+        {
+          "FilePath": "sprites/level_mountains/level_mountains_ass.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "192,0",
+            "Size": "32,64"
+          }
+        }
+      ],
+      "Attachments": []
+    }
+  ],
+  "__references": [],
+  "__version": 0
+}
