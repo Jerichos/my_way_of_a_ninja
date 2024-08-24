@@ -5,11 +5,11 @@ namespace Sandbox.level;
 
 public class Level : Component
 {
-	[Property] public GameObject StartCheckpoint { get; set; }
+	[Property] public Checkpoint StartCheckpoint { get; set; }
 	[Property] public PrefabFile PlayerPrefab { get; set; }
 	[Property] public Player Player { get; set; }
 	[Property] public CameraFollow CameraFollow { get; set; }
-	[Property] public bool MovePlayerToCheckpoint { get; set; } = true;
+	[Property] public bool DontTeleportPlayerToCheckpoint { get; set; } = true;
 	[Property] public Weather Weather { get; set; }
 	[Property] public SoundBoxComponent SoundBox { get; set; }
 	[Property] public DeathAnimation DeathAnimation { get; set; }
@@ -23,17 +23,31 @@ public class Level : Component
 	
 	List<IRespawn> _respawnables = new();
 	
+	// if DontTeleportPlayerToCheckpointOnce is true, player will be spawned at the level's position set in the editor, until first checkpoint is activated
+	private Vector3 _editorPosition;
+
+	protected override void OnAwake()
+	{
+		if (Player != null && DontTeleportPlayerToCheckpoint)
+		{
+			Checkpoint.LastCheckpoint = null;
+			Log.Info("player is not null, but DontTeleportPlayerToCheckpoint is true");
+			_editorPosition = Player.Transform.Position;
+		}
+	}
+
 	protected override void OnStart()
 	{
 		_respawnables = Components.GetAll<IRespawn>(FindMode.InDescendants).ToList();
-		Log.Info("found respawnables: " + _respawnables.Count);
 		LevelStart();
 	}
 	
 	private void LevelStart()
 	{
 		Log.Info("start level");
-		StartCheckpoint.Components.Get<Checkpoint>().Activated = true;
+		if(Checkpoint.LastCheckpoint != null)
+			StartCheckpoint.Components.Get<Checkpoint>().Activated = true;
+		
 		SpawnPlayer();
 	}
 	
@@ -62,19 +76,25 @@ public class Level : Component
 			newPlayer = Player;
 		}
 		
-		Vector3 newPosition;
+		// set spawn position
+		Vector3 spawnPosition;
 		if(Checkpoint.LastCheckpoint != null)
 		{
-			newPosition = Checkpoint.LastCheckpoint.Transform.Position;
-			Log.Info("new position from checkpoint");
+			spawnPosition = Checkpoint.LastCheckpoint.Transform.Position;
+			Log.Info("spawn position from checkpoint");
+		}
+		else if(DontTeleportPlayerToCheckpoint && Player != null)
+		{
+			spawnPosition = _editorPosition;
+			Log.Info("spawn position from editor");
 		}
 		else
 		{
-			newPosition = Transform.Position;
-			Log.Info("new position from level");
+			spawnPosition = Transform.Position;
+			Log.Error("FIXME: No spawn set. ");
 		}
 		
-		newPlayer.Teleport(newPosition);
+		newPlayer.Teleport(spawnPosition);
 		
 		CameraFollow.SetTarget( newPlayer.GameObject, true );
 		CameraFollow.SetBounds( MinBounds, MaxBounds );
@@ -99,7 +119,7 @@ public class Level : Component
 		
 		DeathAnimation.AnimationFadeFinishedEvent -= OnDeathFadeFinished;
 		DeathAnimation.AnimationFadeFinishedEvent += OnDeathFadeFinished;
-		Log.Info($"set player position to {newPosition}");
+		Log.Info($"set player position to {spawnPosition}");
 	}
 	
 	private void RespawnAll()

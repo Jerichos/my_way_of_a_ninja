@@ -42,9 +42,9 @@
             "go": "a331ba39-0f15-4238-a15f-5f657e8e0e1b",
             "component_type": "DeathAnimation"
           },
+          "DontTeleportPlayerToCheckpoint": true,
           "MaxBounds": "2500,2500",
           "MinBounds": "0,0",
-          "MovePlayerToCheckpoint": true,
           "Player": {
             "_type": "component",
             "component_id": "c42a6ce4-e775-4388-a11e-bf9b42420349",
@@ -59,8 +59,10 @@
             "component_type": "SoundBoxComponent"
           },
           "StartCheckpoint": {
-            "_type": "gameobject",
-            "go": "de903763-862d-4e3f-bade-fac35a3fcaee"
+            "_type": "component",
+            "component_id": "84c7ba3b-0db3-4812-8a06-f93be031595e",
+            "go": "de903763-862d-4e3f-bade-fac35a3fcaee",
+            "component_type": "Checkpoint"
           },
           "Weather": {
             "_type": "component",
@@ -420,7 +422,7 @@
               "__guid": "7c960921-d7fb-4098-b4ab-92b7cd92c35c",
               "Flags": 0,
               "Name": "Heli Small",
-              "Position": "384,224,0.9999785",
+              "Position": "736,192,1",
               "Scale": "0.5,0.5,1",
               "Tags": "enemy",
               "Enabled": true,
@@ -6384,7 +6386,7 @@
       "__guid": "fa92b8fb-a335-4816-b27c-04934c4d960c",
       "Flags": 0,
       "Name": "Player",
-      "Position": "448,288,2.000022",
+      "Position": "288,256,2.000013",
       "Enabled": true,
       "Components": [
         {
