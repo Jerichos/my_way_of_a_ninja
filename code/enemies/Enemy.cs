@@ -10,6 +10,7 @@ public class Enemy : Component, IHittable
 {
 	[Property] private SpriteComponent Sprite { get; set; }
 	[Property] private Knockback Knockback { get; set; }
+	[Property] private ContactDamage ContactDamage { get; set; }
 
 	[Property] private int Health { get; set; } = 1;
 	[Property] private int MaxHealth { get; set; } = 1;
@@ -29,6 +30,7 @@ public class Enemy : Component, IHittable
 	
 	protected override void OnStart()
 	{
+		ContactDamage = Components.Get<ContactDamage>();
 		_initialPosition = Transform.Position;
 		if (Components.TryGet(out Level level, FindMode.InAncestors))
 		{
@@ -93,8 +95,9 @@ public class Enemy : Component, IHittable
 
 	private void OnDeath(GameObject source = null)
 	{
-		// TODO: add death animation
-		// TODO: return to pool
+		if(ContactDamage != null)
+			ContactDamage.Enabled = false;
+		
 		Color color = Sprite.FlashTint;
 		color.a = 0.5f;
 		Sprite.FlashTint = color;
@@ -123,6 +126,9 @@ public class Enemy : Component, IHittable
 
 	private void OnRespawn()
 	{
+		if(ContactDamage != null)
+			ContactDamage.Enabled = true;
+		
 		Knockback.Enabled = false;
 		Transform.Position = _initialPosition;
 		Health = MaxHealth;

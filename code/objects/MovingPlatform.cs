@@ -61,6 +61,7 @@ public class MovingPlatform : Component, IMotionProvider
 	{
 		if ( isGrounded && _lastPlayer != null && _lastPlayer.MotionCore.GroundObject == GameObject)
 		{
+			Log.Info("Player is on the platform");
 			_lastPlayer.MotionCore.AddMotionProvider(this);
 		}
 	}

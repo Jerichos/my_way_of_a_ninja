@@ -171,27 +171,22 @@ public sealed class MotionCore2D : Component
 				.Ray(rayStart, rayEnd)
 				.Size(BBox.FromPositionAndSize(Vector3.Zero, new Vector3(1,scale.y,1)))
 				.WithAnyTags(WallTags)
-				.Run();
+				.RunAll();
 			
-			// if it has platform tag we ignore hit
-			
-			// Gizmo.Draw.Color = Color.Green;
-			// Gizmo.Draw.LineThickness = 5;
-			// Gizmo.Draw.Line( rayStart, rayEnd );
-			
-			if(hitResult.Hit)
+			if(hitResult.Count() == 1) // TODO: this is not nice, but it works for now
 			{
-				if(IsItPlatform(hitResult))
+				if(IsItPlatform(hitResult.First()))
 					return;
 				
 				Collisions.Right = true;
 				Velocity = Velocity.WithX(0);
 				
-				// Gizmo.Draw.Color = Color.Red;
-				// Gizmo.Draw.LineThickness = 5;
-				// Gizmo.Draw.Line( rayStart, hitResult.HitPosition);
-				
 				// Log.Info("collision right");
+			}
+			else if(hitResult.Count() > 1)
+			{
+				Collisions.Right = true;
+				Velocity = Velocity.WithX(0);
 			}
 			
 			// Log.Info($"skin: {skin} length: {length} scale: {scale} hit: {hitResult.Hit}");
@@ -206,25 +201,22 @@ public sealed class MotionCore2D : Component
 				.Ray(rayStart, rayEnd)
 				.Size(BBox.FromPositionAndSize(Vector3.Zero, new Vector3(1,scale.y,1)))
 				.WithAnyTags(WallTags)
-				.Run();
+				.RunAll();
 			
-			// Gizmo.Draw.Color = Color.Green;
-			// Gizmo.Draw.LineThickness = 5;
-			// Gizmo.Draw.Line( rayStart, rayEnd );
-			
-			if(hitResult.Hit)
+			if(hitResult.Count() == 1) // TODO: this is not nice, but it works for now
 			{
-				if(IsItPlatform(hitResult))
+				if(IsItPlatform(hitResult.First()))
 					return;
 				
 				Collisions.Right = true;
 				Velocity = Velocity.WithX(0);
 				
-				// Gizmo.Draw.Color = Color.Red;
-				// Gizmo.Draw.LineThickness = 5;
-				// Gizmo.Draw.Line( rayStart, hitResult.HitPosition);
-				
-				// Log.Info("collision left");
+				// Log.Info("collision right");
+			}
+			else if(hitResult.Count() > 1)
+			{
+				Collisions.Left = true;
+				Velocity = Velocity.WithX(0);
 			}
 		}
 	}
@@ -232,7 +224,9 @@ public sealed class MotionCore2D : Component
 	private bool IsItPlatform(SceneTraceResult hitResult)
 	{
 		if ( PlatformTags != null && hitResult.GameObject.Tags.HasAny( PlatformTags ) )
+		{
 			return true;
+		}
 		
 		return false;
 	}
@@ -281,7 +275,7 @@ public sealed class MotionCore2D : Component
 			return;
 		}
 
-		float skinWidth = 2;
+		float skinWidth = 10; // increased skin because of jump ability
 		float length = -Velocity.y * Time.Delta + skinWidth;
 		
 		Vector3 startPosition = Transform.Position + Util.UpY * skinWidth;
@@ -313,7 +307,15 @@ public sealed class MotionCore2D : Component
 		Velocity = Vector2.Zero;
 
 		for ( int i = 0; i < _activeProviders.Count; i++ )
+		{
+			// if player and velocity is not zero print log
+			// if(_activeProviders[i].Velocity != Vector2.Zero && this.GameObject.Name == "Player")
+			// {
+			// 	Log.Info($"MotionType: {_activeProviders[i].MotionType} provider: {_activeProviders[i].GetType().Name} velocity: {_activeProviders[i].Velocity}");
+			// }
+			
 			Velocity += _activeProviders[i].Velocity;
+		}
 	}
 	
 	public void AddMotionProvider(IMotionProvider provider)

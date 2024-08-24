@@ -45,11 +45,6 @@ public class PathInit : Component
 		}
 	}
 
-	protected override void OnStart()
-	{
-		Destroy();
-	}
-
 	protected override void OnValidate()
 	{
 		if(!FromChildren)
@@ -57,7 +52,17 @@ public class PathInit : Component
 		
 		PopulateFromChildren();
 	}
+
+	protected override void OnEnabled()
+	{
+		Log.Info("On enable");
+	}
 	
+	protected override void OnDisabled()
+	{
+		Log.Info("On disable");
+	}
+
 	protected override void DrawGizmos()
 	{
 		if(Path == null || Path.Length == 0)

@@ -23,7 +23,7 @@ public class DashAbility : Component, IMotionProvider
 	public MotionType MotionType => MotionType.DASH;
 	public MotionType[] OverrideMotions => new[] {MotionType.MOVE, MotionType.JUMP, MotionType.GRAVITY};
 
-	private float _colliderDashHeight = 24;
+	private float _colliderDashHeight = 32;
 	private float _defaultColliderHeight;
 	private float _defaultColliderCenterY;
 
@@ -55,7 +55,7 @@ public class DashAbility : Component, IMotionProvider
 		
 		// set collider height and center
 		MotionCore.Collider.Scale = MotionCore.Collider.Scale.WithY(_colliderDashHeight);
-		MotionCore.Collider.Center = MotionCore.Collider.Center.WithY(_colliderDashHeight);
+		MotionCore.Collider.Center = MotionCore.Collider.Center.WithY(_colliderDashHeight / 2);
 		
 		Sound.Play(DashSound, Transform.Position);
 

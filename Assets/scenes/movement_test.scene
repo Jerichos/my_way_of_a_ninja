@@ -160,6 +160,18 @@
                 },
                 "-4,7": {
                   "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
+                },
+                "6,6": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "6,7": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "7,7": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "8,7": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 }
               }
             }
@@ -189,247 +201,98 @@
       ]
     },
     {
-      "__guid": "9d1a0ea5-8064-4a91-ab8d-c8202f78c432",
-      "Flags": 0,
-      "Name": "Heli Small",
-      "Position": "192,192,0.9999676",
-      "Scale": "0.5,0.5,1",
-      "Tags": "enemy",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.enemies.Enemy",
-          "__guid": "f55dd882-327d-4f5f-8aac-0c01b6a83b91",
-          "DestroySound": "audio/sfx/enemy/enemy_death.sound",
-          "Health": 50,
-          "HitSound": "audio/sfx/enemy/enemy_hit.sound",
-          "Knockback": {
-            "_type": "component",
-            "component_id": "92a4e0ac-228c-4aab-b124-b1aa832f5fe1",
-            "go": "9d1a0ea5-8064-4a91-ab8d-c8202f78c432",
-            "component_type": "Knockback"
-          },
-          "MaxHealth": 50,
-          "Sprite": {
-            "_type": "component",
-            "component_id": "e671838d-270b-4efa-bb0e-0fe0ed129383",
-            "go": "9d1a0ea5-8064-4a91-ab8d-c8202f78c432",
-            "component_type": "SpriteComponent"
-          }
-        },
-        {
-          "__type": "SpriteTools.SpriteComponent",
-          "__guid": "e671838d-270b-4efa-bb0e-0fe0ed129383",
-          "__version": 1,
-          "BroadcastEvents": {},
-          "CastShadows": "On",
-          "CreateAttachPoints": false,
-          "FlashTint": "1,0,0,0",
-          "PlaybackSpeed": 3,
-          "Sprite": "heli.sprite",
-          "SpriteFlags": "None",
-          "StartingAnimationName": "walk",
-          "Tint": "1,1,1,1",
-          "UpDirection": "YPositive"
-        },
-        {
-          "__type": "Sandbox.sprite.SpriteSizer",
-          "__guid": "3081b120-0101-47ca-b788-361c1ad5412e",
-          "_height": 16,
-          "_width": 16,
-          "PixelPerUnit": 32
-        },
-        {
-          "__type": "Sandbox.BoxCollider",
-          "__guid": "a031d30c-fb10-4a94-ab8b-8ffea7e14d58",
-          "Center": "0,32,0",
-          "IsTrigger": false,
-          "Scale": "81.09979,64,10",
-          "Static": false
-        },
-        {
-          "__type": "Sandbox.player.MotionCore2D",
-          "__guid": "d7e866d9-311c-4cb9-bb36-2d18d8b782d7",
-          "Collider": {
-            "_type": "component",
-            "component_id": "a031d30c-fb10-4a94-ab8b-8ffea7e14d58",
-            "go": "9d1a0ea5-8064-4a91-ab8d-c8202f78c432",
-            "component_type": "BoxCollider"
-          },
-          "GroundTags": "ground",
-          "WallTags": "wall"
-        },
-        {
-          "__type": "Sandbox.player.Gravity",
-          "__guid": "d2e9f344-212a-417b-b11b-040e9e11d0fa",
-          "GravityCurve": [
-            {
-              "y": 1
-            },
-            {
-              "x": 1
-            }
-          ],
-          "GravityForce": 20,
-          "MaxVelocity": 100,
-          "MotionCore": {
-            "_type": "component",
-            "component_id": "d7e866d9-311c-4cb9-bb36-2d18d8b782d7",
-            "go": "9d1a0ea5-8064-4a91-ab8d-c8202f78c432",
-            "component_type": "MotionCore2D"
-          }
-        },
-        {
-          "__type": "Sandbox.enemies.MoveLeftRight",
-          "__guid": "3089ea6d-f9c6-43b4-9ce9-5795b93cec45",
-          "__enabled": false,
-          "MotionCore": {
-            "_type": "component",
-            "component_id": "d7e866d9-311c-4cb9-bb36-2d18d8b782d7",
-            "go": "9d1a0ea5-8064-4a91-ab8d-c8202f78c432",
-            "component_type": "MotionCore2D"
-          },
-          "Speed": 128
-        },
-        {
-          "__type": "Sandbox.BoxCollider",
-          "__guid": "20c7089d-9569-48ad-8b05-65e5a07725ac",
-          "Center": "0,45,0",
-          "IsTrigger": true,
-          "Scale": "74.10023,90,100",
-          "Static": false
-        },
-        {
-          "__type": "Sandbox.enemies.ContactDamage",
-          "__guid": "2e164f2d-0a96-42db-b4c2-28c07798fa56",
-          "ContactDamageCollider": {
-            "_type": "component",
-            "component_id": "20c7089d-9569-48ad-8b05-65e5a07725ac",
-            "go": "9d1a0ea5-8064-4a91-ab8d-c8202f78c432",
-            "component_type": "BoxCollider"
-          },
-          "Damage": 1
-        },
-        {
-          "__type": "Sandbox.player.Knockback",
-          "__guid": "92a4e0ac-228c-4aab-b124-b1aa832f5fe1",
-          "__enabled": false,
-          "Direction": "0,0",
-          "Duration": 0.1,
-          "MaxDistance": 64,
-          "MotionCore": {
-            "_type": "component",
-            "component_id": "d7e866d9-311c-4cb9-bb36-2d18d8b782d7",
-            "go": "9d1a0ea5-8064-4a91-ab8d-c8202f78c432",
-            "component_type": "MotionCore2D"
-          },
-          "VelocityCurve": [
-            {
-              "x": 0.5,
-              "y": 0.5
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "__guid": "f48c39db-ddb5-4cf0-b789-233e1c3a68eb",
+      "__guid": "2ecd449a-4a9c-4ca5-9289-c96f478ee9a4",
       "Flags": 0,
       "Name": "Player",
-      "Position": "96,192,5",
+      "Position": "128,192,0.000008784907",
       "Enabled": true,
       "Components": [
         {
           "__type": "Player",
-          "__guid": "8c0d678e-bb5c-4100-81f0-a4f81bf1cbff",
-          "ClimbMovement": {
-            "_type": "component",
-            "component_id": "a4e96866-2165-4983-8551-2a470250873e",
-            "go": "f48c39db-ddb5-4cf0-b789-233e1c3a68eb",
-            "component_type": "ClimbMovement"
-          },
+          "__guid": "86853485-021e-430a-84d7-d2a47980a884",
           "CrouchAbility": {
             "_type": "component",
-            "component_id": "e71fd3e5-9034-42d7-b260-79077cdf2a2c",
-            "go": "f48c39db-ddb5-4cf0-b789-233e1c3a68eb",
+            "component_id": "a6bb1697-3b3e-430c-af0a-c17dd7374803",
+            "go": "2ecd449a-4a9c-4ca5-9289-c96f478ee9a4",
             "component_type": "CrouchAbility"
           },
           "DashAbility": {
             "_type": "component",
-            "component_id": "7bbc0b2b-4278-4903-b7ca-7a701bc30745",
-            "go": "f48c39db-ddb5-4cf0-b789-233e1c3a68eb",
+            "component_id": "d034224f-4e17-4f03-8a40-f6d3c3acb39d",
+            "go": "2ecd449a-4a9c-4ca5-9289-c96f478ee9a4",
             "component_type": "DashAbility"
-          },
-          "DeathAnimation": {
-            "_type": "component",
-            "component_id": "8c12d652-a818-4e84-8d42-565f2661f585",
-            "go": "f48c39db-ddb5-4cf0-b789-233e1c3a68eb",
-            "component_type": "DeathAnimation"
           },
           "DeathSound": "audio/sfx/player_death.sound",
           "Health": 3,
           "HitSound": "audio/sfx/player/player_hit.sound",
           "JumpAbility": {
             "_type": "component",
-            "component_id": "f3c46211-479f-4a2b-93fe-d115a68b914c",
-            "go": "f48c39db-ddb5-4cf0-b789-233e1c3a68eb",
+            "component_id": "23729f3d-4d8a-469b-ab03-b27af203f906",
+            "go": "2ecd449a-4a9c-4ca5-9289-c96f478ee9a4",
             "component_type": "JumpAbility"
           },
           "Knockback": {
             "_type": "component",
-            "component_id": "ccf66271-1e7f-4340-8e76-3602a2a52329",
-            "go": "f48c39db-ddb5-4cf0-b789-233e1c3a68eb",
+            "component_id": "8fe9b3f0-dd7f-4a2b-8f4a-ae4e472e48f7",
+            "go": "2ecd449a-4a9c-4ca5-9289-c96f478ee9a4",
             "component_type": "Knockback"
           },
           "MaxHealth": 3,
           "MotionCore": {
             "_type": "component",
-            "component_id": "1e759caa-85e9-4302-b79c-980116784f3b",
-            "go": "f48c39db-ddb5-4cf0-b789-233e1c3a68eb",
+            "component_id": "cc3fe288-fdcb-423a-942e-0f8518516969",
+            "go": "2ecd449a-4a9c-4ca5-9289-c96f478ee9a4",
             "component_type": "MotionCore2D"
           },
           "MoveAbility": {
             "_type": "component",
-            "component_id": "6e1d3188-ead9-4b07-a62e-e2112e118692",
-            "go": "f48c39db-ddb5-4cf0-b789-233e1c3a68eb",
+            "component_id": "70abea5c-4457-4ab8-8325-c740339dc778",
+            "go": "2ecd449a-4a9c-4ca5-9289-c96f478ee9a4",
             "component_type": "MoveAbility"
           },
           "SpriteComponent": {
             "_type": "component",
-            "component_id": "170da16d-f3e8-4c12-aa8f-48c098a6a33b",
-            "go": "41a82415-40f1-4d02-ba65-23b2b977f9d5",
+            "component_id": "5632ecf7-822c-4714-ba35-7f4e7e4f7a52",
+            "go": "78eec863-8431-4f9a-b048-258ab879bef5",
             "component_type": "SpriteComponent"
           },
           "SwordAbility": {
             "_type": "component",
-            "component_id": "cd0d0686-d8a7-490d-849e-7f938aad60ce",
-            "go": "f48c39db-ddb5-4cf0-b789-233e1c3a68eb",
+            "component_id": "037404a7-6215-42be-93f7-087f547233b9",
+            "go": "2ecd449a-4a9c-4ca5-9289-c96f478ee9a4",
             "component_type": "SwordAbility"
+          },
+          "Upgrades": {
+            "_type": "component",
+            "component_id": "edce7f54-9c3b-4271-b97b-57ce1a64d86a",
+            "go": "2ecd449a-4a9c-4ca5-9289-c96f478ee9a4",
+            "component_type": "PlayerUpgrades"
           }
         },
         {
           "__type": "Sandbox.BoxCollider",
-          "__guid": "30a8ceb7-425f-4441-a99a-5c46ee173ab3",
+          "__guid": "0f16585f-7495-4142-b854-6349d0d663c2",
           "Center": "0,24,0",
           "IsTrigger": false,
-          "Scale": "32,48,10",
+          "Scale": "28,48,10",
           "Static": false
         },
         {
           "__type": "Sandbox.player.MotionCore2D",
-          "__guid": "1e759caa-85e9-4302-b79c-980116784f3b",
+          "__guid": "cc3fe288-fdcb-423a-942e-0f8518516969",
           "Collider": {
             "_type": "component",
-            "component_id": "30a8ceb7-425f-4441-a99a-5c46ee173ab3",
-            "go": "f48c39db-ddb5-4cf0-b789-233e1c3a68eb",
+            "component_id": "0f16585f-7495-4142-b854-6349d0d663c2",
+            "go": "2ecd449a-4a9c-4ca5-9289-c96f478ee9a4",
             "component_type": "BoxCollider"
           },
           "GroundTags": "ground,wall",
+          "PlatformTags": "platform",
           "WallTags": "wall,ground"
         },
         {
           "__type": "Sandbox.player.Gravity",
-          "__guid": "3bb12e90-3e1b-45fc-9a30-c6e4b3254965",
+          "__guid": "eccd0f29-7c0f-46bf-8834-110460ef9e2c",
           "GravityCurve": [
             {
               "y": 1
@@ -442,14 +305,14 @@
           "MaxVelocity": 500,
           "MotionCore": {
             "_type": "component",
-            "component_id": "1e759caa-85e9-4302-b79c-980116784f3b",
-            "go": "f48c39db-ddb5-4cf0-b789-233e1c3a68eb",
+            "component_id": "cc3fe288-fdcb-423a-942e-0f8518516969",
+            "go": "2ecd449a-4a9c-4ca5-9289-c96f478ee9a4",
             "component_type": "MotionCore2D"
           }
         },
         {
           "__type": "Sandbox.player.JumpAbility",
-          "__guid": "f3c46211-479f-4a2b-93fe-d115a68b914c",
+          "__guid": "23729f3d-4d8a-469b-ab03-b27af203f906",
           "BasePitch": 0.5,
           "HeightCurve": [
             {
@@ -463,22 +326,22 @@
               "out": -0.03571437
             }
           ],
-          "JumpIn": 0.25,
+          "JumpIn": 0.3,
           "JumpSound": "audio/sfx/player/player_jump.sound",
-          "MaxHeight": 65,
+          "MaxHeight": 58,
           "MaxJumps": 2,
-          "MinHeight": 30,
-          "MotionCore": {
+          "MinHeight": 58,
+          "PitchPerJump": 0.1,
+          "Player": {
             "_type": "component",
-            "component_id": "1e759caa-85e9-4302-b79c-980116784f3b",
-            "go": "f48c39db-ddb5-4cf0-b789-233e1c3a68eb",
-            "component_type": "MotionCore2D"
-          },
-          "PitchPerJump": 0.1
+            "component_id": "86853485-021e-430a-84d7-d2a47980a884",
+            "go": "2ecd449a-4a9c-4ca5-9289-c96f478ee9a4",
+            "component_type": "Player"
+          }
         },
         {
           "__type": "Sandbox.player.MoveAbility",
-          "__guid": "6e1d3188-ead9-4b07-a62e-e2112e118692",
+          "__guid": "70abea5c-4457-4ab8-8325-c740339dc778",
           "AccelerationCurve": [
             {
               "y": 0.10000002,
@@ -494,20 +357,20 @@
           "MaxSpeedIn": 0.3,
           "MotionCore": {
             "_type": "component",
-            "component_id": "1e759caa-85e9-4302-b79c-980116784f3b",
-            "go": "f48c39db-ddb5-4cf0-b789-233e1c3a68eb",
+            "component_id": "cc3fe288-fdcb-423a-942e-0f8518516969",
+            "go": "2ecd449a-4a9c-4ca5-9289-c96f478ee9a4",
             "component_type": "MotionCore2D"
           }
         },
         {
           "__type": "Sandbox.player.DashAbility",
-          "__guid": "7bbc0b2b-4278-4903-b7ca-7a701bc30745",
+          "__guid": "d034224f-4e17-4f03-8a40-f6d3c3acb39d",
           "CanDashInAir": true,
-          "Cooldown": 0.3,
+          "Cooldown": 0.1,
           "DashEffect": {
             "_type": "component",
-            "component_id": "ee35608a-4884-4b3a-acf0-e5c4859660c3",
-            "go": "8d287b97-9ca2-46e2-aaa4-6485010cea2b",
+            "component_id": "37d1b54d-2320-4ca5-8bb9-d86bda0b4b0c",
+            "go": "3f894db8-28e4-413f-9f8f-8d131115cd03",
             "component_type": "ParticleConeEmitter"
           },
           "DashIn": 0.15,
@@ -515,11 +378,11 @@
           "DashTexture": "sprites/player/player_dash2.vtex",
           "DashTextureFlipped": "sprites/player/player_dash_flipped.vtex",
           "MaxDistance": 128,
-          "MotionCore": {
+          "Player": {
             "_type": "component",
-            "component_id": "1e759caa-85e9-4302-b79c-980116784f3b",
-            "go": "f48c39db-ddb5-4cf0-b789-233e1c3a68eb",
-            "component_type": "MotionCore2D"
+            "component_id": "86853485-021e-430a-84d7-d2a47980a884",
+            "go": "2ecd449a-4a9c-4ca5-9289-c96f478ee9a4",
+            "component_type": "Player"
           },
           "VelocityCurve": [
             {
@@ -535,7 +398,7 @@
         },
         {
           "__type": "Sandbox.Rigidbody",
-          "__guid": "deec3ea2-050d-46ba-aa28-267b82cb57bf",
+          "__guid": "1d0705f0-0480-4026-bc7e-706daf4c7496",
           "AngularDamping": 0,
           "Gravity": false,
           "LinearDamping": 0,
@@ -549,15 +412,15 @@
         },
         {
           "__type": "Sandbox.player.SwordAbility",
-          "__guid": "cd0d0686-d8a7-490d-849e-7f938aad60ce",
+          "__guid": "037404a7-6215-42be-93f7-087f547233b9",
           "AttackEnd": {
             "_type": "gameobject",
-            "go": "5b776acc-9feb-4281-929e-784bff10c5bd"
+            "go": "98951ca6-0e9c-4e8e-ac67-3880dd3831d1"
           },
           "AttackSound": "audio/sfx/sword_attack.sound",
           "AttackStart": {
             "_type": "gameobject",
-            "go": "2b36ac06-c903-448e-82c7-fc3f59657403"
+            "go": "323e051f-e64e-44a4-a681-b5f3966d6e1f"
           },
           "AttackTags": "enemy,enviro",
           "Cooldown": 0.35,
@@ -565,22 +428,22 @@
           "DashDamage": 2,
           "Player": {
             "_type": "component",
-            "component_id": "8c0d678e-bb5c-4100-81f0-a4f81bf1cbff",
-            "go": "f48c39db-ddb5-4cf0-b789-233e1c3a68eb",
+            "component_id": "86853485-021e-430a-84d7-d2a47980a884",
+            "go": "2ecd449a-4a9c-4ca5-9289-c96f478ee9a4",
             "component_type": "Player"
           }
         },
         {
           "__type": "Sandbox.player.Knockback",
-          "__guid": "ccf66271-1e7f-4340-8e76-3602a2a52329",
+          "__guid": "8fe9b3f0-dd7f-4a2b-8f4a-ae4e472e48f7",
           "__enabled": false,
           "Direction": "0,-1",
           "Duration": 0.2,
           "MaxDistance": 64,
           "MotionCore": {
             "_type": "component",
-            "component_id": "1e759caa-85e9-4302-b79c-980116784f3b",
-            "go": "f48c39db-ddb5-4cf0-b789-233e1c3a68eb",
+            "component_id": "cc3fe288-fdcb-423a-942e-0f8518516969",
+            "go": "2ecd449a-4a9c-4ca5-9289-c96f478ee9a4",
             "component_type": "MotionCore2D"
           },
           "VelocityCurve": [
@@ -594,80 +457,51 @@
         },
         {
           "__type": "Sandbox.player.CrouchAbility",
-          "__guid": "e71fd3e5-9034-42d7-b260-79077cdf2a2c",
+          "__guid": "a6bb1697-3b3e-430c-af0a-c17dd7374803",
           "Collider": {
             "_type": "component",
-            "component_id": "30a8ceb7-425f-4441-a99a-5c46ee173ab3",
-            "go": "f48c39db-ddb5-4cf0-b789-233e1c3a68eb",
+            "component_id": "0f16585f-7495-4142-b854-6349d0d663c2",
+            "go": "2ecd449a-4a9c-4ca5-9289-c96f478ee9a4",
             "component_type": "BoxCollider"
           },
           "MotionCore": {
             "_type": "component",
-            "component_id": "1e759caa-85e9-4302-b79c-980116784f3b",
-            "go": "f48c39db-ddb5-4cf0-b789-233e1c3a68eb",
+            "component_id": "cc3fe288-fdcb-423a-942e-0f8518516969",
+            "go": "2ecd449a-4a9c-4ca5-9289-c96f478ee9a4",
             "component_type": "MotionCore2D"
           }
         },
         {
           "__type": "Sandbox.player.Animator",
-          "__guid": "f1ec7787-c2d2-440c-b086-e415a2ded1cb",
+          "__guid": "7a63f32e-8b6b-46ad-bfef-e3c463637189",
           "BlinkDuration": 0.1,
           "HitBlinkCount": 10,
           "Player": {
             "_type": "component",
-            "component_id": "8c0d678e-bb5c-4100-81f0-a4f81bf1cbff",
-            "go": "f48c39db-ddb5-4cf0-b789-233e1c3a68eb",
+            "component_id": "86853485-021e-430a-84d7-d2a47980a884",
+            "go": "2ecd449a-4a9c-4ca5-9289-c96f478ee9a4",
             "component_type": "Player"
           }
         },
         {
-          "__type": "Sandbox.player.ClimbMovement",
-          "__guid": "a4e96866-2165-4983-8551-2a470250873e",
-          "MotionCore": {
-            "_type": "component",
-            "component_id": "1e759caa-85e9-4302-b79c-980116784f3b",
-            "go": "f48c39db-ddb5-4cf0-b789-233e1c3a68eb",
-            "component_type": "MotionCore2D"
-          }
-        },
-        {
-          "__type": "Sandbox.player.DeathAnimation",
-          "__guid": "8c12d652-a818-4e84-8d42-565f2661f585",
+          "__type": "Sandbox.player.PlayerUpgrades",
+          "__guid": "edce7f54-9c3b-4271-b97b-57ce1a64d86a",
           "__enabled": false,
-          "Camera": {
-            "_type": "component",
-            "component_id": "3b1a1ed6-d0c3-4dca-a461-da6a00a2e083",
-            "go": "3a63f035-c728-4e8e-b622-8105171cc9b8",
-            "component_type": "CameraComponent"
-          },
-          "DeathSprite": {
-            "_type": "component",
-            "component_id": "320147e7-eb8d-4dde-9797-69b6586af733",
-            "go": "f5b19e51-3099-476c-874d-ed8d21444386",
-            "component_type": "SpriteComponent"
-          },
-          "Duration": 0.5,
-          "MaxScale": 10,
-          "Player": {
-            "_type": "component",
-            "component_id": "8c0d678e-bb5c-4100-81f0-a4f81bf1cbff",
-            "go": "f48c39db-ddb5-4cf0-b789-233e1c3a68eb",
-            "component_type": "Player"
-          }
+          "UnlockedUpgrades": {}
         }
       ],
       "Children": [
         {
-          "__guid": "41a82415-40f1-4d02-ba65-23b2b977f9d5",
+          "__guid": "78eec863-8431-4f9a-b048-258ab879bef5",
           "Flags": 0,
           "Name": "sprite",
-          "Position": "0,0,1",
+          "Position": "0,0,5",
           "Scale": "0.5,0.5,1",
           "Enabled": true,
           "Components": [
             {
               "__type": "SpriteTools.SpriteComponent",
-              "__guid": "170da16d-f3e8-4c12-aa8f-48c098a6a33b",
+              "__guid": "5632ecf7-822c-4714-ba35-7f4e7e4f7a52",
               "__version": 1,
               "BroadcastEvents": {
                 "EndAttack": null
@@ -684,7 +518,7 @@
             },
             {
               "__type": "Sandbox.sprite.SpriteSizer",
-              "__guid": "39287491-5461-48cd-90f3-3b68a19a9cdd",
+              "__guid": "caa40682-4a6b-44a2-b88e-88010a67eb64",
               "_height": 16,
               "_width": 16,
               "PixelPerUnit": 32
@@ -692,14 +526,14 @@
           ],
           "Children": [
             {
-              "__guid": "2b36ac06-c903-448e-82c7-fc3f59657403",
+              "__guid": "323e051f-e64e-44a4-a681-b5f3966d6e1f",
               "Flags": 4,
               "Name": "attackStart",
               "Position": "-50,99.99999,0",
               "Enabled": true
             },
             {
-              "__guid": "5b776acc-9feb-4281-929e-784bff10c5bd",
+              "__guid": "98951ca6-0e9c-4e8e-ac67-3880dd3831d1",
               "Flags": 4,
               "Name": "attackEnd",
               "Position": "-50,99.99999,0",
@@ -708,7 +542,7 @@
           ]
         },
         {
-          "__guid": "8d287b97-9ca2-46e2-aaa4-6485010cea2b",
+          "__guid": "3f894db8-28e4-413f-9f8f-8d131115cd03",
           "Flags": 0,
           "Name": "Spray Dash",
           "Position": "-0.2367554,25.23476,-1",
@@ -717,7 +551,7 @@
           "Components": [
             {
               "__type": "Sandbox.ParticleEffect",
-              "__guid": "11820119-86f0-4385-a59e-2a4e09d54ce7",
+              "__guid": "1614cb0f-abc4-4022-b2d2-d02da8e0e78c",
               "Alpha": {
                 "Type": "Curve",
                 "CurveA": [
@@ -835,7 +669,7 @@
             },
             {
               "__type": "Sandbox.ParticleSpriteRenderer",
-              "__guid": "4a2b6d55-ebae-4f11-91c4-410887ca868c",
+              "__guid": "487a0786-f38b-4236-b732-1e461e99607f",
               "Additive": false,
               "Alignment": "LookAtCamera",
               "BlurAmount": 0.5,
@@ -856,7 +690,7 @@
             },
             {
               "__type": "Sandbox.ParticleConeEmitter",
-              "__guid": "ee35608a-4884-4b3a-acf0-e5c4859660c3",
+              "__guid": "37d1b54d-2320-4ca5-8bb9-d86bda0b4b0c",
               "__enabled": false,
               "Burst": 0,
               "ConeAngle": 0,
@@ -874,7 +708,7 @@
           ]
         },
         {
-          "__guid": "2b1fa38f-ba6e-42d2-b638-e5a8719729ca",
+          "__guid": "4ca72864-7e61-458f-81e9-80e47741f36e",
           "Flags": 0,
           "Name": "Tileset Object",
           "Position": "0,0,0",
@@ -882,7 +716,7 @@
           "Components": [
             {
               "__type": "SpriteTools.TilesetComponent",
-              "__guid": "d6388076-5365-4e4d-b2d8-19071512e65a",
+              "__guid": "479d6850-d396-4b0b-95d9-66f6586fc25e",
               "ColliderWidth": 0,
               "HasCollider": false,
               "IsTrigger": false,
@@ -892,14 +726,14 @@
           ]
         },
         {
-          "__guid": "8a58d45b-7579-40d2-8545-425bd834cef1",
+          "__guid": "24d760a0-6ac2-4568-89f4-fa86cc4e1304",
           "Flags": 0,
           "Name": "UI",
           "Position": "0,0,0",
           "Enabled": true,
           "Children": [
             {
-              "__guid": "b11c8f04-2159-4749-ab3c-775d7254c912",
+              "__guid": "47c1253b-e226-4430-9cb0-92f945ce2e5b",
               "Flags": 0,
               "Name": "Screen",
               "Position": "0,0,0",
@@ -907,38 +741,13 @@
               "Components": [
                 {
                   "__type": "Sandbox.ScreenPanel",
-                  "__guid": "c4cc3b5a-c598-40d2-8550-aaa862cc18a8",
+                  "__guid": "2ab9cd7f-8291-4d09-a684-f96e8f022aa3",
                   "AutoScreenScale": true,
                   "Opacity": 1,
                   "Scale": 1,
                   "ZIndex": 100
                 }
               ]
-            }
-          ]
-        },
-        {
-          "__guid": "f5b19e51-3099-476c-874d-ed8d21444386",
-          "Flags": 0,
-          "Name": "DeathSprite",
-          "Position": "0,0,0",
-          "Scale": "5,5,1",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "SpriteTools.SpriteComponent",
-              "__guid": "320147e7-eb8d-4dde-9797-69b6586af733",
-              "__version": 1,
-              "BroadcastEvents": {},
-              "CastShadows": "Off",
-              "CreateAttachPoints": false,
-              "FlashTint": "1,1,1,0",
-              "PlaybackSpeed": 1,
-              "Sprite": "sprites/player/player_death_sprite.sprite",
-              "SpriteFlags": "None",
-              "StartingAnimationName": "default",
-              "Tint": "1,1,1,0.45",
-              "UpDirection": "YPositive"
             }
           ]
         }

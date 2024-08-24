@@ -36,6 +36,9 @@ public class MoveAbility : Component, IMotionProvider
 	public void SetInputX(int inputX)
 	{
 		InputX = inputX;
+		
+		if(InputX == 0)
+			Velocity = Vector2.Zero;
 	}
 	
 	protected override void OnFixedUpdate()

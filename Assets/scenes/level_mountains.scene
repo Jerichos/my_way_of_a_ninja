@@ -42,7 +42,7 @@
             "go": "a331ba39-0f15-4238-a15f-5f657e8e0e1b",
             "component_type": "DeathAnimation"
           },
-          "DontTeleportPlayerToCheckpoint": false,
+          "DontTeleportPlayerToCheckpoint": true,
           "MaxBounds": "2500,2500",
           "MinBounds": "0,0",
           "Player": {
@@ -60,7 +60,7 @@
           },
           "StartCheckpoint": {
             "_type": "component",
-            "component_id": "9bf1410b-673b-404b-a427-f3bcf37983ed",
+            "component_id": "b68b6f1c-33f0-485a-a311-76b24aec4b26",
             "go": "de903763-862d-4e3f-bade-fac35a3fcaee",
             "component_type": "Checkpoint"
           },
@@ -6261,7 +6261,7 @@
       "__guid": "fa92b8fb-a335-4816-b27c-04934c4d960c",
       "Flags": 0,
       "Name": "Player",
-      "Position": "1955.338,811.3434,0.0001031958",
+      "Position": "1952,800,0.0000009811192",
       "Enabled": true,
       "Components": [
         {
@@ -6423,7 +6423,7 @@
           "__type": "Sandbox.player.DashAbility",
           "__guid": "a0e274f6-5fb5-46ce-abf1-23cdf7853b55",
           "CanDashInAir": true,
-          "Cooldown": 2,
+          "Cooldown": 0.1,
           "DashEffect": {
             "_type": "component",
             "component_id": "b2cb11b9-e291-46bf-b684-c7d8d33b3e8d",
@@ -6480,7 +6480,7 @@
             "go": "c8af086a-2af6-41be-a3d3-f928d868a7ba"
           },
           "AttackTags": "enemy,enviro",
-          "Cooldown": 0.35,
+          "Cooldown": 0.2,
           "Damage": 1,
           "DashDamage": 2,
           "Player": {
@@ -6543,6 +6543,7 @@
         {
           "__type": "Sandbox.player.PlayerUpgrades",
           "__guid": "d483a60a-46bf-4467-aee3-673805991d7a",
+          "__enabled": false,
           "UnlockedUpgrades": {}
         }
       ],
@@ -6551,7 +6552,7 @@
           "__guid": "e1bfb563-5afa-4a79-aa13-ac4c04a18859",
           "Flags": 0,
           "Name": "sprite",
-          "Position": "0,0,0",
+          "Position": "0,0,5",
           "Scale": "0.5,0.5,1",
           "Enabled": true,
           "Components": [
@@ -6864,7 +6865,7 @@
       "__guid": "c6e96710-13f4-4af3-ad96-835457da3750",
       "Flags": 0,
       "Name": "Flying Platform",
-      "Position": "320,192,-0.00008359111",
+      "Position": "1856,766.9741,0.000001041471",
       "Scale": "0.32,0.32,1",
       "Tags": "ground,wall,platform",
       "Enabled": true,
@@ -6928,8 +6929,8 @@
           "FromChildren": true,
           "Loop": true,
           "Path": [
-            "320,192",
-            "288,192"
+            "1856,766.9741",
+            "1696,766.9741"
           ],
           "PathPointsParent": {
             "_type": "gameobject",
@@ -6939,9 +6940,9 @@
         {
           "__type": "Sandbox.BoxCollider",
           "__guid": "ef371d65-77c9-4790-92a9-157d3d8ba762",
-          "Center": "100,75,0",
+          "Center": "100,99.69982,0",
           "IsTrigger": false,
-          "Scale": "200,50,50",
+          "Scale": "200,1,50",
           "Static": false
         },
         {
@@ -6980,7 +6981,7 @@
               "__guid": "6b6adaaa-9265-4e84-a2ca-116d98bdd394",
               "Flags": 0,
               "Name": "point (1)",
-              "Position": "-100,0,-0.000002914901",
+              "Position": "-500,0,-0.000002914901",
               "Enabled": true
             }
           ]

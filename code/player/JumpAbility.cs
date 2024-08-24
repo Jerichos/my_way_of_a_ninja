@@ -33,7 +33,7 @@ public sealed class JumpAbility : Component, IMotionProvider
 	private bool _increaseHeight;
 	
 	private int _jumps; // resets when grounded
-	private float _colliderFactor = 1.5f;
+	// private float _colliderFactor = 1.5f;
 	
 	private Vector3 _defaultColliderCenter;
 	private Vector3 _defaultColliderScale;
@@ -116,7 +116,7 @@ public sealed class JumpAbility : Component, IMotionProvider
 		_jumps++;
 		
 		// change collider size
-		Collider.Scale = _defaultColliderScale.WithY(Collider.Scale.y / _colliderFactor);
+		Collider.Scale = _defaultColliderScale.WithY(32);
 		Collider.Center = _defaultColliderCenter.WithY(24);
 
 		JumpSound.Pitch = BasePitch + PitchPerJump * _jumps;
