@@ -1,15 +1,47 @@
 {
   "Animations": [
     {
-      "FrameRate": 15,
+      "FrameRate": 10,
       "Origin": "0,1",
+      "Looping": true,
       "Name": "animation_01",
       "Frames": [
         {
-          "FilePath": "sprites/level_mountains/level_mountains_ass.png",
+          "FilePath": "sprites/level_mountains/ice_shard.png",
           "Events": [],
           "SpriteSheetRect": {
-            "Position": "0,96",
+            "Size": "16,16"
+          }
+        },
+        {
+          "FilePath": "sprites/level_mountains/ice_shard.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "16,0",
+            "Size": "16,16"
+          }
+        },
+        {
+          "FilePath": "sprites/level_mountains/ice_shard.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "32,0",
+            "Size": "16,16"
+          }
+        },
+        {
+          "FilePath": "sprites/level_mountains/ice_shard.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "48,0",
+            "Size": "16,16"
+          }
+        },
+        {
+          "FilePath": "sprites/level_mountains/ice_shard.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "64,0",
             "Size": "16,16"
           }
         }

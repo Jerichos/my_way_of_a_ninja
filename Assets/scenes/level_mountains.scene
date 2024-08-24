@@ -6386,7 +6386,7 @@
       "__guid": "fa92b8fb-a335-4816-b27c-04934c4d960c",
       "Flags": 0,
       "Name": "Player",
-      "Position": "288,256,2.000013",
+      "Position": "1376,96,2.000078",
       "Enabled": true,
       "Components": [
         {
