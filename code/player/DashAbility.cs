@@ -5,9 +5,10 @@ namespace Sandbox.player;
 // dash horizontally
 public class DashAbility : Component, IMotionProvider
 {
-	[Property] private MotionCore2D MotionCore { get; set; }
+	[Property] private Player Player { get; set; }
+	private MotionCore2D MotionCore => Player.MotionCore;
 	
-	[Property] public float Cooldown { get; set; } = 2;
+	[Property] public float Cooldown { get; set; } = 2; // TODO: UI this
 	
 	[Property] public bool CanDashInAir { get; set; } = true;
 	[Property] public float MaxDistance { get; set; } = 1000;
@@ -118,6 +119,9 @@ public class DashAbility : Component, IMotionProvider
 
 	private bool CanDash()
 	{
+		if(Player.Upgrades.Enabled && !Player.Upgrades.UnlockedUpgrades.Dash)
+			return false;
+		
 		if(!CanDashInAir && !MotionCore.Grounded || _isIsDashing || _cooldownTimer > 0)
 			return false;
 		

@@ -1,0 +1,19 @@
+{
+  "Animations": [
+    {
+      "FrameRate": 15,
+      "Origin": "0,1",
+      "Looping": true,
+      "Name": "default",
+      "Frames": [
+        {
+          "FilePath": "sprites/objects/flying_platform.png",
+          "Events": []
+        }
+      ],
+      "Attachments": []
+    }
+  ],
+  "__references": [],
+  "__version": 0
+}

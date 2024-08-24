@@ -6,10 +6,10 @@ public class ClimbMovement : Component, IMotionProvider
 {
 	[Property] public MotionCore2D MotionCore { get; set; }
 	public Vector2 Velocity { get; private set; }
-	public MotionType[] OverrideMotions => new[] {MotionType.ALL}; // overrides all
+	public MotionType[] OverrideMotions => new[] {MotionType.GRAVITY}; // it should overrides all, but we are not using this component yet so what...
 	public MotionType MotionType => MotionType.CLIMB;
 	
-	private Ladder _ladder; // or something else to climb, ICLimbable?
+	private Ladder _ladder; // or something else to climb, IClimbable?
 
 	public void TryClimbUp()
 	{

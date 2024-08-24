@@ -11,4 +11,5 @@ public static class Util
 	{
 		return collider.Scale * collider.Transform.Scale;
 	}
+	
 }

@@ -11,7 +11,7 @@ public enum MotionType
 	ENVIRONMENT,
 	KNOCKBACK,
 	CLIMB,
-	ALL,
+	PLATFORM,
 }
 
 public interface IMotionProvider

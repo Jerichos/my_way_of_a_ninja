@@ -5,7 +5,8 @@ namespace Sandbox.player;
 
 public sealed class JumpAbility : Component, IMotionProvider
 {
-	[Property] MotionCore2D MotionCore { get; set; }
+	[Property] private Player Player { get; set; }
+	private MotionCore2D MotionCore => Player.MotionCore;
 
 	[Property][Range(1, 10)] private int MaxJumps { get; set; } = 1;
 	[Property] private float MaxHeight { get; set; } = 200f;
@@ -158,13 +159,34 @@ public sealed class JumpAbility : Component, IMotionProvider
 		// Log.Info("JumpAbility enabled");
 		MotionCore.CeilingHitEvent += CancelJump;
 		MotionCore.GroundedEvent += OnGroundedChanged;
+
+		if ( Player.Upgrades != null )
+		{
+			Player.Upgrades.UnlockedUpgradesChangedEvent += OnUnlockedUpgradesChanged;
+			OnUnlockedUpgradesChanged(Player.Upgrades.UnlockedUpgrades);
+		}
 	}
-	
+
+	private void OnUnlockedUpgradesChanged( UnlockedUpgrades upgrades )
+	{
+		if(Player.Upgrades.Enabled == false)
+			return;
+		
+		MaxJumps = 1;
+		if ( upgrades.HasUpgrade(UpgradeType.DOUBLE_JUMP) )
+		{
+			MaxJumps = 2;
+		}
+	}
+
 	protected override void OnDisabled()
 	{
 		// Log.Info("JumpAbility disabled");
 		MotionCore.CeilingHitEvent -= CancelJump;
 		MotionCore.GroundedEvent -= OnGroundedChanged;
+		
+		if ( Player.Upgrades != null )
+			Player.Upgrades.UnlockedUpgradesChangedEvent -= OnUnlockedUpgradesChanged;
 	}
 
 	private void OnGroundedChanged( bool grounded )

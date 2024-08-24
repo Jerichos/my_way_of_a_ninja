@@ -183,13 +183,18 @@ public sealed class TilesetComponent : Collider, Component.ExecuteInEditor
 		foreach (var tile in collisionLayer.Tiles)
 		{
 			tilePositions[Vector2Int.Parse(tile.Key)] = true;
+			if (Vector2Int.Parse(tile.Key).x < -10 || Vector2Int.Parse(tile.Key).y < -10)
+			{
+				Log.Info($"test removing Tile position: {tile.Key}");
+				tilePositions.Remove(Vector2Int.Parse(tile.Key));
+			}
 		}
 		if (tilePositions.Count == 0) return;
 
 		var minPosition = tilePositions.Keys.Aggregate((min, next) => Vector2Int.Min(min, next));
 		var maxPosition = tilePositions.Keys.Aggregate((max, next) => Vector2Int.Max(max, next));
 		var totalSize = maxPosition - minPosition + Vector2Int.One;
-
+		
 		bool[,] tiles = new bool[totalSize.x, totalSize.y];
 		foreach (var tile in tilePositions)
 		{

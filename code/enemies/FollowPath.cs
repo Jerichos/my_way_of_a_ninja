@@ -6,6 +6,7 @@ namespace Sandbox.enemies;
 public class FollowPath : Component, IMotionProvider
 {
 	[Property] private MotionCore2D MotionProvider { get; set; }
+	[Property] private PathInit PathInit { get; set; }
 	[Property] private float Speed { get; set; } = 100;
 	[Property] private bool IgnoreGravity { get; set; }
 	[Property] private bool Loop { get; set; }
@@ -17,6 +18,12 @@ public class FollowPath : Component, IMotionProvider
 	public Vector2 Velocity { get; private set; }
 	public MotionType[] OverrideMotions => IgnoreGravity? new[] { MotionType.GRAVITY }: Array.Empty<MotionType>();
 	public MotionType MotionType => MotionType.MOVE;
+
+	protected override void OnStart()
+	{
+		if(PathInit != null)
+			SetPath(PathInit);
+	}
 
 	public void SetPath( Vector2[] path, bool loop , int direction = 1)
 	{
@@ -31,6 +38,11 @@ public class FollowPath : Component, IMotionProvider
 		_currentPoint = 0;
 		Transform.Position = _path[_currentPoint];
 		MotionProvider.AddMotionProvider(this);
+	}
+
+	public void SetPath( PathInit pathInit )
+	{
+		SetPath(pathInit.Path, pathInit.Loop);
 	}
 
 	protected override void OnFixedUpdate()

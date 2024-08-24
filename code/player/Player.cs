@@ -12,11 +12,12 @@ public sealed class Player : Component
 	[Property] public SwordAbility SwordAbility { get; set; }
 	[Property] public CrouchAbility CrouchAbility { get; set; }
 	[Property] public Knockback Knockback { get; set; }
+	[Property] public PlayerUpgrades Upgrades { get; set; }
 
 	[Property] private SoundEvent HitSound { get; set; }
 	[Property] private SoundEvent DeathSound { get; set; }
 	
-	[Property] public int Health { get; set; } = 3;
+	[Property] public int Health { get; set; } = 3; // TODO: UI this
 	[Property] public int MaxHealth { get; set; } = 3;
 	
 	public Action<int> HealthChangedEvent;
@@ -26,7 +27,7 @@ public sealed class Player : Component
 
 	public Action DeathEvent;
 	public Action HitEvent;
-	
+
 	protected override void OnEnabled()
 	{
 		MotionCore.FacingChangedEvent += OnFacingChanged;
@@ -40,6 +41,8 @@ public sealed class Player : Component
 
 	private void HandleInput()
 	{
+		// TODO: controller support! Can't find a way to make it work with my ps5 controller...
+		
 		if(Input.Pressed("Jump") && !CrouchAbility.IsCrouching)
 		{
 			JumpAbility.Jump();

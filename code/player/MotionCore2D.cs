@@ -8,6 +8,7 @@ public sealed class MotionCore2D : Component
 	
 	[Property] private TagSet GroundTags { get; set; }
 	[Property] private TagSet WallTags { get; set; }
+	[Property] private TagSet PlatformTags { get; set; } // there is no collision but you can ground on them
 	
 	public Vector2 Velocity { get; private set; }
 	public Vector2 Size => Collider.Center * Transform.LocalScale;
@@ -19,6 +20,7 @@ public sealed class MotionCore2D : Component
 	private SceneTraceResult _groundHitResult;
 
 	private Vector2 _groundPoint;
+	public GameObject GroundObject { get; private set; }
 	
 	private bool _grounded;
 	public bool Grounded 
@@ -33,12 +35,17 @@ public sealed class MotionCore2D : Component
 
 			if ( _grounded )
 			{
-				Velocity = Velocity.WithY(0);
+				//Velocity = Velocity.WithY(0);
 				
 				// snap to ground point
 				var pos = Transform.Position;
-				pos.y = _groundPoint.y + 1;
+				pos.y = MathF.Floor(_groundPoint.y);
 				Transform.Position = pos;
+				GroundObject = _groundHitResult.GameObject;
+			}
+			else
+			{
+				GroundObject = null;
 			}
 			
 			GroundedEvent?.Invoke(_grounded);
@@ -72,7 +79,8 @@ public sealed class MotionCore2D : Component
 
 	protected override void OnStart()
 	{
-		_defaultColliderHeight = Collider.Scale.y;
+		if(Collider != null)
+			_defaultColliderHeight = Collider.Scale.y;
 	}
 
 	protected override void OnFixedUpdate()
@@ -146,7 +154,7 @@ public sealed class MotionCore2D : Component
 
 	private void HandleHorizontalCollisions()
 	{
-		if(WallTags.IsEmpty)
+		if(WallTags == null || WallTags.IsEmpty)
 			return;
 		
 		// float skin = 5;
@@ -165,12 +173,17 @@ public sealed class MotionCore2D : Component
 				.WithAnyTags(WallTags)
 				.Run();
 			
+			// if it has platform tag we ignore hit
+			
 			// Gizmo.Draw.Color = Color.Green;
 			// Gizmo.Draw.LineThickness = 5;
 			// Gizmo.Draw.Line( rayStart, rayEnd );
 			
 			if(hitResult.Hit)
 			{
+				if(IsItPlatform(hitResult))
+					return;
+				
 				Collisions.Right = true;
 				Velocity = Velocity.WithX(0);
 				
@@ -201,6 +214,9 @@ public sealed class MotionCore2D : Component
 			
 			if(hitResult.Hit)
 			{
+				if(IsItPlatform(hitResult))
+					return;
+				
 				Collisions.Right = true;
 				Velocity = Velocity.WithX(0);
 				
@@ -211,6 +227,14 @@ public sealed class MotionCore2D : Component
 				// Log.Info("collision left");
 			}
 		}
+	}
+	
+	private bool IsItPlatform(SceneTraceResult hitResult)
+	{
+		if ( PlatformTags != null && hitResult.GameObject.Tags.HasAny( PlatformTags ) )
+			return true;
+		
+		return false;
 	}
 
 	private void CheckCollisionUp()
@@ -236,6 +260,9 @@ public sealed class MotionCore2D : Component
 
 		if ( hitResult.Hit )
 		{
+			if(IsItPlatform(hitResult))
+				return;
+			
 			Velocity = Velocity.WithY(0);
 			CeilingHitEvent?.Invoke();
 			HitCeilingMadafaka?.Invoke(true);
