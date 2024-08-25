@@ -21,6 +21,8 @@ public sealed class MotionCore2D : Component
 
 	private Vector2 _groundPoint;
 	public GameObject GroundObject { get; private set; }
+
+	public bool IsOnPlatform; // TODO: not nice solution, so what
 	
 	private bool _grounded;
 	public bool Grounded 
@@ -31,6 +33,9 @@ public sealed class MotionCore2D : Component
 			if(_grounded == value)
 				return;
 			
+			if(IsOnPlatform)
+				return;
+			
 			_grounded = value;
 
 			if ( _grounded )
@@ -38,9 +43,11 @@ public sealed class MotionCore2D : Component
 				//Velocity = Velocity.WithY(0);
 				
 				// snap to ground point
-				var pos = Transform.Position;
-				pos.y = MathF.Floor(_groundPoint.y);
-				Transform.Position = pos;
+				float distance =  _groundPoint.y - Transform.Position.y;
+				float newVelocity = distance / Time.Delta;
+				Velocity = Velocity.WithY(newVelocity);
+				
+				// Transform.Position = pos;
 				GroundObject = _groundHitResult.GameObject;
 			}
 			else
@@ -180,8 +187,6 @@ public sealed class MotionCore2D : Component
 				
 				Collisions.Right = true;
 				Velocity = Velocity.WithX(0);
-				
-				// Log.Info("collision right");
 			}
 			else if(hitResult.Count() > 1)
 			{
@@ -237,7 +242,7 @@ public sealed class MotionCore2D : Component
 			return;
 		
 		float skinWidth = 2;
-		float length = Velocity.y * Time.Delta + skinWidth;
+		float length = (Velocity.y + skinWidth) * Time.Delta;
 		
 		Vector3 startPosition = Transform.Position + Collider.WorldScale() * Util.UpY + Util.DownY * skinWidth;
 		Vector3 endPosition = startPosition + Util.UpY * length;
@@ -275,8 +280,8 @@ public sealed class MotionCore2D : Component
 			return;
 		}
 
-		float skinWidth = 10; // increased skin because of jump ability
-		float length = -Velocity.y * Time.Delta + skinWidth;
+		float skinWidth = Collider.WorldScale().y / 2; // increased skin because of jump ability
+		float length = (-Velocity.y + skinWidth) * Time.Delta;
 		
 		Vector3 startPosition = Transform.Position + Util.UpY * skinWidth;
 		Vector3 endPosition = Transform.Position + Util.DownY * length;
@@ -290,9 +295,13 @@ public sealed class MotionCore2D : Component
 		if ( _groundHitResult.Hit )
 		{
 			_groundPoint = _groundHitResult.HitPosition;
-			Velocity = Velocity.WithY(0);
+			// Velocity = Velocity.WithY(0);
+			
 			Collisions.Down = true;
 			Grounded = true;
+			
+			// distance between hit and current position
+			
 			// Log.Info($"ground hit: {_groundHitResult.HitPosition}");
 		}
 		else

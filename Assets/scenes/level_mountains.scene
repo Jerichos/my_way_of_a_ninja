@@ -42,7 +42,7 @@
             "go": "a331ba39-0f15-4238-a15f-5f657e8e0e1b",
             "component_type": "DeathAnimation"
           },
-          "DontTeleportPlayerToCheckpoint": true,
+          "DontTeleportPlayerToCheckpoint": false,
           "MaxBounds": "2500,2500",
           "MinBounds": "0,0",
           "Player": {
@@ -60,7 +60,7 @@
           },
           "StartCheckpoint": {
             "_type": "component",
-            "component_id": "b68b6f1c-33f0-485a-a311-76b24aec4b26",
+            "component_id": "24253c4d-28f6-4880-9ab7-0d4bec232eb3",
             "go": "de903763-862d-4e3f-bade-fac35a3fcaee",
             "component_type": "Checkpoint"
           },
@@ -130,93 +130,6 @@
         }
       ],
       "Children": [
-        {
-          "__guid": "1120d2a0-ffcd-4f07-a688-f54cb740bdd0",
-          "Flags": 0,
-          "Name": "Checkpoint",
-          "Position": "1376,32,1",
-          "Scale": "0.25,0.25,1",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "Sandbox.level.Checkpoint",
-              "__guid": "90053b0b-e4b0-4b51-82dd-63030fd5331d",
-              "Collider": {
-                "_type": "component",
-                "component_id": "b8405575-1259-45a0-8c62-4cd823a25ad0",
-                "go": "1120d2a0-ffcd-4f07-a688-f54cb740bdd0",
-                "component_type": "BoxCollider"
-              },
-              "SoundEvent": "audio/sfx/player/level_checkpoint.sound",
-              "SpriteComponent": {
-                "_type": "component",
-                "component_id": "e7de7b1c-58f1-47c3-a433-ab7273de6a6a",
-                "go": "1120d2a0-ffcd-4f07-a688-f54cb740bdd0",
-                "component_type": "SpriteComponent"
-              }
-            },
-            {
-              "__type": "SpriteTools.SpriteComponent",
-              "__guid": "e7de7b1c-58f1-47c3-a433-ab7273de6a6a",
-              "__version": 1,
-              "BroadcastEvents": {},
-              "CastShadows": "On",
-              "CreateAttachPoints": false,
-              "FlashTint": "1,1,1,0",
-              "PlaybackSpeed": 1,
-              "Sprite": "sprites/checkpoint2.sprite",
-              "SpriteFlags": "None",
-              "StartingAnimationName": "deactivated",
-              "Tint": "1,1,1,1",
-              "UpDirection": "YPositive"
-            },
-            {
-              "__type": "Sandbox.BoxCollider",
-              "__guid": "b8405575-1259-45a0-8c62-4cd823a25ad0",
-              "Center": "0,37.40003,0",
-              "IsTrigger": true,
-              "Scale": "50,75,50",
-              "Static": true
-            },
-            {
-              "__type": "Sandbox.sprite.SpriteSizer",
-              "__guid": "840eb76c-5a84-44ca-b601-f8b9986f10e8",
-              "_height": 8,
-              "_width": 8,
-              "PixelPerUnit": 32
-            }
-          ]
-        },
-        {
-          "__guid": "76924017-f39c-433b-a13d-f8c1ffda347b",
-          "Flags": 0,
-          "Name": "Checkpoint",
-          "Position": "2016,320,1",
-          "Scale": "0.25,0.25,1",
-          "Enabled": true,
-          "__Prefab": "prefabs/checkpoint.prefab",
-          "__PrefabVariables": {}
-        },
-        {
-          "__guid": "0b8f438e-f9d9-4054-aea8-81200312e537",
-          "Flags": 0,
-          "Name": "Checkpoint",
-          "Position": "1984,800,0.9999971",
-          "Scale": "0.25,0.25,1",
-          "Enabled": true,
-          "__Prefab": "prefabs/checkpoint.prefab",
-          "__PrefabVariables": {}
-        },
-        {
-          "__guid": "de903763-862d-4e3f-bade-fac35a3fcaee",
-          "Flags": 0,
-          "Name": "Start Checkpoint",
-          "Position": "128,192,1",
-          "Scale": "0.25,0.25,1",
-          "Enabled": true,
-          "__Prefab": "prefabs/checkpoint.prefab",
-          "__PrefabVariables": {}
-        },
         {
           "__guid": "24e6f566-bb7e-47cb-a650-778a4144e11f",
           "Flags": 0,
@@ -432,24 +345,73 @@
               ]
             },
             {
-              "__guid": "5a1e5a31-a0ae-46e5-96af-6dfad81697ef",
+              "__guid": "ac121803-927b-4002-b702-d1da02e5b650",
               "Flags": 0,
-              "Name": "background",
-              "Position": "499.9999,444.7014,-192.0001",
-              "Rotation": "-0.5,-0.4999999,0.5000001,0.5000001",
-              "Scale": "3.9,9,1",
-              "Enabled": true,
+              "Name": "background (3)",
+              "Position": "300,-672.0001,-192.0001",
+              "Rotation": "-0.5,-0.4999999,0.5,0.5000001",
+              "Scale": "4.5,4.5,30.10001",
               "Components": [
                 {
                   "__type": "SpriteTools.SpriteComponent",
-                  "__guid": "478b2514-7e86-4fb5-8930-de3753075939",
+                  "__guid": "653cd745-222c-4da2-914a-3bda79cd6665",
                   "__version": 1,
                   "BroadcastEvents": {},
                   "CastShadows": "Off",
                   "CreateAttachPoints": false,
                   "FlashTint": "0,0,0,0.78",
                   "PlaybackSpeed": 1,
-                  "Sprite": "sprites/level_mountains/mountains_background.sprite",
+                  "Sprite": "sprites/level_mountains/background_lower.sprite",
+                  "SpriteFlags": "None",
+                  "StartingAnimationName": "default",
+                  "Tint": "1,1,1,1",
+                  "UpDirection": "YNegative"
+                }
+              ]
+            },
+            {
+              "__guid": "12495303-daab-449e-aef7-1c72537fb5da",
+              "Flags": 0,
+              "Name": "background (2)",
+              "Position": "499.9998,63.99994,-192.0001",
+              "Rotation": "-0.5,-0.4999999,0.5,0.5000001",
+              "Scale": "4.5,4.5,30.10001",
+              "Components": [
+                {
+                  "__type": "SpriteTools.SpriteComponent",
+                  "__guid": "f31358dc-e6fa-4e06-a23e-287295d90036",
+                  "__version": 1,
+                  "BroadcastEvents": {},
+                  "CastShadows": "Off",
+                  "CreateAttachPoints": false,
+                  "FlashTint": "0,0,0,0.78",
+                  "PlaybackSpeed": 1,
+                  "Sprite": "sprites/level_mountains/background_lower.sprite",
+                  "SpriteFlags": "None",
+                  "StartingAnimationName": "default",
+                  "Tint": "1,1,1,1",
+                  "UpDirection": "YNegative"
+                }
+              ]
+            },
+            {
+              "__guid": "566869e3-87e0-445e-a69c-cb6377c6feaa",
+              "Flags": 0,
+              "Name": "background (1)",
+              "Position": "500,799.9999,-192.0001",
+              "Rotation": "-0.5,-0.4999999,0.5000001,0.5000001",
+              "Scale": "4.5,4.5,30.10001",
+              "Components": [
+                {
+                  "__type": "SpriteTools.SpriteComponent",
+                  "__guid": "09a6c730-c275-440c-a1b3-65c60dcf0adb",
+                  "__version": 1,
+                  "BroadcastEvents": {},
+                  "CastShadows": "Off",
+                  "CreateAttachPoints": false,
+                  "FlashTint": "0,0,0,0.78",
+                  "PlaybackSpeed": 1,
+                  "Sprite": "sprites/level_mountains/background_lower.sprite",
                   "SpriteFlags": "None",
                   "StartingAnimationName": "default",
                   "Tint": "1,1,1,1",
@@ -898,7 +860,7 @@
               "__guid": "63945a7d-7b18-4da0-a7d0-3c8e5b79580c",
               "Flags": 0,
               "Name": "Heli Small (4)",
-              "Position": "2080,544,1.000078",
+              "Position": "2080,546.5237,1.000078",
               "Scale": "0.5,0.5,1",
               "Tags": "enemy",
               "Enabled": true,
@@ -1474,6 +1436,72 @@
           "Name": "objects",
           "Enabled": true,
           "Children": [
+            {
+              "__guid": "038383d8-c1b0-4ba2-bc4d-9ced2afcaad8",
+              "Flags": 0,
+              "Name": "ShatteredIsland (6)",
+              "Position": "416,64,1",
+              "Scale": "0.64,0.64,1",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "prefabs/shatteredisland.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "bfcf48ba-d599-4d9f-a474-9e431ad46ade",
+              "Flags": 0,
+              "Name": "ShatteredIsland (5)",
+              "Position": "448,0,1",
+              "Scale": "0.64,0.64,1",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "prefabs/shatteredisland.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "bbbe395d-af18-4eb9-8171-6b87c171233e",
+              "Flags": 0,
+              "Name": "ShatteredIsland (4)",
+              "Position": "544,0,1",
+              "Scale": "0.64,0.64,1",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "prefabs/shatteredisland.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "2e11f14d-c6ab-4a08-a8e8-3491cd32577c",
+              "Flags": 0,
+              "Name": "ShatteredIsland (3)",
+              "Position": "640,0,1",
+              "Scale": "0.64,0.64,1",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "prefabs/shatteredisland.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "0baf9216-ac56-4079-a5b6-d534934b2ff8",
+              "Flags": 0,
+              "Name": "ShatteredIsland (2)",
+              "Position": "736,0,1",
+              "Scale": "0.64,0.64,1",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "prefabs/shatteredisland.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "2bda675b-63b5-4a1b-a421-f347bfc33000",
+              "Flags": 0,
+              "Name": "ShatteredIsland (1)",
+              "Position": "832,0,1",
+              "Scale": "0.64,0.64,1",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "prefabs/shatteredisland.prefab",
+              "__PrefabVariables": {}
+            },
             {
               "__guid": "75e49eb3-212f-4206-b02e-bcd7128189f1",
               "Flags": 0,
@@ -2914,6 +2942,174 @@
               ]
             }
           ]
+        },
+        {
+          "__guid": "44a78dcb-d6fb-4e43-8ed1-5b132a9a1fe0",
+          "Flags": 0,
+          "Name": "items",
+          "Enabled": true,
+          "Children": [
+            {
+              "__guid": "b1be1d9b-e4af-4b33-8353-06dfc2e56de3",
+              "Flags": 0,
+              "Name": "Upgrade_DOUBLE_JUMP",
+              "Position": "352,192,0.9999642",
+              "Scale": "0.32,0.32,1",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "SpriteTools.SpriteComponent",
+                  "__guid": "e3a7443e-d889-474b-a292-818c81cc9a0d",
+                  "__version": 1,
+                  "BroadcastEvents": {},
+                  "CastShadows": "On",
+                  "CreateAttachPoints": false,
+                  "FlashTint": "1,1,1,0",
+                  "PlaybackSpeed": 1,
+                  "Sprite": "sprites/level_mountains/falling_ice.sprite",
+                  "SpriteFlags": "None",
+                  "StartingAnimationName": "animation_01",
+                  "Tint": "1,1,1,1",
+                  "UpDirection": "YPositive"
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "8778111f-dc6d-4e82-9fcb-ea00792c11d3",
+                  "Center": "50,50,0",
+                  "IsTrigger": true,
+                  "Scale": "61.70003,75.8002,50",
+                  "Static": true
+                },
+                {
+                  "__type": "Sandbox.sprite.SpriteSizer",
+                  "__guid": "88b3a0b8-63a6-4c09-8f27-d1197fab6414",
+                  "_height": 32,
+                  "_width": 32,
+                  "PixelPerUnit": 100
+                },
+                {
+                  "__type": "Sandbox.objects.Collectible",
+                  "__guid": "da4ed043-2554-4149-93d3-73b0c1ca642d",
+                  "TriggerCollider": {
+                    "_type": "component",
+                    "component_id": "8778111f-dc6d-4e82-9fcb-ea00792c11d3",
+                    "go": "b1be1d9b-e4af-4b33-8353-06dfc2e56de3",
+                    "component_type": "BoxCollider"
+                  },
+                  "Type": "DOUBLE_JUMP"
+                }
+              ]
+            },
+            {
+              "__guid": "83285c1b-ea40-4026-bd58-b7e4bf1b4757",
+              "Flags": 0,
+              "Name": "Upgrade_DASH",
+              "Position": "1120,32,0.9999977",
+              "Scale": "0.32,0.32,1",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "SpriteTools.SpriteComponent",
+                  "__guid": "6f40094f-c0dd-4b14-bffd-f59b3de2aed9",
+                  "__version": 1,
+                  "BroadcastEvents": {},
+                  "CastShadows": "On",
+                  "CreateAttachPoints": false,
+                  "FlashTint": "1,1,1,0",
+                  "PlaybackSpeed": 1,
+                  "Sprite": "sprites/level_mountains/falling_ice.sprite",
+                  "SpriteFlags": "None",
+                  "StartingAnimationName": "animation_01",
+                  "Tint": "1,1,1,1",
+                  "UpDirection": "YPositive"
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "4b7ab586-e6f7-4627-ad05-6eda8639830d",
+                  "Center": "50,50,0",
+                  "IsTrigger": true,
+                  "Scale": "61.70003,75.8002,50",
+                  "Static": true
+                },
+                {
+                  "__type": "Sandbox.sprite.SpriteSizer",
+                  "__guid": "5f28a79d-2fc4-4ed9-80ad-1f801cbc92b6",
+                  "_height": 32,
+                  "_width": 32,
+                  "PixelPerUnit": 100
+                },
+                {
+                  "__type": "Sandbox.objects.Collectible",
+                  "__guid": "a1bdc713-295f-4167-8fd7-10d970ba7218",
+                  "TriggerCollider": {
+                    "_type": "component",
+                    "component_id": "4b7ab586-e6f7-4627-ad05-6eda8639830d",
+                    "go": "83285c1b-ea40-4026-bd58-b7e4bf1b4757",
+                    "component_type": "BoxCollider"
+                  },
+                  "Type": "DASH"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "__guid": "b9b0ed18-0a78-4fd0-8554-8d8ba4194051",
+          "Flags": 0,
+          "Name": "checkpoints",
+          "Enabled": true,
+          "Children": [
+            {
+              "__guid": "de903763-862d-4e3f-bade-fac35a3fcaee",
+              "Flags": 0,
+              "Name": "Start Checkpoint",
+              "Position": "128,192,1",
+              "Scale": "0.25,0.25,1",
+              "Enabled": true,
+              "__Prefab": "prefabs/checkpoint.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "0909bf8d-82fd-4617-bdfc-9dbd277ec309",
+              "Flags": 0,
+              "Name": "Start Checkpoint",
+              "Position": "256,192,1.000007",
+              "Scale": "0.25,0.25,1",
+              "Enabled": true,
+              "__Prefab": "prefabs/checkpoint.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "76924017-f39c-433b-a13d-f8c1ffda347b",
+              "Flags": 0,
+              "Name": "Checkpoint",
+              "Position": "2016,320,1",
+              "Scale": "0.25,0.25,1",
+              "Enabled": true,
+              "__Prefab": "prefabs/checkpoint.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "0b8f438e-f9d9-4054-aea8-81200312e537",
+              "Flags": 0,
+              "Name": "Checkpoint",
+              "Position": "1984,800,0.9999971",
+              "Scale": "0.25,0.25,1",
+              "Enabled": true,
+              "__Prefab": "prefabs/checkpoint.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "6f7ee296-9c00-4962-a766-b7c6bc014f29",
+              "Flags": 0,
+              "Name": "Checkpoint",
+              "Position": "1376,32,0.9999613",
+              "Scale": "0.25,0.25,1",
+              "Enabled": true,
+              "__Prefab": "prefabs/checkpoint.prefab",
+              "__PrefabVariables": {}
+            }
+          ]
         }
       ]
     },
@@ -4305,6 +4501,9 @@
                   "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
                 },
                 "77,24": {
+                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
+                },
+                "29,0": {
                   "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
                 }
               }
@@ -6282,6 +6481,12 @@
           "DeathSound": "audio/sfx/player_death.sound",
           "Health": 3,
           "HitSound": "audio/sfx/player/player_hit.sound",
+          "Inventory": {
+            "_type": "component",
+            "component_id": "6bf28c8d-0388-4f4c-98fc-f4f6e11db93a",
+            "go": "fa92b8fb-a335-4816-b27c-04934c4d960c",
+            "component_type": "Inventory"
+          },
           "JumpAbility": {
             "_type": "component",
             "component_id": "f1688281-d329-4264-a9b7-d01956dacef7",
@@ -6318,12 +6523,6 @@
             "component_id": "e0367d98-0ccd-4928-af6c-77dc93cb7ca9",
             "go": "fa92b8fb-a335-4816-b27c-04934c4d960c",
             "component_type": "SwordAbility"
-          },
-          "Upgrades": {
-            "_type": "component",
-            "component_id": "d483a60a-46bf-4467-aee3-673805991d7a",
-            "go": "fa92b8fb-a335-4816-b27c-04934c4d960c",
-            "component_type": "PlayerUpgrades"
           }
         },
         {
@@ -6541,10 +6740,8 @@
           }
         },
         {
-          "__type": "Sandbox.player.PlayerUpgrades",
-          "__guid": "d483a60a-46bf-4467-aee3-673805991d7a",
-          "__enabled": false,
-          "UnlockedUpgrades": {}
+          "__type": "Sandbox.player.Inventory",
+          "__guid": "6bf28c8d-0388-4f4c-98fc-f4f6e11db93a"
         }
       ],
       "Children": [
@@ -6765,24 +6962,6 @@
           ]
         },
         {
-          "__guid": "c38df24c-cfda-4fb6-b9cf-20a64a71386a",
-          "Flags": 0,
-          "Name": "Tileset Object",
-          "Position": "0,0,0",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "SpriteTools.TilesetComponent",
-              "__guid": "31785852-fb7d-4c5a-9d43-891d0565abd0",
-              "ColliderWidth": 0,
-              "HasCollider": false,
-              "IsTrigger": false,
-              "Layers": [],
-              "Static": false
-            }
-          ]
-        },
-        {
           "__guid": "af993958-99c9-4175-84e7-4e3ee2f22047",
           "Flags": 0,
           "Name": "UI",
@@ -6807,57 +6986,6 @@
               ]
             }
           ]
-        }
-      ]
-    },
-    {
-      "__guid": "83285c1b-ea40-4026-bd58-b7e4bf1b4757",
-      "Flags": 0,
-      "Name": "Upgrade_DASH",
-      "Position": "1120,32,0.9999977",
-      "Scale": "0.32,0.32,1",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.objects.Upgrade",
-          "__guid": "41f670cf-4554-493a-9635-3a0e80f05c6d",
-          "TriggerCollider": {
-            "_type": "component",
-            "component_id": "4b7ab586-e6f7-4627-ad05-6eda8639830d",
-            "go": "83285c1b-ea40-4026-bd58-b7e4bf1b4757",
-            "component_type": "BoxCollider"
-          },
-          "Type": "DASH"
-        },
-        {
-          "__type": "SpriteTools.SpriteComponent",
-          "__guid": "6f40094f-c0dd-4b14-bffd-f59b3de2aed9",
-          "__version": 1,
-          "BroadcastEvents": {},
-          "CastShadows": "On",
-          "CreateAttachPoints": false,
-          "FlashTint": "1,1,1,0",
-          "PlaybackSpeed": 1,
-          "Sprite": "sprites/level_mountains/falling_ice.sprite",
-          "SpriteFlags": "None",
-          "StartingAnimationName": "animation_01",
-          "Tint": "1,1,1,1",
-          "UpDirection": "YPositive"
-        },
-        {
-          "__type": "Sandbox.BoxCollider",
-          "__guid": "4b7ab586-e6f7-4627-ad05-6eda8639830d",
-          "Center": "50,50,0",
-          "IsTrigger": true,
-          "Scale": "61.70003,75.8002,50",
-          "Static": true
-        },
-        {
-          "__type": "Sandbox.sprite.SpriteSizer",
-          "__guid": "5f28a79d-2fc4-4ed9-80ad-1f801cbc92b6",
-          "_height": 32,
-          "_width": 32,
-          "PixelPerUnit": 100
         }
       ]
     },
@@ -6930,7 +7058,7 @@
           "Loop": true,
           "Path": [
             "1856,766.9741",
-            "1696,766.9741"
+            "1696,832.0001"
           ],
           "PathPointsParent": {
             "_type": "gameobject",
@@ -6978,10 +7106,10 @@
               "Enabled": true
             },
             {
-              "__guid": "6b6adaaa-9265-4e84-a2ca-116d98bdd394",
+              "__guid": "cf51f937-133f-4001-a3e9-a849715d7ef4",
               "Flags": 0,
-              "Name": "point (1)",
-              "Position": "-500,0,-0.000002914901",
+              "Name": "point",
+              "Position": "-500,203.2061,-0.000008599207",
               "Enabled": true
             }
           ]

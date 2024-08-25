@@ -20,7 +20,7 @@ public class Level : Component
 	public Vector2 LastCheckpointPosition => Checkpoint.LastCheckpoint?.Transform.Position ?? Transform.Position;
 	
 	public event Action RestartEvent;
-	
+	IEnumerable<Checkpoint> _checkpoints;
 	List<IRespawn> _respawnables = new();
 	
 	// if DontTeleportPlayerToCheckpointOnce is true, player will be spawned at the level's position set in the editor, until first checkpoint is activated
@@ -28,11 +28,12 @@ public class Level : Component
 
 	protected override void OnAwake()
 	{
+		_checkpoints = Components.GetAll<Checkpoint>( FindMode.InDescendants );
+		
 		Checkpoint.LastCheckpoint = StartCheckpoint;
 		if (Player != null && DontTeleportPlayerToCheckpoint)
 		{
 			Checkpoint.LastCheckpoint = null;
-			Log.Info("player is not null, but DontTeleportPlayerToCheckpoint is true");
 			_editorPosition = Player.Transform.Position;
 		}
 		_respawnables = Components.GetAll<IRespawn>(FindMode.InDescendants).ToList();
@@ -41,7 +42,6 @@ public class Level : Component
 
 	private void LevelStart()
 	{
-		Log.Info("start level");
 		if(Checkpoint.LastCheckpoint != null)
 			StartCheckpoint.Activated = true;
 		
@@ -50,7 +50,6 @@ public class Level : Component
 	
 	private void OnPlayerDeath()
 	{
-		Log.Info("respawn player");
 		SoundBox.StopSound();
 		DeathAnimation.StartFadeIn();
 		// RestartEvent?.Invoke();
@@ -60,16 +59,13 @@ public class Level : Component
 	private void SpawnPlayer()
 	{
 		Player newPlayer;
-		Log.Info("spawn player from prefab file");
 		if ( Player == null )
 		{
-			Log.Info("spawning new player because player is null");
 			newPlayer = GameObject.Clone(PlayerPrefab).Components.Get<Player>();
 			Player = newPlayer;
 		}
 		else
 		{
-			Log.Info("spawning player instance from level");
 			newPlayer = Player;
 		}
 		
@@ -78,17 +74,14 @@ public class Level : Component
 		if(Checkpoint.LastCheckpoint != null)
 		{
 			spawnPosition = Checkpoint.LastCheckpoint.Transform.Position;
-			Log.Info("spawn position from checkpoint");
 		}
 		else if(DontTeleportPlayerToCheckpoint && Player != null)
 		{
 			spawnPosition = _editorPosition;
-			Log.Info("spawn position from editor");
 		}
 		else
 		{
 			spawnPosition = Transform.Position;
-			Log.Error("FIXME: No spawn set. ");
 		}
 		
 		newPlayer.Teleport(spawnPosition);
@@ -99,16 +92,15 @@ public class Level : Component
 		newPlayer.OnRespawn();
 		newPlayer.DeathEvent -= OnPlayerDeath;
 		newPlayer.DeathEvent += OnPlayerDeath;
+		newPlayer.Inventory.AddedItemEvent -= OnAddedItem;
+		newPlayer.Inventory.AddedItemEvent += OnAddedItem;
+		newPlayer.Inventory.SavedItemsEvent -= OnSavedProgress;
+		newPlayer.Inventory.SavedItemsEvent += OnSavedProgress;
 		
 		if(Weather != null)
 		{
-			Weather.AddToPlayer(newPlayer.MotionCore);
-			Weather.SetDirection(0);
-			Log.Info("added weather to player");
-		}
-		else
-		{
-			Log.Info("No weather for this level");
+			Weather.OnComponentEnabled -= OnWeatherEnabled; // TODO: move to on disable, also other events. Needed for multiple levels
+			Weather.OnComponentEnabled += OnWeatherEnabled;
 		}
 		
 		SoundBox.StartSound();
@@ -116,9 +108,37 @@ public class Level : Component
 		
 		DeathAnimation.AnimationFadeFinishedEvent -= OnDeathFadeFinished;
 		DeathAnimation.AnimationFadeFinishedEvent += OnDeathFadeFinished;
-		Log.Info($"set player position to {spawnPosition}");
+		
+		foreach (var checkpoint in _checkpoints)
+			checkpoint.PendingItem(false);
 	}
-	
+
+	private void OnWeatherEnabled()
+	{
+		if ( Weather.Enabled )
+		{
+			Weather.AddToPlayer(Player.MotionCore);
+			Weather.SetDirection(0);
+		}
+		else
+		{
+			Weather.RemoveFromPlayer(Player.MotionCore);
+		}
+	}
+
+	private void OnSavedProgress()
+	{
+		foreach (var checkpoint in _checkpoints)
+			checkpoint.PendingItem(false);
+	}
+
+	private void OnAddedItem( Inventory obj )
+	{
+		Log.Info("LEVEL Item added");
+		foreach (var checkpoint in _checkpoints)
+			checkpoint.PendingItem(true);
+	}
+
 	private void RespawnAll()
 	{
 		foreach (var respawnable in _respawnables)

@@ -12,7 +12,7 @@ public sealed class Player : Component
 	[Property] public SwordAbility SwordAbility { get; set; }
 	[Property] public CrouchAbility CrouchAbility { get; set; }
 	[Property] public Knockback Knockback { get; set; }
-	[Property] public PlayerUpgrades Upgrades { get; set; }
+	[Property] public Inventory Inventory { get; set; }
 
 	[Property] private SoundEvent HitSound { get; set; }
 	[Property] private SoundEvent DeathSound { get; set; }
@@ -22,6 +22,7 @@ public sealed class Player : Component
 	
 	public Action<int> HealthChangedEvent;
 	public Action<int> MaxHealthChangedEvent;
+	public Action RespawnEvent;
 
 	private bool _dead;
 
@@ -32,6 +33,11 @@ public sealed class Player : Component
 	{
 		MotionCore.FacingChangedEvent += OnFacingChanged;
 		OnFacingChanged(MotionCore.Facing);
+	}
+
+	protected override void OnDisabled()
+	{
+		MotionCore.FacingChangedEvent -= OnFacingChanged;
 	}
 
 	protected override void OnUpdate()
@@ -160,7 +166,10 @@ public sealed class Player : Component
 	public void OnRespawn()
 	{
 		_dead = false;
+		Enabled = true;
 		Health = MaxHealth;
+		Inventory?.ResetPendingItems();
+		RespawnEvent?.Invoke();
 	}
 }
 

@@ -15,6 +15,12 @@
           "go": "997112a9-2123-421a-8e7d-df360b1cd0f9",
           "component_type": "BoxCollider"
         },
+        "PendingSpriteComponent": {
+          "_type": "component",
+          "component_id": "bd7e77b8-edf5-44f3-b409-a6e9b809f73f",
+          "go": "820205f4-adc8-469f-a716-ac324c07312a",
+          "component_type": "SpriteComponent"
+        },
         "SoundEvent": "audio/sfx/player/level_checkpoint.sound",
         "SpriteComponent": {
           "_type": "component",
@@ -54,7 +60,32 @@
         "PixelPerUnit": 32
       }
     ],
-    "Children": [],
+    "Children": [
+      {
+        "__guid": "820205f4-adc8-469f-a716-ac324c07312a",
+        "Flags": 0,
+        "Name": "pending_sprite (1)",
+        "Position": "0,49.4989,1",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "SpriteTools.SpriteComponent",
+            "__guid": "bd7e77b8-edf5-44f3-b409-a6e9b809f73f",
+            "__version": 1,
+            "BroadcastEvents": {},
+            "CastShadows": "On",
+            "CreateAttachPoints": false,
+            "FlashTint": "1,1,1,0",
+            "PlaybackSpeed": -1,
+            "Sprite": "sprites/pending_checkpoint.sprite",
+            "SpriteFlags": "None",
+            "StartingAnimationName": "default",
+            "Tint": "1,1,1,1",
+            "UpDirection": "YPositive"
+          }
+        ]
+      }
+    ],
     "__variables": []
   },
   "ShowInMenu": false,

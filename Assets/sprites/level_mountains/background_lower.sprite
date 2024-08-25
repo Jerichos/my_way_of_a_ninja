@@ -1,0 +1,19 @@
+{
+  "Animations": [
+    {
+      "FrameRate": 15,
+      "Origin": "0.5,1",
+      "Looping": true,
+      "Name": "default",
+      "Frames": [
+        {
+          "FilePath": "sprites/level_mountains/background_lower.png",
+          "Events": []
+        }
+      ],
+      "Attachments": []
+    }
+  ],
+  "__references": [],
+  "__version": 0
+}

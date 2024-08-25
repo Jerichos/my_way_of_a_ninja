@@ -43,6 +43,7 @@ public class MovingPlatform : Component, IMotionProvider
 		{
 			player.MotionCore.GroundedEvent -= OnGrounded;
 			player.MotionCore.RemoveMotionProvider(this);
+			player.MotionCore.IsOnPlatform = false;
 			_lastPlayer = null;
 		}
 	}
@@ -59,10 +60,17 @@ public class MovingPlatform : Component, IMotionProvider
 
 	private void OnGrounded( bool isGrounded )
 	{
-		if ( isGrounded && _lastPlayer != null && _lastPlayer.MotionCore.GroundObject == GameObject)
+		if ( _lastPlayer != null )
 		{
-			Log.Info("Player is on the platform");
-			_lastPlayer.MotionCore.AddMotionProvider(this);
+			if ( isGrounded && _lastPlayer.MotionCore.GroundObject == GameObject)
+			{
+				_lastPlayer.MotionCore.IsOnPlatform = true;
+				_lastPlayer.MotionCore.AddMotionProvider(this);
+			}
+			else
+			{
+				_lastPlayer.MotionCore.IsOnPlatform = false;
+			}
 		}
 	}
 }

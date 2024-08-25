@@ -52,4 +52,22 @@ public sealed class Gravity : Component, IMotionProvider
 	{
 		MotionCore.AddMotionProvider(this);
 	}
+
+	protected override void OnEnabled()
+	{
+		MotionCore.GroundedEvent += OnGrounded;
+	}
+	
+	protected override void OnDisabled()
+	{
+		MotionCore.GroundedEvent -= OnGrounded;
+	}
+
+	private void OnGrounded( bool isGrounded )
+	{
+		if ( isGrounded )
+		{
+			Velocity = Vector2.Zero;
+		}
+	}
 }

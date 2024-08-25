@@ -5,6 +5,7 @@ namespace Sandbox.level;
 public class Checkpoint : Component
 {
 	[Property] SpriteComponent SpriteComponent { get; set; }
+	[Property] SpriteComponent PendingSpriteComponent { get; set; }
 	[Property] BoxCollider Collider { get; set; }
 	[Property] SoundEvent SoundEvent { get; set; }
 
@@ -26,11 +27,12 @@ public class Checkpoint : Component
 				
 				LastCheckpoint = this;
 				SpriteComponent.PlayAnimation("activated");
-				Log.Info($"checkpoint activated: {_activated} - {this}");
+				PendingSpriteComponent.PlaybackSpeed = 1;
 			}
 			else
 			{
 				SpriteComponent.PlayAnimation("deactivated");
+				PendingSpriteComponent.PlaybackSpeed = 0;
 			}
 		}
 	}
@@ -39,14 +41,16 @@ public class Checkpoint : Component
 	
 	private void OnTriggerEnter(Collider other)
 	{
-		if(_activated)
-			return;
-		
-		if (other.GameObject.Components.Get<Player>() == null)
-			return;
-		
-		Sound.Play(SoundEvent, Transform.Position);
-		Activated = true;
+		if ( other.GameObject.Components.TryGet( out Player player ) )
+		{
+			player.Inventory.SaveProgress();
+			
+			if(_activated)
+				return;
+			
+			Sound.Play(SoundEvent, Transform.Position);
+			Activated = true;
+		}
 	}
 	
 	protected override void OnEnabled()
@@ -57,5 +61,17 @@ public class Checkpoint : Component
 	protected override void OnDisabled()
 	{
 		Collider.OnTriggerEnter -= OnTriggerEnter;
+	}
+
+	public void PendingItem( bool isPending )
+	{
+		if ( PendingSpriteComponent == null )
+		{
+			Log.Error($"PendingSpriteComponent is not set {GameObject}");
+			return;
+		}
+		
+		
+		PendingSpriteComponent.Enabled = isPending;
 	}
 }

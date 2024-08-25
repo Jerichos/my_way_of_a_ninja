@@ -1,17 +1,20 @@
 ﻿using System;
+using Sandbox.level;
 using Sandbox.player;
 
 namespace Sandbox.objects;
 
-public class Upgrade : Component, ICollectible
+public class Collectible : Component, ICollectible, IRespawn
 {
 	[Property] public Collider TriggerCollider { get; set; }
 	[Property] public GameObject OnCollectEffect { get; set; }
-    [Property] public UpgradeType Type { get; set; }
+    [Property] public ItemType Type { get; set; }
+    
+    public bool Saved { get; set; } // level knows it should not respawn
     
 	public void Collect( Player player )
 	{
-		player.Upgrades.AddUpgrade( this );
+		player.Inventory.AddUpgrade( this );
 		
 		if(OnCollectEffect != null)
 		{
@@ -19,7 +22,7 @@ public class Upgrade : Component, ICollectible
 			effect.Transform.Position = Transform.Position;
 		}
 		
-		GameObject.Destroy();
+		GameObject.Enabled = false;
 	}
 
 	private void OnTriggerEnter( Collider obj )
@@ -43,5 +46,14 @@ public class Upgrade : Component, ICollectible
 	protected override void OnValidate()
 	{
 		GameObject.Name = $"Upgrade_{Type}";
+	}
+
+	public void Respawn()
+	{
+		Log.Info($"respawn {GameObject} Saved: {Saved}");
+		if(Saved)
+			return;
+		
+		GameObject.Enabled = true;
 	}
 }

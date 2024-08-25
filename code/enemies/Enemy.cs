@@ -35,7 +35,6 @@ public class Enemy : Component, IHittable
 		if (Components.TryGet(out Level level, FindMode.InAncestors))
 		{
 			level.RestartEvent += OnLevelRestart;
-			Log.Info("Enemy component is a child of a Level component.");
 		}
 		else
 		{
@@ -80,8 +79,6 @@ public class Enemy : Component, IHittable
 			_isHit = true;
 			soundCallback?.Invoke(HitSound);
 		}
-		
-		Log.Info($"Heli hit! Health: {Health}/{MaxHealth}");
 	}
 	
 	private void Kill(GameObject source = null)

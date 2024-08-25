@@ -38,8 +38,6 @@ public class SwordAbility : Component
 		if(!CanAttack())
 			return;
 		
-		Log.Info("start attack");
-		
 		_cooldownTimer = Cooldown;
 		
 		IsAttacking = true;
@@ -52,7 +50,6 @@ public class SwordAbility : Component
 	
 	private void EndAttack(SpriteComponent obj)
 	{
-		Log.Info("end attack");
 		_isHitting = false;
 		IsAttacking = false;
 		AttackEvent?.Invoke(IsAttacking);
@@ -99,12 +96,6 @@ public class SwordAbility : Component
 			{
 				Log.Error("sword hit! but no IHittable component found: " + _hitResult.GameObject.Name);
 			}
-			
-			Log.Info("sword hit! reduce health hit: " + _hitResult.GameObject.Name);
-		}
-		else
-		{
-			
 		}
 	}
 

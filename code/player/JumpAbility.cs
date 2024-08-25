@@ -156,37 +156,43 @@ public sealed class JumpAbility : Component, IMotionProvider
 
 	protected override void OnEnabled()
 	{
-		// Log.Info("JumpAbility enabled");
+		Log.Info("JumpAbility enabled");
 		MotionCore.CeilingHitEvent += CancelJump;
 		MotionCore.GroundedEvent += OnGroundedChanged;
-
-		if ( Player.Upgrades != null )
-		{
-			Player.Upgrades.UnlockedUpgradesChangedEvent += OnUnlockedUpgradesChanged;
-			OnUnlockedUpgradesChanged(Player.Upgrades.UnlockedUpgrades);
-		}
-	}
-
-	private void OnUnlockedUpgradesChanged( UnlockedUpgrades upgrades )
-	{
-		if(Player.Upgrades.Enabled == false)
-			return;
 		
-		MaxJumps = 1;
-		if ( upgrades.HasUpgrade(UpgradeType.DOUBLE_JUMP) )
-		{
-			MaxJumps = 2;
-		}
+		Player.RespawnEvent += OnRespawn;
+		OnRespawn();
 	}
-
+	
 	protected override void OnDisabled()
 	{
 		// Log.Info("JumpAbility disabled");
 		MotionCore.CeilingHitEvent -= CancelJump;
 		MotionCore.GroundedEvent -= OnGroundedChanged;
 		
-		if ( Player.Upgrades != null )
-			Player.Upgrades.UnlockedUpgradesChangedEvent -= OnUnlockedUpgradesChanged;
+		if ( Player.Inventory != null )
+			Player.Inventory.AddedItemEvent -= OnUnlockedUpgradesChanged;
+	}
+
+	private void OnRespawn()
+	{
+		if ( Player.Inventory != null )
+		{
+			Player.Inventory.AddedItemEvent += OnUnlockedUpgradesChanged;
+			OnUnlockedUpgradesChanged(Player.Inventory);
+		}
+	}
+
+	private void OnUnlockedUpgradesChanged( Inventory upgrades )
+	{
+		if(Player.Inventory.Enabled == false)
+			return;
+		
+		MaxJumps = 1;
+		if ( upgrades.HasUpgrade(ItemType.DOUBLE_JUMP, out var value))
+		{
+			MaxJumps = 2;
+		}
 	}
 
 	private void OnGroundedChanged( bool grounded )

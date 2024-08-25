@@ -70,16 +70,16 @@ public sealed class Animator : Component
 	{
 		if(CrouchAbility.IsCrouching)
 			SetAnimationState(AnimationState.CROUCH);
-		else if(MotionCore.Velocity.y > 0)
+		else if(MoveAbility.InputX != 0 && MotionCore.Grounded)
+			SetAnimationState(AnimationState.RUN);
+		else if(MotionCore.Grounded)
+			SetAnimationState(AnimationState.IDLE);
+		else if(MotionCore.Velocity.y > 0 && !MotionCore.IsOnPlatform)
 			SetAnimationState(AnimationState.JUMP);
 		else if(DashAbility.IsDashing)
 			SetAnimationState(AnimationState.DASH);
 		else if(MotionCore.Velocity.y < 0)
 			SetAnimationState(AnimationState.IN_AIR);
-		else if(MoveAbility.InputX != 0 && MotionCore.Grounded)
-			SetAnimationState(AnimationState.RUN);
-		else if(MotionCore.Grounded)
-			SetAnimationState(AnimationState.IDLE);
 
 		HandleHitAnimation();
 	}
