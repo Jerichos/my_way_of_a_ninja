@@ -2,13 +2,40 @@
   "Animations": [
     {
       "FrameRate": 15,
-      "Origin": "0,1",
+      "Origin": "0.5,0",
       "Looping": true,
       "Name": "default",
       "Frames": [
         {
           "FilePath": "sprites/objects/flying_platform.png",
-          "Events": []
+          "Events": [],
+          "SpriteSheetRect": {
+            "Size": "96,64"
+          }
+        },
+        {
+          "FilePath": "sprites/objects/flying_platform.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "96,0",
+            "Size": "96,64"
+          }
+        },
+        {
+          "FilePath": "sprites/objects/flying_platform.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "192,0",
+            "Size": "96,64"
+          }
+        },
+        {
+          "FilePath": "sprites/objects/flying_platform.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "288,0",
+            "Size": "96,64"
+          }
         }
       ],
       "Attachments": []

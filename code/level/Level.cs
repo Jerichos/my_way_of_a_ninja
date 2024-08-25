@@ -19,9 +19,11 @@ public class Level : Component
 
 	public Vector2 LastCheckpointPosition => Checkpoint.LastCheckpoint?.Transform.Position ?? Transform.Position;
 	
-	public event Action RestartEvent;
-	IEnumerable<Checkpoint> _checkpoints;
-	List<IRespawn> _respawnables = new();
+	public Action RestartEvent;
+	public Action<Vector2, Vector2> BoundsChangedEvent;
+	private IEnumerable<Checkpoint> _checkpoints;
+	private IEnumerable<NewArea> _newAreas;
+	private List<IRespawn> _respawnables = new();
 	
 	// if DontTeleportPlayerToCheckpointOnce is true, player will be spawned at the level's position set in the editor, until first checkpoint is activated
 	private Vector3 _editorPosition;
@@ -37,7 +39,23 @@ public class Level : Component
 			_editorPosition = Player.Transform.Position;
 		}
 		_respawnables = Components.GetAll<IRespawn>(FindMode.InDescendants).ToList();
+		_newAreas = Components.GetAll<NewArea>(FindMode.InDescendants);
+		
+		foreach (var newArea in _newAreas)
+		{
+			newArea.OnEnter += OnNewAreaEnter;
+		}
+		
 		LevelStart();
+	}
+
+	private void OnNewAreaEnter( NewArea obj )
+	{
+		Log.Info($"Level bounds changed to {obj.MinBounds} - {obj.MaxBounds}");
+		MinBounds = obj.MinBounds;
+		MaxBounds = obj.MaxBounds;
+		CameraFollow.SetBounds( MinBounds, MaxBounds, true );
+		BoundsChangedEvent?.Invoke(MinBounds, MaxBounds);
 	}
 
 	private void LevelStart()
