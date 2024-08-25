@@ -1,11 +1,12 @@
 ﻿using System;
 using Sandbox.enemies;
+using Sandbox.level;
 using Sandbox.player;
 
 namespace Sandbox.objects;
 
 // if player steps on this platform, it will move
-public class MovingPlatform : Component, IMotionProvider
+public class MovingPlatform : Component, IMotionProvider, IRespawn
 {
 	[Property] private FollowPath FollowPath { get; set; }
 	[Property] private Collider TriggerCollider { get; set; }
@@ -16,7 +17,13 @@ public class MovingPlatform : Component, IMotionProvider
 	public MotionType MotionType => MotionType.PLATFORM;
 	
 	private Player _lastPlayer; // this is not very good solution...
-	
+	private Vector3 _startPosition;
+
+	protected override void OnAwake()
+	{
+		_startPosition = Transform.Position;
+	}
+
 	public void CancelMotion()
 	{
 	}
@@ -72,5 +79,19 @@ public class MovingPlatform : Component, IMotionProvider
 				_lastPlayer.MotionCore.IsOnPlatform = false;
 			}
 		}
+	}
+
+	public void Respawn()
+	{
+		Log.Info("Respawn " + this);
+		Transform.Position = _startPosition;
+
+		if ( _lastPlayer != null )
+		{
+			_lastPlayer.MotionCore.RemoveMotionProvider(this);
+			_lastPlayer.MotionCore.GroundedEvent -= OnGrounded;
+		}
+		
+		_lastPlayer = null;
 	}
 }

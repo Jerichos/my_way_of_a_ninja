@@ -1,0 +1,73 @@
+HudPanel {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	justify-content: center;
+	align-items: center;
+	font-weight: bold;
+	border-radius: 20px;
+
+	.title {
+		font-size: 25px;
+		font-family: Poppins;
+		color: #fff;
+	}
+
+	.health-hud {
+		position: absolute;
+		top: 10px;
+		left: 10px;
+		display: flex;
+		gap: 5px;
+	}
+
+	.heart-icon {
+		width: 32px;
+		height: 32px;
+		background-size: cover;
+		image-rendering: pixelated;
+		background-repeat: no-repeat;
+
+		&.filled {
+			background-image: url('/ui/heart_filled.png');
+		}
+
+		&.empty {
+			background-image: url('/ui/heart_empty.png');
+		}
+	}
+
+	.inventory-hud {
+		position: absolute;
+		top: 50px; /* Adjust based on heart icon size */
+		left: 10px;
+		display: flex;
+		gap: 5px;
+	}
+
+	.item-icon {
+		width: 32px;
+		height: 32px;
+		background-size: cover;
+		image-rendering: pixelated;
+		background-repeat: no-repeat;
+
+		&.double-jump {
+			background-image: url('/sprites/objects/jump.png');
+		}
+
+		&.dash {
+			background-image: url('/sprites/objects/dash.png');
+		}
+
+		&.sword {
+			background-image: url('/sprites/objects/sword.png');
+		}
+
+		&.projectile {
+			background-image: url('/sprites/objects/projectile.png');
+		}
+	}
+}

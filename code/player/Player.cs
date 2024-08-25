@@ -20,6 +20,8 @@ public sealed class Player : Component
 	[Property] public int Health { get; set; } = 3; // TODO: UI this
 	[Property] public int MaxHealth { get; set; } = 3;
 	
+	private int _defaultMaxHealth;
+	
 	public Action<int> HealthChangedEvent;
 	public Action<int> MaxHealthChangedEvent;
 	public Action RespawnEvent;
@@ -29,10 +31,40 @@ public sealed class Player : Component
 	public Action DeathEvent;
 	public Action HitEvent;
 
+	protected override void OnAwake()
+	{
+		_defaultMaxHealth = MaxHealth;
+	}
+
 	protected override void OnEnabled()
 	{
 		MotionCore.FacingChangedEvent += OnFacingChanged;
+		Inventory.AddedItemEvent += OnItemsChanged;
 		OnFacingChanged(MotionCore.Facing);
+	}
+
+	private void OnItemsChanged( Inventory inventory )
+	{
+		Log.Info($"checking for upgrades");
+		if ( inventory.HasUpgrade( ItemType.MAX_HEALTH, out int value ) )
+		{
+			Log.Info($"Max health upgrade: {value}");
+			var prevMaxHealth = _defaultMaxHealth;
+			MaxHealth = _defaultMaxHealth + value;
+			int diff = MaxHealth - prevMaxHealth;
+			Log.Info("diff: " + diff);
+			MaxHealthChangedEvent?.Invoke(MaxHealth);
+			if ( diff > 0 )
+			{
+				Health += diff;
+				HealthChangedEvent?.Invoke(Health);
+			}
+		}
+		else
+		{
+			MaxHealth = _defaultMaxHealth;
+			MaxHealthChangedEvent?.Invoke(MaxHealth);
+		}
 	}
 
 	protected override void OnDisabled()
@@ -167,9 +199,18 @@ public sealed class Player : Component
 	{
 		_dead = false;
 		Enabled = true;
-		Health = MaxHealth;
 		Inventory?.ResetPendingItems();
+		Health = MaxHealth;
+		Log.Info("Health: " + Health + "/" + MaxHealth + " default: " + _defaultMaxHealth);
+		HealthChangedEvent?.Invoke(Health);
+		
 		RespawnEvent?.Invoke();
+	}
+
+	public void RestoreHealth()
+	{
+		Health = MaxHealth;
+		HealthChangedEvent?.Invoke(Health);
 	}
 }
 

@@ -166,7 +166,7 @@
               },
               "MaxBounds": "88.30005,24.39996",
               "MinBounds": "0,0",
-              "Offset": "0,0,400",
+              "Offset": "0,50,400",
               "SmoothTime": 0.3
             },
             {
@@ -1436,28 +1436,6 @@
           "Name": "objects",
           "Enabled": true,
           "Children": [
-            {
-              "__guid": "038383d8-c1b0-4ba2-bc4d-9ced2afcaad8",
-              "Flags": 0,
-              "Name": "ShatteredIsland (6)",
-              "Position": "416,64,1",
-              "Scale": "0.64,0.64,1",
-              "Tags": "ground",
-              "Enabled": true,
-              "__Prefab": "prefabs/shatteredisland.prefab",
-              "__PrefabVariables": {}
-            },
-            {
-              "__guid": "bfcf48ba-d599-4d9f-a474-9e431ad46ade",
-              "Flags": 0,
-              "Name": "ShatteredIsland (5)",
-              "Position": "448,0,1",
-              "Scale": "0.64,0.64,1",
-              "Tags": "ground",
-              "Enabled": true,
-              "__Prefab": "prefabs/shatteredisland.prefab",
-              "__PrefabVariables": {}
-            },
             {
               "__guid": "bbbe395d-af18-4eb9-8171-6b87c171233e",
               "Flags": 0,
@@ -2940,6 +2918,166 @@
                   ]
                 }
               ]
+            },
+            {
+              "__guid": "c6e96710-13f4-4af3-ad96-835457da3750",
+              "Flags": 0,
+              "Name": "Flying Platform",
+              "Position": "416,0,0.000001041471",
+              "Scale": "0.32,0.32,1",
+              "Tags": "ground,wall,platform",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "SpriteTools.SpriteComponent",
+                  "__guid": "fa40e4c1-a15a-4e58-9dd9-40c15cd532d6",
+                  "__version": 1,
+                  "BroadcastEvents": {},
+                  "CastShadows": "On",
+                  "CreateAttachPoints": false,
+                  "FlashTint": "1,1,1,0",
+                  "PlaybackSpeed": 1,
+                  "Sprite": "sprites/objects/flying_platform.sprite",
+                  "SpriteFlags": "None",
+                  "StartingAnimationName": "default",
+                  "Tint": "1,1,1,1",
+                  "UpDirection": "YPositive"
+                },
+                {
+                  "__type": "Sandbox.sprite.SpriteSizer",
+                  "__guid": "d8e50c6a-1beb-4356-84a2-fca66c2dea37",
+                  "_height": 32,
+                  "_width": 32,
+                  "PixelPerUnit": 100
+                },
+                {
+                  "__type": "Sandbox.enemies.FollowPath",
+                  "__guid": "55a15736-03d0-4429-ac69-07a54082eab5",
+                  "Direction": 1,
+                  "IgnoreGravity": true,
+                  "Loop": false,
+                  "MotionProvider": {
+                    "_type": "component",
+                    "component_id": "4a567efd-cc86-4922-ba2c-30ac759c4ee4",
+                    "go": "c6e96710-13f4-4af3-ad96-835457da3750",
+                    "component_type": "MotionCore2D"
+                  },
+                  "PathInit": {
+                    "_type": "component",
+                    "component_id": "55895c9d-0348-4a72-958d-baf8f4c21200",
+                    "go": "c6e96710-13f4-4af3-ad96-835457da3750",
+                    "component_type": "PathInit"
+                  },
+                  "Speed": 32
+                },
+                {
+                  "__type": "Sandbox.player.MotionCore2D",
+                  "__guid": "4a567efd-cc86-4922-ba2c-30ac759c4ee4",
+                  "Collider": {
+                    "_type": "component",
+                    "component_id": "ef371d65-77c9-4790-92a9-157d3d8ba762",
+                    "go": "c6e96710-13f4-4af3-ad96-835457da3750",
+                    "component_type": "BoxCollider"
+                  },
+                  "GroundTags": ""
+                },
+                {
+                  "__type": "Sandbox.enemies.PathInit",
+                  "__guid": "55895c9d-0348-4a72-958d-baf8f4c21200",
+                  "FromChildren": true,
+                  "Loop": true,
+                  "Path": [
+                    "1856,766.9741",
+                    "1696,832.0001"
+                  ],
+                  "PathPointsParent": {
+                    "_type": "gameobject",
+                    "go": "9aab055d-b0e6-498c-bbf3-98e15176fe08"
+                  }
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "ef371d65-77c9-4790-92a9-157d3d8ba762",
+                  "Center": "100,99.69982,0",
+                  "IsTrigger": false,
+                  "Scale": "200,1,50",
+                  "Static": false
+                },
+                {
+                  "__type": "Sandbox.objects.MovingPlatform",
+                  "__guid": "2c2877cd-fdd6-4c92-910d-57bebdde5c52",
+                  "FollowPath": {
+                    "_type": "component",
+                    "component_id": "55a15736-03d0-4429-ac69-07a54082eab5",
+                    "go": "c6e96710-13f4-4af3-ad96-835457da3750",
+                    "component_type": "FollowPath"
+                  },
+                  "TriggerCollider": {
+                    "_type": "component",
+                    "component_id": "218d7632-dbd7-4577-9c8c-7a5c60261c7e",
+                    "go": "d32a7ade-4e81-44a6-b001-f86ed91d6394",
+                    "component_type": "BoxCollider"
+                  }
+                },
+                {
+                  "__type": "Sandbox.objects.ActivateOnEnter",
+                  "__guid": "1e0bfee9-8b68-432c-b22a-51d2e45f8554",
+                  "Target": {
+                    "_type": "component",
+                    "component_id": "55a15736-03d0-4429-ac69-07a54082eab5",
+                    "go": "c6e96710-13f4-4af3-ad96-835457da3750",
+                    "component_type": "FollowPath"
+                  },
+                  "TriggerCollider": {
+                    "_type": "component",
+                    "component_id": "218d7632-dbd7-4577-9c8c-7a5c60261c7e",
+                    "go": "d32a7ade-4e81-44a6-b001-f86ed91d6394",
+                    "component_type": "BoxCollider"
+                  }
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "9aab055d-b0e6-498c-bbf3-98e15176fe08",
+                  "Flags": 0,
+                  "Name": "path",
+                  "Position": "0,0,0",
+                  "Enabled": true,
+                  "Children": [
+                    {
+                      "__guid": "2a95822d-4ba5-49ae-9b4c-65bc8cac497d",
+                      "Flags": 0,
+                      "Name": "point",
+                      "Position": "0,0,0",
+                      "Enabled": true
+                    },
+                    {
+                      "__guid": "cf51f937-133f-4001-a3e9-a849715d7ef4",
+                      "Flags": 0,
+                      "Name": "point",
+                      "Position": "0,400,0.000001639252",
+                      "Enabled": true
+                    }
+                  ]
+                },
+                {
+                  "__guid": "d32a7ade-4e81-44a6-b001-f86ed91d6394",
+                  "Flags": 0,
+                  "Name": "Trigger Collider",
+                  "Position": "0,0,0",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.BoxCollider",
+                      "__guid": "218d7632-dbd7-4577-9c8c-7a5c60261c7e",
+                      "Center": "100,108.0997,0",
+                      "IsTrigger": true,
+                      "Scale": "202,46.10001,50",
+                      "Static": false
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -2950,31 +3088,31 @@
           "Enabled": true,
           "Children": [
             {
-              "__guid": "b1be1d9b-e4af-4b33-8353-06dfc2e56de3",
+              "__guid": "819c2129-2717-4367-a187-da14209b3584",
               "Flags": 0,
               "Name": "Upgrade_DOUBLE_JUMP",
-              "Position": "352,192,0.9999642",
-              "Scale": "0.32,0.32,1",
+              "Position": "352,192,5",
+              "Scale": "0.2133333,0.2133333,1",
               "Enabled": true,
               "Components": [
                 {
                   "__type": "SpriteTools.SpriteComponent",
-                  "__guid": "e3a7443e-d889-474b-a292-818c81cc9a0d",
+                  "__guid": "762eff38-51b7-41e9-8d07-287f762506d3",
                   "__version": 1,
                   "BroadcastEvents": {},
                   "CastShadows": "On",
                   "CreateAttachPoints": false,
                   "FlashTint": "1,1,1,0",
                   "PlaybackSpeed": 1,
-                  "Sprite": "sprites/level_mountains/falling_ice.sprite",
+                  "Sprite": "sprites/objects/jump.sprite",
                   "SpriteFlags": "None",
-                  "StartingAnimationName": "animation_01",
+                  "StartingAnimationName": "default",
                   "Tint": "1,1,1,1",
                   "UpDirection": "YPositive"
                 },
                 {
                   "__type": "Sandbox.BoxCollider",
-                  "__guid": "8778111f-dc6d-4e82-9fcb-ea00792c11d3",
+                  "__guid": "0cf8c1e6-efec-4f9f-b081-a9ae9717fe5e",
                   "Center": "50,50,0",
                   "IsTrigger": true,
                   "Scale": "61.70003,75.8002,50",
@@ -2982,18 +3120,18 @@
                 },
                 {
                   "__type": "Sandbox.sprite.SpriteSizer",
-                  "__guid": "88b3a0b8-63a6-4c09-8f27-d1197fab6414",
+                  "__guid": "f8626d92-0030-48a9-b90b-345201d0a2c5",
                   "_height": 32,
                   "_width": 32,
-                  "PixelPerUnit": 100
+                  "PixelPerUnit": 150
                 },
                 {
                   "__type": "Sandbox.objects.Collectible",
-                  "__guid": "da4ed043-2554-4149-93d3-73b0c1ca642d",
+                  "__guid": "bc0dd6b9-c604-448e-bee1-4b418ad7e475",
                   "TriggerCollider": {
                     "_type": "component",
-                    "component_id": "8778111f-dc6d-4e82-9fcb-ea00792c11d3",
-                    "go": "b1be1d9b-e4af-4b33-8353-06dfc2e56de3",
+                    "component_id": "0cf8c1e6-efec-4f9f-b081-a9ae9717fe5e",
+                    "go": "819c2129-2717-4367-a187-da14209b3584",
                     "component_type": "BoxCollider"
                   },
                   "Type": "DOUBLE_JUMP"
@@ -3001,31 +3139,31 @@
               ]
             },
             {
-              "__guid": "83285c1b-ea40-4026-bd58-b7e4bf1b4757",
+              "__guid": "05bde1d9-c7e2-4ce3-ab76-529368f64c29",
               "Flags": 0,
-              "Name": "Upgrade_DASH",
-              "Position": "1120,32,0.9999977",
-              "Scale": "0.32,0.32,1",
+              "Name": "Upgrade_MAX_HEALTH",
+              "Position": "384,192,5",
+              "Scale": "0.2133333,0.2133333,1",
               "Enabled": true,
               "Components": [
                 {
                   "__type": "SpriteTools.SpriteComponent",
-                  "__guid": "6f40094f-c0dd-4b14-bffd-f59b3de2aed9",
+                  "__guid": "72505911-1e0d-4fef-ba1e-fe74eb68d8e8",
                   "__version": 1,
                   "BroadcastEvents": {},
                   "CastShadows": "On",
                   "CreateAttachPoints": false,
                   "FlashTint": "1,1,1,0",
                   "PlaybackSpeed": 1,
-                  "Sprite": "sprites/level_mountains/falling_ice.sprite",
+                  "Sprite": "sprites/objects/heart_up.sprite",
                   "SpriteFlags": "None",
-                  "StartingAnimationName": "animation_01",
+                  "StartingAnimationName": "default",
                   "Tint": "1,1,1,1",
                   "UpDirection": "YPositive"
                 },
                 {
                   "__type": "Sandbox.BoxCollider",
-                  "__guid": "4b7ab586-e6f7-4627-ad05-6eda8639830d",
+                  "__guid": "be4bf2df-cb58-4d9f-8662-cc449496409c",
                   "Center": "50,50,0",
                   "IsTrigger": true,
                   "Scale": "61.70003,75.8002,50",
@@ -3033,18 +3171,120 @@
                 },
                 {
                   "__type": "Sandbox.sprite.SpriteSizer",
-                  "__guid": "5f28a79d-2fc4-4ed9-80ad-1f801cbc92b6",
+                  "__guid": "f22eae7c-42f8-4771-a699-12b47845d419",
                   "_height": 32,
                   "_width": 32,
-                  "PixelPerUnit": 100
+                  "PixelPerUnit": 150
                 },
                 {
                   "__type": "Sandbox.objects.Collectible",
-                  "__guid": "a1bdc713-295f-4167-8fd7-10d970ba7218",
+                  "__guid": "00bcaa46-71aa-4125-8c82-62d31f6c46d3",
                   "TriggerCollider": {
                     "_type": "component",
-                    "component_id": "4b7ab586-e6f7-4627-ad05-6eda8639830d",
-                    "go": "83285c1b-ea40-4026-bd58-b7e4bf1b4757",
+                    "component_id": "be4bf2df-cb58-4d9f-8662-cc449496409c",
+                    "go": "05bde1d9-c7e2-4ce3-ab76-529368f64c29",
+                    "component_type": "BoxCollider"
+                  },
+                  "Type": "MAX_HEALTH"
+                }
+              ]
+            },
+            {
+              "__guid": "78aa7e32-5c1d-492c-83ca-8280d067cf00",
+              "Flags": 0,
+              "Name": "Upgrade_MAX_HEALTH",
+              "Position": "928,32,5.000032",
+              "Scale": "0.2133333,0.2133333,1",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "SpriteTools.SpriteComponent",
+                  "__guid": "bccd27e0-ba8f-447a-b416-b98f98a6c94c",
+                  "__version": 1,
+                  "BroadcastEvents": {},
+                  "CastShadows": "On",
+                  "CreateAttachPoints": false,
+                  "FlashTint": "1,1,1,0",
+                  "PlaybackSpeed": 1,
+                  "Sprite": "sprites/objects/heart_up.sprite",
+                  "SpriteFlags": "None",
+                  "StartingAnimationName": "default",
+                  "Tint": "1,1,1,1",
+                  "UpDirection": "YPositive"
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "5423388e-caf1-475f-836a-77dec9f7814a",
+                  "Center": "50,50,0",
+                  "IsTrigger": true,
+                  "Scale": "61.70003,75.8002,50",
+                  "Static": true
+                },
+                {
+                  "__type": "Sandbox.sprite.SpriteSizer",
+                  "__guid": "76b04e61-8e44-4f50-acab-37c7c3b90db1",
+                  "_height": 32,
+                  "_width": 32,
+                  "PixelPerUnit": 150
+                },
+                {
+                  "__type": "Sandbox.objects.Collectible",
+                  "__guid": "89404dd5-b1d0-4516-8145-e7a3ad2a0278",
+                  "TriggerCollider": {
+                    "_type": "component",
+                    "component_id": "5423388e-caf1-475f-836a-77dec9f7814a",
+                    "go": "78aa7e32-5c1d-492c-83ca-8280d067cf00",
+                    "component_type": "BoxCollider"
+                  },
+                  "Type": "MAX_HEALTH"
+                }
+              ]
+            },
+            {
+              "__guid": "1a7fb594-61be-46b3-8021-5f5d326a8490",
+              "Flags": 0,
+              "Name": "Upgrade_DASH",
+              "Position": "1120,32,0.9999977",
+              "Scale": "0.2133333,0.2133333,1",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "SpriteTools.SpriteComponent",
+                  "__guid": "2b12abb1-e6df-4b1b-a6f2-e7932f68f6c0",
+                  "__version": 1,
+                  "BroadcastEvents": {},
+                  "CastShadows": "On",
+                  "CreateAttachPoints": false,
+                  "FlashTint": "1,1,1,0",
+                  "PlaybackSpeed": 1,
+                  "Sprite": "sprites/objects/dash.sprite",
+                  "SpriteFlags": "None",
+                  "StartingAnimationName": "default",
+                  "Tint": "1,1,1,1",
+                  "UpDirection": "YPositive"
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "de0645df-aa27-481c-92ad-f0ed9c9e87cf",
+                  "Center": "50,50,0",
+                  "IsTrigger": true,
+                  "Scale": "61.70003,75.8002,50",
+                  "Static": true
+                },
+                {
+                  "__type": "Sandbox.sprite.SpriteSizer",
+                  "__guid": "02235f54-acdc-46d9-bec9-27f12f629591",
+                  "_height": 32,
+                  "_width": 32,
+                  "PixelPerUnit": 150
+                },
+                {
+                  "__type": "Sandbox.objects.Collectible",
+                  "__guid": "61713152-0cc7-4a67-b2bc-ee45c1f90a45",
+                  "TriggerCollider": {
+                    "_type": "component",
+                    "component_id": "de0645df-aa27-481c-92ad-f0ed9c9e87cf",
+                    "go": "1a7fb594-61be-46b3-8021-5f5d326a8490",
                     "component_type": "BoxCollider"
                   },
                   "Type": "DASH"
@@ -6990,144 +7230,40 @@
       ]
     },
     {
-      "__guid": "c6e96710-13f4-4af3-ad96-835457da3750",
+      "__guid": "e5cdce37-127d-48ee-8465-8b2e9c13ee1e",
       "Flags": 0,
-      "Name": "Flying Platform",
-      "Position": "1856,766.9741,0.000001041471",
-      "Scale": "0.32,0.32,1",
-      "Tags": "ground,wall,platform",
+      "Name": "UI",
+      "Position": "-0.0000001020514,-74.18726,70.75726",
       "Enabled": true,
       "Components": [
         {
-          "__type": "SpriteTools.SpriteComponent",
-          "__guid": "fa40e4c1-a15a-4e58-9dd9-40c15cd532d6",
-          "__version": 1,
-          "BroadcastEvents": {},
-          "CastShadows": "On",
-          "CreateAttachPoints": false,
-          "FlashTint": "1,1,1,0",
-          "PlaybackSpeed": 1,
-          "Sprite": "sprites/objects/flying_platform.sprite",
-          "SpriteFlags": "None",
-          "StartingAnimationName": "default",
-          "Tint": "1,1,1,1",
-          "UpDirection": "YPositive"
-        },
-        {
-          "__type": "Sandbox.sprite.SpriteSizer",
-          "__guid": "d8e50c6a-1beb-4356-84a2-fca66c2dea37",
-          "_height": 32,
-          "_width": 32,
-          "PixelPerUnit": 100
-        },
-        {
-          "__type": "Sandbox.enemies.FollowPath",
-          "__guid": "55a15736-03d0-4429-ac69-07a54082eab5",
-          "Direction": 1,
-          "IgnoreGravity": true,
-          "Loop": true,
-          "MotionProvider": {
-            "_type": "component",
-            "component_id": "4a567efd-cc86-4922-ba2c-30ac759c4ee4",
-            "go": "c6e96710-13f4-4af3-ad96-835457da3750",
-            "component_type": "MotionCore2D"
-          },
-          "PathInit": {
-            "_type": "component",
-            "component_id": "55895c9d-0348-4a72-958d-baf8f4c21200",
-            "go": "c6e96710-13f4-4af3-ad96-835457da3750",
-            "component_type": "PathInit"
-          },
-          "Speed": 32
-        },
-        {
-          "__type": "Sandbox.player.MotionCore2D",
-          "__guid": "4a567efd-cc86-4922-ba2c-30ac759c4ee4",
-          "Collider": {
-            "_type": "component",
-            "component_id": "ef371d65-77c9-4790-92a9-157d3d8ba762",
-            "go": "c6e96710-13f4-4af3-ad96-835457da3750",
-            "component_type": "BoxCollider"
-          },
-          "GroundTags": ""
-        },
-        {
-          "__type": "Sandbox.enemies.PathInit",
-          "__guid": "55895c9d-0348-4a72-958d-baf8f4c21200",
-          "FromChildren": true,
-          "Loop": true,
-          "Path": [
-            "1856,766.9741",
-            "1696,832.0001"
-          ],
-          "PathPointsParent": {
-            "_type": "gameobject",
-            "go": "9aab055d-b0e6-498c-bbf3-98e15176fe08"
-          }
-        },
-        {
-          "__type": "Sandbox.BoxCollider",
-          "__guid": "ef371d65-77c9-4790-92a9-157d3d8ba762",
-          "Center": "100,99.69982,0",
-          "IsTrigger": false,
-          "Scale": "200,1,50",
-          "Static": false
-        },
-        {
-          "__type": "Sandbox.objects.MovingPlatform",
-          "__guid": "2c2877cd-fdd6-4c92-910d-57bebdde5c52",
-          "FollowPath": {
-            "_type": "component",
-            "component_id": "55a15736-03d0-4429-ac69-07a54082eab5",
-            "go": "c6e96710-13f4-4af3-ad96-835457da3750",
-            "component_type": "FollowPath"
-          },
-          "TriggerCollider": {
-            "_type": "component",
-            "component_id": "218d7632-dbd7-4577-9c8c-7a5c60261c7e",
-            "go": "d32a7ade-4e81-44a6-b001-f86ed91d6394",
-            "component_type": "BoxCollider"
-          }
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "40ba6ba4-a830-4f92-8957-cd72ae25eae3",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1.5,
+          "ZIndex": 100
         }
       ],
       "Children": [
         {
-          "__guid": "9aab055d-b0e6-498c-bbf3-98e15176fe08",
+          "__guid": "7fd8e700-1402-4c7a-827b-c289e01ba09d",
           "Flags": 0,
-          "Name": "path",
-          "Position": "0,0,0",
-          "Enabled": true,
-          "Children": [
-            {
-              "__guid": "2a95822d-4ba5-49ae-9b4c-65bc8cac497d",
-              "Flags": 0,
-              "Name": "point",
-              "Position": "0,0,0",
-              "Enabled": true
-            },
-            {
-              "__guid": "cf51f937-133f-4001-a3e9-a849715d7ef4",
-              "Flags": 0,
-              "Name": "point",
-              "Position": "-500,203.2061,-0.000008599207",
-              "Enabled": true
-            }
-          ]
-        },
-        {
-          "__guid": "d32a7ade-4e81-44a6-b001-f86ed91d6394",
-          "Flags": 0,
-          "Name": "Trigger Collider",
-          "Position": "0,0,0",
+          "Name": "Health",
+          "Position": "-0.00000000000000000000001158053,-36.90044,20.0713",
           "Enabled": true,
           "Components": [
             {
-              "__type": "Sandbox.BoxCollider",
-              "__guid": "218d7632-dbd7-4577-9c8c-7a5c60261c7e",
-              "Center": "100,108.0997,0",
-              "IsTrigger": true,
-              "Scale": "202,46.10001,50",
-              "Static": false
+              "__type": "HudPanel",
+              "__guid": "e38c2b82-7dc4-467a-b565-391b96ce69da",
+              "Player": {
+                "_type": "component",
+                "component_id": "c42a6ce4-e775-4388-a11e-bf9b42420349",
+                "go": "fa92b8fb-a335-4816-b27c-04934c4d960c",
+                "component_type": "Player"
+              },
+              "CurrentHealth": 3,
+              "MaxHealth": 5
             }
           ]
         }

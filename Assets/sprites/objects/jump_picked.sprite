@@ -1,0 +1,19 @@
+{
+  "Animations": [
+    {
+      "FrameRate": 15,
+      "Origin": "0.5,0.5",
+      "Looping": true,
+      "Name": "default",
+      "Frames": [
+        {
+          "FilePath": "sprites/objects/jump_picked.png",
+          "Events": []
+        }
+      ],
+      "Attachments": []
+    }
+  ],
+  "__references": [],
+  "__version": 0
+}

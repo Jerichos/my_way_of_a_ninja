@@ -1,0 +1,99 @@
+@using Sandbox;
+@using Sandbox.player
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root>
+	<div class="health-hud">
+		@for ( int i = 0; i < MaxHealth; i++ )
+		{
+			@if ( i < CurrentHealth )
+			{
+				<div class="heart-icon filled"></div>
+			}
+			else
+			{
+				<div class="heart-icon empty"></div>
+			}
+		}
+	</div>
+	<div class="inventory-hud">
+		@if (Player.Inventory.HasUpgrade(ItemType.DOUBLE_JUMP, out var value1))
+		{
+			<div class="item-icon double-jump"></div>
+		}
+		@if (Player.Inventory.HasUpgrade(ItemType.DASH, out var value2))
+		{
+			<div class="item-icon dash"></div>
+		}
+		@if (Player.Inventory.HasUpgrade(ItemType.SWORD, out var value3))
+		{
+			<div class="item-icon sword"></div>
+		}
+		@if (Player.Inventory.HasUpgrade(ItemType.PROJECTILE, out var value4))
+		{
+			<div class="item-icon projectile"></div>
+		}
+	</div>
+</root>
+
+@code
+{
+	[Property] public Player Player;
+	[Property] public int MaxHealth { get; set; } = 5;
+	[Property] public int CurrentHealth { get; set; } = 5;
+
+	protected override void OnAwake()
+	{
+		if ( Player != null )
+			SetPlayer( Player );
+	}
+
+	public void SetPlayer( Player player )
+	{
+		Unsubscribe( Player );
+		Player = player;
+		Subscribe( Player );
+	}
+
+	private void OnMaxHealthChanged( int maxHealth )
+	{
+		MaxHealth = maxHealth;
+		StateHasChanged();
+	}
+
+	private void OnHealthChanged( int health )
+	{
+		CurrentHealth = health;
+		StateHasChanged();
+	}
+	
+	private void OnInventoryChanged( Inventory item )
+	{
+		// TODO: Update inventory UI
+		StateHasChanged();
+	}
+
+	private void Subscribe( Player player )
+	{
+		if ( player == null )
+			return;
+
+		player.HealthChangedEvent += OnHealthChanged;
+		player.MaxHealthChangedEvent += OnMaxHealthChanged;
+		player.Inventory.AddedItemEvent += OnInventoryChanged;
+		
+		OnHealthChanged( player.Health );
+		OnMaxHealthChanged( player.MaxHealth );
+	}
+
+	private void Unsubscribe( Player player )
+	{
+		if ( player == null )
+			return;
+
+		player.HealthChangedEvent -= OnHealthChanged;
+		player.MaxHealthChangedEvent -= OnMaxHealthChanged;
+		player.Inventory.AddedItemEvent -= OnInventoryChanged;
+	}
+}

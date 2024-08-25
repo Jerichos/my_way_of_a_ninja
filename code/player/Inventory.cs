@@ -8,7 +8,7 @@ public enum ItemType
 {
 	DOUBLE_JUMP,
 	DASH,
-	ATTACK,
+	SWORD,
 	PROJECTILE,
 	MAX_HEALTH,
 	HEALTH,
@@ -35,7 +35,7 @@ public class Inventory : Component
 			case ItemType.DASH:
 				_pendingItems.Dash = true;
 				break;
-			case ItemType.ATTACK:
+			case ItemType.SWORD:
 				_pendingItems.Sword = true;
 				break;
 			case ItemType.PROJECTILE:
@@ -61,7 +61,10 @@ public class Inventory : Component
 	public void ResetPendingItems()
 	{
 		_pendingItems = _items;
+		_pendingItems.MaxHealth = 0;
 		_pendingCollectible.Clear();
+		Log.Info("Pending items reset: health: " + _pendingItems.MaxHealth);
+		AddedItemEvent?.Invoke(this);
 	}
 
 	public void SaveProgress()
@@ -76,7 +79,7 @@ public class Inventory : Component
 		if(_pendingItems.Projectile)
 			_items.Projectile = true;
 		if(_pendingItems.MaxHealth > 0)
-			_items.MaxHealth = _pendingItems.MaxHealth;
+			_items.MaxHealth += _pendingItems.MaxHealth;
 
 		for ( int i = 0; i < _pendingCollectible.Count; i++ )
 			_pendingCollectible[i].Saved = true;
@@ -94,13 +97,15 @@ public class Inventory : Component
 				return _items.DoubleJump || _pendingItems.DoubleJump;
 			case ItemType.DASH:
 				return _items.Dash || _pendingItems.Dash;
-			case ItemType.ATTACK:
+			case ItemType.SWORD:
 				return _items.Sword || _pendingItems.Sword;
 			case ItemType.PROJECTILE:
 				return _items.Projectile || _pendingItems.Projectile;
 			case ItemType.MAX_HEALTH:
-				value = _items.MaxHealth;
-				return _items.MaxHealth > 0;
+				int currentValue = _items.MaxHealth;
+				int pendingValue = _pendingItems.MaxHealth;
+				value = currentValue + pendingValue;
+				return value > 0;
 			case ItemType.HEALTH:
 				Log.Error("Health upgrade is not implemented yet");
 				return false;

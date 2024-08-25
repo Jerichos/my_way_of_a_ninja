@@ -95,6 +95,11 @@ public class FollowPath : Component, IMotionProvider
 		Enabled = true;
 	}
 
+	protected override void OnDisabled()
+	{
+		CancelMotion();
+	}
+
 	protected override void OnValidate()
 	{
 		if ( Components.TryGet( out PathInit pathInit, FindMode.InChildren ) )

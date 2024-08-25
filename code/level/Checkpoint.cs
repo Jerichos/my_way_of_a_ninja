@@ -48,6 +48,7 @@ public class Checkpoint : Component
 			if(_activated)
 				return;
 			
+			player.RestoreHealth();
 			Sound.Play(SoundEvent, Transform.Position);
 			Activated = true;
 		}
