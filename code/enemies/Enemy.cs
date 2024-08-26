@@ -126,7 +126,9 @@ public class Enemy : Component, IHittable
 		if(ContactDamage != null)
 			ContactDamage.Enabled = true;
 		
-		Knockback.Enabled = false;
+		if(Knockback != null)
+			Knockback.Enabled = false;
+		
 		Transform.Position = _initialPosition;
 		Health = MaxHealth;
 		_dead = false;

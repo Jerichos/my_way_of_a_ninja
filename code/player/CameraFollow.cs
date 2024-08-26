@@ -17,7 +17,7 @@ public class CameraFollow : Component
     private Vector2 _targetMinBounds;
     private Vector2 _targetMaxBounds;
     private bool _smoothTransition = false;
-    private const float TRANSITION_SPEED_MULTIPLIER = 2f;
+    private  float _transitionSpeedMultiplier = 2f;
 
     protected override void OnFixedUpdate()
     {
@@ -36,8 +36,8 @@ public class CameraFollow : Component
         // Smoothly transition bounds if smoothTransition is active
         if (_smoothTransition)
         {
-            MinBounds = Vector2.Lerp(MinBounds, _targetMinBounds, Time.Delta * TRANSITION_SPEED_MULTIPLIER / SmoothTime);
-            MaxBounds = Vector2.Lerp(MaxBounds, _targetMaxBounds, Time.Delta * TRANSITION_SPEED_MULTIPLIER / SmoothTime);
+            MinBounds = Vector2.Lerp(MinBounds, _targetMinBounds, Time.Delta * _transitionSpeedMultiplier / SmoothTime);
+            MaxBounds = Vector2.Lerp(MaxBounds, _targetMaxBounds, Time.Delta * _transitionSpeedMultiplier / SmoothTime);
 
             // Stop transition when close enough to the target bounds
             if ((MinBounds - _targetMinBounds).LengthSquared < 0.001f && (MaxBounds - _targetMaxBounds).LengthSquared < 0.001f)
@@ -54,18 +54,20 @@ public class CameraFollow : Component
         Transform.Position = smoothPosition;
     }
 
-    public void SetBounds(Vector2 min, Vector2 max, bool smoothly = false)
+    public void SetBounds(Vector2 min, Vector2 max, bool smoothly = false, float smoothMultiplier = 2f)
     {
         if (smoothly)
         {
             _targetMinBounds = min;
             _targetMaxBounds = max;
             _smoothTransition = true;
+            _transitionSpeedMultiplier = smoothMultiplier;
         }
         else
         {
             MinBounds = min;
             MaxBounds = max;
+            _smoothTransition = false;
         }
     }
 

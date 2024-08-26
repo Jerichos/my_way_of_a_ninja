@@ -1,0 +1,22 @@
+{
+  "Animations": [
+    {
+      "FrameRate": 15,
+      "Origin": "0,1",
+      "Name": "default",
+      "Frames": [
+        {
+          "FilePath": "sprites/level_mountains/ledge.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "64,0",
+            "Size": "32,32"
+          }
+        }
+      ],
+      "Attachments": []
+    }
+  ],
+  "__references": [],
+  "__version": 0
+}

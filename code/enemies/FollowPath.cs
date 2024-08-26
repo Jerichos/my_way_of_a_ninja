@@ -1,9 +1,11 @@
 ﻿using System;
+using Sandbox.level;
+using Sandbox.objects;
 using Sandbox.player;
 
 namespace Sandbox.enemies;
 
-public class FollowPath : Component, IMotionProvider
+public class FollowPath : Component, IMotionProvider, IRespawn
 {
 	[Property] private MotionCore2D MotionProvider { get; set; }
 	[Property] private PathInit PathInit { get; set; }
@@ -19,7 +21,7 @@ public class FollowPath : Component, IMotionProvider
 	public MotionType[] OverrideMotions => IgnoreGravity? new[] { MotionType.GRAVITY }: Array.Empty<MotionType>();
 	public MotionType MotionType => MotionType.MOVE;
 
-	protected override void OnStart()
+	protected override void OnAwake()
 	{
 		if(PathInit != null)
 			SetPath(PathInit);
@@ -27,6 +29,7 @@ public class FollowPath : Component, IMotionProvider
 
 	public void SetPath( Vector2[] path, bool loop , int direction = 1)
 	{
+		Log.Info("path set pathLength: " + path.Length);
 		Direction = direction;
 		_path = new Vector2[path.Length];
 		for ( int i = 0; i < path.Length; i++ )
@@ -51,6 +54,12 @@ public class FollowPath : Component, IMotionProvider
 		if (_path == null || _path.Length == 0)
 			return;
 
+		if ( Transform == null )
+		{
+			Log.Error("Transform is null");
+			return;
+		}
+
 		// Calculate the direction towards the next point
 		Vector2 target = _path[_currentPoint];
 		Vector2 direction = (target - (Vector2)Transform.Position).Normal;
@@ -73,9 +82,18 @@ public class FollowPath : Component, IMotionProvider
 				}
 				else
 				{
+					Log.Info("Not looping damn it!");
+					Enabled = false;
+					Velocity = Vector2.Zero;
+
+					if ( GameObject.Components.TryGet(out ActivateOnEnter activate, FindMode.InSelf) )
+					{
+						Log.Info("ActivateOnEnter enabled");
+						activate.Enabled = false;
+					}
 					// If not looping, clamp to the start or end of the path
-					_currentPoint = Math.Clamp(_currentPoint, 0, _path.Length - 1);
-					Direction = -Direction; // Reverse direction
+					// _currentPoint = Math.Clamp(_currentPoint, 0, _path.Length - 1);
+					// Direction = -Direction; // Reverse direction
 				}
 			}
 		}
@@ -110,8 +128,18 @@ public class FollowPath : Component, IMotionProvider
 			}
 		}
 
-		
 		// dir must be 1 or -1
 		Direction = Math.Clamp(Direction, -1, 1);
+	}
+
+	public void Respawn()
+	{
+		Log.Info("1 respawn FollowPath");
+		
+		Log.Info($"is path null: {_path == null} is Transform null: {Transform == null}");
+		
+		_currentPoint = 0;
+		Transform.Position = _path[_currentPoint];
+		Log.Info("2 respawn FollowPath");
 	}
 }

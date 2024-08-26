@@ -3,6 +3,7 @@
     "__guid": "935db0c2-4ac9-4b28-9eba-65486069f897",
     "Flags": 0,
     "Name": "ball",
+    "Scale": "0.2133333,0.2133333,1",
     "Tags": "enemy",
     "Enabled": true,
     "Components": [
@@ -46,7 +47,7 @@
         "__guid": "efcdd679-f457-4114-896f-c6f8c8fc1925",
         "_height": 32,
         "_width": 32,
-        "PixelPerUnit": 32
+        "PixelPerUnit": 150
       },
       {
         "__type": "Sandbox.BoxCollider",
@@ -99,7 +100,7 @@
           "go": "935db0c2-4ac9-4b28-9eba-65486069f897",
           "component_type": "MotionCore2D"
         },
-        "Speed": 250
+        "Speed": 96
       },
       {
         "__type": "Sandbox.player.Knockback",

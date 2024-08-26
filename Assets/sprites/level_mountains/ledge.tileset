@@ -1,0 +1,29 @@
+{
+  "FilePath": "sprites/level_mountains/ledge.png",
+  "TileSize": "32,32",
+  "TileSeparation": "0,0",
+  "TileScale": 1,
+  "Tiles": [
+    {
+      "Id": "95e6ee8f-1353-4fb1-9b74-45fde195cfe6",
+      "Name": "",
+      "Size": "1,1"
+    },
+    {
+      "Id": "aacdadc6-5b3e-4000-869d-5ce0ee1e3763",
+      "Name": "",
+      "Position": "1,0",
+      "Size": "1,1"
+    },
+    {
+      "Id": "8c10892d-cf20-49f0-bbd6-ff8ef04769f3",
+      "Name": "",
+      "Position": "2,0",
+      "Size": "1,1"
+    }
+  ],
+  "CurrentTextureSize": "96,32",
+  "CurrentTileSize": "32,32",
+  "__references": [],
+  "__version": 0
+}

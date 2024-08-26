@@ -16,6 +16,12 @@ public class Weather : Component, IMotionProvider
 	
 	private float _timer;
 	private int _right = 1;
+	private int _defaultDirection;
+	
+	protected override void OnAwake()
+	{
+		_defaultDirection = Direction;
+	}
 	
 	public void AddToPlayer(MotionCore2D motionCore)
 	{
@@ -59,5 +65,13 @@ public class Weather : Component, IMotionProvider
 	public void OnMotionRestored()
 	{
 		Enabled = true;
+	}
+
+	public void RestartWeather()
+	{
+		SetDirection(_defaultDirection);
+		Velocity = Vector2.Zero;
+		_timer = 0;
+		_right = 1;
 	}
 }

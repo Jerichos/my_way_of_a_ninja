@@ -17,21 +17,21 @@ public class Level : Component
 	[Property] public Vector2 MinBounds { get; set; }
 	[Property] public Vector2 MaxBounds { get; set; }
 
-	public Vector2 LastCheckpointPosition => Checkpoint.LastCheckpoint?.Transform.Position ?? Transform.Position;
-	
 	public Action RestartEvent;
 	public Action<Vector2, Vector2> BoundsChangedEvent;
 	private IEnumerable<Checkpoint> _checkpoints;
 	private IEnumerable<NewArea> _newAreas;
 	private List<IRespawn> _respawnables = new();
-	
+
+	private NewArea _currentArea;
 	// if DontTeleportPlayerToCheckpointOnce is true, player will be spawned at the level's position set in the editor, until first checkpoint is activated
 	private Vector3 _editorPosition;
 
 	protected override void OnAwake()
 	{
 		_checkpoints = Components.GetAll<Checkpoint>( FindMode.InDescendants );
-		
+
+		Checkpoint.CheckpointActivatedEvent += OnCheckpointActivated;
 		Checkpoint.LastCheckpoint = StartCheckpoint;
 		if (Player != null && DontTeleportPlayerToCheckpoint)
 		{
@@ -49,13 +49,55 @@ public class Level : Component
 		LevelStart();
 	}
 
-	private void OnNewAreaEnter( NewArea obj )
+	private void OnCheckpointActivated( Checkpoint checkpoint )
 	{
-		Log.Info($"Level bounds changed to {obj.MinBounds} - {obj.MaxBounds}");
-		MinBounds = obj.MinBounds;
-		MaxBounds = obj.MaxBounds;
-		CameraFollow.SetBounds( MinBounds, MaxBounds, true );
+		if ( checkpoint.QuitePlace )
+		{
+			Log.Info("quite place stop audio");
+			SoundBox.StopSound(); // TODO: lerp volume down
+		}
+	}
+
+	private void OnNewAreaEnter( NewArea area )
+	{
+		Log.Info("New area entered: " + area.GameObject.Name);
+		if(_currentArea == area)
+			return;
+
+		if ( _currentArea != null )
+		{
+			Log.Info("disable current area");
+			_currentArea.Enabled = false;
+		}
+		
+		Log.Info($"Level area bounds changed to {area.MinBounds} - {area.MaxBounds}");
+		MinBounds = area.MinBounds;
+		MaxBounds = area.MaxBounds;
+		CameraFollow.SetBounds( MinBounds, MaxBounds, true, area.TransitionMultiplier);
 		BoundsChangedEvent?.Invoke(MinBounds, MaxBounds);
+		
+		if(area.AreaSound != null && !Player.IsInGracePeriod)
+		{
+			Log.Info("New area sound: " + area.AreaSound.Sounds[0].ResourceName);
+			// SoundBox.Enabled = false;
+			SoundBox.SoundEvent = area.AreaSound;
+			// SoundBox.StartSound();
+			// SoundBox.Enabled = true;
+			StartSoundAsync();
+		}
+		
+		Weather.Enabled = area.WeatherEnabled;
+		Weather.RestartWeather();
+		_currentArea = area;
+		Log.Info("New area set up");
+	}
+	// async method to to StartSound()
+
+	private async void StartSoundAsync()
+	{
+		// wait 1 second
+		await Task.Delay(5000);
+		SoundBox.StartSound();
 	}
 
 	private void LevelStart()
@@ -76,6 +118,12 @@ public class Level : Component
 
 	private void SpawnPlayer()
 	{
+		_currentArea = null;
+		foreach ( var area in _newAreas )
+		{
+			area.Enabled = true;
+		}
+		
 		Player newPlayer;
 		if ( Player == null )
 		{
@@ -92,6 +140,12 @@ public class Level : Component
 		if(Checkpoint.LastCheckpoint != null)
 		{
 			spawnPosition = Checkpoint.LastCheckpoint.Transform.Position;
+			if ( Checkpoint.LastCheckpoint.QuitePlace )
+				SoundBox.StopSound(); // TODO: lerp volume down
+			else
+				SoundBox.StartSound();
+			
+			Log.Info("is last checkpoint quite place: " + Checkpoint.LastCheckpoint.QuitePlace);
 		}
 		else if(DontTeleportPlayerToCheckpoint && Player != null)
 		{
@@ -119,9 +173,9 @@ public class Level : Component
 		{
 			Weather.OnComponentEnabled -= OnWeatherEnabled; // TODO: move to on disable, also other events. Needed for multiple levels
 			Weather.OnComponentEnabled += OnWeatherEnabled;
+			Weather.RestartWeather();
 		}
 		
-		SoundBox.StartSound();
 		DeathAnimation.StartFadeOut();
 		
 		DeathAnimation.AnimationFadeFinishedEvent -= OnDeathFadeFinished;
@@ -184,9 +238,15 @@ public class Level : Component
 		// kill player if out of bounds
 		if(Player != null)
 		{
-			float offset = 128;
-			if(Player.Transform.Position.x < MinBounds.x - offset || Player.Transform.Position.x > MaxBounds.x + offset || Player.Transform.Position.y < MinBounds.y - offset || Player.Transform.Position.y > MaxBounds.y + offset)
+			float offset = 32;
+			float verticalOffset = 64;
+			if ( Player.Transform.Position.x < MinBounds.x - offset ||
+			     Player.Transform.Position.x > MaxBounds.x + offset ||
+			     Player.Transform.Position.y < MinBounds.y - verticalOffset ||
+			     Player.Transform.Position.y > MaxBounds.y + verticalOffset )
+			{
 				Player.Kill();
+			}
 		}
 	}
 	

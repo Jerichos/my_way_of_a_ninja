@@ -25,14 +25,18 @@ public class ShakeAndFall : Component, IRespawn
 	{
 		_startPosition = Transform.Position;
 		Collider.OnTriggerEnter += OnTriggerEnter;
-		// Log.Info("init shatter");
-		Enabled = false;
+		Respawn();
 	}
 
 	public void Respawn()
 	{
-		Enabled = false;
+		Log.Info("ShakeAndFall respawn");
 		Transform.Position = _startPosition;
+		Sprite.Transform.LocalPosition = Vector3.Zero;
+		
+		_falling = false;
+		Collider.Enabled = true;
+		GameObject.Enabled = true;
 	}
 
 	private void OnTriggerEnter(Collider obj)
@@ -40,6 +44,8 @@ public class ShakeAndFall : Component, IRespawn
 		if (obj.GameObject.Components.TryGet(out Player player ))
 		{
 			Sound.Play(ShakeSound, Transform.Position);
+			_timer = 0;
+			_falling = true;
 			Enabled = true;
 		}
 	}
@@ -53,23 +59,16 @@ public class ShakeAndFall : Component, IRespawn
 			{
 				Sprite.Transform.Position = _startPosition + new Vector3((float)(ShakeIntensity * Math.Sin(_timer * 100)), 0, 0);
 			}
+			else if(_timer > DisableIn)
+			{
+				GameObject.Enabled = false;
+			}
 			else
 			{
 				Transform.Position += new Vector3(0, -FallSpeed * Time.Delta, 0);
-				if (DisableColliderOnFall && _timer < TimeToFall + DisableIn)
-				{
-					Collider.Enabled = false;
-				}
+				Collider.Enabled = false;
 			}
 		}
-	}
-
-	protected override void OnEnabled()
-	{
-		Collider.Enabled = true;
-		_falling = true;
-		_timer = 0;
-		Transform.Position = _startPosition;
 	}
 
 	protected override void OnDestroy()

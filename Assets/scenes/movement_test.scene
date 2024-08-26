@@ -159,7 +159,7 @@
                   "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
                 },
                 "-4,7": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
+                  "TileId": "d6b00a7f-deee-4e26-a035-246d1eb9a224"
                 },
                 "6,6": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
@@ -172,6 +172,60 @@
                 },
                 "8,7": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "-3,7": {
+                  "TileId": "e4eb85bd-5fd2-4145-baba-9f806ccd971c"
+                },
+                "-4,8": {
+                  "TileId": "13fe210f-2f7d-4b1f-b6c9-3a02bdf46872"
+                },
+                "-3,8": {
+                  "TileId": "b435858d-e5be-4426-96e4-6ce1766ad65b"
+                },
+                "14,9": {
+                  "TileId": "13fe210f-2f7d-4b1f-b6c9-3a02bdf46872"
+                },
+                "15,9": {
+                  "TileId": "32d4df38-4f6b-450b-84ed-b39c7dfdf243"
+                },
+                "14,8": {
+                  "TileId": "d6b00a7f-deee-4e26-a035-246d1eb9a224"
+                },
+                "15,8": {
+                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
+                },
+                "16,9": {
+                  "TileId": "b435858d-e5be-4426-96e4-6ce1766ad65b"
+                },
+                "16,8": {
+                  "TileId": "e4eb85bd-5fd2-4145-baba-9f806ccd971c"
+                },
+                "14,7": {
+                  "TileId": "2ffe96b3-bbd5-4212-b0b4-6fe92eb4bfc8"
+                },
+                "14,6": {
+                  "TileId": "2ffe96b3-bbd5-4212-b0b4-6fe92eb4bfc8"
+                },
+                "16,7": {
+                  "TileId": "33bb7c1b-aa73-4f6e-9ead-48d57429584a"
+                },
+                "16,6": {
+                  "TileId": "33bb7c1b-aa73-4f6e-9ead-48d57429584a"
+                },
+                "15,7": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "15,6": {
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "14,5": {
+                  "TileId": "5f149925-c5ef-454a-bd3a-c642e04f50ef"
+                },
+                "16,5": {
+                  "TileId": "a258157c-6a91-4c07-ab0d-ad96c88cb92b"
+                },
+                "15,5": {
+                  "TileId": "4f1493db-e1a9-45dc-9e67-bead05c2f342"
                 }
               }
             }
@@ -261,12 +315,6 @@
             "component_id": "037404a7-6215-42be-93f7-087f547233b9",
             "go": "2ecd449a-4a9c-4ca5-9289-c96f478ee9a4",
             "component_type": "SwordAbility"
-          },
-          "Upgrades": {
-            "_type": "component",
-            "component_id": "edce7f54-9c3b-4271-b97b-57ce1a64d86a",
-            "go": "2ecd449a-4a9c-4ca5-9289-c96f478ee9a4",
-            "component_type": "PlayerUpgrades"
           }
         },
         {
@@ -482,12 +530,6 @@
             "go": "2ecd449a-4a9c-4ca5-9289-c96f478ee9a4",
             "component_type": "Player"
           }
-        },
-        {
-          "__type": "Sandbox.player.PlayerUpgrades",
-          "__guid": "edce7f54-9c3b-4271-b97b-57ce1a64d86a",
-          "__enabled": false,
-          "UnlockedUpgrades": {}
         }
       ],
       "Children": [
@@ -806,20 +848,6 @@
           "Strength": 0.68,
           "Threshold": 0.53,
           "ThresholdWidth": 1.2
-        },
-        {
-          "__type": "Sandbox.player.CameraFollow",
-          "__guid": "6177cc93-c123-450d-8605-7f12a8eee70c",
-          "Camera": {
-            "_type": "component",
-            "component_id": "3b1a1ed6-d0c3-4dca-a461-da6a00a2e083",
-            "go": "3a63f035-c728-4e8e-b622-8105171cc9b8",
-            "component_type": "CameraComponent"
-          },
-          "MaxBounds": "5000,5000",
-          "MinBounds": "-5000,-5000",
-          "Offset": "0,0,400",
-          "SmoothTime": 0.3
         }
       ]
     },
@@ -960,6 +988,99 @@
             {
               "x": 0.5,
               "y": 0.5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "088b60cd-ff61-4332-9489-077c56f3943d",
+      "Flags": 0,
+      "Name": "shatteredisland",
+      "Position": "132.2176,228.4746,2.000011",
+      "Scale": "0.64,0.64,1",
+      "Tags": "ground",
+      "Enabled": true,
+      "__Prefab": "prefabs/shatteredisland.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "3d2e8005-de08-4098-9fe0-a5769d4a2550",
+      "Flags": 0,
+      "Name": "Ball Spawn",
+      "Position": "2247.287,813.2006,0.0001186898",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.enemies.BallSpawn",
+          "__guid": "61ac81ee-f4cf-4874-b10c-4571a55cda16",
+          "BallPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/ball.prefab"
+          },
+          "PathInit": {
+            "_type": "component",
+            "component_id": "295612e1-d549-4a02-b6b8-7faedcafc4e3",
+            "go": "a4709bd6-7d4f-4188-a75b-2dd239d666c5",
+            "component_type": "PathInit"
+          },
+          "StartDirection": 1,
+          "Velocity": 100
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "a4709bd6-7d4f-4188-a75b-2dd239d666c5",
+          "Flags": 0,
+          "Name": "Ball Path",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.enemies.PathInit",
+              "__guid": "295612e1-d549-4a02-b6b8-7faedcafc4e3",
+              "FromChildren": true,
+              "Loop": true,
+              "Path": [
+                "2192,832",
+                "2320,832",
+                "2320,768",
+                "2192,768"
+              ],
+              "PathPointsParent": {
+                "_type": "gameobject",
+                "go": "a4709bd6-7d4f-4188-a75b-2dd239d666c5"
+              }
+            }
+          ],
+          "Children": [
+            {
+              "__guid": "1b886dda-2c64-483b-abd9-55ae9381df92",
+              "Flags": 0,
+              "Name": "1",
+              "Position": "-55.28687,18.79938,-0.00000794018",
+              "Enabled": true
+            },
+            {
+              "__guid": "10193c4d-6574-4e55-af88-3ae016d758d4",
+              "Flags": 0,
+              "Name": "2",
+              "Position": "72.71313,18.79938,0.000004451023",
+              "Enabled": true
+            },
+            {
+              "__guid": "d905fb7b-9b31-4271-91d9-0451741dc99c",
+              "Flags": 0,
+              "Name": "3",
+              "Position": "72.71313,-45.20062,0.00000335474",
+              "Enabled": true
+            },
+            {
+              "__guid": "76ffa922-6fad-49a3-9fb3-408a37f20e22",
+              "Flags": 0,
+              "Name": "4",
+              "Position": "-55.28687,-45.20062,-0.000008901094",
+              "Enabled": true
             }
           ]
         }

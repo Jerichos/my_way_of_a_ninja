@@ -1,4 +1,5 @@
-﻿using SpriteTools;
+﻿using System;
+using SpriteTools;
 
 namespace Sandbox.level;
 
@@ -8,6 +9,8 @@ public class Checkpoint : Component
 	[Property] SpriteComponent PendingSpriteComponent { get; set; }
 	[Property] BoxCollider Collider { get; set; }
 	[Property] SoundEvent SoundEvent { get; set; }
+	
+	[Property] public bool QuitePlace { get; set; }
 
 	private bool _activated;
 	public bool Activated
@@ -28,6 +31,9 @@ public class Checkpoint : Component
 				LastCheckpoint = this;
 				SpriteComponent.PlayAnimation("activated");
 				PendingSpriteComponent.PlaybackSpeed = 1;
+				
+				Log.Info("checkpoint event fired");
+				CheckpointActivatedEvent?.Invoke(this);
 			}
 			else
 			{
@@ -38,6 +44,7 @@ public class Checkpoint : Component
 	}
 	
 	public static Checkpoint LastCheckpoint { get; set; }
+	public static Action<Checkpoint> CheckpointActivatedEvent;
 	
 	private void OnTriggerEnter(Collider other)
 	{

@@ -60,7 +60,6 @@ public class DeathAnimation : Component
 		{
 			_fadeT = (_timer / FadeInTime).Clamp(0, 1);
 			
-			
 			ColorAdjustment.Saturation = MathX.Lerp(_startSaturation, FadeInSaturation, _fadeT);
 			ColorAdjustment.HueRotate = MathX.Lerp(_startHue, FadeInHue, _fadeT);
 			ColorAdjustment.Brightness = MathX.Lerp(_startBrightness, FadeInBrightness, _fadeT);

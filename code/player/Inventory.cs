@@ -60,10 +60,9 @@ public class Inventory : Component
 	
 	public void ResetPendingItems()
 	{
-		_pendingItems = _items;
-		_pendingItems.MaxHealth = 0;
+		_pendingItems = new Items();  // Reset all pending items to a new empty instance
 		_pendingCollectible.Clear();
-		Log.Info("Pending items reset: health: " + _pendingItems.MaxHealth);
+		Log.Info("Pending items reset");
 		AddedItemEvent?.Invoke(this);
 	}
 
@@ -78,8 +77,9 @@ public class Inventory : Component
 			_items.Sword = true;
 		if(_pendingItems.Projectile)
 			_items.Projectile = true;
-		if(_pendingItems.MaxHealth > 0)
-			_items.MaxHealth += _pendingItems.MaxHealth;
+		
+		_items.MaxHealth += _pendingItems.MaxHealth;
+		_pendingItems.MaxHealth = 0;
 
 		for ( int i = 0; i < _pendingCollectible.Count; i++ )
 			_pendingCollectible[i].Saved = true;
@@ -102,9 +102,7 @@ public class Inventory : Component
 			case ItemType.PROJECTILE:
 				return _items.Projectile || _pendingItems.Projectile;
 			case ItemType.MAX_HEALTH:
-				int currentValue = _items.MaxHealth;
-				int pendingValue = _pendingItems.MaxHealth;
-				value = currentValue + pendingValue;
+				value = _items.MaxHealth + _pendingItems.MaxHealth;
 				return value > 0;
 			case ItemType.HEALTH:
 				Log.Error("Health upgrade is not implemented yet");

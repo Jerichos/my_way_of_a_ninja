@@ -27,6 +27,10 @@ public sealed class Player : Component
 	public Action RespawnEvent;
 
 	private bool _dead;
+	private float _gracePeriodTime = 0.1f;
+	private float _gracePeriodTimer;
+	
+	public bool IsInGracePeriod => _gracePeriodTimer > 0;
 
 	public Action DeathEvent;
 	public Action HitEvent;
@@ -43,18 +47,18 @@ public sealed class Player : Component
 		OnFacingChanged(MotionCore.Facing);
 	}
 
-	private void OnItemsChanged( Inventory inventory )
+	private void OnItemsChanged(Inventory inventory)
 	{
-		Log.Info($"checking for upgrades");
-		if ( inventory.HasUpgrade( ItemType.MAX_HEALTH, out int value ) )
+		Log.Info("Checking for upgrades");
+		if (inventory.HasUpgrade(ItemType.MAX_HEALTH, out int value))
 		{
 			Log.Info($"Max health upgrade: {value}");
-			var prevMaxHealth = _defaultMaxHealth;
+			int prevMaxHealth = MaxHealth;
 			MaxHealth = _defaultMaxHealth + value;
 			int diff = MaxHealth - prevMaxHealth;
 			Log.Info("diff: " + diff);
 			MaxHealthChangedEvent?.Invoke(MaxHealth);
-			if ( diff > 0 )
+			if (diff > 0)
 			{
 				Health += diff;
 				HealthChangedEvent?.Invoke(Health);
@@ -75,6 +79,11 @@ public sealed class Player : Component
 	protected override void OnUpdate()
 	{
 		HandleInput();
+		
+		if(_gracePeriodTimer > 0)
+		{
+			_gracePeriodTimer -= Time.Delta;
+		}
 	}
 
 	private void HandleInput()
@@ -151,6 +160,9 @@ public sealed class Player : Component
 
 	public void TakeDamage( int contactDamage, Component fromComponent) // position is used for knockback
 	{
+		if(_gracePeriodTimer > 0)
+			return;
+		
 		Health -= 1;
 		HealthChangedEvent?.Invoke(Health);
 		
@@ -176,7 +188,7 @@ public sealed class Player : Component
 
 	public void Kill()
 	{
-		if(_dead)
+		if(_dead || _gracePeriodTimer > 0)
 			return;
 		
 		Health = 0;
@@ -191,19 +203,24 @@ public sealed class Player : Component
 		DashAbility?.CancelMotion();
 		Sound.Play(DeathSound); // huh we don't need sound point?
 		DeathEvent?.Invoke();
-		Enabled = false;
 		MoveAbility?.SetInputX(0);
+		
+		MotionCore.Collider.Enabled = false;
+		Enabled = false;
 	}
 
 	public void OnRespawn()
 	{
+		_gracePeriodTimer = _gracePeriodTime;
+		MotionCore.Collider.Enabled = true;
+		
 		_dead = false;
-		Enabled = true;
 		Inventory?.ResetPendingItems();
 		Health = MaxHealth;
 		Log.Info("Health: " + Health + "/" + MaxHealth + " default: " + _defaultMaxHealth);
-		HealthChangedEvent?.Invoke(Health);
 		
+		Enabled = true;
+		HealthChangedEvent?.Invoke(Health);
 		RespawnEvent?.Invoke();
 	}
 

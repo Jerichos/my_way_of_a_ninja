@@ -3,15 +3,27 @@ using SpriteTools;
 
 namespace Sandbox.enemies;
 
-public class BallSpawn : Component
+public class BallSpawn : Component, IRespawn
 {
 	[Property] private PathInit PathInit { get; set; }
 	[Property] GameObject BallPrefab { get; set; }
 	[Property] private int StartDirection { get; set; } = 1;
+	[Property] private float Velocity { get; set; } = 64;
+
+	private GameObject newBall;
 
 	protected override void OnAwake()
 	{
-		var newBall = BallPrefab.Clone();
+		Spawn();
+	}
+
+	public void Spawn()
+	{
+		if(newBall == null)
+		{
+			newBall = BallPrefab.Clone();
+		}
+		
 		
 		if (Components.TryGet(out Level level, FindMode.InAncestors))
 		{
@@ -48,5 +60,10 @@ public class BallSpawn : Component
 			Gizmo.Draw.Color = Color.Magenta;
 			Gizmo.Draw.LineSphere(Transform.LocalPosition, 50);
 		}
+	}
+
+	public void Respawn()
+	{
+		Spawn();
 	}
 }
