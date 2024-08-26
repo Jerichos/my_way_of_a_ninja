@@ -60,7 +60,7 @@
           },
           "StartCheckpoint": {
             "_type": "component",
-            "component_id": "5b5997bc-ece0-41ff-9bea-13af43d11446",
+            "component_id": "999802e4-cd61-4486-be76-4bc7e93ac866",
             "go": "de903763-862d-4e3f-bade-fac35a3fcaee",
             "component_type": "Checkpoint"
           },
@@ -446,6 +446,7 @@
                   "DestroySound": "audio/sfx/enemy/enemy_death.sound",
                   "Health": 1,
                   "HitSound": "audio/sfx/enemy/enemy_hit.sound",
+                  "IgnoreRespawn": false,
                   "Knockback": {
                     "_type": "component",
                     "component_id": "48a3ebe8-70c6-4fdd-af2b-b030e55e0451",
@@ -589,6 +590,7 @@
                   "DestroySound": "audio/sfx/enemy/enemy_death.sound",
                   "Health": 1,
                   "HitSound": "audio/sfx/enemy/enemy_hit.sound",
+                  "IgnoreRespawn": false,
                   "Knockback": {
                     "_type": "component",
                     "component_id": "9d96cf36-fd5c-4350-95ed-2d7fa4c73952",
@@ -732,6 +734,7 @@
                   "DestroySound": "audio/sfx/enemy/enemy_death.sound",
                   "Health": 1,
                   "HitSound": "audio/sfx/enemy/enemy_hit.sound",
+                  "IgnoreRespawn": false,
                   "Knockback": {
                     "_type": "component",
                     "component_id": "e68e077d-943b-4d96-b4fd-38fd24ddbfdf",
@@ -875,6 +878,7 @@
                   "DestroySound": "audio/sfx/enemy/enemy_death.sound",
                   "Health": 1,
                   "HitSound": "audio/sfx/enemy/enemy_hit.sound",
+                  "IgnoreRespawn": false,
                   "Knockback": {
                     "_type": "component",
                     "component_id": "10306128-ce28-4246-9f47-e709d9aade84",
@@ -1018,6 +1022,7 @@
                   "DestroySound": "audio/sfx/enemy/enemy_death.sound",
                   "Health": 1,
                   "HitSound": "audio/sfx/enemy/enemy_hit.sound",
+                  "IgnoreRespawn": false,
                   "Knockback": {
                     "_type": "component",
                     "component_id": "2e36e73d-b549-49de-af49-ff35372adbca",
@@ -1161,6 +1166,7 @@
                   "DestroySound": "audio/sfx/enemy/enemy_death.sound",
                   "Health": 1,
                   "HitSound": "audio/sfx/enemy/enemy_hit.sound",
+                  "IgnoreRespawn": false,
                   "Knockback": {
                     "_type": "component",
                     "component_id": "132dbd37-f9ad-46b3-9a34-c10d83685be2",
@@ -1304,6 +1310,7 @@
                   "DestroySound": "audio/sfx/enemy/enemy_death.sound",
                   "Health": 1,
                   "HitSound": "audio/sfx/enemy/enemy_hit.sound",
+                  "IgnoreRespawn": false,
                   "Knockback": {
                     "_type": "component",
                     "component_id": "af0048ed-24fa-4bd5-bfbb-79f2de57f44b",
@@ -1447,6 +1454,7 @@
                   "DestroySound": "audio/sfx/enemy/enemy_death.sound",
                   "Health": 3,
                   "HitSound": "audio/sfx/enemy/enemy_hit.sound",
+                  "IgnoreRespawn": false,
                   "Knockback": {
                     "_type": "component",
                     "component_id": "ea5a2e11-fcbb-4d1b-a5b7-4cb5b0974cd2",
@@ -1590,6 +1598,7 @@
                   "DestroySound": "audio/sfx/enemy/enemy_death.sound",
                   "Health": 3,
                   "HitSound": "audio/sfx/enemy/enemy_hit.sound",
+                  "IgnoreRespawn": false,
                   "Knockback": {
                     "_type": "component",
                     "component_id": "eed713cf-add4-4413-acd9-5dc45128dace",
@@ -1733,6 +1742,7 @@
                   "DestroySound": "audio/sfx/enemy/enemy_death.sound",
                   "Health": 3,
                   "HitSound": "audio/sfx/enemy/enemy_hit.sound",
+                  "IgnoreRespawn": false,
                   "Knockback": {
                     "_type": "component",
                     "component_id": "089ee200-7b56-45ac-90fb-249b05e0bc2a",
@@ -1875,6 +1885,7 @@
                     "_type": "gameobject",
                     "prefab": "prefabs/ball.prefab"
                   },
+                  "IgnoreRespawn": false,
                   "PathInit": {
                     "_type": "component",
                     "component_id": "c485433c-f45e-4c62-b57a-774d602c867d",
@@ -2371,6 +2382,7 @@
                   "DisableColliderOnFall": false,
                   "DisableIn": 1,
                   "FallSpeed": 400,
+                  "IgnoreRespawn": false,
                   "ShakeIntensity": 0.5,
                   "Sprite": {
                     "_type": "component",
@@ -2462,6 +2474,7 @@
                   "DisableColliderOnFall": false,
                   "DisableIn": 1,
                   "FallSpeed": 400,
+                  "IgnoreRespawn": false,
                   "ShakeIntensity": 0.5,
                   "Sprite": {
                     "_type": "component",
@@ -2553,6 +2566,7 @@
                   "DisableColliderOnFall": false,
                   "DisableIn": 1,
                   "FallSpeed": 400,
+                  "IgnoreRespawn": false,
                   "ShakeIntensity": 0.5,
                   "Sprite": {
                     "_type": "component",
@@ -2644,6 +2658,7 @@
                   "DisableColliderOnFall": false,
                   "DisableIn": 1,
                   "FallSpeed": 400,
+                  "IgnoreRespawn": false,
                   "ShakeIntensity": 0.5,
                   "Sprite": {
                     "_type": "component",
@@ -2735,6 +2750,7 @@
                   "DisableColliderOnFall": false,
                   "DisableIn": 1,
                   "FallSpeed": 400,
+                  "IgnoreRespawn": false,
                   "ShakeIntensity": 0.5,
                   "Sprite": {
                     "_type": "component",
@@ -2826,6 +2842,7 @@
                   "DisableColliderOnFall": false,
                   "DisableIn": 1,
                   "FallSpeed": 400,
+                  "IgnoreRespawn": false,
                   "ShakeIntensity": 0.5,
                   "Sprite": {
                     "_type": "component",
@@ -2917,6 +2934,7 @@
                   "DisableColliderOnFall": false,
                   "DisableIn": 1,
                   "FallSpeed": 400,
+                  "IgnoreRespawn": false,
                   "ShakeIntensity": 0.5,
                   "Sprite": {
                     "_type": "component",
@@ -3008,6 +3026,7 @@
                   "DisableColliderOnFall": false,
                   "DisableIn": 1,
                   "FallSpeed": 400,
+                  "IgnoreRespawn": false,
                   "ShakeIntensity": 0.5,
                   "Sprite": {
                     "_type": "component",
@@ -3099,6 +3118,7 @@
                   "DisableColliderOnFall": false,
                   "DisableIn": 1,
                   "FallSpeed": 400,
+                  "IgnoreRespawn": false,
                   "ShakeIntensity": 0.5,
                   "Sprite": {
                     "_type": "component",
@@ -3190,6 +3210,7 @@
                   "DisableColliderOnFall": false,
                   "DisableIn": 1,
                   "FallSpeed": 400,
+                  "IgnoreRespawn": false,
                   "ShakeIntensity": 0.5,
                   "Sprite": {
                     "_type": "component",
@@ -3281,6 +3302,7 @@
                   "DisableColliderOnFall": false,
                   "DisableIn": 1,
                   "FallSpeed": 400,
+                  "IgnoreRespawn": false,
                   "ShakeIntensity": 0.5,
                   "Sprite": {
                     "_type": "component",
@@ -3372,6 +3394,7 @@
                   "DisableColliderOnFall": false,
                   "DisableIn": 1,
                   "FallSpeed": 400,
+                  "IgnoreRespawn": false,
                   "ShakeIntensity": 0.5,
                   "Sprite": {
                     "_type": "component",
@@ -3463,6 +3486,7 @@
                   "DisableColliderOnFall": false,
                   "DisableIn": 1,
                   "FallSpeed": 400,
+                  "IgnoreRespawn": false,
                   "ShakeIntensity": 0.5,
                   "Sprite": {
                     "_type": "component",
@@ -3554,6 +3578,7 @@
                   "DisableColliderOnFall": false,
                   "DisableIn": 1,
                   "FallSpeed": 400,
+                  "IgnoreRespawn": false,
                   "ShakeIntensity": 0.5,
                   "Sprite": {
                     "_type": "component",
@@ -3634,7 +3659,9 @@
                   "__type": "Sandbox.enemies.FollowPath",
                   "__guid": "55a15736-03d0-4429-ac69-07a54082eab5",
                   "Direction": 1,
+                  "DontStartFromFirstPoint": false,
                   "IgnoreGravity": true,
+                  "IgnoreRespawn": false,
                   "Loop": false,
                   "MotionProvider": {
                     "_type": "component",
@@ -3692,6 +3719,7 @@
                     "go": "c6e96710-13f4-4af3-ad96-835457da3750",
                     "component_type": "FollowPath"
                   },
+                  "IgnoreRespawn": false,
                   "TriggerCollider": {
                     "_type": "component",
                     "component_id": "218d7632-dbd7-4577-9c8c-7a5c60261c7e",
@@ -3702,6 +3730,7 @@
                 {
                   "__type": "Sandbox.objects.ActivateOnEnter",
                   "__guid": "1e0bfee9-8b68-432c-b22a-51d2e45f8554",
+                  "IgnoreRespawn": false,
                   "Target": {
                     "_type": "component",
                     "component_id": "55a15736-03d0-4429-ac69-07a54082eab5",
@@ -3794,7 +3823,9 @@
                   "__type": "Sandbox.enemies.FollowPath",
                   "__guid": "130992c3-e922-473f-90a3-55d126adaf6f",
                   "Direction": 1,
+                  "DontStartFromFirstPoint": false,
                   "IgnoreGravity": true,
+                  "IgnoreRespawn": false,
                   "Loop": false,
                   "MotionProvider": {
                     "_type": "component",
@@ -3852,6 +3883,7 @@
                     "go": "3a5822db-1ead-42be-a7c1-df59dbbd174b",
                     "component_type": "FollowPath"
                   },
+                  "IgnoreRespawn": false,
                   "TriggerCollider": {
                     "_type": "component",
                     "component_id": "32e2e659-ac8a-44be-96e1-228521f65945",
@@ -3938,7 +3970,9 @@
                   "__type": "Sandbox.enemies.FollowPath",
                   "__guid": "f0fa4f60-c753-4d35-8259-c141fcf791dc",
                   "Direction": 1,
+                  "DontStartFromFirstPoint": false,
                   "IgnoreGravity": true,
+                  "IgnoreRespawn": false,
                   "Loop": false,
                   "MotionProvider": {
                     "_type": "component",
@@ -3996,6 +4030,7 @@
                     "go": "949db440-dfb6-43bb-a2e8-65a9f35daab3",
                     "component_type": "FollowPath"
                   },
+                  "IgnoreRespawn": false,
                   "TriggerCollider": {
                     "_type": "component",
                     "component_id": "49ed8cac-3bd5-4c13-82ff-37154c92e5a9",
@@ -4006,6 +4041,7 @@
                 {
                   "__type": "Sandbox.objects.ActivateOnEnter",
                   "__guid": "7d94500a-22d9-457b-bfa9-2995515912ce",
+                  "IgnoreRespawn": false,
                   "Target": {
                     "_type": "component",
                     "component_id": "f0fa4f60-c753-4d35-8259-c141fcf791dc",
@@ -4098,7 +4134,9 @@
                   "__type": "Sandbox.enemies.FollowPath",
                   "__guid": "34aa5317-0205-448c-a92f-0bfe393e79b9",
                   "Direction": 1,
+                  "DontStartFromFirstPoint": false,
                   "IgnoreGravity": true,
+                  "IgnoreRespawn": false,
                   "Loop": false,
                   "MotionProvider": {
                     "_type": "component",
@@ -4156,6 +4194,7 @@
                     "go": "7bcb9c48-2172-4ec9-b2bc-6cdccf037177",
                     "component_type": "FollowPath"
                   },
+                  "IgnoreRespawn": false,
                   "TriggerCollider": {
                     "_type": "component",
                     "component_id": "e79ad44e-0383-4621-89af-c020eec430b1",
@@ -4166,6 +4205,7 @@
                 {
                   "__type": "Sandbox.objects.ActivateOnEnter",
                   "__guid": "0f405214-6abc-4feb-8083-c5298e23d151",
+                  "IgnoreRespawn": false,
                   "Target": {
                     "_type": "component",
                     "component_id": "34aa5317-0205-448c-a92f-0bfe393e79b9",
@@ -4200,6 +4240,20 @@
                       "Flags": 0,
                       "Name": "point",
                       "Position": "0,375,-0.00001712981",
+                      "Enabled": true
+                    },
+                    {
+                      "__guid": "544d15ac-3dc5-4abc-ba82-6c227e8d9630",
+                      "Flags": 0,
+                      "Name": "point (1)",
+                      "Position": "0,674.9999,-0.00001712981",
+                      "Enabled": true
+                    },
+                    {
+                      "__guid": "5b51b550-cc7c-474b-8358-0c081dd30121",
+                      "Flags": 0,
+                      "Name": "point (2)",
+                      "Position": "-1275,674.9999,-0.00001712981",
                       "Enabled": true
                     }
                   ]
@@ -4258,7 +4312,9 @@
                   "__type": "Sandbox.enemies.FollowPath",
                   "__guid": "c57792aa-fb04-478d-b998-d5a4588db711",
                   "Direction": 1,
+                  "DontStartFromFirstPoint": false,
                   "IgnoreGravity": true,
+                  "IgnoreRespawn": false,
                   "Loop": false,
                   "MotionProvider": {
                     "_type": "component",
@@ -4316,6 +4372,7 @@
                     "go": "75dd2304-7715-4c28-8ad5-8b4f3ce38d77",
                     "component_type": "FollowPath"
                   },
+                  "IgnoreRespawn": false,
                   "TriggerCollider": {
                     "_type": "component",
                     "component_id": "b65d5265-2edc-482f-9c46-702e45b468db",
@@ -4433,6 +4490,7 @@
                   "DisableColliderOnFall": false,
                   "DisableIn": 1,
                   "FallSpeed": 300,
+                  "IgnoreRespawn": false,
                   "ShakeIntensity": 0.5,
                   "Sprite": {
                     "_type": "component",
@@ -4530,6 +4588,7 @@
                 {
                   "__type": "Sandbox.objects.Collectible",
                   "__guid": "bc0dd6b9-c604-448e-bee1-4b418ad7e475",
+                  "IgnoreRespawn": false,
                   "TriggerCollider": {
                     "_type": "component",
                     "component_id": "0cf8c1e6-efec-4f9f-b081-a9ae9717fe5e",
@@ -4581,6 +4640,7 @@
                 {
                   "__type": "Sandbox.objects.Collectible",
                   "__guid": "820472f2-4788-4885-9d14-06e81e7938ab",
+                  "IgnoreRespawn": false,
                   "TriggerCollider": {
                     "_type": "component",
                     "component_id": "bd85c7a1-a2ac-420f-8f43-1ee2cbb63a35",
@@ -4632,6 +4692,7 @@
                 {
                   "__type": "Sandbox.objects.Collectible",
                   "__guid": "89404dd5-b1d0-4516-8145-e7a3ad2a0278",
+                  "IgnoreRespawn": false,
                   "TriggerCollider": {
                     "_type": "component",
                     "component_id": "5423388e-caf1-475f-836a-77dec9f7814a",
@@ -4683,6 +4744,7 @@
                 {
                   "__type": "Sandbox.objects.Collectible",
                   "__guid": "f31848c2-d08e-4c4b-8649-0c65b3c32f77",
+                  "IgnoreRespawn": false,
                   "TriggerCollider": {
                     "_type": "component",
                     "component_id": "083c21cb-5b41-467f-9c39-7936b3d4d0fc",
@@ -4734,6 +4796,7 @@
                 {
                   "__type": "Sandbox.objects.Collectible",
                   "__guid": "b159286a-5516-4513-8d61-964d2edf0df2",
+                  "IgnoreRespawn": false,
                   "TriggerCollider": {
                     "_type": "component",
                     "component_id": "71099828-cbfa-4a41-8484-4f0591f9dee9",
@@ -4785,6 +4848,7 @@
                 {
                   "__type": "Sandbox.objects.Collectible",
                   "__guid": "61713152-0cc7-4a67-b2bc-ee45c1f90a45",
+                  "IgnoreRespawn": false,
                   "TriggerCollider": {
                     "_type": "component",
                     "component_id": "de0645df-aa27-481c-92ad-f0ed9c9e87cf",
@@ -4836,6 +4900,7 @@
                 {
                   "__type": "Sandbox.objects.Collectible",
                   "__guid": "b9a6f442-1993-4ff4-bcc4-612f0e1fe358",
+                  "IgnoreRespawn": false,
                   "TriggerCollider": {
                     "_type": "component",
                     "component_id": "7167fa16-3e3b-4a04-b91f-c6de566f49d5",
@@ -5011,6 +5076,7 @@
                   "__type": "Sandbox.level.NewArea",
                   "__guid": "fe993944-f10f-4c85-9801-3278305d64f6",
                   "AreaSound": "audio/music/boss-fight.sound",
+                  "BossArea": true,
                   "BoundsCollider": {
                     "_type": "component",
                     "component_id": "03ff2783-9557-4f08-89c5-b0972136d532",
@@ -5042,6 +5108,7 @@
                   "__type": "Sandbox.level.NewArea",
                   "__guid": "fd150251-8370-4f71-8b46-ddefb244dac9",
                   "AreaSound": "audio/music/level_music_00.sound",
+                  "BossArea": false,
                   "BoundsCollider": {
                     "_type": "component",
                     "component_id": "898adb48-d22a-44f6-bed6-320d34f5f145",
@@ -5060,7 +5127,632 @@
           "__guid": "e9a98ae0-e7bc-4c38-91c9-71e4d5fab7ec",
           "Flags": 0,
           "Name": "BOSS FIGHT",
-          "Enabled": true
+          "Position": "1312,1344,0.00007815157",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.enemies.BigBossBird",
+              "__guid": "105da95d-975a-4376-b901-f56d7157ce03",
+              "BirdEnemy": {
+                "_type": "component",
+                "component_id": "47d7f8b7-ff97-4020-a758-65e444180815",
+                "go": "b225f5c2-b08a-47b9-9e36-241534ec00d9",
+                "component_type": "Enemy"
+              },
+              "EagleSound": "audio/sfx/enemy/eagle.sound",
+              "LeftBotPosition": {
+                "_type": "gameobject",
+                "go": "f61e5ef9-7fef-42bf-85fd-0c6c55acbb20"
+              },
+              "LeftMidPosition": {
+                "_type": "gameobject",
+                "go": "74ed363f-ed8e-4965-917f-9012c903000f"
+              },
+              "LeftTopPosition": {
+                "_type": "gameobject",
+                "go": "0595dd9d-b94d-48a3-b449-3b337422de21"
+              },
+              "MoveToPosition": {
+                "_type": "component",
+                "component_id": "72102ba3-2a82-4d04-89cc-3d4da1b2f9db",
+                "go": "b225f5c2-b08a-47b9-9e36-241534ec00d9",
+                "component_type": "MoveToPosition"
+              },
+              "RightBotPosition": {
+                "_type": "gameobject",
+                "go": "271fea5d-23ce-4e0e-b75a-03646a4b5e3a"
+              },
+              "RightMidPosition": {
+                "_type": "gameobject",
+                "go": "0504176d-3901-4ee4-ba53-66ec4c1ed8a1"
+              },
+              "RightTopPosition": {
+                "_type": "gameobject",
+                "go": "001d3093-deb6-496d-94df-0c650186bc42"
+              },
+              "Speed": 360,
+              "Sprite": {
+                "_type": "component",
+                "component_id": "bc9080e4-5c8c-4c56-9a4b-098bf106379a",
+                "go": "b225f5c2-b08a-47b9-9e36-241534ec00d9",
+                "component_type": "SpriteComponent"
+              }
+            }
+          ],
+          "Children": [
+            {
+              "__guid": "b225f5c2-b08a-47b9-9e36-241534ec00d9",
+              "Flags": 0,
+              "Name": "Bird",
+              "Position": "-672,48,-0.0000784596",
+              "Tags": "enemy",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "SpriteTools.SpriteComponent",
+                  "__guid": "bc9080e4-5c8c-4c56-9a4b-098bf106379a",
+                  "__version": 1,
+                  "BroadcastEvents": {},
+                  "CastShadows": "On",
+                  "CreateAttachPoints": false,
+                  "FlashTint": "1,1,1,0",
+                  "PlaybackSpeed": 1,
+                  "Sprite": "sprites/enemies/boss_bird_big_boss_bird.sprite",
+                  "SpriteFlags": "None",
+                  "StartingAnimationName": "idle",
+                  "Tint": "1,1,1,1",
+                  "UpDirection": "YPositive"
+                },
+                {
+                  "__type": "Sandbox.enemies.ContactDamage",
+                  "__guid": "cdc6bc14-df7f-4f65-919e-ef32f86eddce",
+                  "ContactDamageCollider": {
+                    "_type": "component",
+                    "component_id": "71821fa6-e296-4e7a-b25c-48788fdbdf98",
+                    "go": "3af136e5-b7cd-457b-862c-4b9e24590f0f",
+                    "component_type": "BoxCollider"
+                  },
+                  "Damage": 1
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "320b0765-3a6b-48e4-a198-617b9ae4913d",
+                  "Center": "0,0,0",
+                  "IsTrigger": false,
+                  "Scale": "90,69.30022,50",
+                  "Static": false
+                },
+                {
+                  "__type": "Sandbox.enemies.Enemy",
+                  "__guid": "47d7f8b7-ff97-4020-a758-65e444180815",
+                  "ContactDamage": {
+                    "_type": "component",
+                    "component_id": "cdc6bc14-df7f-4f65-919e-ef32f86eddce",
+                    "go": "b225f5c2-b08a-47b9-9e36-241534ec00d9",
+                    "component_type": "ContactDamage"
+                  },
+                  "DestroySound": "audio/sfx/player/level_defeat.sound",
+                  "Health": 100,
+                  "HitSound": "audio/sfx/enemy/enemy_hit.sound",
+                  "IgnoreRespawn": true,
+                  "MaxHealth": 100,
+                  "Sprite": {
+                    "_type": "component",
+                    "component_id": "bc9080e4-5c8c-4c56-9a4b-098bf106379a",
+                    "go": "b225f5c2-b08a-47b9-9e36-241534ec00d9",
+                    "component_type": "SpriteComponent"
+                  }
+                },
+                {
+                  "__type": "Sandbox.enemies.MoveToPosition",
+                  "__guid": "72102ba3-2a82-4d04-89cc-3d4da1b2f9db",
+                  "Speed": 360
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "3af136e5-b7cd-457b-862c-4b9e24590f0f",
+                  "Flags": 0,
+                  "Name": "Contact Trigger",
+                  "Position": "0,0,0",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.BoxCollider",
+                      "__guid": "71821fa6-e296-4e7a-b25c-48788fdbdf98",
+                      "Center": "0,0,0",
+                      "IsTrigger": true,
+                      "Scale": "60,60,50",
+                      "Static": false
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "__guid": "0595dd9d-b94d-48a3-b449-3b337422de21",
+              "Flags": 0,
+              "Name": "Left Top",
+              "Position": "-304,320,0.00001760286",
+              "Enabled": true
+            },
+            {
+              "__guid": "74ed363f-ed8e-4965-917f-9012c903000f",
+              "Flags": 0,
+              "Name": "Left Mid",
+              "Position": "-304,200,0.00001760286",
+              "Enabled": true
+            },
+            {
+              "__guid": "f61e5ef9-7fef-42bf-85fd-0c6c55acbb20",
+              "Flags": 0,
+              "Name": "Left Bot",
+              "Position": "-304,40,0.00001760286",
+              "Enabled": true
+            },
+            {
+              "__guid": "001d3093-deb6-496d-94df-0c650186bc42",
+              "Flags": 0,
+              "Name": "Right Top",
+              "Position": "288,320,0.00001760286",
+              "Enabled": true
+            },
+            {
+              "__guid": "0504176d-3901-4ee4-ba53-66ec4c1ed8a1",
+              "Flags": 0,
+              "Name": "Right Mid",
+              "Position": "288,192,0.00001760286",
+              "Enabled": true
+            },
+            {
+              "__guid": "271fea5d-23ce-4e0e-b75a-03646a4b5e3a",
+              "Flags": 0,
+              "Name": "Right Bot",
+              "Position": "288,64,0.00001760286",
+              "Enabled": true
+            },
+            {
+              "__guid": "979f15ac-e999-44be-9cac-fda3294e85d5",
+              "Flags": 0,
+              "Name": "Flying Platform (1)",
+              "Position": "704,48,0.00003684457",
+              "Scale": "0.4266667,0.4266667,1",
+              "Tags": "ground,wall,platform",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "SpriteTools.SpriteComponent",
+                  "__guid": "c1182d2d-69fd-4f2c-80b8-b244304aaf97",
+                  "__version": 1,
+                  "BroadcastEvents": {},
+                  "CastShadows": "On",
+                  "CreateAttachPoints": false,
+                  "FlashTint": "1,1,1,0",
+                  "PlaybackSpeed": 1,
+                  "Sprite": "sprites/objects/flying_platform.sprite",
+                  "SpriteFlags": "None",
+                  "StartingAnimationName": "default",
+                  "Tint": "1,1,1,1",
+                  "UpDirection": "YPositive"
+                },
+                {
+                  "__type": "Sandbox.sprite.SpriteSizer",
+                  "__guid": "4e77d208-4cd8-4f00-b8ab-538e4364e66e",
+                  "_height": 32,
+                  "_width": 32,
+                  "PixelPerUnit": 75
+                },
+                {
+                  "__type": "Sandbox.enemies.FollowPath",
+                  "__guid": "ff5339f3-10d0-4bd1-b060-bd96b1a40fcc",
+                  "Direction": 1,
+                  "DontStartFromFirstPoint": true,
+                  "IgnoreGravity": true,
+                  "IgnoreRespawn": true,
+                  "Loop": true,
+                  "MotionProvider": {
+                    "_type": "component",
+                    "component_id": "cfd405c6-8d61-418f-93e6-d78a6be64f75",
+                    "go": "979f15ac-e999-44be-9cac-fda3294e85d5",
+                    "component_type": "MotionCore2D"
+                  },
+                  "PathInit": {
+                    "_type": "component",
+                    "component_id": "f7886bdc-da59-4d9b-8f07-b84217aae1db",
+                    "go": "979f15ac-e999-44be-9cac-fda3294e85d5",
+                    "component_type": "PathInit"
+                  },
+                  "Speed": 128
+                },
+                {
+                  "__type": "Sandbox.player.MotionCore2D",
+                  "__guid": "cfd405c6-8d61-418f-93e6-d78a6be64f75",
+                  "Collider": {
+                    "_type": "component",
+                    "component_id": "013bcc5b-f6e8-44be-8d17-604da7ce6fe4",
+                    "go": "979f15ac-e999-44be-9cac-fda3294e85d5",
+                    "component_type": "BoxCollider"
+                  },
+                  "GroundTags": ""
+                },
+                {
+                  "__type": "Sandbox.enemies.PathInit",
+                  "__guid": "f7886bdc-da59-4d9b-8f07-b84217aae1db",
+                  "FromChildren": true,
+                  "Loop": true,
+                  "Path": [
+                    "1568,1392",
+                    "1056,1392"
+                  ],
+                  "PathPointsParent": {
+                    "_type": "gameobject",
+                    "go": "fa2c0c18-05bc-46fd-b76d-2057bf635546"
+                  }
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "013bcc5b-f6e8-44be-8d17-604da7ce6fe4",
+                  "Center": "0,0,0",
+                  "IsTrigger": false,
+                  "Scale": "150,1,50",
+                  "Static": false
+                },
+                {
+                  "__type": "Sandbox.objects.MovingPlatform",
+                  "__guid": "ceac08ee-52e8-4a85-a33c-b0f0828b46e7",
+                  "FollowPath": {
+                    "_type": "component",
+                    "component_id": "ff5339f3-10d0-4bd1-b060-bd96b1a40fcc",
+                    "go": "979f15ac-e999-44be-9cac-fda3294e85d5",
+                    "component_type": "FollowPath"
+                  },
+                  "IgnoreRespawn": true,
+                  "TriggerCollider": {
+                    "_type": "component",
+                    "component_id": "59b7d2b2-2fee-493f-999b-a684afa9d164",
+                    "go": "3ee071a8-b4e0-4bba-8545-a94534edaf25",
+                    "component_type": "BoxCollider"
+                  }
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "fa2c0c18-05bc-46fd-b76d-2057bf635546",
+                  "Flags": 0,
+                  "Name": "path",
+                  "Position": "0,0,0",
+                  "Enabled": true,
+                  "Children": [
+                    {
+                      "__guid": "55d1ade2-97e5-4823-84a9-a79301f22972",
+                      "Flags": 0,
+                      "Name": "point (1)",
+                      "Position": "-1087.5,0,-0.00000000002910383",
+                      "Enabled": true
+                    },
+                    {
+                      "__guid": "d5669865-7888-4420-b31a-00078195ac32",
+                      "Flags": 0,
+                      "Name": "point",
+                      "Position": "-2212.5,0,0",
+                      "Enabled": true
+                    }
+                  ]
+                },
+                {
+                  "__guid": "3ee071a8-b4e0-4bba-8545-a94534edaf25",
+                  "Flags": 0,
+                  "Name": "Trigger Collider",
+                  "Position": "0,0,0",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.BoxCollider",
+                      "__guid": "59b7d2b2-2fee-493f-999b-a684afa9d164",
+                      "Center": "0,0,0",
+                      "IsTrigger": true,
+                      "Scale": "150,25,50",
+                      "Static": false
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "__guid": "6d960008-dbe0-4064-8042-7e43d6c2858c",
+              "Flags": 0,
+              "Name": "Flying Platform (1)",
+              "Position": "1168,160,0.0000451189",
+              "Scale": "0.4266667,0.4266667,1",
+              "Tags": "ground,wall,platform",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "SpriteTools.SpriteComponent",
+                  "__guid": "2fc0407f-12aa-4e18-b43a-ac8b70cfe457",
+                  "__version": 1,
+                  "BroadcastEvents": {},
+                  "CastShadows": "On",
+                  "CreateAttachPoints": false,
+                  "FlashTint": "1,1,1,0",
+                  "PlaybackSpeed": 1,
+                  "Sprite": "sprites/objects/flying_platform.sprite",
+                  "SpriteFlags": "None",
+                  "StartingAnimationName": "default",
+                  "Tint": "1,1,1,1",
+                  "UpDirection": "YPositive"
+                },
+                {
+                  "__type": "Sandbox.sprite.SpriteSizer",
+                  "__guid": "2344127d-c7f5-4a0b-a75a-8d75c6777e17",
+                  "_height": 32,
+                  "_width": 32,
+                  "PixelPerUnit": 75
+                },
+                {
+                  "__type": "Sandbox.enemies.FollowPath",
+                  "__guid": "a50afd72-0eaa-4960-bfef-ba37a7f97a91",
+                  "Direction": 1,
+                  "DontStartFromFirstPoint": true,
+                  "IgnoreGravity": true,
+                  "IgnoreRespawn": true,
+                  "Loop": true,
+                  "MotionProvider": {
+                    "_type": "component",
+                    "component_id": "01b78943-0fee-423b-b5dd-dbd1285ef411",
+                    "go": "6d960008-dbe0-4064-8042-7e43d6c2858c",
+                    "component_type": "MotionCore2D"
+                  },
+                  "PathInit": {
+                    "_type": "component",
+                    "component_id": "27d103f1-8548-4c60-ac1f-ee4bb6c8d736",
+                    "go": "6d960008-dbe0-4064-8042-7e43d6c2858c",
+                    "component_type": "PathInit"
+                  },
+                  "Speed": 96
+                },
+                {
+                  "__type": "Sandbox.player.MotionCore2D",
+                  "__guid": "01b78943-0fee-423b-b5dd-dbd1285ef411",
+                  "Collider": {
+                    "_type": "component",
+                    "component_id": "2cbe3c9f-ebe3-434e-b2f2-9b91988d556d",
+                    "go": "6d960008-dbe0-4064-8042-7e43d6c2858c",
+                    "component_type": "BoxCollider"
+                  },
+                  "GroundTags": ""
+                },
+                {
+                  "__type": "Sandbox.enemies.PathInit",
+                  "__guid": "27d103f1-8548-4c60-ac1f-ee4bb6c8d736",
+                  "FromChildren": true,
+                  "Loop": true,
+                  "Path": [
+                    "256,48",
+                    "-256.0001,48"
+                  ],
+                  "PathPointsParent": {
+                    "_type": "gameobject",
+                    "go": "0dee1c36-6a1d-482d-8f76-2ab761a190c7"
+                  }
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "2cbe3c9f-ebe3-434e-b2f2-9b91988d556d",
+                  "Center": "0,0,0",
+                  "IsTrigger": false,
+                  "Scale": "150,1,50",
+                  "Static": false
+                },
+                {
+                  "__type": "Sandbox.objects.MovingPlatform",
+                  "__guid": "36a83312-a202-4847-b199-7790748cb0ce",
+                  "FollowPath": {
+                    "_type": "component",
+                    "component_id": "a50afd72-0eaa-4960-bfef-ba37a7f97a91",
+                    "go": "6d960008-dbe0-4064-8042-7e43d6c2858c",
+                    "component_type": "FollowPath"
+                  },
+                  "IgnoreRespawn": true,
+                  "TriggerCollider": {
+                    "_type": "component",
+                    "component_id": "f84dc617-dbff-449e-93b4-95ce7c941250",
+                    "go": "a8e67053-763f-4bcd-937e-10134e8bfa69",
+                    "component_type": "BoxCollider"
+                  }
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "0dee1c36-6a1d-482d-8f76-2ab761a190c7",
+                  "Flags": 0,
+                  "Name": "path",
+                  "Position": "0,0,0",
+                  "Enabled": true,
+                  "Children": [
+                    {
+                      "__guid": "fc602aa8-9d4d-492e-8243-19e64e45acd1",
+                      "Flags": 0,
+                      "Name": "point (1)",
+                      "Position": "-2175,0,-0.00000000002910383",
+                      "Enabled": true
+                    },
+                    {
+                      "__guid": "fe902453-a283-46ca-bfbc-06ebcb4da468",
+                      "Flags": 0,
+                      "Name": "point",
+                      "Position": "-3337.5,0,0",
+                      "Enabled": true
+                    }
+                  ]
+                },
+                {
+                  "__guid": "a8e67053-763f-4bcd-937e-10134e8bfa69",
+                  "Flags": 0,
+                  "Name": "Trigger Collider",
+                  "Position": "0,0,0",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.BoxCollider",
+                      "__guid": "f84dc617-dbff-449e-93b4-95ce7c941250",
+                      "Center": "0,0,0",
+                      "IsTrigger": true,
+                      "Scale": "150,25,50",
+                      "Static": false
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "__guid": "0020df06-60db-4ddd-8698-f0ad18038e18",
+              "Flags": 0,
+              "Name": "Flying Platform (1)",
+              "Position": "1584,288,0.00005322692",
+              "Scale": "0.4266667,0.4266667,1",
+              "Tags": "ground,wall,platform",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "SpriteTools.SpriteComponent",
+                  "__guid": "d5528609-a7d9-4a1f-85df-3a7fb491da75",
+                  "__version": 1,
+                  "BroadcastEvents": {},
+                  "CastShadows": "On",
+                  "CreateAttachPoints": false,
+                  "FlashTint": "1,1,1,0",
+                  "PlaybackSpeed": 1,
+                  "Sprite": "sprites/objects/flying_platform.sprite",
+                  "SpriteFlags": "None",
+                  "StartingAnimationName": "default",
+                  "Tint": "1,1,1,1",
+                  "UpDirection": "YPositive"
+                },
+                {
+                  "__type": "Sandbox.sprite.SpriteSizer",
+                  "__guid": "4d46ae9a-6e0f-41f5-8928-553afc08be38",
+                  "_height": 32,
+                  "_width": 32,
+                  "PixelPerUnit": 75
+                },
+                {
+                  "__type": "Sandbox.enemies.FollowPath",
+                  "__guid": "47e8481f-5c37-48b7-b2a7-f843dfff2e90",
+                  "Direction": 1,
+                  "DontStartFromFirstPoint": true,
+                  "IgnoreGravity": true,
+                  "IgnoreRespawn": true,
+                  "Loop": true,
+                  "MotionProvider": {
+                    "_type": "component",
+                    "component_id": "467aeb78-9ae8-41e6-bbd1-f7e6fb8d39af",
+                    "go": "0020df06-60db-4ddd-8698-f0ad18038e18",
+                    "component_type": "MotionCore2D"
+                  },
+                  "PathInit": {
+                    "_type": "component",
+                    "component_id": "a58dc895-b77c-4eff-92f4-0c529bfd5cdf",
+                    "go": "0020df06-60db-4ddd-8698-f0ad18038e18",
+                    "component_type": "PathInit"
+                  },
+                  "Speed": 64
+                },
+                {
+                  "__type": "Sandbox.player.MotionCore2D",
+                  "__guid": "467aeb78-9ae8-41e6-bbd1-f7e6fb8d39af",
+                  "Collider": {
+                    "_type": "component",
+                    "component_id": "7ce9f7de-d9ca-460f-9027-343701036967",
+                    "go": "0020df06-60db-4ddd-8698-f0ad18038e18",
+                    "component_type": "BoxCollider"
+                  },
+                  "GroundTags": ""
+                },
+                {
+                  "__type": "Sandbox.enemies.PathInit",
+                  "__guid": "a58dc895-b77c-4eff-92f4-0c529bfd5cdf",
+                  "FromChildren": true,
+                  "Loop": true,
+                  "Path": [
+                    "255.9999,160",
+                    "-288.0001,160"
+                  ],
+                  "PathPointsParent": {
+                    "_type": "gameobject",
+                    "go": "9b5dd4b4-ee64-4020-9dbd-8203375b4fad"
+                  }
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "7ce9f7de-d9ca-460f-9027-343701036967",
+                  "Center": "0,0,0",
+                  "IsTrigger": false,
+                  "Scale": "150,1,50",
+                  "Static": false
+                },
+                {
+                  "__type": "Sandbox.objects.MovingPlatform",
+                  "__guid": "75828374-1432-4bad-ba95-709440483f2d",
+                  "FollowPath": {
+                    "_type": "component",
+                    "component_id": "47e8481f-5c37-48b7-b2a7-f843dfff2e90",
+                    "go": "0020df06-60db-4ddd-8698-f0ad18038e18",
+                    "component_type": "FollowPath"
+                  },
+                  "IgnoreRespawn": true,
+                  "TriggerCollider": {
+                    "_type": "component",
+                    "component_id": "bce680bb-a692-40bc-a3b0-e4592b30181d",
+                    "go": "7e88126a-f4b0-4464-b07b-eae26fe1daa3",
+                    "component_type": "BoxCollider"
+                  }
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "9b5dd4b4-ee64-4020-9dbd-8203375b4fad",
+                  "Flags": 0,
+                  "Name": "path",
+                  "Position": "0,0,0",
+                  "Enabled": true,
+                  "Children": [
+                    {
+                      "__guid": "dbaf61ef-d640-4e74-9eb6-ea53f36556bc",
+                      "Flags": 0,
+                      "Name": "point (1)",
+                      "Position": "-3112.5,0,-0.00000000002910383",
+                      "Enabled": true
+                    },
+                    {
+                      "__guid": "eb08e2e8-94a7-4be5-b1f0-221a3bca420e",
+                      "Flags": 0,
+                      "Name": "point",
+                      "Position": "-4312.5,0,0",
+                      "Enabled": true
+                    }
+                  ]
+                },
+                {
+                  "__guid": "7e88126a-f4b0-4464-b07b-eae26fe1daa3",
+                  "Flags": 0,
+                  "Name": "Trigger Collider",
+                  "Position": "0,0,0",
+                  "Enabled": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.BoxCollider",
+                      "__guid": "bce680bb-a692-40bc-a3b0-e4592b30181d",
+                      "Center": "0,0,0",
+                      "IsTrigger": true,
+                      "Scale": "150,25,50",
+                      "Static": false
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -6462,7 +7154,7 @@
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
                 "58,24": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
+                  "TileId": "2ffe96b3-bbd5-4212-b0b4-6fe92eb4bfc8"
                 },
                 "57,24": {
                   "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
@@ -6522,13 +7214,13 @@
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
                 "59,27": {
-                  "TileId": "d6b00a7f-deee-4e26-a035-246d1eb9a224"
+                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
                 },
                 "59,39": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
                 "59,26": {
-                  "TileId": "2ffe96b3-bbd5-4212-b0b4-6fe92eb4bfc8"
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
                 "60,25": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
@@ -6549,7 +7241,7 @@
                   "TileId": "d6b00a7f-deee-4e26-a035-246d1eb9a224"
                 },
                 "59,25": {
-                  "TileId": "2ffe96b3-bbd5-4212-b0b4-6fe92eb4bfc8"
+                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
                 "59,40": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
@@ -6597,10 +7289,10 @@
                   "TileId": "4f1493db-e1a9-45dc-9e67-bead05c2f342"
                 },
                 "55,25": {
-                  "TileId": "5df2c047-7116-413d-9c74-d7c60ece6f31"
+                  "TileId": "3af4cd60-fa38-4609-8332-b020239df8e9"
                 },
                 "55,26": {
-                  "TileId": "3af4cd60-fa38-4609-8332-b020239df8e9"
+                  "TileId": "944e2f70-4547-4400-9907-56fded1d39b9"
                 },
                 "55,27": {
                   "TileId": "944e2f70-4547-4400-9907-56fded1d39b9"
@@ -6747,24 +7439,6 @@
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
                 "56,40": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "54,40": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "53,40": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "52,40": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "51,40": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "50,40": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "49,40": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
                 "55,40": {
@@ -7304,24 +7978,6 @@
                 "50,35": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
-                "53,43": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "54,43": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "55,43": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "56,43": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "57,43": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "58,43": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
                 "59,43": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
@@ -7382,52 +8038,10 @@
                 "78,43": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
-                "49,41": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "50,41": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "51,41": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "51,42": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "52,41": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "52,42": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "53,41": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "53,42": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "54,41": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "54,42": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "55,41": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "55,42": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
                 "56,41": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
-                "56,42": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
                 "57,41": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "57,42": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
                 "58,41": {
@@ -7532,103 +8146,7 @@
                 "78,42": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
-                "54,44": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "55,44": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "55,45": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "56,44": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "56,45": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "56,46": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "57,44": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "57,45": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "57,46": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "58,44": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "58,45": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "58,46": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "58,47": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "59,44": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "59,45": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "59,46": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "59,47": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "60,44": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "60,45": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "60,46": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "60,47": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "60,48": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "61,44": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "61,45": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "61,46": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "61,47": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "61,48": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
                 "62,44": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "62,45": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "62,46": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "62,47": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "62,48": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "62,49": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
                 "63,44": {
@@ -7637,43 +8155,10 @@
                 "63,45": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
-                "63,46": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "63,47": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "63,48": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "63,49": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "63,50": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
                 "64,44": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
                 "64,45": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "64,46": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "64,47": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "64,48": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "64,49": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "64,50": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "64,51": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
                 "65,44": {
@@ -7685,21 +8170,6 @@
                 "65,46": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
-                "65,47": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "65,48": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "65,49": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "65,50": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "65,51": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
                 "66,44": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
@@ -7707,21 +8177,6 @@
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
                 "66,46": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "66,47": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "66,48": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "66,49": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "66,50": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "66,51": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
                 "67,44": {
@@ -7733,21 +8188,6 @@
                 "67,46": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
-                "67,47": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "67,48": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "67,49": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "67,50": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "67,51": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
                 "68,44": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
@@ -7755,21 +8195,6 @@
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
                 "68,46": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "68,47": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "68,48": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "68,49": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "68,50": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "68,51": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
                 "69,44": {
@@ -7781,21 +8206,6 @@
                 "69,46": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
-                "69,47": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "69,48": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "69,49": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "69,50": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "69,51": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
                 "70,44": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
@@ -7803,21 +8213,6 @@
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
                 "70,46": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "70,47": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "70,48": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "70,49": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "70,50": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "70,51": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
                 "71,44": {
@@ -7829,21 +8224,6 @@
                 "71,46": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
-                "71,47": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "71,48": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "71,49": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "71,50": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "71,51": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
                 "72,44": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
@@ -7851,21 +8231,6 @@
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
                 "72,46": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "72,47": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "72,48": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "72,49": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "72,50": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "72,51": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
                 "73,44": {
@@ -7877,21 +8242,6 @@
                 "73,46": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
-                "73,47": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "73,48": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "73,49": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "73,50": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "73,51": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
                 "74,44": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
@@ -7899,24 +8249,6 @@
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
                 "74,46": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "74,47": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "74,48": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "74,49": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "74,50": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "74,51": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "74,52": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
                 "75,44": {
@@ -7928,24 +8260,6 @@
                 "75,46": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
-                "75,47": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "75,48": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "75,49": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "75,50": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "75,51": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "75,52": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
                 "76,44": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
@@ -7953,24 +8267,6 @@
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
                 "76,46": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "76,47": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "76,48": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "76,49": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "76,50": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "76,51": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "76,52": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
                 "77,44": {
@@ -7982,24 +8278,6 @@
                 "77,46": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
-                "77,47": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "77,48": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "77,49": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "77,50": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "77,51": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "77,52": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
                 "78,44": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
@@ -8009,23 +8287,14 @@
                 "78,46": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
                 },
-                "78,47": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                "58,27": {
+                  "TileId": "d6b00a7f-deee-4e26-a035-246d1eb9a224"
                 },
-                "78,48": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                "58,26": {
+                  "TileId": "2ffe96b3-bbd5-4212-b0b4-6fe92eb4bfc8"
                 },
-                "78,49": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "78,50": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "78,51": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
-                },
-                "78,52": {
-                  "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                "58,25": {
+                  "TileId": "2ffe96b3-bbd5-4212-b0b4-6fe92eb4bfc8"
                 }
               }
             },
@@ -8669,6 +8938,9 @@
                 },
                 "22,40": {
                   "TileId": "32d4df38-4f6b-450b-84ed-b39c7dfdf243"
+                },
+                "58,28": {
+                  "TileId": "13fe210f-2f7d-4b1f-b6c9-3a02bdf46872"
                 }
               }
             },
@@ -12468,6 +12740,498 @@
                 },
                 "77,39": {
                   "TileId": "6500afc0-12ab-4e02-8a72-9262138249ba"
+                },
+                "0,9": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a"
+                },
+                "0,8": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,1"
+                },
+                "0,7": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,2"
+                },
+                "0,6": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,3"
+                },
+                "1,9": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,0"
+                },
+                "1,8": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,1"
+                },
+                "1,7": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,2"
+                },
+                "1,6": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,3"
+                },
+                "3,9": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a"
+                },
+                "3,8": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,1"
+                },
+                "3,7": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,2"
+                },
+                "3,6": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,3"
+                },
+                "4,9": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,0"
+                },
+                "4,8": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,1"
+                },
+                "4,7": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,2"
+                },
+                "4,6": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,3"
+                },
+                "6,9": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a"
+                },
+                "6,8": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,1"
+                },
+                "6,7": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,2"
+                },
+                "6,6": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,3"
+                },
+                "7,9": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,0"
+                },
+                "7,8": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,1"
+                },
+                "7,7": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,2"
+                },
+                "7,6": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,3"
+                },
+                "9,9": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a"
+                },
+                "9,8": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,1"
+                },
+                "9,7": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,2"
+                },
+                "9,6": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,3"
+                },
+                "10,9": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,0"
+                },
+                "10,8": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,1"
+                },
+                "10,7": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,2"
+                },
+                "10,6": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,3"
+                },
+                "33,15": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a"
+                },
+                "33,14": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,1"
+                },
+                "33,13": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,2"
+                },
+                "33,12": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,3"
+                },
+                "34,15": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,0"
+                },
+                "34,14": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,1"
+                },
+                "34,13": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,2"
+                },
+                "34,12": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,3"
+                },
+                "37,15": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a"
+                },
+                "37,14": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,1"
+                },
+                "37,13": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,2"
+                },
+                "37,12": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,3"
+                },
+                "38,15": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,0"
+                },
+                "38,14": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,1"
+                },
+                "38,13": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,2"
+                },
+                "38,12": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,3"
+                },
+                "1,43": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a"
+                },
+                "1,42": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,1"
+                },
+                "1,41": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,2"
+                },
+                "1,40": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,3"
+                },
+                "2,43": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,0"
+                },
+                "2,42": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,1"
+                },
+                "2,41": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,2"
+                },
+                "2,40": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,3"
+                },
+                "4,43": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a"
+                },
+                "4,42": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,1"
+                },
+                "4,41": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,2"
+                },
+                "4,40": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,3"
+                },
+                "5,43": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,0"
+                },
+                "5,42": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,1"
+                },
+                "5,41": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,2"
+                },
+                "5,40": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,3"
+                },
+                "7,43": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a"
+                },
+                "7,42": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,1"
+                },
+                "7,41": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,2"
+                },
+                "7,40": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,3"
+                },
+                "8,43": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,0"
+                },
+                "8,42": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,1"
+                },
+                "8,41": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,2"
+                },
+                "8,40": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,3"
+                },
+                "10,43": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a"
+                },
+                "10,42": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,1"
+                },
+                "10,41": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,2"
+                },
+                "10,40": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,3"
+                },
+                "11,43": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,0"
+                },
+                "11,42": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,1"
+                },
+                "11,41": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,2"
+                },
+                "11,40": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,3"
+                },
+                "13,43": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a"
+                },
+                "13,42": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,1"
+                },
+                "13,41": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,2"
+                },
+                "13,40": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,3"
+                },
+                "14,43": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,0"
+                },
+                "14,42": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,1"
+                },
+                "14,41": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,2"
+                },
+                "14,40": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,3"
+                },
+                "16,43": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a"
+                },
+                "16,42": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,1"
+                },
+                "16,41": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,2"
+                },
+                "16,40": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,3"
+                },
+                "17,43": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,0"
+                },
+                "17,42": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,1"
+                },
+                "17,41": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,2"
+                },
+                "17,40": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,3"
+                },
+                "19,43": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a"
+                },
+                "19,42": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,1"
+                },
+                "19,41": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,2"
+                },
+                "19,40": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,3"
+                },
+                "20,43": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,0"
+                },
+                "20,42": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,1"
+                },
+                "20,41": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,2"
+                },
+                "20,40": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,3"
+                },
+                "22,43": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a"
+                },
+                "22,42": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,1"
+                },
+                "22,41": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,2"
+                },
+                "22,40": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,3"
+                },
+                "23,43": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,0"
+                },
+                "23,42": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,1"
+                },
+                "23,41": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,2"
+                },
+                "23,40": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,3"
+                },
+                "42,39": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a"
+                },
+                "42,38": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,1"
+                },
+                "42,37": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,2"
+                },
+                "42,36": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "0,3"
+                },
+                "43,39": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,0"
+                },
+                "43,38": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,1"
+                },
+                "43,37": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,2"
+                },
+                "43,36": {
+                  "TileId": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+                  "CellPosition": "1,3"
+                },
+                "58,30": {
+                  "TileId": "6500afc0-12ab-4e02-8a72-9262138249ba"
+                },
+                "58,28": {
+                  "TileId": "6500afc0-12ab-4e02-8a72-9262138249ba"
+                },
+                "57,30": {
+                  "TileId": "ccc59e31-e2b3-4efb-9c55-23ad302bfae0"
+                },
+                "57,29": {
+                  "TileId": "ccc59e31-e2b3-4efb-9c55-23ad302bfae0"
+                },
+                "57,28": {
+                  "TileId": "ccc59e31-e2b3-4efb-9c55-23ad302bfae0"
+                },
+                "57,27": {
+                  "TileId": "ccc59e31-e2b3-4efb-9c55-23ad302bfae0"
+                },
+                "57,26": {
+                  "TileId": "ccc59e31-e2b3-4efb-9c55-23ad302bfae0"
+                },
+                "57,25": {
+                  "TileId": "ccc59e31-e2b3-4efb-9c55-23ad302bfae0"
+                },
+                "57,24": {
+                  "TileId": "ccc59e31-e2b3-4efb-9c55-23ad302bfae0"
                 }
               }
             }

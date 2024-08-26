@@ -24,6 +24,7 @@ public class SwordAbility : Component
 	public bool IsAttacking { get; private set; }
 	
 	public Action<bool> AttackEvent;
+	public Action HitEvent;
 	private SceneTraceResult _hitResult;
 	private Vector2 _rayStart;
 	private Vector2 _rayEnd;
@@ -80,6 +81,7 @@ public class SwordAbility : Component
 		
 		if(_hitResult.Hit)
 		{
+			HitEvent?.Invoke();
 			if(_hitResult.GameObject.Components.TryGet(out IHittable hittable))
 			{
 				if(_hitTargets.Contains(hittable))

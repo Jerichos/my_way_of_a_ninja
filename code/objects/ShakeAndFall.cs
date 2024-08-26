@@ -16,6 +16,7 @@ public class ShakeAndFall : Component, IRespawn
 	[Property] public float DisableIn { get; set; } = 1.0f; // disable after starts falling
 	[Property] public bool DisableColliderOnFall { get; set; }
 	[Property] public SoundEvent ShakeSound { get; set; }
+	[Property] public bool IgnoreRespawn { get; set; }
 
 	private float _timer;
 	private bool _falling;

@@ -9,6 +9,7 @@ public class BallSpawn : Component, IRespawn
 	[Property] GameObject BallPrefab { get; set; }
 	[Property] private int StartDirection { get; set; } = 1;
 	[Property] private float Velocity { get; set; } = 64;
+	[Property] public bool IgnoreRespawn { get; set; }
 
 	private GameObject newBall;
 

@@ -9,6 +9,7 @@ public class Collectible : Component, ICollectible, IRespawn
 	[Property] public Collider TriggerCollider { get; set; }
 	[Property] public GameObject OnCollectEffect { get; set; }
     [Property] public ItemType Type { get; set; }
+    [Property] public bool IgnoreRespawn { get; set; }
     
     public bool Saved { get; set; } // level knows it should not respawn
     

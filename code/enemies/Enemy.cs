@@ -17,7 +17,9 @@ public class Enemy : Component, IHittable
 	
 	[Property] private SoundEvent HitSound { get; set; }
 	[Property] private SoundEvent DestroySound { get; set; }
+	[Property] public bool IgnoreRespawn { get; set; }
 
+	public Action<int> HitEvent;
 	private bool _dead;
 	
 	// hit animation
@@ -39,7 +41,8 @@ public class Enemy : Component, IHittable
 		else
 		{
 			// TODO(bug): log is not invoked in OnAwake
-			Log.Warning("Enemy component must be a child of a Level component for respawn. " + GameObject);
+			if(!IgnoreRespawn)
+				Log.Warning("Enemy component should be a child of a Level component for respawn. " + GameObject);
 		}
 	}
 
@@ -75,6 +78,7 @@ public class Enemy : Component, IHittable
 		}
 		else
 		{
+			HitEvent?.Invoke(damage);
 			_hitFadeTimer = _hitFadeTime;
 			_isHit = true;
 			soundCallback?.Invoke(HitSound);
@@ -140,12 +144,14 @@ public class Enemy : Component, IHittable
 
 	protected override void OnEnabled()
 	{
-		Knockback.KnockbackEndEvent += ()=> GameObject.Enabled = false;
+		if(Knockback != null)
+			Knockback.KnockbackEndEvent += ()=> GameObject.Enabled = false;
 	}
 	
 	protected override void OnDisabled()
 	{
-		Knockback.KnockbackEndEvent -= ()=> GameObject.Enabled = false;
+		if(Knockback != null)
+			Knockback.KnockbackEndEvent -= ()=> GameObject.Enabled = false;
 	}
 	
 	

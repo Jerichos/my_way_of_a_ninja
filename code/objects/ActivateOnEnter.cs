@@ -6,6 +6,7 @@ public class ActivateOnEnter : Component, IRespawn
 {
 	[Property] public Component Target { get; set; }
 	[Property] public BoxCollider TriggerCollider { get; set; }
+	[Property] public bool IgnoreRespawn { get; set; }
 
 	protected override void OnStart()
 	{

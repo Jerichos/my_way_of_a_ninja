@@ -7,9 +7,8 @@ namespace Sandbox.level;
 public class NewArea : Component
 {
 	[Property] public BoxCollider BoundsCollider { get; set; }
-	[Property] public BoxCollider EnterCollider { get; set; }
-	[Property] public BoxCollider ExitCollider { get; set; }
 	[Property] public float TransitionMultiplier { get; set; } = 2.0f;
+	[Property] public bool BossArea { get; set; }
 	
 	// if null, don't change sound
 	// if not null, transition to this sound

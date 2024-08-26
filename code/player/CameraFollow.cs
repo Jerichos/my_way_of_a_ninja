@@ -83,7 +83,12 @@ public class CameraFollow : Component
         var height = Camera.OrthographicHeight;
         var width = Camera.OrthographicHeight * Screen.Aspect;
 
-        // Implement your logic here
         return false;
+    }
+
+    public void MoveToBoundsDontFollowAnymore( Vector2 minBounds, Vector2 maxBounds )
+    {
+	    // implement
+	    
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using Sandbox.enemies;
 using Sandbox.player;
 
 namespace Sandbox.level;
@@ -23,12 +24,23 @@ public class Level : Component
 	private IEnumerable<NewArea> _newAreas;
 	private List<IRespawn> _respawnables = new();
 
+	private BigBossBird _levelBoss;
+	private BigBossBird _spawnedBoss;
+
 	private NewArea _currentArea;
 	// if DontTeleportPlayerToCheckpointOnce is true, player will be spawned at the level's position set in the editor, until first checkpoint is activated
 	private Vector3 _editorPosition;
 
 	protected override void OnAwake()
 	{
+		_levelBoss = Components.Get<BigBossBird>(FindMode.InDescendants);
+		_levelBoss.GameObject.Enabled = false;
+
+		if ( _levelBoss == null )
+		{
+			Log.Error("Level boss not found");
+		}
+		
 		_checkpoints = Components.GetAll<Checkpoint>( FindMode.InDescendants );
 
 		Checkpoint.CheckpointActivatedEvent += OnCheckpointActivated;
@@ -40,7 +52,13 @@ public class Level : Component
 		}
 		_respawnables = Components.GetAll<IRespawn>(FindMode.InDescendants).ToList();
 		_newAreas = Components.GetAll<NewArea>(FindMode.InDescendants);
-		
+
+		for ( int i = _respawnables.Count - 1; i < 0; i-- )
+		{
+			if(_respawnables[i].IgnoreRespawn)
+				_respawnables.RemoveAt(i);
+		}
+
 		foreach (var newArea in _newAreas)
 		{
 			newArea.OnEnter += OnNewAreaEnter;
@@ -83,12 +101,26 @@ public class Level : Component
 			SoundBox.SoundEvent = area.AreaSound;
 			// SoundBox.StartSound();
 			// SoundBox.Enabled = true;
+			SoundBox.StopSound();
 			StartSoundAsync();
 		}
 		
 		Weather.Enabled = area.WeatherEnabled;
 		Weather.RestartWeather();
+		
+		if ( area.BossArea )
+		{
+			_spawnedBoss = _levelBoss.GameObject.Clone().Components.Get<BigBossBird>();
+			_spawnedBoss.Transform.Position = _levelBoss.Transform.Position;
+			_spawnedBoss.GameObject.Enabled = true;
+			_spawnedBoss.Player = Player;
+			CameraFollow.MoveToBoundsDontFollowAnymore( MinBounds, MaxBounds );
+		}
+		
+		
 		_currentArea = area;
+		
+		
 		Log.Info("New area set up");
 	}
 	// async method to to StartSound()
@@ -96,7 +128,7 @@ public class Level : Component
 	private async void StartSoundAsync()
 	{
 		// wait 1 second
-		await Task.Delay(5000);
+		await Task.Delay(3000);
 		SoundBox.StartSound();
 	}
 
@@ -180,6 +212,11 @@ public class Level : Component
 		
 		DeathAnimation.AnimationFadeFinishedEvent -= OnDeathFadeFinished;
 		DeathAnimation.AnimationFadeFinishedEvent += OnDeathFadeFinished;
+		
+		if(_spawnedBoss != null)
+		{
+			_spawnedBoss.GameObject.Destroy();
+		}
 		
 		foreach (var checkpoint in _checkpoints)
 			checkpoint.PendingItem(false);

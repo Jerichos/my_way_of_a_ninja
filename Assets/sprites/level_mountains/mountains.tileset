@@ -76,30 +76,6 @@
       "Size": "1,1"
     },
     {
-      "Id": "b585c6ed-8c02-4127-aad3-46d195f6209d",
-      "Name": "",
-      "Position": "12,0",
-      "Size": "1,1"
-    },
-    {
-      "Id": "d1b7ee16-4701-42ba-86a7-f041781989a0",
-      "Name": "",
-      "Position": "13,0",
-      "Size": "1,1"
-    },
-    {
-      "Id": "842d4a1f-84fa-4872-9bce-2e72b61d3f82",
-      "Name": "",
-      "Position": "14,0",
-      "Size": "1,1"
-    },
-    {
-      "Id": "166a34b2-25c9-4844-9fe6-1e57e3bd1777",
-      "Name": "",
-      "Position": "15,0",
-      "Size": "1,1"
-    },
-    {
       "Id": "ccc59e31-e2b3-4efb-9c55-23ad302bfae0",
       "Name": "",
       "Position": "0,1",
@@ -169,30 +145,6 @@
       "Id": "789b883c-32b1-4762-9ace-0a098fe69613",
       "Name": "",
       "Position": "11,1",
-      "Size": "1,1"
-    },
-    {
-      "Id": "6d0f6497-cf8a-4ec8-92db-b2346d1fbc92",
-      "Name": "",
-      "Position": "12,1",
-      "Size": "1,1"
-    },
-    {
-      "Id": "daacad5f-7f61-4dd4-8cfd-da85d3d294e1",
-      "Name": "",
-      "Position": "13,1",
-      "Size": "1,1"
-    },
-    {
-      "Id": "5f79460d-eb2f-40e4-85d1-be76a83af42b",
-      "Name": "",
-      "Position": "14,1",
-      "Size": "1,1"
-    },
-    {
-      "Id": "5902041a-1602-49d8-9d37-f42896bb6ad4",
-      "Name": "",
-      "Position": "15,1",
       "Size": "1,1"
     },
     {
@@ -268,30 +220,6 @@
       "Size": "1,1"
     },
     {
-      "Id": "254028c6-bae7-483b-b116-586779957833",
-      "Name": "",
-      "Position": "12,2",
-      "Size": "1,1"
-    },
-    {
-      "Id": "e41cd4d1-f61c-4f19-9b17-d04c946590ef",
-      "Name": "",
-      "Position": "13,2",
-      "Size": "1,1"
-    },
-    {
-      "Id": "f4d56b48-de6a-4103-aa07-0f61b556e71b",
-      "Name": "",
-      "Position": "14,2",
-      "Size": "1,1"
-    },
-    {
-      "Id": "4844c953-986e-4eff-834a-6a18722feaf4",
-      "Name": "",
-      "Position": "15,2",
-      "Size": "1,1"
-    },
-    {
       "Id": "800ce5cf-fef7-4929-bd86-27ab96cd3a0b",
       "Name": "",
       "Position": "0,3",
@@ -361,30 +289,6 @@
       "Id": "40cd31a6-92d7-4b16-9138-af4720142d42",
       "Name": "",
       "Position": "11,3",
-      "Size": "1,1"
-    },
-    {
-      "Id": "1db1b640-622b-4ac2-8f52-a5bb6200a6c0",
-      "Name": "",
-      "Position": "12,3",
-      "Size": "1,1"
-    },
-    {
-      "Id": "97655296-0b34-491a-b991-f734d783bb0c",
-      "Name": "",
-      "Position": "13,3",
-      "Size": "1,1"
-    },
-    {
-      "Id": "a97d6908-611c-41d9-90e5-816dabd2faa9",
-      "Name": "",
-      "Position": "14,3",
-      "Size": "1,1"
-    },
-    {
-      "Id": "61d1639f-1d02-48cc-a4c5-606e90ffbfc4",
-      "Name": "",
-      "Position": "15,3",
       "Size": "1,1"
     },
     {
@@ -1538,6 +1442,18 @@
       "Name": "",
       "Position": "15,15",
       "Size": "1,1"
+    },
+    {
+      "Id": "216f9bd1-805f-4da0-a596-e581c7233083",
+      "Name": "",
+      "Position": "12,0",
+      "Size": "2,4"
+    },
+    {
+      "Id": "45b85f41-04d5-4f3b-b159-d98828a3369a",
+      "Name": "",
+      "Position": "14,0",
+      "Size": "2,4"
     }
   ],
   "CurrentTextureSize": "512,512",

@@ -10,6 +10,7 @@ public class MovingPlatform : Component, IMotionProvider, IRespawn
 {
 	[Property] private FollowPath FollowPath { get; set; }
 	[Property] private Collider TriggerCollider { get; set; }
+	[Property] public bool IgnoreRespawn { get; set; }
 
 	public Vector2 Velocity => FollowPath.Velocity;
 	

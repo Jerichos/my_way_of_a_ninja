@@ -13,6 +13,8 @@ public class FollowPath : Component, IMotionProvider, IRespawn
 	[Property] private bool IgnoreGravity { get; set; }
 	[Property] private bool Loop { get; set; }
 	[Property] [Range(-1, 1)] private int Direction = 1;
+	[Property] public bool IgnoreRespawn { get; set; }
+	[Property] public bool DontStartFromFirstPoint { get; set; }
 
 	private Vector2[] _path;
 	private int _currentPoint;
@@ -39,7 +41,9 @@ public class FollowPath : Component, IMotionProvider, IRespawn
 		
 		Loop = loop;
 		_currentPoint = 0;
-		Transform.Position = _path[_currentPoint];
+		if(!DontStartFromFirstPoint)
+			Transform.Position = _path[_currentPoint];
+		
 		MotionProvider.AddMotionProvider(this);
 	}
 
@@ -82,13 +86,11 @@ public class FollowPath : Component, IMotionProvider, IRespawn
 				}
 				else
 				{
-					Log.Info("Not looping damn it!");
 					Enabled = false;
 					Velocity = Vector2.Zero;
 
 					if ( GameObject.Components.TryGet(out ActivateOnEnter activate, FindMode.InSelf) )
 					{
-						Log.Info("ActivateOnEnter enabled");
 						activate.Enabled = false;
 					}
 					// If not looping, clamp to the start or end of the path
@@ -134,12 +136,7 @@ public class FollowPath : Component, IMotionProvider, IRespawn
 
 	public void Respawn()
 	{
-		Log.Info("1 respawn FollowPath");
-		
-		Log.Info($"is path null: {_path == null} is Transform null: {Transform == null}");
-		
 		_currentPoint = 0;
 		Transform.Position = _path[_currentPoint];
-		Log.Info("2 respawn FollowPath");
 	}
 }

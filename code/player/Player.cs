@@ -27,8 +27,9 @@ public sealed class Player : Component
 	public Action RespawnEvent;
 
 	private bool _dead;
-	private float _gracePeriodTime = 0.1f;
+	private float _gracePeriodTime = 1f;
 	private float _gracePeriodTimer;
+	private bool _graceFromDamage; // TODO: not nice but quick fix, so what
 	
 	public bool IsInGracePeriod => _gracePeriodTimer > 0;
 
@@ -44,7 +45,14 @@ public sealed class Player : Component
 	{
 		MotionCore.FacingChangedEvent += OnFacingChanged;
 		Inventory.AddedItemEvent += OnItemsChanged;
+		SwordAbility.HitEvent += OnSwordHit;
 		OnFacingChanged(MotionCore.Facing);
+	}
+
+	private void OnSwordHit()
+	{
+		if(DashAbility.IsDashing)
+			DashAbility.StopDash();
 	}
 
 	private void OnItemsChanged(Inventory inventory)
@@ -165,6 +173,8 @@ public sealed class Player : Component
 		
 		Health -= 1;
 		HealthChangedEvent?.Invoke(Health);
+		_gracePeriodTimer = _gracePeriodTime;
+		_graceFromDamage = true;
 		
 		if(Health <= 0)
 		{
@@ -188,7 +198,7 @@ public sealed class Player : Component
 
 	public void Kill()
 	{
-		if(_dead || _gracePeriodTimer > 0)
+		if(_dead || (_gracePeriodTimer > 0 && !_graceFromDamage))
 			return;
 		
 		Health = 0;
@@ -212,6 +222,7 @@ public sealed class Player : Component
 	public void OnRespawn()
 	{
 		_gracePeriodTimer = _gracePeriodTime;
+		_graceFromDamage = false;
 		MotionCore.Collider.Enabled = true;
 		
 		_dead = false;

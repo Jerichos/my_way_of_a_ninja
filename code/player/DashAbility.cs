@@ -104,17 +104,22 @@ public class DashAbility : Component, IMotionProvider
 			}
 			else
 			{
-				Velocity = Vector2.Zero;
-				_isIsDashing = false;
-				MotionCore.RemoveMotionProvider(this);
-				
-				// reset collider height and center
-				MotionCore.Collider.Scale = MotionCore.Collider.Scale.WithY(_defaultColliderHeight);
-				MotionCore.Collider.Center = MotionCore.Collider.Center.WithY(_defaultColliderCenterY);
-				
-				DashEffect.Enabled = false;
+				StopDash();
 			}
 		}
+	}
+	
+	public void StopDash()
+	{
+		Velocity = Vector2.Zero;
+		_isIsDashing = false;
+		MotionCore.RemoveMotionProvider(this);
+				
+		// reset collider height and center
+		MotionCore.Collider.Scale = MotionCore.Collider.Scale.WithY(_defaultColliderHeight);
+		MotionCore.Collider.Center = MotionCore.Collider.Center.WithY(_defaultColliderCenterY);
+				
+		DashEffect.Enabled = false;
 	}
 
 	private bool CanDash()
@@ -159,4 +164,6 @@ public class DashAbility : Component, IMotionProvider
 		MotionCore.RemoveMotionProvider(this);
 		DashEffect.Enabled = false;
 	}
+
+	
 }

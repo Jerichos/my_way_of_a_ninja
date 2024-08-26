@@ -3,4 +3,5 @@
 public interface IRespawn
 {
 	void Respawn();
+	bool IgnoreRespawn { get; }
 }
