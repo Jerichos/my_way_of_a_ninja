@@ -1,5 +1,5 @@
 {
-  "__guid": "18b27571-92cc-4a17-9fb9-30ab998ffcfd",
+  "__guid": "e72eac73-c0a2-4a74-ac66-f3459dca2047",
   "GameObjects": [
     {
       "__guid": "83671452-afe1-4bf1-89ab-84acac918363",
@@ -42,7 +42,7 @@
             "go": "a331ba39-0f15-4238-a15f-5f657e8e0e1b",
             "component_type": "DeathAnimation"
           },
-          "DontTeleportPlayerToCheckpoint": false,
+          "DontTeleportPlayerToCheckpoint": true,
           "MaxBounds": "2500,2500",
           "MinBounds": "0,0",
           "Player": {
@@ -60,7 +60,7 @@
           },
           "StartCheckpoint": {
             "_type": "component",
-            "component_id": "179b26b9-8c76-4495-b903-cf0fdbdd831c",
+            "component_id": "1c70e410-fb01-4c5d-a871-6d51ef98a75d",
             "go": "de903763-862d-4e3f-bade-fac35a3fcaee",
             "component_type": "Checkpoint"
           },
@@ -2271,10 +2271,10 @@
               "__PrefabVariables": {}
             },
             {
-              "__guid": "12c52a31-e237-4806-86bc-befd7814d3c7",
+              "__guid": "29c758a5-d401-4094-9958-70c63128449f",
               "Flags": 0,
               "Name": "ShatteredIsland",
-              "Position": "1984,0,1",
+              "Position": "2080,0,1",
               "Scale": "0.64,0.64,1",
               "Tags": "ground",
               "Enabled": true,
@@ -2282,10 +2282,65 @@
               "__PrefabVariables": {}
             },
             {
-              "__guid": "29c758a5-d401-4094-9958-70c63128449f",
+              "__guid": "1af1f531-8d87-4b31-bf02-249ac49c4e4f",
               "Flags": 0,
               "Name": "ShatteredIsland",
-              "Position": "2080,0,1",
+              "Position": "1920,0,0.9999905",
+              "Scale": "0.64,0.64,1",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "prefabs/shatteredisland.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "9684ebd3-12fa-4f51-bf3d-967d9ac98428",
+              "Flags": 0,
+              "Name": "ShatteredIsland",
+              "Position": "2048,0,0.9999987",
+              "Scale": "0.64,0.64,1",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "prefabs/shatteredisland.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "50e180f7-3f71-4e5d-8316-646c8643487c",
+              "Flags": 0,
+              "Name": "ShatteredIsland",
+              "Position": "2080,80,0.9999997",
+              "Scale": "0.64,0.64,1",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "prefabs/shatteredisland.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "b83ae5ba-48ca-4d51-ba84-d1b7119a311d",
+              "Flags": 0,
+              "Name": "ShatteredIsland",
+              "Position": "1888,112,0.9999894",
+              "Scale": "0.64,0.64,1",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "prefabs/shatteredisland.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "a90b4088-9e77-4a22-8106-53229f6c7ce3",
+              "Flags": 0,
+              "Name": "ShatteredIsland",
+              "Position": "1840,176,0.999986",
+              "Scale": "0.64,0.64,1",
+              "Tags": "ground",
+              "Enabled": true,
+              "__Prefab": "prefabs/shatteredisland.prefab",
+              "__PrefabVariables": {}
+            },
+            {
+              "__guid": "1b0ea60f-c5e4-413b-829d-cb9e3a2eb6a9",
+              "Flags": 0,
+              "Name": "ShatteredIsland",
+              "Position": "1920,224,0.9999909",
               "Scale": "0.64,0.64,1",
               "Tags": "ground",
               "Enabled": true,
@@ -2380,7 +2435,7 @@
                     "component_type": "BoxCollider"
                   },
                   "DisableColliderOnFall": false,
-                  "DisableIn": 1,
+                  "DisableIn": 2,
                   "FallSpeed": 400,
                   "IgnoreRespawn": false,
                   "ShakeIntensity": 0.5,
@@ -2472,7 +2527,7 @@
                     "component_type": "BoxCollider"
                   },
                   "DisableColliderOnFall": false,
-                  "DisableIn": 1,
+                  "DisableIn": 2,
                   "FallSpeed": 400,
                   "IgnoreRespawn": false,
                   "ShakeIntensity": 0.5,
@@ -2564,7 +2619,7 @@
                     "component_type": "BoxCollider"
                   },
                   "DisableColliderOnFall": false,
-                  "DisableIn": 1,
+                  "DisableIn": 2,
                   "FallSpeed": 400,
                   "IgnoreRespawn": false,
                   "ShakeIntensity": 0.5,
@@ -2656,7 +2711,7 @@
                     "component_type": "BoxCollider"
                   },
                   "DisableColliderOnFall": false,
-                  "DisableIn": 1,
+                  "DisableIn": 2,
                   "FallSpeed": 400,
                   "IgnoreRespawn": false,
                   "ShakeIntensity": 0.5,
@@ -2748,7 +2803,7 @@
                     "component_type": "BoxCollider"
                   },
                   "DisableColliderOnFall": false,
-                  "DisableIn": 1,
+                  "DisableIn": 2,
                   "FallSpeed": 400,
                   "IgnoreRespawn": false,
                   "ShakeIntensity": 0.5,
@@ -2840,7 +2895,7 @@
                     "component_type": "BoxCollider"
                   },
                   "DisableColliderOnFall": false,
-                  "DisableIn": 1,
+                  "DisableIn": 2,
                   "FallSpeed": 400,
                   "IgnoreRespawn": false,
                   "ShakeIntensity": 0.5,
@@ -2932,7 +2987,7 @@
                     "component_type": "BoxCollider"
                   },
                   "DisableColliderOnFall": false,
-                  "DisableIn": 1,
+                  "DisableIn": 2,
                   "FallSpeed": 400,
                   "IgnoreRespawn": false,
                   "ShakeIntensity": 0.5,
@@ -3024,7 +3079,7 @@
                     "component_type": "BoxCollider"
                   },
                   "DisableColliderOnFall": false,
-                  "DisableIn": 1,
+                  "DisableIn": 2,
                   "FallSpeed": 400,
                   "IgnoreRespawn": false,
                   "ShakeIntensity": 0.5,
@@ -3116,7 +3171,7 @@
                     "component_type": "BoxCollider"
                   },
                   "DisableColliderOnFall": false,
-                  "DisableIn": 1,
+                  "DisableIn": 2,
                   "FallSpeed": 400,
                   "IgnoreRespawn": false,
                   "ShakeIntensity": 0.5,
@@ -3208,7 +3263,7 @@
                     "component_type": "BoxCollider"
                   },
                   "DisableColliderOnFall": false,
-                  "DisableIn": 1,
+                  "DisableIn": 2,
                   "FallSpeed": 400,
                   "IgnoreRespawn": false,
                   "ShakeIntensity": 0.5,
@@ -3300,7 +3355,7 @@
                     "component_type": "BoxCollider"
                   },
                   "DisableColliderOnFall": false,
-                  "DisableIn": 1,
+                  "DisableIn": 2,
                   "FallSpeed": 400,
                   "IgnoreRespawn": false,
                   "ShakeIntensity": 0.5,
@@ -3392,7 +3447,7 @@
                     "component_type": "BoxCollider"
                   },
                   "DisableColliderOnFall": false,
-                  "DisableIn": 1,
+                  "DisableIn": 2,
                   "FallSpeed": 400,
                   "IgnoreRespawn": false,
                   "ShakeIntensity": 0.5,
@@ -3444,7 +3499,7 @@
               "__guid": "5c4b27f6-5854-40a5-88a8-709136db0234",
               "Flags": 0,
               "Name": "Faling Ice (4)",
-              "Position": "2432,416,1.000066",
+              "Position": "2432,464,1.000066",
               "Scale": "0.32,0.32,1",
               "Enabled": true,
               "Components": [
@@ -3484,7 +3539,7 @@
                     "component_type": "BoxCollider"
                   },
                   "DisableColliderOnFall": false,
-                  "DisableIn": 1,
+                  "DisableIn": 2,
                   "FallSpeed": 400,
                   "IgnoreRespawn": false,
                   "ShakeIntensity": 0.5,
@@ -3499,9 +3554,9 @@
                 {
                   "__type": "Sandbox.BoxCollider",
                   "__guid": "da03af0b-f801-4483-a578-c92262e303e5",
-                  "Center": "50,-351.1998,0",
+                  "Center": "50,-481.7011,0",
                   "IsTrigger": true,
-                  "Scale": "50,698.9974,50",
+                  "Scale": "50,960.197,50",
                   "Static": false
                 }
               ],
@@ -3576,7 +3631,7 @@
                     "component_type": "BoxCollider"
                   },
                   "DisableColliderOnFall": false,
-                  "DisableIn": 1,
+                  "DisableIn": 2,
                   "FallSpeed": 400,
                   "IgnoreRespawn": false,
                   "ShakeIntensity": 0.5,
@@ -4597,7 +4652,7 @@
               "__guid": "78aa7e32-5c1d-492c-83ca-8280d067cf00",
               "Flags": 0,
               "Name": "Upgrade_MAX_HEALTH",
-              "Position": "928,32,5.000032",
+              "Position": "1925.387,254.4454,5.000091",
               "Scale": "0.2133333,0.2133333,1",
               "Enabled": true,
               "Components": [
@@ -4639,6 +4694,58 @@
                     "_type": "component",
                     "component_id": "5423388e-caf1-475f-836a-77dec9f7814a",
                     "go": "78aa7e32-5c1d-492c-83ca-8280d067cf00",
+                    "component_type": "BoxCollider"
+                  },
+                  "Type": "MAX_HEALTH"
+                }
+              ]
+            },
+            {
+              "__guid": "864bf4af-7e51-4d29-a2cf-348221154b98",
+              "Flags": 0,
+              "Name": "Upgrade_MAX_HEALTH",
+              "Position": "936.0809,32,5.000032",
+              "Scale": "0.2133333,0.2133333,1",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "SpriteTools.SpriteComponent",
+                  "__guid": "7f2968ea-70f0-4b68-806c-e0203713b90b",
+                  "__version": 1,
+                  "BroadcastEvents": {},
+                  "CastShadows": "On",
+                  "CreateAttachPoints": false,
+                  "FlashTint": "1,1,1,0",
+                  "PlaybackSpeed": 1,
+                  "Sprite": "sprites/objects/heart_up.sprite",
+                  "SpriteFlags": "None",
+                  "StartingAnimationName": "default",
+                  "Tint": "1,1,1,1",
+                  "UpDirection": "YPositive"
+                },
+                {
+                  "__type": "Sandbox.BoxCollider",
+                  "__guid": "9dbfa834-3f35-4336-be08-94f9bc7932e7",
+                  "Center": "50,50,0",
+                  "IsTrigger": true,
+                  "Scale": "61.70003,75.8002,50",
+                  "Static": true
+                },
+                {
+                  "__type": "Sandbox.sprite.SpriteSizer",
+                  "__guid": "e69be7f0-56ae-4bb3-9f0b-dd29c6f8de2e",
+                  "_height": 32,
+                  "_width": 32,
+                  "PixelPerUnit": 150
+                },
+                {
+                  "__type": "Sandbox.objects.Collectible",
+                  "__guid": "79c7ffda-0d3b-4fc2-baec-0bad603211d6",
+                  "IgnoreRespawn": false,
+                  "TriggerCollider": {
+                    "_type": "component",
+                    "component_id": "9dbfa834-3f35-4336-be08-94f9bc7932e7",
+                    "go": "864bf4af-7e51-4d29-a2cf-348221154b98",
                     "component_type": "BoxCollider"
                   },
                   "Type": "MAX_HEALTH"
@@ -13242,7 +13349,7 @@
       "__guid": "fa92b8fb-a335-4816-b27c-04934c4d960c",
       "Flags": 0,
       "Name": "Player",
-      "Position": "1308.451,1269.914,-0.00003921185",
+      "Position": "1168,48,-0.00004719913",
       "Enabled": true,
       "Components": [
         {
@@ -13366,7 +13473,7 @@
           ],
           "JumpIn": 0.3,
           "JumpSound": "audio/sfx/player/player_jump.sound",
-          "MaxHeight": 65,
+          "MaxHeight": 75,
           "MaxJumps": 2,
           "MinHeight": 30,
           "PitchPerJump": 0.1,

@@ -42,6 +42,7 @@
         "DisableColliderOnFall": false,
         "DisableIn": 1,
         "FallSpeed": 300,
+        "IgnoreRespawn": false,
         "ShakeIntensity": 0.5,
         "Sprite": {
           "_type": "component",
@@ -49,7 +50,7 @@
           "go": "a0a2ea3f-224b-442f-80ab-2150c2db6695",
           "component_type": "SpriteComponent"
         },
-        "TimeToFall": 0.5
+        "TimeToFall": 0.7
       }
     ],
     "Children": [

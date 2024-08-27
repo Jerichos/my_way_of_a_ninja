@@ -60,6 +60,8 @@ namespace Sandbox.player
 			
 	        // Apply the velocity in the direction the character is facing
 	        Velocity = Direction * velocity;
+	        if(MotionCore.Grounded)
+		        Velocity = Velocity.WithY(0);
 	        // Log.Info($"Knockback _t: {_t} distance: {_distance} MaxDistance: {actualMaxDistance} Velocity: {Velocity}");
         }
 
