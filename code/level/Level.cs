@@ -72,20 +72,17 @@ public class Level : Component
 	{
 		if ( checkpoint.QuitePlace )
 		{
-			Log.Info("quite place stop audio");
 			SoundBox.StopSound(); // TODO: lerp volume down
 		}
 	}
 
 	private void OnNewAreaEnter( NewArea area )
 	{
-		Log.Info("New area entered: " + area.GameObject.Name);
 		if(_currentArea == area)
 			return;
 
 		if ( _currentArea != null )
 		{
-			Log.Info("disable current area");
 			_currentArea.Enabled = false;
 		}
 		else
@@ -93,7 +90,6 @@ public class Level : Component
 			_currentArea = area;
 		}
 		
-		Log.Info($"Level area bounds changed to {area.MinBounds} - {area.MaxBounds}");
 		MinBounds = area.MinBounds;
 		MaxBounds = area.MaxBounds;
 		CameraFollow.SetBounds( MinBounds, MaxBounds, true, area.TransitionMultiplier);
@@ -101,8 +97,6 @@ public class Level : Component
 		
 		if(area.AreaSound != null && !Player.IsInGracePeriod)
 		{
-			Log.Info("New area sound: " + area.AreaSound.Sounds[0].ResourceName);
-
 			if ( _currentArea.AreaSound != area.AreaSound )
 			{
 				SoundBox.StopSound();
@@ -121,22 +115,30 @@ public class Level : Component
 		
 		if ( area.BossArea )
 		{
-			Log.Info("1");
 			SpawnedBoss = _levelBoss.GameObject.Clone().Components.Get<BigBossBird>();
-			Log.Info("2");
+			SpawnedBoss.Init(this);
 			SpawnedBoss.Transform.Position = _levelBoss.Transform.Position;
 			SpawnedBoss.GameObject.Enabled = true;
 			SpawnedBoss.Player = Player;
 			BossSpawnedEvent?.Invoke(SpawnedBoss);
-			CameraFollow.MoveToBoundsDontFollowAnymore( MinBounds, MaxBounds );
+			CameraFollow.MoveToBoundsDontFollowAnymore( MinBounds, MaxBounds, area.TransitionMultiplier );
 		}
 		
 		_currentArea = area;
-		
-		
-		Log.Info("New area set up");
 	}
 	// async method to to StartSound()
+
+	public void StartWeather()
+	{
+		Weather.Enabled = true;
+		Weather.RestartWeather();
+	}
+	
+	public void StopWeather()
+	{
+		Weather.Enabled = false;
+		Weather.RestartWeather();
+	}
 
 	private async void StartSoundAsync()
 	{
@@ -258,7 +260,6 @@ public class Level : Component
 
 	private void OnAddedItem( Inventory obj )
 	{
-		Log.Info("LEVEL Item added");
 		foreach (var checkpoint in _checkpoints)
 			checkpoint.PendingItem(true);
 	}

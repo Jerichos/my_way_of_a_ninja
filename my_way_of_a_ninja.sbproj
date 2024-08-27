@@ -73,6 +73,20 @@
       ],
       "__guid": "541c6281-8285-49e7-8f78-cca53b9cf79d"
     },
-    "LaunchMode": "Normal"
+    "LaunchMode": "Normal",
+    "Compiler": {
+      "RootNamespace": "Sandbox",
+      "DefineConstants": "SANDBOX;ADDON;DEBUG",
+      "NoWarn": "1701;1702;1591;",
+      "WarningsAsErrors": "",
+      "Whitelist": true,
+      "ReleaseMode": "Release",
+      "AssemblyReferences": [],
+      "IgnoreFolders": [
+        "editor",
+        "unittest"
+      ],
+      "DistinctAssemblyReferences": []
+    }
   }
 }

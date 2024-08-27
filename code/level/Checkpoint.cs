@@ -32,7 +32,6 @@ public class Checkpoint : Component
 				SpriteComponent.PlayAnimation("activated");
 				PendingSpriteComponent.PlaybackSpeed = 1;
 				
-				Log.Info("checkpoint event fired");
 				CheckpointActivatedEvent?.Invoke(this);
 			}
 			else

@@ -54,15 +54,12 @@ public class Inventory : Component
 		
 		_pendingCollectible.Add(collectible);
 		AddedItemEvent?.Invoke(this);
-		
-		Log.Info($"Added upgrade: {collectible.Type}");
 	}
 	
 	public void ResetPendingItems()
 	{
 		_pendingItems = new Items();  // Reset all pending items to a new empty instance
 		_pendingCollectible.Clear();
-		Log.Info("Pending items reset");
 		AddedItemEvent?.Invoke(this);
 	}
 
@@ -93,7 +90,6 @@ public class Inventory : Component
 		switch ( itemType )
 		{
 			case ItemType.DOUBLE_JUMP:
-				Log.Info($"_items.DoubleJump: {_items.DoubleJump} _pendingItems.DoubleJump: {_pendingItems.DoubleJump}");
 				return _items.DoubleJump || _pendingItems.DoubleJump;
 			case ItemType.DASH:
 				return _items.Dash || _pendingItems.Dash;

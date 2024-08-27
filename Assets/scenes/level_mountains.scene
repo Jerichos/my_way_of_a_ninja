@@ -60,7 +60,7 @@
           },
           "StartCheckpoint": {
             "_type": "component",
-            "component_id": "e2f9601f-32cb-45f0-bf58-3b169fd65182",
+            "component_id": "7d980d70-bc74-44a1-be32-51fbb1e5fac2",
             "go": "de903763-862d-4e3f-bade-fac35a3fcaee",
             "component_type": "Checkpoint"
           },
@@ -5081,7 +5081,7 @@
                     "component_type": "BoxCollider"
                   },
                   "MuteSound": false,
-                  "TransitionMultiplier": 1,
+                  "TransitionMultiplier": 0.5,
                   "WeatherEnabled": false
                 }
               ]
@@ -5229,10 +5229,10 @@
                     "component_type": "ContactDamage"
                   },
                   "DestroySound": "audio/sfx/player/level_defeat.sound",
-                  "Health": 100,
+                  "Health": 50,
                   "HitSound": "audio/sfx/enemy/enemy_hit.sound",
                   "IgnoreRespawn": true,
-                  "MaxHealth": 100,
+                  "MaxHealth": 50,
                   "Sprite": {
                     "_type": "component",
                     "component_id": "bc9080e4-5c8c-4c56-9a4b-098bf106379a",

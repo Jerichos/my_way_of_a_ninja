@@ -58,14 +58,11 @@ public sealed class Player : Component
 
 	private void OnItemsChanged(Inventory inventory)
 	{
-		Log.Info("Checking for upgrades");
 		if (inventory.HasUpgrade(ItemType.MAX_HEALTH, out int value))
 		{
-			Log.Info($"Max health upgrade: {value}");
 			int prevMaxHealth = MaxHealth;
 			MaxHealth = _defaultMaxHealth + value;
 			int diff = MaxHealth - prevMaxHealth;
-			Log.Info("diff: " + diff);
 			MaxHealthChangedEvent?.Invoke(MaxHealth);
 			if (diff > 0)
 			{
@@ -187,8 +184,6 @@ public sealed class Player : Component
 			Knockback.Activate(knockbackDirection);
 			OnTakeDamage();
 		}
-		
-		Log.Info($"Player took damage! Health: {Health}/{MaxHealth} damage:{contactDamage}  from: {fromComponent.GameObject.Name}");
 	}
 	
 	private void OnTakeDamage()
@@ -213,7 +208,6 @@ public sealed class Player : Component
 	
 	private void OnDeath()
 	{
-		Log.Info("Player died");
 		DashAbility?.CancelMotion();
 		Sound.Play(DeathSound); // huh we don't need sound point?
 		DeathEvent?.Invoke();
@@ -232,7 +226,6 @@ public sealed class Player : Component
 		_dead = false;
 		Inventory?.ResetPendingItems();
 		Health = MaxHealth;
-		Log.Info("Health: " + Health + "/" + MaxHealth + " default: " + _defaultMaxHealth);
 		
 		Enabled = true;
 		HealthChangedEvent?.Invoke(Health);

@@ -1,4 +1,5 @@
 ﻿using System;
+using Sandbox.level;
 using SpriteTools;
 
 namespace Sandbox.enemies;
@@ -67,6 +68,13 @@ public class BigBossBird : Component
 	private float _targetPlayerSpeed = 200;
 	
 	private bool IsAtHeightWithPlayer => Math.Abs(BirdEnemy.Transform.Position.y - PlayerPosition.y) < 10;
+
+	private Level _level;
+	
+	public void Init( Level level )
+	{
+		_level = level;
+	}
 	
 	protected override void OnStart()
 	{
@@ -154,11 +162,16 @@ public class BigBossBird : Component
 		_currentPhase = phase;
 	}
 
-	private void OnHit( int obj )
+	private void OnHit( int health )
 	{
 		if(_currentPhase is BirdBossPhase.Phase1)
 		{
 			SetPhase(BirdBossPhase.Phase1);
+		}
+		float percent = health / (float)BirdEnemy.MaxHealth;
+		if(percent <= 0.10f)
+		{
+			_level.StartWeather();			
 		}
 	}
 

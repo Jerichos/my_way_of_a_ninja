@@ -110,12 +110,12 @@ private bool _moveToBoundsAndStop = false;
         return false;
     }
 
-    public void MoveToBoundsDontFollowAnymore(Vector2 minBounds, Vector2 maxBounds)
+    public void MoveToBoundsDontFollowAnymore(Vector2 minBounds, Vector2 maxBounds, float speedMultiplier)
     {
         _targetMinBounds = minBounds;
         _targetMaxBounds = maxBounds;
         _moveToBoundsAndStop = true;
-        _transitionSpeedMultiplier = 2f; // You can adjust this speed as needed
+        _transitionSpeedMultiplier = speedMultiplier; // You can adjust this speed as needed
 
         // Optionally, you could reset bounds immediately to avoid weird clamping during the move
         MinBounds = minBounds;

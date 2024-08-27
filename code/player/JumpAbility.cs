@@ -156,7 +156,6 @@ public sealed class JumpAbility : Component, IMotionProvider
 
 	protected override void OnEnabled()
 	{
-		Log.Info("JumpAbility enabled");
 		MotionCore.CeilingHitEvent += CancelJump;
 		MotionCore.GroundedEvent += OnGroundedChanged;
 		
