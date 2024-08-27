@@ -42,7 +42,7 @@
             "go": "a331ba39-0f15-4238-a15f-5f657e8e0e1b",
             "component_type": "DeathAnimation"
           },
-          "DontTeleportPlayerToCheckpoint": true,
+          "DontTeleportPlayerToCheckpoint": false,
           "MaxBounds": "2500,2500",
           "MinBounds": "0,0",
           "Player": {
@@ -8214,9 +8214,6 @@
                 },
                 "58,25": {
                   "TileId": "2ffe96b3-bbd5-4212-b0b4-6fe92eb4bfc8"
-                },
-                "28,1": {
-                  "TileId": "d6b00a7f-deee-4e26-a035-246d1eb9a224"
                 }
               }
             },
