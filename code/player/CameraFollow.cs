@@ -18,9 +18,32 @@ public class CameraFollow : Component
     private Vector2 _targetMaxBounds;
     private bool _smoothTransition = false;
     private  float _transitionSpeedMultiplier = 2f;
+private bool _moveToBoundsAndStop = false;
 
     protected override void OnFixedUpdate()
     {
+        if (_moveToBoundsAndStop)
+        {
+            // Move camera to center within new bounds
+            var centerBounds = new Vector3(
+                (_targetMinBounds.x + _targetMaxBounds.x) / 2,
+                (_targetMinBounds.y + _targetMaxBounds.y) / 2,
+                Transform.Position.z); // Maintain current Z position
+
+            // Move the camera smoothly to the center of the new bounds
+            Transform.Position = Vector3.Lerp(Transform.Position, centerBounds, Time.Delta * _transitionSpeedMultiplier);
+
+            // Check if the camera is close enough to the target position
+            if ((Transform.Position - centerBounds).LengthSquared < 0.001f)
+            {
+                Transform.Position = centerBounds;
+                _moveToBoundsAndStop = false;
+                Target = null; // Stop following the player
+            }
+
+            return; // Skip the rest of the update if moving to bounds
+        }
+
         if (Target == null)
             return;
 
@@ -56,6 +79,7 @@ public class CameraFollow : Component
 
     public void SetBounds(Vector2 min, Vector2 max, bool smoothly = false, float smoothMultiplier = 2f)
     {
+	    _moveToBoundsAndStop = false;
         if (smoothly)
         {
             _targetMinBounds = min;
@@ -86,9 +110,15 @@ public class CameraFollow : Component
         return false;
     }
 
-    public void MoveToBoundsDontFollowAnymore( Vector2 minBounds, Vector2 maxBounds )
+    public void MoveToBoundsDontFollowAnymore(Vector2 minBounds, Vector2 maxBounds)
     {
-	    // implement
-	    
+        _targetMinBounds = minBounds;
+        _targetMaxBounds = maxBounds;
+        _moveToBoundsAndStop = true;
+        _transitionSpeedMultiplier = 2f; // You can adjust this speed as needed
+
+        // Optionally, you could reset bounds immediately to avoid weird clamping during the move
+        MinBounds = minBounds;
+        MaxBounds = maxBounds;
     }
 }

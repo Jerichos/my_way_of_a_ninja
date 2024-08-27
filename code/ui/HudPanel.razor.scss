@@ -70,4 +70,92 @@ HudPanel {
 			background-image: url('/sprites/objects/projectile.png');
 		}
 	}
+
+	.boss-health-bar {
+		position: absolute;
+		top: 20px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 50%;
+		height: 20px;
+		background-color: rgba(255, 0, 0, 0.3); // Light red background
+		border-radius: 10px;
+		overflow: hidden;
+	}
+
+	.boss-health-bar-inner {
+		height: 100%;
+		background-color: red; // Full red bar indicating health
+	}
+
+	.screen-fade {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: black;
+		opacity: 0;
+		transition: opacity 5s;
+	}
+
+	.end-title {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		font-size: 48px;
+		color: white;
+		font-family: Poppins;
+		text-align: center;
+	}
+	.end-title2 {
+		position: absolute;
+		top: 63%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		font-size: 36px;
+		color: white;
+		font-family: Poppins;
+		text-align: center;
+	}
+	.credits2 {
+		position: absolute;
+		top: 80%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		font-size: 24px;
+		color: white;
+		font-family: Poppins;
+		text-align: center;
+		white-space: pre-line;
+		//border: 1px solid red;
+	}
+
+	// cannot make this work...
+	//.credits {
+	//	position: absolute;
+	//	top: 60%; /* Adjust based on desired position */
+	//	left: 50%;
+	//	bottom: 0%;
+	//	transform: translateX(-50%);
+	//	font-size: 24px; /* Reduce font size to fit text */
+	//	color: white;
+	//	font-family: Poppins;
+	//	text-align: left;
+	//	display: flex;
+	//	justify-content: space-between;
+	//	width: 80%; /* Ensure the container isn't too wide */
+	//	line-height: 24.5;
+	//	gap: 10px;
+	//	border: 1px solid red;
+	//}
+
+	.credits-column {
+		width: 45%; /* Ensure columns are wide enough to contain text */
+		overflow: visible; /* Allow text to flow within columns */
+		border: 1px solid blue;
+	}
+
+
 }

@@ -32,13 +32,14 @@ public class BigBossBird : Component
 	[Property] private SpriteComponent Sprite { get; set; }
 	[Property] private float Speed { get; set; } = 360;
 	[Property] private SoundEvent EagleSound { get; set; }
-	[Property] private Enemy BirdEnemy { get; set; }
+	[Property] public Enemy BirdEnemy { get; set; }
 	[Property] private MoveToPosition MoveToPosition {get; set;}
 	
 	public Player Player { get; set; }
 	private Vector3 PlayerPosition => Player.Transform.Position + new Vector3(0, 32, 0);
 	
-	public Action BossDeathEvent;
+	private const string IDLE_ANIM = "idle";
+	private const string FLY_ANIM = "fly"; // when flying on player
 	
 	[Property] public GameObject RightBotPosition { get; private set; }
 	[Property] public GameObject RightMidPosition { get; private set; }
@@ -61,6 +62,10 @@ public class BigBossBird : Component
 	private float _timer;
 	private float _delay = 1.0f;
 	
+	private float _returnToPossitionSpeed = 100;
+	private float _flyAtPlayerSpeed = 300;
+	private float _targetPlayerSpeed = 200;
+	
 	private bool IsAtHeightWithPlayer => Math.Abs(BirdEnemy.Transform.Position.y - PlayerPosition.y) < 10;
 	
 	protected override void OnStart()
@@ -68,9 +73,15 @@ public class BigBossBird : Component
 		Sound.Play(EagleSound);
 		MoveToPosition.OnArrived += OnArrived;
 		BirdEnemy.HitEvent += OnHit;
+		BirdEnemy.DeadEvent += OnDead;
 		SetPhase(BirdBossPhase.Intro, true);
 	}
-	
+
+	private void OnDead()
+	{
+		Enabled = false;
+	}
+
 	private void ResetTimer()
 	{
 		_timer = 0;
@@ -82,11 +93,13 @@ public class BigBossBird : Component
 		
 		if ( _currentPhase == BirdBossPhase.Phase1 && _timer > _delay )
 		{
-			Log.Info($"bird IsAtHeightWithPlayer: {IsAtHeightWithPlayer} IsFlyingAtPlayer: {_flyingAtPlayer}");
+			// Log.Info($"bird IsAtHeightWithPlayer: {IsAtHeightWithPlayer} IsFlyingAtPlayer: {_flyingAtPlayer}");
 			if ( IsAtHeightWithPlayer && !_flyingAtPlayer )
 			{
 				_flyingAtPlayer = true;
-				Log.Info($" bird started flying at player");
+				// Log.Info($" bird started flying at player");
+				Sprite.PlayAnimation(FLY_ANIM);
+				Speed = _flyAtPlayerSpeed;
 				
 				// move bird to opposite side of positions at the same height
 				if ( _currentPosition is BirdBossPositions.RightBot or BirdBossPositions.RightMid or BirdBossPositions.RightTop )
@@ -107,6 +120,8 @@ public class BigBossBird : Component
 			else if(!_flyingAtPlayer)
 			{
 				// move bird to player height position
+				Speed = _targetPlayerSpeed;
+				
 				Vector3 position = BirdEnemy.Transform.Position;
 				position.y = PlayerPosition.y;
 				MoveToPosition.MoveTo(position, Speed);
@@ -122,7 +137,10 @@ public class BigBossBird : Component
 		switch ( phase )
 		{
 			case BirdBossPhase.Intro:
+				Speed = _flyAtPlayerSpeed;
+				Sprite.PlayAnimation(FLY_ANIM);
 				SetPosition(BirdBossPositions.RightBot , true);
+				Sprite.SpriteFlags = SpriteFlags.None;
 				break;
 			case BirdBossPhase.Phase1:
 				break;
@@ -132,7 +150,7 @@ public class BigBossBird : Component
 				break;
 		}
 		
-		Log.Info("bird phase changed: " + phase);
+		// Log.Info("bird phase changed: " + phase);
 		_currentPhase = phase;
 	}
 
@@ -147,6 +165,7 @@ public class BigBossBird : Component
 	private void OnArrived()
 	{
 		ResetTimer();
+		Sprite.PlayAnimation(IDLE_ANIM);
 		
 		if(_currentPhase == BirdBossPhase.Intro)
 		{
@@ -157,22 +176,24 @@ public class BigBossBird : Component
 		{
 		}
 		
-		Log.Info($"bird arrived {_currentPhase} at position: {_currentPosition}");
+		// Log.Info($"bird arrived {_currentPhase} at position: {_currentPosition}");
 
 		if ( _flyingAtPlayer )
 		{
 			if ( _currentPosition is BirdBossPositions.LeftMid or BirdBossPositions.RightMid )
 			{
-				Log.Info("bird stopped flying at player");
+				// Log.Info("bird stopped flying at player");
 				_flyingAtPlayer = false;
 			}
 			
 			if(_currentSide == Side.Right)
 			{
+				Speed = _returnToPossitionSpeed;
 				SetPosition(BirdBossPositions.RightMid, true);
 			}
 			else
 			{
+				Speed = _returnToPossitionSpeed;
 				SetPosition(BirdBossPositions.LeftMid, true);
 			}
 		}
@@ -221,7 +242,7 @@ public class BigBossBird : Component
 				throw new ArgumentOutOfRangeException( nameof(birdPosition), birdPosition, null );
 		}
 		
-		Log.Info($"bird changed position from {_currentPosition} to {birdPosition}");
+		// Log.Info($"bird changed position from {_currentPosition} to {birdPosition}");
 		_currentPosition = birdPosition;
 	}
 }

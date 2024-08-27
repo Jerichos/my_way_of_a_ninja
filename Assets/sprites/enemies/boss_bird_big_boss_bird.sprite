@@ -39,6 +39,46 @@
         }
       ],
       "Attachments": []
+    },
+    {
+      "FrameRate": 15,
+      "Origin": "0.5,0.5",
+      "Looping": true,
+      "Name": "fly",
+      "Frames": [
+        {
+          "FilePath": "sprites/enemies/boss_bird_big_boss_bird_fly.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Size": "128,128"
+          }
+        },
+        {
+          "FilePath": "sprites/enemies/boss_bird_big_boss_bird_fly.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "128,0",
+            "Size": "128,128"
+          }
+        },
+        {
+          "FilePath": "sprites/enemies/boss_bird_big_boss_bird_fly.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "256,0",
+            "Size": "128,128"
+          }
+        },
+        {
+          "FilePath": "sprites/enemies/boss_bird_big_boss_bird_fly.png",
+          "Events": [],
+          "SpriteSheetRect": {
+            "Position": "384,0",
+            "Size": "128,128"
+          }
+        }
+      ],
+      "Attachments": []
     }
   ],
   "__references": [],

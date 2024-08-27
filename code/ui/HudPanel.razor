@@ -1,99 +1,205 @@
 @using Sandbox;
-@using Sandbox.player
+@using Sandbox.enemies;
+@using Sandbox.level;
+@using Sandbox.player;
 @using Sandbox.UI;
 @inherits PanelComponent
 
 <root>
-	<div class="health-hud">
-		@for ( int i = 0; i < MaxHealth; i++ )
-		{
-			@if ( i < CurrentHealth )
+	@if (!_bossDead)
+	{
+		<div class="health-hud">
+			@for (int i = 0; i < MaxHealth; i++)
 			{
-				<div class="heart-icon filled"></div>
+				@if (i < CurrentHealth)
+				{
+					<div class="heart-icon filled"></div>
+				}
+				else
+				{
+					<div class="heart-icon empty"></div>
+				}
 			}
-			else
+		</div>
+
+		<div class="inventory-hud">
+			@if (Player.Inventory.HasUpgrade(ItemType.DOUBLE_JUMP, out var value1))
 			{
-				<div class="heart-icon empty"></div>
+				<div class="item-icon double-jump"></div>
 			}
-		}
-	</div>
-	<div class="inventory-hud">
-		@if (Player.Inventory.HasUpgrade(ItemType.DOUBLE_JUMP, out var value1))
+			@if (Player.Inventory.HasUpgrade(ItemType.DASH, out var value2))
+			{
+				<div class="item-icon dash"></div>
+			}
+			@if (Player.Inventory.HasUpgrade(ItemType.SWORD, out var value3))
+			{
+				<div class="item-icon sword"></div>
+			}
+			@if (Player.Inventory.HasUpgrade(ItemType.PROJECTILE, out var value4))
+			{
+				<div class="item-icon projectile"></div>
+			}
+		</div>
+
+		@if (_boss != null)
 		{
-			<div class="item-icon double-jump"></div>
+			<div class="boss-health-bar">
+				<div class="boss-health-bar-inner" style="width: @((_bossCurrentHealth / (float)_bossMaxHealth) * 100)%"></div>
+			</div>
 		}
-		@if (Player.Inventory.HasUpgrade(ItemType.DASH, out var value2))
-		{
-			<div class="item-icon dash"></div>
-		}
-		@if (Player.Inventory.HasUpgrade(ItemType.SWORD, out var value3))
-		{
-			<div class="item-icon sword"></div>
-		}
-		@if (Player.Inventory.HasUpgrade(ItemType.PROJECTILE, out var value4))
-		{
-			<div class="item-icon projectile"></div>
-		}
-	</div>
+	}
+	
+	<div class="screen-fade" style="opacity: @_fadeOpacity;"></div>
+
+	@if (_showCredits)
+	{
+		<div class="end-title2">credits</div>
+		<div class="credits2">@Credits</div>
+	}
+	
+	@if (_showTitle)
+	{
+		<div class="end-title">Thanks for playing</div>
+	}
+
 </root>
 
 @code
 {
+	[Property] public Level Level { get; set; }
 	[Property] public Player Player;
 	[Property] public int MaxHealth { get; set; } = 5;
 	[Property] public int CurrentHealth { get; set; } = 5;
 
+	private int _bossCurrentHealth;
+	private int _bossMaxHealth;
+
+	private BigBossBird _boss;
+
+	private bool _bossDead = false;
+	private double _fadeOpacity = 0;
+	private bool _showTitle = false;
+	private bool _showCredits = false;
+
 	protected override void OnAwake()
 	{
-		if ( Player != null )
-			SetPlayer( Player );
+		if (Player != null)
+			SetPlayer(Player);
+
+		Level.BossSpawnedEvent += OnBossSpawned;
 	}
 
-	public void SetPlayer( Player player )
+	private void OnBossSpawned(BigBossBird boss)
 	{
-		Unsubscribe( Player );
-		Player = player;
-		Subscribe( Player );
+		if (_boss != null)
+		{
+			_boss.BirdEnemy.HealthChangedEvent -= OnBossHealthChanged;
+			_boss.BirdEnemy.DeadEvent -= OnBossDead;
+		}
+
+		if (boss != null)
+		{
+			boss.BirdEnemy.HealthChangedEvent += OnBossHealthChanged;
+			boss.BirdEnemy.DeadEvent += OnBossDead;
+			_boss = boss;
+			_bossCurrentHealth = boss.BirdEnemy.Health;
+			_bossMaxHealth = boss.BirdEnemy.MaxHealth;
+			StateHasChanged();
+		}
+		else
+		{
+			_boss = null;
+			_bossCurrentHealth = 0;
+			_bossMaxHealth = 0;
+			StateHasChanged();
+		}
 	}
 
-	private void OnMaxHealthChanged( int maxHealth )
+	private async void OnBossDead()
+	{
+		Log.Info("UI - Boss Dead");
+		Level.SoundBox.StopSound();
+		
+		Player.Unkillable = true;
+
+		_bossDead = true;
+		StateHasChanged();
+
+		// Fade to black over 5 seconds
+		for (int i = 0; i <= 100; i++)
+		{
+			_fadeOpacity = i / 100.0;
+			StateHasChanged();
+			await Task.Delay(20); 
+		}
+
+		await Task.Delay(1000); 
+		_showTitle = true;
+		StateHasChanged();
+
+		await Task.Delay(1000);
+		_showCredits = true;
+		StateHasChanged();
+	}
+
+	private void OnBossHealthChanged(int currHealth, int maxHealth)
+	{
+		_bossCurrentHealth = currHealth;
+		_bossMaxHealth = maxHealth;
+		StateHasChanged();
+	}
+
+	public void SetPlayer(Player player)
+	{
+		Unsubscribe(Player);
+		Player = player;
+		Subscribe(Player);
+	}
+
+	private void OnMaxHealthChanged(int maxHealth)
 	{
 		MaxHealth = maxHealth;
 		StateHasChanged();
 	}
 
-	private void OnHealthChanged( int health )
+	private void OnHealthChanged(int health)
 	{
 		CurrentHealth = health;
 		StateHasChanged();
 	}
 	
-	private void OnInventoryChanged( Inventory item )
+	private void OnInventoryChanged(Inventory item)
 	{
-		// TODO: Update inventory UI
 		StateHasChanged();
 	}
 
-	private void Subscribe( Player player )
+	private void Subscribe(Player player)
 	{
-		if ( player == null )
+		if (player == null)
 			return;
 
 		player.HealthChangedEvent += OnHealthChanged;
 		player.MaxHealthChangedEvent += OnMaxHealthChanged;
 		player.Inventory.AddedItemEvent += OnInventoryChanged;
 		
-		OnHealthChanged( player.Health );
-		OnMaxHealthChanged( player.MaxHealth );
+		OnHealthChanged(player.Health);
+		OnMaxHealthChanged(player.MaxHealth);
 	}
 
-	private void Unsubscribe( Player player )
+	private void Unsubscribe(Player player)
 	{
-		if ( player == null )
+		if (player == null)
 			return;
 
 		player.HealthChangedEvent -= OnHealthChanged;
 		player.MaxHealthChangedEvent -= OnMaxHealthChanged;
 		player.Inventory.AddedItemEvent -= OnInventoryChanged;
 	}
+	
+	[Property, TextArea] public string Credits { get; set; } = "Credits!";
+
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	protected override int BuildHash() => System.HashCode.Combine( Credits );
 }

@@ -25,7 +25,8 @@ public class Level : Component
 	private List<IRespawn> _respawnables = new();
 
 	private BigBossBird _levelBoss;
-	private BigBossBird _spawnedBoss;
+	public BigBossBird SpawnedBoss { get; private set; }
+	public Action<BigBossBird> BossSpawnedEvent; // null if reset
 
 	private NewArea _currentArea;
 	// if DontTeleportPlayerToCheckpointOnce is true, player will be spawned at the level's position set in the editor, until first checkpoint is activated
@@ -110,13 +111,13 @@ public class Level : Component
 		
 		if ( area.BossArea )
 		{
-			_spawnedBoss = _levelBoss.GameObject.Clone().Components.Get<BigBossBird>();
-			_spawnedBoss.Transform.Position = _levelBoss.Transform.Position;
-			_spawnedBoss.GameObject.Enabled = true;
-			_spawnedBoss.Player = Player;
+			SpawnedBoss = _levelBoss.GameObject.Clone().Components.Get<BigBossBird>();
+			SpawnedBoss.Transform.Position = _levelBoss.Transform.Position;
+			SpawnedBoss.GameObject.Enabled = true;
+			SpawnedBoss.Player = Player;
+			BossSpawnedEvent?.Invoke(SpawnedBoss);
 			CameraFollow.MoveToBoundsDontFollowAnymore( MinBounds, MaxBounds );
 		}
-		
 		
 		_currentArea = area;
 		
@@ -213,9 +214,11 @@ public class Level : Component
 		DeathAnimation.AnimationFadeFinishedEvent -= OnDeathFadeFinished;
 		DeathAnimation.AnimationFadeFinishedEvent += OnDeathFadeFinished;
 		
-		if(_spawnedBoss != null)
+		BossSpawnedEvent?.Invoke(null);
+		
+		if(SpawnedBoss != null)
 		{
-			_spawnedBoss.GameObject.Destroy();
+			SpawnedBoss.GameObject.Destroy();
 		}
 		
 		foreach (var checkpoint in _checkpoints)

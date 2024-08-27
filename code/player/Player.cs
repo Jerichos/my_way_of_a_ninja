@@ -32,6 +32,7 @@ public sealed class Player : Component
 	private bool _graceFromDamage; // TODO: not nice but quick fix, so what
 	
 	public bool IsInGracePeriod => _gracePeriodTimer > 0;
+	public bool Unkillable { get; set; }
 
 	public Action DeathEvent;
 	public Action HitEvent;
@@ -168,7 +169,7 @@ public sealed class Player : Component
 
 	public void TakeDamage( int contactDamage, Component fromComponent) // position is used for knockback
 	{
-		if(_gracePeriodTimer > 0)
+		if(_gracePeriodTimer > 0 || Unkillable)
 			return;
 		
 		Health -= 1;
@@ -198,6 +199,9 @@ public sealed class Player : Component
 
 	public void Kill()
 	{
+		if(Unkillable)
+			return;
+		
 		if(_dead || (_gracePeriodTimer > 0 && !_graceFromDamage))
 			return;
 		

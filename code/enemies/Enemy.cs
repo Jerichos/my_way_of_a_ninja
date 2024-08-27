@@ -12,14 +12,16 @@ public class Enemy : Component, IHittable
 	[Property] private Knockback Knockback { get; set; }
 	[Property] private ContactDamage ContactDamage { get; set; }
 
-	[Property] private int Health { get; set; } = 1;
-	[Property] private int MaxHealth { get; set; } = 1;
+	[Property] public int Health { get; set; } = 1;
+	[Property] public int MaxHealth { get; set; } = 1;
 	
 	[Property] private SoundEvent HitSound { get; set; }
 	[Property] private SoundEvent DestroySound { get; set; }
 	[Property] public bool IgnoreRespawn { get; set; }
 
 	public Action<int> HitEvent;
+	public Action<int, int> HealthChangedEvent;
+	public Action DeadEvent;
 	private bool _dead;
 	
 	// hit animation
@@ -83,6 +85,8 @@ public class Enemy : Component, IHittable
 			_isHit = true;
 			soundCallback?.Invoke(HitSound);
 		}
+		
+		HealthChangedEvent?.Invoke(Health, MaxHealth);
 	}
 	
 	private void Kill(GameObject source = null)
@@ -116,8 +120,9 @@ public class Enemy : Component, IHittable
 			}
 			
 			Vector2 knockbackDirection = (Transform.Position - source.Transform.Position).Normal;
-			Knockback.Activate(knockbackDirection, moreDistance);
+			Knockback?.Activate(knockbackDirection, moreDistance);
 		}
+		DeadEvent?.Invoke();
 	}
 
 	private void OnLevelRestart()
