@@ -13,21 +13,23 @@ public class PathInit : Component
 		{
 			PopulateFromChildren();
 		}
-		
-		var children = PathPointsParent.Children;
-		for ( int i = 0; i < children.Count; i++ )
+
+		if ( PathPointsParent != null )
 		{
-			children[i].Destroy();
+			var children = PathPointsParent.Children;
+			for ( int i = 0; i < children.Count; i++ )
+			{
+				children[i].Destroy();
+			}
+			
+			PathPointsParent.Destroy();
 		}
-		
-		PathPointsParent.Destroy();
 	}
 	
 	private void PopulateFromChildren()
 	{
 		if ( PathPointsParent == null )
 		{
-			Log.Error($"set PathPointsParent in the inspector {GameObject}");
 			return;
 		}
 		
@@ -51,16 +53,6 @@ public class PathInit : Component
 			return;
 		
 		PopulateFromChildren();
-	}
-
-	protected override void OnEnabled()
-	{
-		Log.Info("On enable");
-	}
-	
-	protected override void OnDisabled()
-	{
-		Log.Info("On disable");
 	}
 
 	protected override void DrawGizmos()

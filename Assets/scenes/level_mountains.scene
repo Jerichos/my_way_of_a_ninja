@@ -60,7 +60,7 @@
           },
           "StartCheckpoint": {
             "_type": "component",
-            "component_id": "c74fe405-14d2-4c65-877d-6ab4c6cd42e5",
+            "component_id": "e2f9601f-32cb-45f0-bf58-3b169fd65182",
             "go": "de903763-862d-4e3f-bade-fac35a3fcaee",
             "component_type": "Checkpoint"
           },
@@ -13349,7 +13349,7 @@
       "__guid": "fa92b8fb-a335-4816-b27c-04934c4d960c",
       "Flags": 0,
       "Name": "Player",
-      "Position": "1378.356,65.59076,-0.00003466093",
+      "Position": "1280,1168,-0.00004076587",
       "Enabled": true,
       "Components": [
         {

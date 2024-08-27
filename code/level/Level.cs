@@ -88,6 +88,10 @@ public class Level : Component
 			Log.Info("disable current area");
 			_currentArea.Enabled = false;
 		}
+		else
+		{
+			_currentArea = area;
+		}
 		
 		Log.Info($"Level area bounds changed to {area.MinBounds} - {area.MaxBounds}");
 		MinBounds = area.MinBounds;
@@ -98,12 +102,18 @@ public class Level : Component
 		if(area.AreaSound != null && !Player.IsInGracePeriod)
 		{
 			Log.Info("New area sound: " + area.AreaSound.Sounds[0].ResourceName);
-			// SoundBox.Enabled = false;
-			SoundBox.SoundEvent = area.AreaSound;
-			// SoundBox.StartSound();
-			// SoundBox.Enabled = true;
-			SoundBox.StopSound();
-			StartSoundAsync();
+
+			if ( _currentArea.AreaSound != area.AreaSound )
+			{
+				SoundBox.StopSound();
+				StartSoundAsync();
+				SoundBox.SoundEvent = area.AreaSound;
+			}
+			else
+			{
+				Log.Info("dont start sound, already playing");
+			}
+			
 		}
 		
 		Weather.Enabled = area.WeatherEnabled;
@@ -111,7 +121,9 @@ public class Level : Component
 		
 		if ( area.BossArea )
 		{
+			Log.Info("1");
 			SpawnedBoss = _levelBoss.GameObject.Clone().Components.Get<BigBossBird>();
+			Log.Info("2");
 			SpawnedBoss.Transform.Position = _levelBoss.Transform.Position;
 			SpawnedBoss.GameObject.Enabled = true;
 			SpawnedBoss.Player = Player;
