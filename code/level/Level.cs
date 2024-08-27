@@ -126,7 +126,6 @@ public class Level : Component
 		
 		_currentArea = area;
 	}
-	// async method to to StartSound()
 
 	public void StartWeather()
 	{
@@ -190,7 +189,10 @@ public class Level : Component
 			if ( Checkpoint.LastCheckpoint.QuitePlace )
 				SoundBox.StopSound(); // TODO: lerp volume down
 			else
+			{
+				Log.Info("start SOUND");
 				SoundBox.StartSound();
+			}
 			
 			Log.Info("is last checkpoint quite place: " + Checkpoint.LastCheckpoint.QuitePlace);
 		}

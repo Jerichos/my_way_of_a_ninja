@@ -33,7 +33,6 @@ public class ActivateOnEnter : Component, IRespawn
 
 	public void Respawn()
 	{
-		Log.Info("Respawn " + this);
 		Enabled = true;
 		Target.Enabled = false;
 	}

@@ -29,7 +29,6 @@ public class BallSpawn : Component, IRespawn
 		if (Components.TryGet(out Level level, FindMode.InAncestors))
 		{
 			newBall.SetParent(level.GameObject);
-			Log.Info("Enemy component is a child of a Level component.");
 		}
 		else
 		{

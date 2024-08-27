@@ -31,7 +31,6 @@ public class ShakeAndFall : Component, IRespawn
 
 	public void Respawn()
 	{
-		Log.Info("ShakeAndFall respawn");
 		Transform.Position = _startPosition;
 		Sprite.Transform.LocalPosition = Vector3.Zero;
 		

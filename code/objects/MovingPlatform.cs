@@ -84,7 +84,6 @@ public class MovingPlatform : Component, IMotionProvider, IRespawn
 
 	public void Respawn()
 	{
-		Log.Info("Respawn " + this);
 		Transform.Position = _startPosition;
 
 		if ( _lastPlayer != null )

@@ -51,7 +51,6 @@ public class Collectible : Component, ICollectible, IRespawn
 
 	public void Respawn()
 	{
-		Log.Info($"respawn {GameObject} Saved: {Saved}");
 		if(Saved)
 			return;
 		
