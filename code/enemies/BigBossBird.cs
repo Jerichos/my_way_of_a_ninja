@@ -101,14 +101,12 @@ public class BigBossBird : Component
 		
 		if ( _currentPhase == BirdBossPhase.Phase1 && _timer > _delay )
 		{
-			// Log.Info($"bird IsAtHeightWithPlayer: {IsAtHeightWithPlayer} IsFlyingAtPlayer: {_flyingAtPlayer}");
 			if ( IsAtHeightWithPlayer && !_flyingAtPlayer )
 			{
 				_flyingAtPlayer = true;
-				// Log.Info($" bird started flying at player");
 				Sprite.PlayAnimation(FLY_ANIM);
 				Speed = _flyAtPlayerSpeed;
-				
+
 				// move bird to opposite side of positions at the same height
 				if ( _currentPosition is BirdBossPositions.RightBot or BirdBossPositions.RightMid or BirdBossPositions.RightTop )
 				{
@@ -158,7 +156,6 @@ public class BigBossBird : Component
 				break;
 		}
 		
-		// Log.Info("bird phase changed: " + phase);
 		_currentPhase = phase;
 	}
 
@@ -179,40 +176,45 @@ public class BigBossBird : Component
 	{
 		ResetTimer();
 		Sprite.PlayAnimation(IDLE_ANIM);
-		
-		if(_currentPhase == BirdBossPhase.Intro)
+    
+		if (_currentPhase == BirdBossPhase.Intro)
 		{
 			SetPhase(BirdBossPhase.Phase1);
 		}
 
-		if ( _currentPhase == BirdBossPhase.Phase1 )
+		if (_currentPhase == BirdBossPhase.Phase1)
 		{
+			// Further Phase1 handling logic, if any
 		}
-		
-		// Log.Info($"bird arrived {_currentPhase} at position: {_currentPosition}");
 
-		if ( _flyingAtPlayer )
+		if (_flyingAtPlayer)
 		{
-			if ( _currentPosition is BirdBossPositions.LeftMid or BirdBossPositions.RightMid )
+			if (_currentPosition is BirdBossPositions.LeftMid or BirdBossPositions.RightMid)
 			{
-				// Log.Info("bird stopped flying at player");
 				_flyingAtPlayer = false;
 			}
-			
-			if(_currentSide == Side.Right)
+
+			if (_currentSide == Side.Right)
 			{
-				Speed = _returnToPossitionSpeed;
-				SetPosition(BirdBossPositions.RightMid, true);
+				if (_currentPosition != BirdBossPositions.RightMid)  // Ensure we don't repeatedly move to the same position
+				{
+					Speed = _returnToPossitionSpeed;
+					SetPosition(BirdBossPositions.RightMid, true);
+				}
 			}
 			else
 			{
-				Speed = _returnToPossitionSpeed;
-				SetPosition(BirdBossPositions.LeftMid, true);
+				if (_currentPosition != BirdBossPositions.LeftMid)  // Ensure we don't repeatedly move to the same position
+				{
+					Speed = _returnToPossitionSpeed;
+					SetPosition(BirdBossPositions.LeftMid, true);
+				}
 			}
 		}
-		
+
 		UpdateFacing();
 	}
+
 
 	private void UpdateFacing()
 	{
@@ -255,7 +257,6 @@ public class BigBossBird : Component
 				throw new ArgumentOutOfRangeException( nameof(birdPosition), birdPosition, null );
 		}
 		
-		// Log.Info($"bird changed position from {_currentPosition} to {birdPosition}");
 		_currentPosition = birdPosition;
 	}
 }

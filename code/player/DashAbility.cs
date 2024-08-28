@@ -124,11 +124,13 @@ public class DashAbility : Component, IMotionProvider
 
 	private bool CanDash()
 	{
-		if(Player.Inventory.Enabled && !Player.Inventory.HasUpgrade(ItemType.DASH, out var value))
+		if ( Player.Inventory.Enabled && !Player.Inventory.HasUpgrade( ItemType.DASH, out var value ) )
 			return false;
-		
-		if(!CanDashInAir && !MotionCore.Grounded || _isIsDashing || _cooldownTimer > 0)
+
+		if ( !CanDashInAir && !MotionCore.Grounded || _isIsDashing || _cooldownTimer > 0 )
+		{
 			return false;
+		}
 		
 		return true;
 	}

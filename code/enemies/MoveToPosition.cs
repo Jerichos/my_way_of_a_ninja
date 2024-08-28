@@ -14,7 +14,6 @@ public class MoveToPosition : Component
 	
 	public void MoveTo(Vector3 targetPosition, float speed = 100)
 	{
-		Log.Info("bird target position: " + targetPosition);
 		_targetPosition = targetPosition;
 		Speed = speed;
 		_isMoving = true;

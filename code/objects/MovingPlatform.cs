@@ -11,6 +11,7 @@ public class MovingPlatform : Component, IMotionProvider, IRespawn
 	[Property] private FollowPath FollowPath { get; set; }
 	[Property] private Collider TriggerCollider { get; set; }
 	[Property] public bool IgnoreRespawn { get; set; }
+	[Property] public bool MoveOnlyWhenPlayerOn { get; set; } // if true, platform will move only when player is on it, if is not, it will move back
 
 	public Vector2 Velocity => FollowPath.Velocity;
 	
@@ -19,9 +20,12 @@ public class MovingPlatform : Component, IMotionProvider, IRespawn
 	
 	private Player _lastPlayer; // this is not very good solution...
 	private Vector3 _startPosition;
+	
+	private bool _moveOnlyWhenPlayerOn;
 
 	protected override void OnAwake()
 	{
+		_moveOnlyWhenPlayerOn = MoveOnlyWhenPlayerOn;
 		_startPosition = Transform.Position;
 	}
 
@@ -53,6 +57,11 @@ public class MovingPlatform : Component, IMotionProvider, IRespawn
 			player.MotionCore.RemoveMotionProvider(this);
 			player.MotionCore.IsOnPlatform = false;
 			_lastPlayer = null;
+
+			if ( MoveOnlyWhenPlayerOn )
+			{
+				FollowPath.GoBack();
+			}
 		}
 	}
 
@@ -74,16 +83,25 @@ public class MovingPlatform : Component, IMotionProvider, IRespawn
 			{
 				_lastPlayer.MotionCore.IsOnPlatform = true;
 				_lastPlayer.MotionCore.AddMotionProvider(this);
+				if ( MoveOnlyWhenPlayerOn )
+				{
+					FollowPath.GoForward();
+				}
 			}
 			else
 			{
 				_lastPlayer.MotionCore.IsOnPlatform = false;
+				if ( MoveOnlyWhenPlayerOn )
+				{
+					FollowPath.GoBack();
+				}
 			}
 		}
 	}
 
 	public void Respawn()
 	{
+		MoveOnlyWhenPlayerOn = _moveOnlyWhenPlayerOn;
 		Transform.Position = _startPosition;
 
 		if ( _lastPlayer != null )

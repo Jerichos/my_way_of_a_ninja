@@ -24,7 +24,8 @@
     "CsProjName": "",
     "StartupScene": "scenes/level_mountains.scene",
     "ControlModes": {
-      "Keyboard": true
+      "Keyboard": true,
+      "Gamepad": true
     },
     "InputSettings": {
       "Actions": [
@@ -55,19 +56,19 @@
         {
           "Name": "Jump",
           "KeyboardCode": "space",
-          "GamepadCode": "X",
+          "GamepadCode": "A",
           "GroupName": "Movement"
         },
         {
           "Name": "attack1",
           "KeyboardCode": "mouse1",
-          "GamepadCode": "RightTrigger",
+          "GamepadCode": "SwitchRightBumper",
           "GroupName": "Actions"
         },
         {
           "Name": "Dash",
           "KeyboardCode": "SHIFT",
-          "GamepadCode": "B",
+          "GamepadCode": "SwitchLeftBumper",
           "GroupName": "Movement"
         }
       ],

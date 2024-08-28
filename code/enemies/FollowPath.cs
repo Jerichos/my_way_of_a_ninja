@@ -22,17 +22,20 @@ public class FollowPath : Component, IMotionProvider, IRespawn
 	public Vector2 Velocity { get; private set; }
 	public MotionType[] OverrideMotions => IgnoreGravity? new[] { MotionType.GRAVITY }: Array.Empty<MotionType>();
 	public MotionType MotionType => MotionType.MOVE;
+	
+	private int _defaultDirection;
 
 	protected override void OnAwake()
 	{
+		_defaultDirection = Direction;
 		if(PathInit != null)
 			SetPath(PathInit);
 	}
 
 	public void SetPath( Vector2[] path, bool loop , int direction = 1)
 	{
-		Log.Info("path set pathLength: " + path.Length);
 		Direction = direction;
+		_defaultDirection = direction;
 		_path = new Vector2[path.Length];
 		for ( int i = 0; i < path.Length; i++ )
 		{
@@ -54,56 +57,54 @@ public class FollowPath : Component, IMotionProvider, IRespawn
 
 	protected override void OnFixedUpdate()
 	{
-		// Check if we have a valid path to follow
-		if (_path == null || _path.Length == 0)
-			return;
+	    if (_path == null || _path.Length == 0)
+	        return;
 
-		if ( Transform == null )
-		{
-			Log.Error("Transform is null");
-			return;
-		}
+	    if (Transform == null)
+	        return;
 
-		// Calculate the direction towards the next point
-		Vector2 target = _path[_currentPoint];
-		Vector2 direction = (target - (Vector2)Transform.Position).Normal;
+	    Vector2 currentTarget = _path[_currentPoint];
+	    Vector2 directionToTarget = (currentTarget - (Vector2)Transform.Position).Normal;
 
-		// Move the object
-		Velocity = direction * Speed;
+	    int nextPoint = _currentPoint + Direction;
+	    if (nextPoint >= 0 && nextPoint < _path.Length)
+	    {
+	        Vector2 nextTarget = _path[nextPoint];
+	        Vector2 directionToNextTarget = (nextTarget - (Vector2)Transform.Position).Normal;
 
-		// Check if we reached the target point
-		if (Vector2.Distance(Transform.Position, target) < 5f)
-		{
-			// Move to the next point
-			_currentPoint += Direction;
+	        if (Vector2.Distance(Transform.Position, nextTarget) < Vector2.Distance(Transform.Position, currentTarget))
+	        {
+	            _currentPoint = nextPoint;
+	            directionToTarget = directionToNextTarget;
+	            currentTarget = nextTarget;
+	        }
+	    }
 
-			// Handle looping
-			if (_currentPoint >= _path.Length || _currentPoint < 0)
-			{
-				if (Loop)
-				{
-					_currentPoint = (_currentPoint + _path.Length) % _path.Length;
-				}
-				else
-				{
-					Enabled = false;
-					Velocity = Vector2.Zero;
+	    Velocity = directionToTarget * Speed;
 
-					if ( GameObject.Components.TryGet(out ActivateOnEnter activate, FindMode.InSelf) )
-					{
-						activate.Enabled = false;
-					}
-					// If not looping, clamp to the start or end of the path
-					// _currentPoint = Math.Clamp(_currentPoint, 0, _path.Length - 1);
-					// Direction = -Direction; // Reverse direction
-				}
-			}
-		}
-		
-		// Log.Info($"FollowPath Velocity: {Velocity} CurrentPoint: {_currentPoint}");
+	    if (Vector2.Distance(Transform.Position, currentTarget) < 5f)
+	    {
+	        _currentPoint += Direction;
+
+	        if (_currentPoint >= _path.Length || _currentPoint < 0)
+	        {
+	            if (Loop)
+	            {
+	                Direction = -Direction;
+	                _currentPoint += Direction;
+
+	                _currentPoint = Math.Clamp(_currentPoint, 0, _path.Length - 1);
+	            }
+	            else
+	            {
+	                _currentPoint = Math.Clamp(_currentPoint, 0, _path.Length - 1);
+	                Velocity = Vector2.Zero;
+	                Enabled = false;
+	            }
+	        }
+	    }
 	}
 
-	
 	public void CancelMotion()
 	{
 		Velocity = new Vector2(0, 0);
@@ -138,5 +139,19 @@ public class FollowPath : Component, IMotionProvider, IRespawn
 	{
 		_currentPoint = 0;
 		Transform.Position = _path[_currentPoint];
+	}
+
+	public void GoBack()
+	{
+		Direction = -_defaultDirection;
+		Log.Info("move back");
+		Enabled = true;  // Ensure that movement resumes if it was previously disabled
+	}
+
+	public void GoForward()
+	{
+		Direction = _defaultDirection;
+		Log.Info("move forward");
+		Enabled = true;  // Ensure that movement resumes if it was previously disabled
 	}
 }

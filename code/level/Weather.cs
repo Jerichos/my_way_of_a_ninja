@@ -25,12 +25,12 @@ public class Weather : Component, IMotionProvider
 	
 	public void AddToPlayer(MotionCore2D motionCore)
 	{
-		motionCore.AddMotionProvider(this);
+		motionCore.AddMotionProvider(this); // TODO: move it to OnEnabled
 	}
 	
 	public void RemoveFromPlayer(MotionCore2D motionCore)
 	{
-		motionCore.RemoveMotionProvider(this);
+		motionCore.RemoveMotionProvider(this); // TODO: move it to OnDisabled
 	}
 	
 	public void SetDirection(int direction)
@@ -65,6 +65,17 @@ public class Weather : Component, IMotionProvider
 	public void OnMotionRestored()
 	{
 		Enabled = true;
+	}
+
+	protected override void OnEnabled()
+	{
+		RestartWeather();
+	}
+
+	protected override void OnDisabled()
+	{
+		SetDirection(0);
+		Velocity = Vector2.Zero;
 	}
 
 	public void RestartWeather()

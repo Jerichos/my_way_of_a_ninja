@@ -40,14 +40,10 @@ public sealed class MotionCore2D : Component
 
 			if ( _grounded )
 			{
-				//Velocity = Velocity.WithY(0);
+				// float distance =  _groundPoint.y - Transform.Position.y;
+				// float newVelocity = distance / Time.Delta;
+				// Velocity = Velocity.WithY(newVelocity);
 				
-				// snap to ground point
-				float distance =  _groundPoint.y - Transform.Position.y;
-				float newVelocity = distance / Time.Delta;
-				Velocity = Velocity.WithY(newVelocity);
-				
-				// Transform.Position = pos;
 				GroundObject = _groundHitResult.GameObject;
 			}
 			else
@@ -80,8 +76,8 @@ public sealed class MotionCore2D : Component
 	
 	public Action<bool> HitCeilingMadafaka;
 	public CollisionData Collisions;
-	
-	private float _skinPortion = 0.95f;
+
+	private float _skin = 0.99f;
 	private float _defaultColliderHeight;
 
 	protected override void OnStart()
@@ -92,7 +88,6 @@ public sealed class MotionCore2D : Component
 
 	protected override void OnFixedUpdate()
 	{
-		// if contains type jump
 		Collisions.Reset();
 		CalculateVelocity();
 
@@ -112,7 +107,7 @@ public sealed class MotionCore2D : Component
 	public bool GroundEdgeCheck(int direction)
 	{
 		Vector3 startPosition = Transform.Position + new Vector3(Collider.WorldScale().x / 2 * direction, 10,0);
-		Vector3 endPosition = startPosition + Util.DownY * 20;
+		Vector3 endPosition = startPosition + Util.DownY * 30;
 		
 		_groundHitResult = Scene.Trace
 			.Ray(startPosition, endPosition)
@@ -120,17 +115,9 @@ public sealed class MotionCore2D : Component
 			.Size(BBox.FromPositionAndSize(Vector3.Zero, new Vector3(1,1,1)))
 			.Run();
 		
-		// Gizmo.Draw.Color = Color.Green;
-		// Gizmo.Draw.LineThickness = 20;
-
 		if ( _groundHitResult.Hit )
-		{
-			// Gizmo.Draw.Color = Color.Red;
 			return true;
-		}
 
-		// Gizmo.Draw.LineThickness = 20;
-		// Gizmo.Draw.Line( startPosition, endPosition );
 		return false;
 	}
 	
@@ -145,83 +132,52 @@ public sealed class MotionCore2D : Component
 			.Size(BBox.FromPositionAndSize(Vector3.Zero, new Vector3(1,1,1)))
 			.Run();
 		
-		// Gizmo.Draw.Color = Color.Green;
-		// Gizmo.Draw.LineThickness = 20;
-
 		if ( _groundHitResult.Hit )
 		{
-			// Gizmo.Draw.Color = Color.Red;
 			return true;
 		}
 
-		// Gizmo.Draw.LineThickness = 20;
-		// Gizmo.Draw.Line( startPosition, endPosition );
 		return false;
 	}
 
 	private void HandleHorizontalCollisions()
 	{
-		if(WallTags == null || WallTags.IsEmpty)
+		if (WallTags == null || WallTags.IsEmpty)
 			return;
-		
-		// float skin = 5;
-		Vector3 scale = Collider.WorldScale() * _skinPortion;
-		float halfWidth = Collider.WorldScale().x / 2;
-		
-		if(Velocity.x > 0) // check right
+
+		float width = Collider.WorldScale().x / 2f;
+		float height = Collider.WorldScale().y * 0.5f;
+
+		if (Velocity.x != 0) // check both directions
 		{
-			float length = Velocity.x * Time.Delta + halfWidth;
-			Vector2 rayStart = Transform.Position + Collider.Center;
-			Vector2 rayEnd = rayStart + new Vector2(length, 0);
-			
-			var hitResult = Scene.Trace
-				.Ray(rayStart, rayEnd)
-				.Size(BBox.FromPositionAndSize(Vector3.Zero, new Vector3(1,scale.y,1)))
+			bool isRight = Velocity.x > 0;
+			float length = Math.Abs(Velocity.x) * Time.Delta + width;
+			Vector3 direction = isRight ? Util.RightX : Util.LeftX;
+
+			IEnumerable<SceneTraceResult> hitResult = Scene.Trace
+				.Ray(Collider.WorldCenter(), Collider.WorldCenter() + direction * length)
+				.Size(BBox.FromPositionAndSize(Vector3.Zero, new Vector3(1, height, 1)))
 				.WithAnyTags(WallTags)
 				.RunAll();
 			
-			if(hitResult.Count() == 1) // TODO: this is not nice, but it works for now
+			foreach ( var hit in hitResult)
 			{
-				if(IsItPlatform(hitResult.First()))
-					return;
+				if(IsItPlatform(hit))
+					continue;
 				
-				Collisions.Right = true;
+				if (isRight)
+				{
+					Collisions.Right = true;
+					Transform.Position = Transform.Position.WithX(hit.HitPosition.x - width);
+				}
+				else
+				{
+					Collisions.Left = true;
+					Transform.Position = Transform.Position.WithX(hit.HitPosition.x + width);
+				}
+
 				Velocity = Velocity.WithX(0);
-			}
-			else if(hitResult.Count() > 1)
-			{
-				Collisions.Right = true;
-				Velocity = Velocity.WithX(0);
-			}
-			
-			// Log.Info($"skin: {skin} length: {length} scale: {scale} hit: {hitResult.Hit}");
-		}
-		else if ( Velocity.x < 0 ) // check left
-		{
-			float length = Velocity.x * Time.Delta - halfWidth;
-			Vector2 rayStart = Transform.Position + Collider.Center;
-			Vector2 rayEnd = rayStart + new Vector2(length, 0);
-			
-			var hitResult = Scene.Trace
-				.Ray(rayStart, rayEnd)
-				.Size(BBox.FromPositionAndSize(Vector3.Zero, new Vector3(1,scale.y,1)))
-				.WithAnyTags(WallTags)
-				.RunAll();
-			
-			if(hitResult.Count() == 1) // TODO: this is not nice, but it works for now
-			{
-				if(IsItPlatform(hitResult.First()))
-					return;
-				
-				Collisions.Right = true;
-				Velocity = Velocity.WithX(0);
-				
-				// Log.Info("collision right");
-			}
-			else if(hitResult.Count() > 1)
-			{
-				Collisions.Left = true;
-				Velocity = Velocity.WithX(0);
+				break;
 			}
 		}
 	}
@@ -241,19 +197,15 @@ public sealed class MotionCore2D : Component
 		if(Velocity.y <= 0 || GroundTags.IsEmpty)
 			return;
 		
-		float skinWidth = 2;
-		float length = (Velocity.y + skinWidth) * Time.Delta;
-		
-		Vector3 startPosition = Transform.Position + Collider.WorldScale() * Util.UpY + Util.DownY * skinWidth;
-		Vector3 endPosition = startPosition + Util.UpY * length;
-		
-		// Gizmo.Draw.Color = Color.Green;
-		// Gizmo.Draw.LineThickness = 5;
-		// Gizmo.Draw.Line( startPosition, endPosition );
+		float width = Collider.WorldScale().x * _skin;
+		float height = Collider.WorldScale().y / 2f;
+		float length = (Velocity.y * Time.Delta) + height;
+
+		Vector3 endPosition = Collider.WorldCenter() + Util.UpY * length;
 		
 		var hitResult = Scene.Trace
-			.Ray(startPosition, endPosition)
-			.Size(BBox.FromPositionAndSize(Vector3.Zero, new Vector3(Collider.Scale.x, 1, 1)))
+			.Ray(Collider.WorldCenter(), endPosition)
+			.Size(BBox.FromPositionAndSize(Vector3.Zero, new Vector3(width, 1, 1)))
 			.WithAnyTags(GroundTags)
 			.Run();
 
@@ -273,41 +225,37 @@ public sealed class MotionCore2D : Component
 
 	private void CheckCollisionDown()
 	{
-		// if velocity is up, don't check for ground?
 		if ( Velocity.y > 0 || GroundTags.IsEmpty)
 		{
 			Grounded = false;
 			return;
 		}
-
-		float skinWidth = Collider.WorldScale().y / 2; // increased skin because of jump ability
-		float length = (-Velocity.y + skinWidth) * Time.Delta;
 		
-		Vector3 startPosition = Transform.Position + Util.UpY * skinWidth;
-		Vector3 endPosition = Transform.Position + Util.DownY * length;
+		float width = Collider.WorldScale().x * _skin;
+		float height = Collider.WorldScale().y / 2f;
+		float length = (-Velocity.y * Time.Delta) + height;
+		
+		Vector3 endPosition = Collider.WorldCenter() + Util.DownY * length;
 		
 		_groundHitResult = Scene.Trace
-			.Ray(startPosition, endPosition)
-			.Size(BBox.FromPositionAndSize(Vector3.Zero, new Vector3(Collider.Scale.x * _skinPortion, 1, 1)))
+			.Ray(Collider.WorldCenter(), endPosition)
+			.Size(BBox.FromPositionAndSize(Vector3.Zero, new Vector3(width, 1, 1)))
 			.WithAnyTags(GroundTags)
 			.Run();
 
 		if ( _groundHitResult.Hit )
 		{
 			_groundPoint = _groundHitResult.HitPosition;
-			// Velocity = Velocity.WithY(0);
-			
 			Collisions.Down = true;
 			Grounded = true;
 			
-			// distance between hit and current position
-			
-			// Log.Info($"ground hit: {_groundHitResult.HitPosition}");
+			float distance =  _groundPoint.y - Transform.Position.y;
+			float newVelocity = distance / Time.Delta;
+			Velocity = Velocity.WithY(newVelocity);
 		}
 		else
 		{
 			Grounded = false;
-			// Log.Info("no ground hit");
 		}
 	}
 	
@@ -317,12 +265,6 @@ public sealed class MotionCore2D : Component
 
 		for ( int i = 0; i < _activeProviders.Count; i++ )
 		{
-			// if player and velocity is not zero print log
-			// if(_activeProviders[i].Velocity != Vector2.Zero && this.GameObject.Name == "Player")
-			// {
-			// 	Log.Info($"MotionType: {_activeProviders[i].MotionType} provider: {_activeProviders[i].GetType().Name} velocity: {_activeProviders[i].Velocity}");
-			// }
-			
 			Velocity += _activeProviders[i].Velocity;
 		}
 	}

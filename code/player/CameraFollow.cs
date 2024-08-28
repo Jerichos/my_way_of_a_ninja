@@ -77,7 +77,7 @@ private bool _moveToBoundsAndStop = false;
         Transform.Position = smoothPosition;
     }
 
-    public void SetBounds(Vector2 min, Vector2 max, bool smoothly = false, float smoothMultiplier = 2f)
+    public void SetBounds(Vector2 min, Vector2 max, bool smoothly = false, float smoothMultiplier = 1f)
     {
 	    _moveToBoundsAndStop = false;
         if (smoothly)
