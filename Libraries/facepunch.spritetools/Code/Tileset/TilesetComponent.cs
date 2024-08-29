@@ -180,15 +180,19 @@ public sealed class TilesetComponent : Collider, Component.ExecuteInEditor
 		if (collisionLayer is null) return;
 
 		var tilePositions = new Dictionary<Vector2Int, bool>();
+		
+		// WORKAROUND: Remove 
 		foreach (var tile in collisionLayer.Tiles)
 		{
 			tilePositions[Vector2Int.Parse(tile.Key)] = true;
-			if (Vector2Int.Parse(tile.Key).x < -10 || Vector2Int.Parse(tile.Key).y < -10)
+			if (Vector2Int.Parse(tile.Key).x < -9999999 || Vector2Int.Parse(tile.Key).y < -9999999)
 			{
-				Log.Info($"test removing Tile position: {tile.Key}");
+				Log.Info($"WORKAROUND: removing Tile position: {tile.Key}");
+				// log print: WORKAROUND: removing Tile position: -2147483520,-2147483648
 				tilePositions.Remove(Vector2Int.Parse(tile.Key));
 			}
 		}
+		
 		if (tilePositions.Count == 0) return;
 
 		var minPosition = tilePositions.Keys.Aggregate((min, next) => Vector2Int.Min(min, next));
