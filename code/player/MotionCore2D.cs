@@ -146,7 +146,7 @@ public sealed class MotionCore2D : Component
 			return;
 
 		float width = Collider.WorldScale().x / 2f;
-		float height = Collider.WorldScale().y * 0.5f;
+		float height = Collider.WorldScale().y * SKIN;
 
 		if (Velocity.x != 0) // check both directions
 		{
