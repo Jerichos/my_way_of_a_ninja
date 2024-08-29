@@ -6,12 +6,12 @@ namespace Sandbox.enemies;
 
 public enum BirdBossPositions
 {
-	RightBot,
-	RightMid,
-	RightTop,
-	LeftBot,
-	LeftMid,
-	LeftTop,
+	RightBot = 0,
+	RightMid = 1,
+	RightTop = 2,
+	LeftBot = 3,
+	LeftMid = 4,
+	LeftTop = 5,
 }
 
 public enum Side
@@ -61,7 +61,7 @@ public class BigBossBird : Component
 	
 	bool _flyingAtPlayer;
 	private float _timer;
-	private float _delay = 1.0f;
+	private float _delay = 2.0f;
 	
 	private float _returnToPossitionSpeed = 100;
 	private float _flyAtPlayerSpeed = 300;
@@ -70,6 +70,8 @@ public class BigBossBird : Component
 	private bool IsAtHeightWithPlayer => Math.Abs(BirdEnemy.Transform.Position.y - PlayerPosition.y) < 10;
 
 	private Level _level;
+	
+	private int _movedCount;
 	
 	public void Init( Level level )
 	{
@@ -165,7 +167,8 @@ public class BigBossBird : Component
 		{
 			SetPhase(BirdBossPhase.Phase1);
 		}
-		float percent = health / (float)BirdEnemy.MaxHealth;
+		float percent = BirdEnemy.Health / (float)BirdEnemy.MaxHealth;
+		Log.Info($"health: {BirdEnemy.Health}/{BirdEnemy.MaxHealth}, percent: {percent}");
 		if(percent <= 0.10f)
 		{
 			_level.StartWeather();			
@@ -189,9 +192,10 @@ public class BigBossBird : Component
 
 		if (_flyingAtPlayer)
 		{
-			if (_currentPosition is BirdBossPositions.LeftMid or BirdBossPositions.RightMid)
+			if (_currentPosition is BirdBossPositions.LeftMid or BirdBossPositions.RightMid || _movedCount > 3)
 			{
 				_flyingAtPlayer = false;
+				_movedCount = 0;
 			}
 
 			if (_currentSide == Side.Right)
@@ -199,7 +203,9 @@ public class BigBossBird : Component
 				if (_currentPosition != BirdBossPositions.RightMid)  // Ensure we don't repeatedly move to the same position
 				{
 					Speed = _returnToPossitionSpeed;
-					SetPosition(BirdBossPositions.RightMid, true);
+					int randomRightPosition = Random.Shared.Next(0, 3);
+					SetPosition((BirdBossPositions)randomRightPosition, true);
+					_movedCount++;
 				}
 			}
 			else
@@ -207,7 +213,9 @@ public class BigBossBird : Component
 				if (_currentPosition != BirdBossPositions.LeftMid)  // Ensure we don't repeatedly move to the same position
 				{
 					Speed = _returnToPossitionSpeed;
-					SetPosition(BirdBossPositions.LeftMid, true);
+					int randomLeftPosition = Random.Shared.Next(3, 6);
+					SetPosition((BirdBossPositions)randomLeftPosition, true);
+					_movedCount++;
 				}
 			}
 		}

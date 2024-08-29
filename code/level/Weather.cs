@@ -70,12 +70,13 @@ public class Weather : Component, IMotionProvider
 	protected override void OnEnabled()
 	{
 		RestartWeather();
+		Log.Info("Weather enabled");
 	}
 
 	protected override void OnDisabled()
 	{
-		SetDirection(0);
-		Velocity = Vector2.Zero;
+		RestartWeather();
+		Log.Info("Weather disabled");
 	}
 
 	public void RestartWeather()

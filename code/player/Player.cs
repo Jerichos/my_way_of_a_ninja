@@ -19,6 +19,7 @@ public sealed class Player : Component
 	
 	[Property] public int Health { get; set; } = 3; // TODO: UI this
 	[Property] public int MaxHealth { get; set; } = 3;
+	[Property] public bool Unkillable { get; set; }
 	
 	private int _defaultMaxHealth;
 	
@@ -34,7 +35,6 @@ public sealed class Player : Component
 	private bool _graceFromDamage; // TODO: not nice but quick fix, so what
 	
 	public bool IsInGracePeriod => _gracePeriodTimer > 0;
-	public bool Unkillable { get; set; }
 
 	public Action DeathEvent;
 	public Action HitEvent;

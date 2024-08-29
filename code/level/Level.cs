@@ -142,63 +142,35 @@ public class Level : Component
 			}
 		}
 
-		if ( area != null )
+		MinBounds = area.MinBounds;
+		MaxBounds = area.MaxBounds;
+		CameraFollow.SetBounds( MinBounds, MaxBounds, true, area.TransitionMultiplier);
+		BoundsChangedEvent?.Invoke(MinBounds, MaxBounds);
+			
+		if(area.AreaSound != null && !Player.IsDead)
 		{
-			MinBounds = area.MinBounds;
-			MaxBounds = area.MaxBounds;
-			CameraFollow.SetBounds( MinBounds, MaxBounds, true, area.TransitionMultiplier);
-			BoundsChangedEvent?.Invoke(MinBounds, MaxBounds);
-			
-			if(area.AreaSound != null && !Player.IsDead)
+			if ( _currentArea.AreaSound != area.AreaSound)
 			{
-				if ( _currentArea.AreaSound != area.AreaSound)
-				{
-					Log.Info("stop music before playing new one");
-					SoundBox.StopSound();
-					Log.Info("play area music: " + area.AreaSound.Sounds[0].ResourceName);
-					SoundBox.SoundEvent = area.AreaSound;
-					SoundBox.StartSound();
-				}
-			}
-			
-			Weather.Enabled = area.WeatherEnabled;
-			Weather.RestartWeather();
-			
-			if ( area.BossArea )
-			{
-				SpawnedBoss = _levelBoss.GameObject.Clone().Components.Get<BigBossBird>();
-				SpawnedBoss.Init(this);
-				SpawnedBoss.Transform.Position = _levelBoss.Transform.Position;
-				SpawnedBoss.GameObject.Enabled = true;
-				SpawnedBoss.Player = Player;
-				BossSpawnedEvent?.Invoke(SpawnedBoss);
-				CameraFollow.MoveToBoundsDontFollowAnymore( MinBounds, MaxBounds, area.TransitionMultiplier );
+				Log.Info("stop music before playing new one");
+				SoundBox.StopSound();
+				Log.Info("play area music: " + area.AreaSound.Sounds[0].ResourceName);
+				SoundBox.SoundEvent = area.AreaSound;
+				SoundBox.StartSound();
 			}
 		}
-		else
-		{
-			Log.Info("New area is null");
-			MinBounds = _minBounds;
-			MaxBounds = _maxBounds;
-			CameraFollow.SetBounds( MinBounds, MaxBounds, true );
-			BoundsChangedEvent?.Invoke(MinBounds, MaxBounds);
-			Weather.Enabled = _isWeatherEnabled;
 			
-			if ( _soundEvent != null )
-			{
-				SoundBox.StopSound();
-				SoundBox.SoundEvent = _soundEvent;
-				StartSoundAsync(3000);
-			}
-			else if(_soundEvent == SoundBox.SoundEvent)
-			{
-				// do nothing
-			}
-			else
-			{
-				SoundBox.StopSound();
-				SoundBox.SoundEvent = null;
-			}
+		Weather.Enabled = area.WeatherEnabled;
+		Weather.RestartWeather();
+			
+		if ( area.BossArea )
+		{
+			SpawnedBoss = _levelBoss.GameObject.Clone().Components.Get<BigBossBird>();
+			SpawnedBoss.Init(this);
+			SpawnedBoss.Transform.Position = _levelBoss.Transform.Position;
+			SpawnedBoss.GameObject.Enabled = true;
+			SpawnedBoss.Player = Player;
+			BossSpawnedEvent?.Invoke(SpawnedBoss);
+			CameraFollow.MoveToBoundsDontFollowAnymore( MinBounds, MaxBounds, area.TransitionMultiplier );
 		}
 
 		_currentArea = area;

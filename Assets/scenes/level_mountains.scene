@@ -5228,10 +5228,10 @@
                     "component_type": "ContactDamage"
                   },
                   "DestroySound": "audio/sfx/player/level_defeat.sound",
-                  "Health": 50,
+                  "Health": 25,
                   "HitSound": "audio/sfx/enemy/enemy_hit.sound",
                   "IgnoreRespawn": true,
-                  "MaxHealth": 50,
+                  "MaxHealth": 25,
                   "Sprite": {
                     "_type": "component",
                     "component_id": "bc9080e4-5c8c-4c56-9a4b-098bf106379a",
@@ -13850,7 +13850,8 @@
             "component_id": "e0367d98-0ccd-4928-af6c-77dc93cb7ca9",
             "go": "fa92b8fb-a335-4816-b27c-04934c4d960c",
             "component_type": "SwordAbility"
-          }
+          },
+          "Unkillable": false
         },
         {
           "__type": "Sandbox.player.PlayerInput",
