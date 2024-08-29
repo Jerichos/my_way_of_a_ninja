@@ -60,7 +60,7 @@
           },
           "StartCheckpoint": {
             "_type": "component",
-            "component_id": "96ec3944-b305-4e82-8f23-aa51bf8c4b6d",
+            "component_id": "98bd294b-fcd3-4f97-a920-bec4fb16003b",
             "go": "de903763-862d-4e3f-bade-fac35a3fcaee",
             "component_type": "Checkpoint"
           },
@@ -6292,7 +6292,7 @@
                   "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
                 },
                 "29,16": {
-                  "TileId": "d6b00a7f-deee-4e26-a035-246d1eb9a224"
+                  "TileId": "a72708af-7e8d-423f-b598-bae59ce92362"
                 },
                 "43,8": {
                   "TileId": "a258157c-6a91-4c07-ab0d-ad96c88cb92b"
@@ -8062,52 +8062,52 @@
                   "TileId": "2ffe96b3-bbd5-4212-b0b4-6fe92eb4bfc8"
                 },
                 "33,16": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
+                  "TileId": "aa91fd79-abb1-4273-8d68-3e4007352b65"
                 },
                 "34,16": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
+                  "TileId": "aa91fd79-abb1-4273-8d68-3e4007352b65"
                 },
                 "35,16": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
+                  "TileId": "aa91fd79-abb1-4273-8d68-3e4007352b65"
                 },
                 "36,16": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
+                  "TileId": "aa91fd79-abb1-4273-8d68-3e4007352b65"
                 },
                 "37,16": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
+                  "TileId": "aa91fd79-abb1-4273-8d68-3e4007352b65"
                 },
                 "38,16": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
+                  "TileId": "aa91fd79-abb1-4273-8d68-3e4007352b65"
                 },
                 "32,16": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
+                  "TileId": "aa91fd79-abb1-4273-8d68-3e4007352b65"
                 },
                 "40,16": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
+                  "TileId": "aa91fd79-abb1-4273-8d68-3e4007352b65"
                 },
                 "31,16": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
+                  "TileId": "aa91fd79-abb1-4273-8d68-3e4007352b65"
                 },
                 "41,16": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
+                  "TileId": "aa91fd79-abb1-4273-8d68-3e4007352b65"
                 },
                 "39,16": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
+                  "TileId": "aa91fd79-abb1-4273-8d68-3e4007352b65"
                 },
                 "30,16": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
+                  "TileId": "aa91fd79-abb1-4273-8d68-3e4007352b65"
                 },
                 "42,16": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
+                  "TileId": "aa91fd79-abb1-4273-8d68-3e4007352b65"
                 },
                 "43,16": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
+                  "TileId": "aa91fd79-abb1-4273-8d68-3e4007352b65"
                 },
                 "44,16": {
-                  "TileId": "60d716aa-8bbd-461d-921b-45e05c60f845"
+                  "TileId": "aa91fd79-abb1-4273-8d68-3e4007352b65"
                 },
                 "45,16": {
-                  "TileId": "e4eb85bd-5fd2-4145-baba-9f806ccd971c"
+                  "TileId": "e2734201-538f-4162-8dde-600cca935637"
                 },
                 "12,-3": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
@@ -8153,6 +8153,15 @@
                 },
                 "10,-3": {
                   "TileId": "a72be167-4a7d-4773-b220-0e325ee0787f"
+                },
+                "19,5": {
+                  "TileId": "80660a89-c31d-4cb3-a4d4-a490ecfefb39"
+                },
+                "20,5": {
+                  "TileId": "71eb6a9c-3eb8-4217-99c1-7d22e4528a6e"
+                },
+                "19,4": {
+                  "TileId": "80660a89-c31d-4cb3-a4d4-a490ecfefb39"
                 }
               }
             },
@@ -8973,6 +8982,12 @@
                 },
                 "30,17": {
                   "TileId": "32d4df38-4f6b-450b-84ed-b39c7dfdf243"
+                },
+                "19,6": {
+                  "TileId": "37a3c812-6e07-4f6c-a864-d89130799453"
+                },
+                "20,6": {
+                  "TileId": "f04130ec-773f-4247-bb0f-e2c076b7a48f"
                 }
               }
             },

@@ -184,6 +184,7 @@ public class RenderingWidget : SpriteRenderingWidget
 						{
 							startMovePosition += new Vector3(0, xx * frameWidth);
 							tile.Position += new Vector2Int(xx, 0);
+							tile.Tileset?.InternalUpdateTileTexture(tile);
 						}
 					}
 					if (Math.Abs(deltaf.y) >= frameHeight / 2f)
@@ -193,12 +194,15 @@ public class RenderingWidget : SpriteRenderingWidget
 						{
 							startMovePosition += new Vector3(yy * frameHeight, 0);
 							tile.Position += new Vector2Int(0, yy);
+							tile.Tileset?.InternalUpdateTileTexture(tile);
 						}
 					}
 				}
 
 				if (Gizmo.IsHovered)
 				{
+					Cursor = CursorShape.Finger;
+					timeSinceLastCornerHover = 0f;
 					using (Gizmo.Scope("hover"))
 					{
 						Gizmo.Draw.Color = Gizmo.Draw.Color.WithAlpha(0.5f);
@@ -358,6 +362,7 @@ public class RenderingWidget : SpriteRenderingWidget
 					{
 						tile.Position = position;
 						tile.Size = size;
+						tile.Tileset?.InternalUpdateTileTexture(tile);
 					}
 				}
 			}

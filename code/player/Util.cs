@@ -14,7 +14,7 @@ public static class Util
 
 	public static Vector3 WorldCenter( this BoxCollider collider )
 	{
-		return collider.Transform.Position + collider.Center / 2;
+		return collider.Transform.Position + collider.Center * collider.Transform.Scale;
 	}
 	
 }

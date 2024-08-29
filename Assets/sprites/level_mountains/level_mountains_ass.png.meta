@@ -1,11 +1,4 @@
 {
-  "clampu": false,
-  "clampv": false,
-  "clampw": false,
-  "nolod": false,
-  "nomip": false,
-  "nocompress": false,
-  "brightness": 1,
   "publish": {
     "Enabled": true,
     "ProjectConfig": {
@@ -23,5 +16,12 @@
         "SingleAssetSource": "sprites/level_mountains/level_mountains_ass.png"
       }
     }
-  }
+  },
+  "clampu": false,
+  "clampv": false,
+  "clampw": false,
+  "nolod": true,
+  "nomip": true,
+  "nocompress": true,
+  "brightness": 1
 }

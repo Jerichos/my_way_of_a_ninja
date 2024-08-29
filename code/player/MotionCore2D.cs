@@ -77,7 +77,7 @@ public sealed class MotionCore2D : Component
 	public Action<bool> HitCeilingMadafaka;
 	public CollisionData Collisions;
 
-	private float _skin = 0.99f;
+	private const float SKIN = 0.99f;
 	private float _defaultColliderHeight;
 
 	protected override void OnStart()
@@ -106,7 +106,7 @@ public sealed class MotionCore2D : Component
 	// check if there is ground on the edge
 	public bool GroundEdgeCheck(int direction)
 	{
-		Vector3 startPosition = Transform.Position + new Vector3(Collider.WorldScale().x / 2 * direction, 10,0);
+		Vector3 startPosition = Transform.Position + new Vector3(Collider.WorldScale().x / 2f * direction, 10,0);
 		Vector3 endPosition = startPosition + Util.DownY * 30;
 		
 		_groundHitResult = Scene.Trace
@@ -156,7 +156,7 @@ public sealed class MotionCore2D : Component
 
 			IEnumerable<SceneTraceResult> hitResult = Scene.Trace
 				.Ray(Collider.WorldCenter(), Collider.WorldCenter() + direction * length)
-				.Size(BBox.FromPositionAndSize(Vector3.Zero, new Vector3(1, height, 1)))
+				.Size(BBox.FromPositionAndSize(Vector3.Zero, new Vector3(0, height, 0)))
 				.WithAnyTags(WallTags)
 				.RunAll();
 			
@@ -197,7 +197,7 @@ public sealed class MotionCore2D : Component
 		if(Velocity.y <= 0 || GroundTags.IsEmpty)
 			return;
 		
-		float width = Collider.WorldScale().x * _skin;
+		float width = Collider.WorldScale().x * SKIN;
 		float height = Collider.WorldScale().y / 2f;
 		float length = (Velocity.y * Time.Delta) + height;
 
@@ -231,18 +231,19 @@ public sealed class MotionCore2D : Component
 			return;
 		}
 		
-		float width = Collider.WorldScale().x * _skin;
+		float width = Collider.WorldScale().x * SKIN;
 		float height = Collider.WorldScale().y / 2f;
-		float length = (-Velocity.y * Time.Delta) + height;
+		float length = (-Velocity.y * Time.Delta) + height + 0.04f; // add 0.04f if Velocity.y is 0
 		
-		Vector3 endPosition = Collider.WorldCenter() + Util.DownY * length;
+		Vector3 startPosition = Collider.WorldCenter();
+		Vector3 endPosition = startPosition + Util.DownY * length;
 		
 		_groundHitResult = Scene.Trace
-			.Ray(Collider.WorldCenter(), endPosition)
-			.Size(BBox.FromPositionAndSize(Vector3.Zero, new Vector3(width, 1, 1)))
+			.Ray(startPosition, endPosition)
+			.Size(BBox.FromPositionAndSize(Vector3.Zero, new Vector3(width, 0, 0)))
 			.WithAnyTags(GroundTags)
 			.Run();
-
+		
 		if ( _groundHitResult.Hit )
 		{
 			_groundPoint = _groundHitResult.HitPosition;

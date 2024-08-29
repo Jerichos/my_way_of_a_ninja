@@ -180,6 +180,12 @@ public sealed class TilesetComponent : Collider, Component.ExecuteInEditor
 		if (collisionLayer is null) return;
 
 		var tilePositions = new Dictionary<Vector2Int, bool>();
+		foreach (var tile in collisionLayer.Tiles)
+		{
+			tilePositions[Vector2Int.Parse(tile.Key)] = true;
+		}
+		if (tilePositions.Count == 0) return;
+		
 		
 		// WORKAROUND: Remove 
 		foreach (var tile in collisionLayer.Tiles)
@@ -192,13 +198,12 @@ public sealed class TilesetComponent : Collider, Component.ExecuteInEditor
 				tilePositions.Remove(Vector2Int.Parse(tile.Key));
 			}
 		}
-		
-		if (tilePositions.Count == 0) return;
+		// WORKAROUND END
 
 		var minPosition = tilePositions.Keys.Aggregate((min, next) => Vector2Int.Min(min, next));
 		var maxPosition = tilePositions.Keys.Aggregate((max, next) => Vector2Int.Max(max, next));
 		var totalSize = maxPosition - minPosition + Vector2Int.One;
-		
+
 		bool[,] tiles = new bool[totalSize.x, totalSize.y];
 		foreach (var tile in tilePositions)
 		{
