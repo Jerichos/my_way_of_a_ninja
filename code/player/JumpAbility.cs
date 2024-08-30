@@ -17,6 +17,7 @@ public sealed class JumpAbility : Component, IMotionProvider
 	[Property] SoundEvent JumpSound { get; set; }
 	[Property] float BasePitch { get; set; } = 1;
 	[Property] float PitchPerJump { get; set; } = 0.1f;
+	// [Property] private float JumpColliderHeight { get; set; } = 32f;
 	
 	public Vector2 Velocity { get; private set; }
 	public MotionType MotionType => MotionType.JUMP;
@@ -33,17 +34,7 @@ public sealed class JumpAbility : Component, IMotionProvider
 	private bool _increaseHeight;
 	
 	private int _jumps; // resets when grounded
-	// private float _colliderFactor = 1.5f;
 	
-	private Vector3 _defaultColliderCenter;
-	private Vector3 _defaultColliderScale;
-
-	protected override void OnStart()
-	{
-		_defaultColliderCenter = Collider.Center;
-		_defaultColliderScale = Collider.Scale;
-	}
-
 	public void Jump()
 	{
 		if(CanJump())
@@ -87,11 +78,26 @@ public sealed class JumpAbility : Component, IMotionProvider
 		{
 			if(_t < _wishT)
 			{
+				if(MotionCore.Collisions.Up)
+					Log.Info("Jump collision up");
+				if(MotionCore.Collisions.Down)
+					Log.Info("Jump collision down");
+				
 				float targetHeight = HeightCurve.Evaluate(_t) * MaxHeight * _wishT;
 				float heightDiff = targetHeight - _distanceTraveled;
-				Velocity = new Vector2(0, heightDiff / Time.Delta);
-				_distanceTraveled += heightDiff;
+
+				if ( heightDiff < 0 )
+				{
+					Velocity = Velocity.WithY(0);
+					heightDiff = 0;
+				}
+				else
+				{
+					Velocity = new Vector2(0, heightDiff / Time.Delta);
+					_distanceTraveled += heightDiff;
+				}
 				
+				Log.Info("jump velocity: " + Velocity.y);
 			}
 			else
 			{
@@ -107,15 +113,18 @@ public sealed class JumpAbility : Component, IMotionProvider
 			MotionCore.AddMotionProvider(this);
 		}
 		
+		Log.Info("start jump");
+		
 		IsJumping = true;
 		_t = 0;
 		_distanceTraveled = 0;
-		_wishT = (MinHeight / MaxHeight) * 0.8f;
+		_wishT = (MinHeight / MaxHeight) * 0.5f;
 		_jumps++;
 		
 		// change collider size
-		Collider.Scale = _defaultColliderScale.WithY(32);
-		Collider.Center = _defaultColliderCenter.WithY(24);
+		// float diff = MotionCore.DefaultColliderSize.y - JumpColliderHeight;
+		// Collider.Scale = Collider.Scale.WithY(JumpColliderHeight);
+		// Collider.Center = Collider.Center.WithY(Collider.Center.y + diff / 2);
 
 		JumpSound.Pitch = BasePitch + PitchPerJump * _jumps;
 		Sound.Play( JumpSound );		
@@ -127,13 +136,17 @@ public sealed class JumpAbility : Component, IMotionProvider
 		if(!IsJumping)
 			return;
 		
-		Velocity = Vector2.Zero;
-		IsJumping = false;
-
-		Collider.Scale = _defaultColliderScale;
-		Collider.Center = _defaultColliderCenter;
+		Log.Info("cancel jump Now: " + Time.Now);
 		
+		Velocity = Vector2.Zero;
 		MotionCore.RemoveMotionProvider(this);
+		MotionCore.ResetCollider();
+		
+		Log.Info("1");
+		MotionCore.HandleVerticalCollisions();
+		Log.Info("2");
+		
+		IsJumping = false;
 	}
 	
 	private bool CanJump()

@@ -43,6 +43,10 @@ public class Level : Component
 
 	protected override void OnAwake()
 	{
+		#if !DEBUG
+			DontTeleportPlayerToCheckpoint = false;
+		#endif
+		
 		_minBounds = MinBounds;
 		_maxBounds = MaxBounds;
 		_soundEvent = SoundBox.SoundEvent;

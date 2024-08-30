@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Sandbox.player;
 
@@ -51,6 +52,7 @@ public sealed class MotionCore2D : Component
 				GroundObject = null;
 			}
 			
+			Log.Info("grounded: " + _grounded);
 			GroundedEvent?.Invoke(_grounded);
 		}
 	}
@@ -78,12 +80,17 @@ public sealed class MotionCore2D : Component
 	public CollisionData Collisions;
 
 	private const float SKIN = 0.99f;
-	private float _defaultColliderHeight;
+	
+	private Vector3 _defaultColliderSize;
+	private Vector3 _defaultColliderCenter;
+	
+	public Vector3 DefaultColliderSize => _defaultColliderSize;
+	public Vector3 DefaultColliderCenter => _defaultColliderCenter;
 
-	protected override void OnStart()
+	protected override void OnAwake()
 	{
-		if(Collider != null)
-			_defaultColliderHeight = Collider.Scale.y;
+		_defaultColliderSize = Collider.Scale;
+		_defaultColliderCenter = Collider.Center;
 	}
 
 	protected override void OnFixedUpdate()
@@ -97,7 +104,7 @@ public sealed class MotionCore2D : Component
 		Transform.Position += (Vector3)Velocity * Time.Delta;
 	}
 
-	private void HandleVerticalCollisions()
+	public void HandleVerticalCollisions()
 	{
 		CheckCollisionDown();
 		CheckCollisionUp();
@@ -205,7 +212,7 @@ public sealed class MotionCore2D : Component
 		
 		var hitResult = Scene.Trace
 			.Ray(Collider.WorldCenter(), endPosition)
-			.Size(BBox.FromPositionAndSize(Vector3.Zero, new Vector3(width, 1, 1)))
+			.Size(BBox.FromPositionAndSize(Vector3.Zero, new Vector3(width, 0, 0)))
 			.WithAnyTags(GroundTags)
 			.Run();
 
@@ -219,7 +226,7 @@ public sealed class MotionCore2D : Component
 			HitCeilingMadafaka?.Invoke(true);
 			Collisions.Up = true;
 			var hitPos = hitResult.HitPosition;
-			Transform.Position = Transform.Position.WithY(hitPos.y - _defaultColliderHeight);
+			Transform.Position = Transform.Position.WithY(hitPos.y - _defaultColliderSize.y);
 		}
 	}
 
@@ -233,7 +240,7 @@ public sealed class MotionCore2D : Component
 		
 		float width = Collider.WorldScale().x * SKIN;
 		float height = Collider.WorldScale().y / 2f;
-		float length = (-Velocity.y * Time.Delta) + height + 0.04f; // add 0.04f if Velocity.y is 0
+		float length = (-Velocity.y * Time.Delta) + height + 0.2f; // add 0.04f if Velocity.y is 0
 		
 		Vector3 startPosition = Collider.WorldCenter();
 		Vector3 endPosition = startPosition + Util.DownY * length;
@@ -246,13 +253,22 @@ public sealed class MotionCore2D : Component
 		
 		if ( _groundHitResult.Hit )
 		{
+			if(IsItPlatform(_groundHitResult))
+			{
+				if ( _groundHitResult.Component is BoxCollider boxCollider )
+				{
+					float hitTopY = boxCollider.WorldCenter().y + boxCollider.WorldScale().y / 2f;
+					if(startPosition.y < hitTopY)
+						return;
+				}
+			}
+
 			_groundPoint = _groundHitResult.HitPosition;
 			Collisions.Down = true;
 			Grounded = true;
-			
-			float distance =  _groundPoint.y - Transform.Position.y;
-			float newVelocity = distance / Time.Delta;
-			Velocity = Velocity.WithY(newVelocity);
+
+			Transform.Position = Transform.Position.WithY( _groundPoint.y );
+			Velocity = Velocity.WithY(0);
 		}
 		else
 		{
@@ -320,29 +336,30 @@ public sealed class MotionCore2D : Component
 			}
 		}
 	}
-	
-	public void RemoveMotionProvider(IMotionProvider provider)
+
+	public void RemoveMotionProvider( IMotionProvider provider )
 	{
-		if(!_motionProviders.Contains(provider))
+		if ( !_motionProviders.Contains( provider ) )
 			return;
-		
-		_activeProviders.Remove(provider);
-		
-		if (provider.OverrideMotions != null && provider.OverrideMotions.Length != 0 )
+
+		_activeProviders.Remove( provider );
+
+		if ( provider.OverrideMotions != null && provider.OverrideMotions.Length != 0 )
 		{
-			foreach (var motionType in provider.OverrideMotions)
+			foreach ( var motionType in provider.OverrideMotions )
 			{
-				bool isStillOverridden = _activeProviders.Any(p => p.OverrideMotions.Contains(motionType));
-				
-				if (!isStillOverridden)
+				bool isStillOverridden = _activeProviders.Any( p => p.OverrideMotions.Contains( motionType ) );
+
+				if ( !isStillOverridden )
 				{
-					for (int i = 0; i < _motionProviders.Count; i++)
+					for ( int i = 0; i < _motionProviders.Count; i++ )
 					{
 						var potentialProvider = _motionProviders[i];
 
-						if (potentialProvider.MotionType == motionType && !_activeProviders.Contains(potentialProvider))
+						if ( potentialProvider.MotionType == motionType &&
+						     !_activeProviders.Contains( potentialProvider ) )
 						{
-							_activeProviders.Add(potentialProvider);
+							_activeProviders.Add( potentialProvider );
 							potentialProvider.OnMotionRestored();
 							break;
 						}
@@ -350,9 +367,15 @@ public sealed class MotionCore2D : Component
 				}
 			}
 		}
-		
-		_motionProviders.Remove(provider);
+
+		_motionProviders.Remove( provider );
 		ReevaluateActiveProviders();
+	}
+
+	public void ResetCollider()
+	{
+		Collider.Center = _defaultColliderCenter;
+		Collider.Scale = _defaultColliderSize;
 	}
 
 	public void Teleport( Vector3 position )

@@ -1,0 +1,11 @@
+{
+  "Sequences": [
+    {
+      "Source": "sprites/level_mountains/snow_flake_00.png",
+      "IsLooping": true,
+      "Frames": 64
+    }
+  ],
+  "OutputFormat": "RGBA32323232F",
+  "OutputTypeString": "2D"
+}

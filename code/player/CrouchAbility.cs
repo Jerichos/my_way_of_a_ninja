@@ -6,8 +6,9 @@ public class CrouchAbility : Component
 {
 	[Property] MotionCore2D MotionCore { get; set; }
 	[Property] BoxCollider Collider { get; set; }
+
+	[Property] private float CrouchHeight = 16f;
 	
-	private readonly float _crouchScale = 2.1f;
 	
 	public bool IsCrouching { get; private set; }
 	
@@ -19,16 +20,15 @@ public class CrouchAbility : Component
 			return;
 		
 		IsCrouching = true;
-		Collider.Scale = Collider.Scale.WithY(Collider.Scale.y / _crouchScale);
-		Collider.Center = Collider.Center.WithY(Collider.Center.y / _crouchScale);
+		Collider.Scale = Collider.Scale.WithY(CrouchHeight);
+		Collider.Center = Collider.Center.WithY(CrouchHeight / 2);
 		CrouchEvent?.Invoke(true);
 	}
 	
 	public void StopCrouch()
 	{
 		IsCrouching = false;
-		Collider.Scale = Collider.Scale.WithY(Collider.Scale.y * _crouchScale);
-		Collider.Center = Collider.Center.WithY(Collider.Center.y * _crouchScale);
+		MotionCore.ResetCollider();
 		CrouchEvent?.Invoke(false);
 	}
 }

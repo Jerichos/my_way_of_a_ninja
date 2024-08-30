@@ -23,6 +23,7 @@ public sealed class Animator : Component
 	private SwordAbility SwordAbility => Player.SwordAbility;
 	private CrouchAbility CrouchAbility => Player.CrouchAbility;
 	private MoveAbility MoveAbility => Player.MoveAbility;
+	private JumpAbility JumpAbility => Player.JumpAbility;
 	
 	// on hit player will be in hit animation, which is fade in and out n times during n seconds
 	[Property] private int HitBlinkCount { get; set; } = 3;
@@ -62,11 +63,10 @@ public sealed class Animator : Component
 			default:
 				throw new ArgumentOutOfRangeException();
 		}
-		// Log.Info($"animation change from {_state} to {newState} isAttacking: {SwordAbility.IsAttacking} force: {force}");
 		_state = newState;
 	}
 
-	protected override void OnUpdate()
+	protected override void OnFixedUpdate()
 	{
 		if(CrouchAbility.IsCrouching)
 			SetAnimationState(AnimationState.CROUCH);
@@ -74,11 +74,11 @@ public sealed class Animator : Component
 			SetAnimationState(AnimationState.RUN);
 		else if(MotionCore.Grounded)
 			SetAnimationState(AnimationState.IDLE);
-		else if(MotionCore.Velocity.y > 0 && !MotionCore.IsOnPlatform)
+		else if(JumpAbility.IsJumping)
 			SetAnimationState(AnimationState.JUMP);
 		else if(DashAbility.IsDashing)
 			SetAnimationState(AnimationState.DASH);
-		else if(MotionCore.Velocity.y < 0)
+		else if(MotionCore.Velocity.y <= 0)
 			SetAnimationState(AnimationState.IN_AIR);
 
 		HandleHitAnimation();

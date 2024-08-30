@@ -1,5 +1,5 @@
 {
-  "__guid": "e72eac73-c0a2-4a74-ac66-f3459dca2047",
+  "__guid": "171ed1fe-a3c2-48f1-b130-09657019f8cc",
   "GameObjects": [
     {
       "__guid": "83671452-afe1-4bf1-89ab-84acac918363",
@@ -60,7 +60,7 @@
           },
           "StartCheckpoint": {
             "_type": "component",
-            "component_id": "98bd294b-fcd3-4f97-a920-bec4fb16003b",
+            "component_id": "8a0e5ef5-2253-4a4b-8d88-77e2f5092b5d",
             "go": "de903763-862d-4e3f-bade-fac35a3fcaee",
             "component_type": "Checkpoint"
           },
@@ -344,7 +344,7 @@
                   "OnEdge": false,
                   "Rate": 20,
                   "RateOverDistance": 0,
-                  "Size": "850,0,100"
+                  "Size": "1400,0,100"
                 }
               ]
             },
@@ -13787,7 +13787,7 @@
       "__guid": "fa92b8fb-a335-4816-b27c-04934c4d960c",
       "Flags": 0,
       "Name": "Player",
-      "Position": "1312,1168,-0.00003888499",
+      "Position": "976,336,0.00001046723",
       "Enabled": true,
       "Components": [
         {
@@ -14052,6 +14052,7 @@
         {
           "__type": "Sandbox.player.CrouchAbility",
           "__guid": "e3c6e456-1a7c-4830-a8c7-e119e0592a4a",
+          "CrouchHeight": 16,
           "Collider": {
             "_type": "component",
             "component_id": "03556149-9b67-493e-a802-1110d6cdae34",
